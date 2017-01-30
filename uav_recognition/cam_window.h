@@ -17,22 +17,22 @@ class NavWindow;
 
 class CamWindow : public UAVWindow {
 private:
-    std::vector<UAVCamera*> cams;
+    std::vector<UAVCamera *> cams;
 
     // rendered background texture
-    GUIImage * render_image;
-    GUIImage * render_image_overlay;
-    irr::video::ITexture * render;
-    irr::video::ITexture * render_overlay;
+    GUIImage *render_image;
+    GUIImage *render_image_overlay;
+    irr::video::ITexture *render;
+    irr::video::ITexture *render_overlay;
     bool need_render;
     bool started; // show "PRESS ENTER TO START" if false
 
     // data
-    std::list<WaypointObject *> * wps;
+    std::list<WaypointObject *> *wps;
     std::list<WaypointObject *>::iterator wp_it;
-    std::list<SimObject *> * bases;
+    std::list<SimObject *> *bases;
     std::list<SimObject *>::iterator base_it;
-    std::list<UAVObject *> * uavs;
+    std::list<UAVObject *> *uavs;
     std::list<UAVObject *>::iterator uav_it;
 
     // the city information
@@ -42,7 +42,9 @@ public:
     CamWindow(std::list<WaypointObject *> * wps_,
         std::list<SimObject *> * bases_,
         std::list<UAVObject *> * uavs_,
-        WindowResolution_e resolution = R1024X768,
+        int cam_width,
+        int cam_height,
+        int cam_interval,
         irr::core::dimension2di position = irr::core::dimension2di(0,0),
         irr::video::E_DRIVER_TYPE driver = irr::video::EDT_DIRECT3D9);
     ~CamWindow();

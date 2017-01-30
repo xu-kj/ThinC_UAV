@@ -38,7 +38,7 @@ using namespace gui;
 // GENERAL SETUP
 // =========================================================================
 
-const char * const CONFIG_FILE = "..\\config.ini";
+const char * const CONFIG_FILE = "..\\config.cfg";
 
 WindowResolution_e NAV_RESOLUTION = R1024X768;
 WindowResolution_e CAM_RESOLUTION = R1024X768;
@@ -46,6 +46,12 @@ irr::video::E_DRIVER_TYPE NAV_DRIVER = EDT_OPENGL;
 irr::video::E_DRIVER_TYPE CAM_DRIVER = EDT_DIRECT3D9;
 irr::core::dimension2di NAV_POS(0,0);
 irr::core::dimension2di CAM_POS(0,0);
+
+int CAM_WIDTH;
+int CAM_HEIGHT;
+int CAM_INTERVAL;
+int NAV_WIDTH;
+int NAV_HEIGHT;
 
 irr::core::stringc SCENARIO_FILE;
 irr::core::stringc OUTPUT_FILE;
@@ -135,11 +141,14 @@ UAVController::UAVController()
     try {
         // create the windows
         win1 = new NavWindow(&wps, &bases, &uavs, &ufos, &events,
-            NAV_RESOLUTION,
+            NAV_WIDTH,
+            NAV_HEIGHT,
             NAV_POS,
             NAV_DRIVER);
         win2 = new CamWindow(&wps, &bases, &uavs,
-            CAM_RESOLUTION,
+            CAM_WIDTH, 
+            CAM_HEIGHT, 
+            CAM_INTERVAL,
             CAM_POS,
             CAM_DRIVER);
 
@@ -170,8 +179,6 @@ UAVController::UAVController()
 // =========================================================================
 
 void UAVController::run() {
-    cout << "[DEBUG] " << "Simulation now running" << endl;
-
     try {
         bool running = true;
         bool started = false;
@@ -1051,13 +1058,29 @@ void UAVController::load_config() {
             // =========================================================================
             // RESOLUTION AND DRIVERS
             // =========================================================================
-            if(var == "NAV_RESOLUTION") {
+            if (var == "NAV_RESOLUTION") {
                 if(!(in >> str_val)) {error = true; break;}
                 // only one resolution, and it's default
                 cout << "NAV_RESOLUTION: " << str_val << endl;
                 rv = true;
             }
-            else if(var == "NAV_DRIVER") {
+            else if (var == "NAV_WIDTH") {
+                if (!(in >> int_val)) {
+                    error = true; 
+                    break;
+                }
+                NAV_WIDTH = int_val;
+                cout << "NAV_WIDTH: " << NAV_WIDTH << "\n";
+            }
+            else if (var == "NAV_HEIGHT") {
+                if (!(in >> int_val)) {
+                    error = true; 
+                    break;
+                }
+                NAV_HEIGHT = int_val;
+                cout << "NAV_HEIGHT: " << NAV_HEIGHT << "\n";
+            }
+            else if (var == "NAV_DRIVER") {
                 if(!(in >> str_val)) {error = true; break;}
                 if(str_val == "OPENGL")         NAV_DRIVER = EDT_OPENGL;
                 else if(str_val == "DIRECT3D9") NAV_DRIVER = EDT_DIRECT3D9;
@@ -1066,19 +1089,19 @@ void UAVController::load_config() {
                 cout << "NAV_DRIVER: " << str_val << endl;
                 rv = true;
             } 
-            else if(var == "NAV_POS_X") {
+            else if (var == "NAV_POS_X") {
                 if(!(in >> f_val)) {error = true; break;}
                 NAV_POS.Width = s32(f_val);
                 cout << "NAV_POS_X: " << f_val << endl;
                 rv = true;
             } 
-            else if(var == "NAV_POS_Y") {
+            else if (var == "NAV_POS_Y") {
                 if(!(in >> f_val)) {error = true; break;}
                 NAV_POS.Height = s32(f_val);
                 cout << "NAV_POS_Y: " << f_val << endl;
                 rv = true;
             } 
-            else if(var == "CAM_RESOLUTION") {
+            else if (var == "CAM_RESOLUTION") {
                 if(!(in >> str_val)) {error = true; break;}
                 if     (str_val == "1024x768")  CAM_RESOLUTION = R1024X768;
                 else if(str_val == "1152x864")  CAM_RESOLUTION = R1152X864;
@@ -1086,7 +1109,31 @@ void UAVController::load_config() {
                 cout << "CAM_RESOLUTION: " << str_val << endl;
                 rv = true;
             } 
-            else if(var == "CAM_DRIVER") {
+            else if (var == "CAM_WIDTH") {
+                if (!(in >> int_val)) {
+                    error = true; 
+                    break;
+                }
+                CAM_WIDTH = int_val;
+                cout << "CAM_WIDTH: " << CAM_WIDTH << "\n";
+            }
+            else if (var == "CAM_HEIGHT") {
+                if (!(in >> int_val)) {
+                    error = true;
+                    break;
+                }
+                CAM_HEIGHT = int_val;
+                cout << "CAM_HEIGHT: " << CAM_HEIGHT << "\n";
+            }
+            else if (var == "CAM_INTERVAL") {
+                if (!(in >> int_val)) {
+                    error = true;
+                    break;
+                }
+                CAM_INTERVAL = int_val;
+                cout << "CAM_INTERVAL: " << CAM_INTERVAL << "\n";
+            }
+            else if (var == "CAM_DRIVER") {
                 if(!(in >> str_val)) {error = true; break;}
                 if(str_val == "OPENGL")         CAM_DRIVER = EDT_OPENGL;
                 else if(str_val == "DIRECT3D9") CAM_DRIVER = EDT_DIRECT3D9;
@@ -1095,13 +1142,13 @@ void UAVController::load_config() {
                 cout << "CAM_DRIVER: " << str_val << endl;
                 rv = true;
             } 
-            else if(var == "CAM_POS_X") {
+            else if (var == "CAM_POS_X") {
                 if(!(in >> f_val)) {error = true; break;}
                 CAM_POS.Width = s32(f_val);
                 cout << "CAM_POS_X: " << f_val << endl;
                 rv = true;
-            } 
-            else if(var == "CAM_POS_Y") {
+            }
+            else if (var == "CAM_POS_Y") {
                 if(!(in >> f_val)) {error = true; break;}
                 CAM_POS.Height = s32(f_val);
                 cout << "CAM_POS_Y: " << f_val << endl;

@@ -51,11 +51,20 @@ int nextPwr2(int num) {
 CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                      std::list<SimObject *> * bases_,
                      std::list<UAVObject *> * uavs_,
-                     WindowResolution_e resolution,
+                     int cam_width,
+                     int cam_height,
+                     int cam_interval,
                      irr::core::dimension2di position,
                      E_DRIVER_TYPE driver)
-                     : UAVWindow("UAV Flight Sim - Camera Window", false, false, driver, resolution, position),
-                     wps(wps_), bases(bases_), uavs(uavs_), render(0), need_render(true), city(0), started(false)
+                     : UAVWindow("UAV Flight Sim - Camera Window", 
+                                 false, 
+                                 false, 
+                                 driver, 
+                                 {cam_width * 3 + cam_interval * 2, 
+                                    cam_height * 2 + cam_interval * 1}, 
+                                 position),
+                     wps(wps_), bases(bases_), uavs(uavs_), 
+                     render(0), need_render(true), city(0), started(false)
 {
     if (!load())
         // load numCams * numCams UAV cameras (numCams ** 2)

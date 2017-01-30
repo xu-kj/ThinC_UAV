@@ -34,7 +34,7 @@ protected:
 
     /* Start Parameters */
     irr::video::E_DRIVER_TYPE driver_type;
-    WindowResolution_e resolution;
+    pair<int, int> resolution;
 
     /* Event Trackers (protected due to lazy :|) */
     irr::core::position2di last_cursor;
@@ -49,11 +49,11 @@ protected:
 
 public:
     UAVWindow(
-        const irr::core::stringw &title_= "Irrlicht Window",
+        const irr::core::stringw &title_ = "Irrlicht Window",
         bool load_ = true, 
         bool fullScreen_ = false,
         irr::video::E_DRIVER_TYPE driver_type_ = irr::video::EDT_DIRECT3D9,
-        WindowResolution_e resolution_ = R1024X768,
+        pair<int, int> resolution_ = {800, 600},
         irr::core::dimension2di startPosition_ = irr::core::dimension2di(0,0));
     ~UAVWindow();
 
@@ -77,8 +77,12 @@ public:
     
     /* Window state getters */
     bool windowClosed() const { return closed; }
-    irr::s32 windowHeight() const { return getResolutionHeight(resolution); }
-    irr::s32 windowWidth() const { return getResolutionWidth(resolution); }
+    irr::s32 windowHeight() const { 
+        return (irr::s32) resolution.second; 
+    }
+    irr::s32 windowWidth() const { 
+        return (irr::s32) resolution.first; 
+    }
     bool getRestarted();
 
     /* Event Handlers */

@@ -41,10 +41,11 @@ NavWindow::NavWindow(std::list<WaypointObject *> * wps_,
     std::list<UAVObject *> * uavs_,
     std::list<UFOObject *> * ufos_,
     std::list<Event *> * events_,
-    WindowResolution_e resolution,
+    int nav_width,
+    int nav_height,
     dimension2di position,
     E_DRIVER_TYPE driver)
-    : UAVWindow("UAV Flight Sim - Navigation Window", false, false, driver, resolution, position),
+    : UAVWindow("UAV Flight Sim - Navigation Window", false, false, driver, {nav_width, nav_height}, position),
     wps(wps_), bases(bases_), uavs(uavs_), ufos(ufos_), events(events_),
     moving_map(false), started(false)
 {
