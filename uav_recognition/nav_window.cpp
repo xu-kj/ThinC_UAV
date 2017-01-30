@@ -4,6 +4,7 @@
 #include "output.h"
 
 #include <iostream>
+#include <utility>
 
 using std::cout;
 using std::endl;
@@ -45,7 +46,7 @@ NavWindow::NavWindow(std::list<WaypointObject *> * wps_,
     int nav_height,
     dimension2di position,
     E_DRIVER_TYPE driver)
-    : UAVWindow("UAV Flight Sim - Navigation Window", false, false, driver, {nav_width, nav_height}, position),
+    : UAVWindow("UAV Flight Sim - Navigation Window", false, false, driver, std::make_pair(nav_width, nav_height), position),
     wps(wps_), bases(bases_), uavs(uavs_), ufos(ufos_), events(events_),
     moving_map(false), started(false)
 {

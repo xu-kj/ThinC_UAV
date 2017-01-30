@@ -40,7 +40,7 @@ UAVWindow::UAVWindow(
     bool load_, 
     bool fullScreen_,
     E_DRIVER_TYPE driver_type_,
-    pair<int, int> resolution_,
+    std::pair<int, int> resolution_,
     irr::core::dimension2di startPosition_)
     : m_device(nullptr),
     event_recv(nullptr),

@@ -5,6 +5,7 @@
 
 #include <math.h>
 #include <iostream>
+#include <utility>
 
 using std::cout;
 using std::endl;
@@ -60,8 +61,8 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  false, 
                                  false, 
                                  driver, 
-                                 {cam_width * 3 + cam_interval * 2, 
-                                    cam_height * 2 + cam_interval * 1}, 
+                                 std::make_pair(cam_width * 3 + cam_interval * 2, 
+                                    cam_height * 2 + cam_interval * 1), 
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
                      render(0), need_render(true), city(0), started(false)

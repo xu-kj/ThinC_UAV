@@ -6,6 +6,7 @@
 #include "image.h"
 
 #include <irrlicht.h>
+#include <utility>
 
 enum WindowResolution_e {R1024X768 = 1, R1152X864, R2560X1600};
 irr::s32 getResolutionWidth(WindowResolution_e resolution);
@@ -34,7 +35,7 @@ protected:
 
     /* Start Parameters */
     irr::video::E_DRIVER_TYPE driver_type;
-    pair<int, int> resolution;
+    std::pair<int, int> resolution;
 
     /* Event Trackers (protected due to lazy :|) */
     irr::core::position2di last_cursor;
@@ -53,7 +54,7 @@ public:
         bool load_ = true, 
         bool fullScreen_ = false,
         irr::video::E_DRIVER_TYPE driver_type_ = irr::video::EDT_DIRECT3D9,
-        pair<int, int> resolution_ = {800, 600},
+        std::pair<int, int> resolution_ = std::make_pair(800, 600),
         irr::core::dimension2di startPosition_ = irr::core::dimension2di(0,0));
     ~UAVWindow();
 
