@@ -44,11 +44,10 @@ public:
         std::list<UAVObject *> * uavs_,
         WindowResolution_e resolution = R1024X768,
         irr::core::dimension2di position = irr::core::dimension2di(0,0),
-        irr::video::E_DRIVER_TYPE driver = irr::video::EDT_DIRECT3D9,
-        int numCams = 3);
+        irr::video::E_DRIVER_TYPE driver = irr::video::EDT_DIRECT3D9);
     ~CamWindow();
 
-    virtual bool load(int numCams);
+    virtual bool load();
     virtual void draw();
     virtual void load_images();
     void render_to_texture();
