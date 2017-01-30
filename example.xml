@@ -42,6 +42,17 @@
     </waypoint>
 </uav>
 
+<!-- format for a scene node -->
+<!-- scene node is added at a waypoint's place to help testors visually -->
+<!-- recognize waypoints. use the editor to change/add any scene node -->
+<!-- SCENE 9 -->
+<scene>
+    <string name="Name" value="Scene 19" />
+    <string name="File" value="../media/scenes/__clean_car_people_more.irr" />
+    <int name="CityX" value="148" />
+    <int name="CityY" value="190" />
+</scene>
+
 <!-- format for an event object, in current phase, event = alert -->
 <!-- attributes for an event:-->
 <!-- string:Type, supported values: VIDEO_ALERT, AUDIO_ALERT -->
@@ -70,3 +81,6 @@
     <float name="StartPosY" value="65.000000" />
     <float name="StartPosZ" value="21465.000000" />
 </map>
+
+<!-- another node that appears in the original project's scenarios would be -->
+<!-- ufo nodes. it's not needed in the current project, so it's ignored -->
