@@ -40,18 +40,18 @@ using namespace gui;
 
 const char * const CONFIG_FILE = "..\\config.cfg";
 
-WindowResolution_e NAV_RESOLUTION = R1024X768;
-WindowResolution_e CAM_RESOLUTION = R1024X768;
+//WindowResolution_e NAV_RESOLUTION = R1024X768;
+//WindowResolution_e CAM_RESOLUTION = R1024X768;
 irr::video::E_DRIVER_TYPE NAV_DRIVER = EDT_OPENGL;
 irr::video::E_DRIVER_TYPE CAM_DRIVER = EDT_DIRECT3D9;
 irr::core::dimension2di NAV_POS(0,0);
 irr::core::dimension2di CAM_POS(0,0);
 
-int CAM_WIDTH;
-int CAM_HEIGHT;
-int CAM_INTERVAL;
-int NAV_WIDTH;
-int NAV_HEIGHT;
+static int CAM_WIDTH;
+static int CAM_HEIGHT;
+static int CAM_INTERVAL;
+static int NAV_WIDTH;
+static int NAV_HEIGHT;
 
 irr::core::stringc SCENARIO_FILE;
 irr::core::stringc OUTPUT_FILE;
@@ -1101,14 +1101,14 @@ void UAVController::load_config() {
                 cout << "NAV_POS_Y: " << f_val << endl;
                 rv = true;
             } 
-            else if (var == "CAM_RESOLUTION") {
-                if(!(in >> str_val)) {error = true; break;}
-                if     (str_val == "1024x768")  CAM_RESOLUTION = R1024X768;
-                else if(str_val == "1152x864")  CAM_RESOLUTION = R1152X864;
-                else if(str_val == "2560x1600") CAM_RESOLUTION = R2560X1600;
-                cout << "CAM_RESOLUTION: " << str_val << endl;
-                rv = true;
-            } 
+            //else if (var == "CAM_RESOLUTION") {
+            //    if(!(in >> str_val)) {error = true; break;}
+            //    if     (str_val == "1024x768")  CAM_RESOLUTION = R1024X768;
+            //    else if(str_val == "1152x864")  CAM_RESOLUTION = R1152X864;
+            //    else if(str_val == "2560x1600") CAM_RESOLUTION = R2560X1600;
+            //    cout << "CAM_RESOLUTION: " << str_val << endl;
+            //    rv = true;
+            //} 
             else if (var == "CAM_WIDTH") {
                 if (!(in >> int_val)) {
                     error = true; 

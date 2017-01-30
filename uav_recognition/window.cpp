@@ -18,22 +18,22 @@ using namespace gui;
 // 2 : 1152x864  : R1152X864
 // 3 : 2560x1600 : R2560X1600
 
-irr::s32 getResolutionWidth(WindowResolution_e resolution) {
-    switch(resolution) {
-        case 1:     return 1024;
-        case 2:     return 1152;
-        case 3:     return 2560;
-        default:    return 1024;
-    }
-}
-irr::s32 getResolutionHeight(WindowResolution_e resolution) {
-    switch(resolution) {
-        case 1:     return 768;
-        case 2:     return 864;
-        case 3:     return 1600;
-        default:    return 768;
-    }
-}
+//irr::s32 getResolutionWidth(WindowResolution_e resolution) {
+//    switch(resolution) {
+//        case 1:     return 1024;
+//        case 2:     return 1152;
+//        case 3:     return 2560;
+//        default:    return 1024;
+//    }
+//}
+//irr::s32 getResolutionHeight(WindowResolution_e resolution) {
+//    switch(resolution) {
+//        case 1:     return 768;
+//        case 2:     return 864;
+//        case 3:     return 1600;
+//        default:    return 768;
+//    }
+//}
 
 UAVWindow::UAVWindow(
     const irr::core::stringw &title_,
