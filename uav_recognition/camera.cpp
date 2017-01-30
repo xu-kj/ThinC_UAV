@@ -24,42 +24,42 @@ extern Sim::Tactors3x3 * tactors; // new version of tactors, is better
 extern bool USE_TACTOR_CUES;
 extern bool USE_LIGHT_CUES;
 
-    irr::f32 DOWN_ANGLE = 45.f;
-    irr::f32 CAM_FAIL_ANGLE = 90.f;
-    bool USE_CAMERA_FAIL = true;
-    bool CAM_FAIL_AS_ANGLE = false;
-    bool USE_FULL_CAM_SHADING = false;
-    bool USE_VIEW_CAM_SHADING = false;
-    bool SHOW_PROGRESS_BAR = false;
+irr::f32 DOWN_ANGLE = 45.f;
+irr::f32 CAM_FAIL_ANGLE = 90.f;
+bool USE_CAMERA_FAIL = true;
+bool CAM_FAIL_AS_ANGLE = false;
+bool USE_FULL_CAM_SHADING = false;
+bool USE_VIEW_CAM_SHADING = false;
+bool SHOW_PROGRESS_BAR = false;
 
-    // just global
-    const irr::s32 OUTLINE_WIDTH = 8;
-    const irr::s32 OUTLINE_HEIGHT = 7;
-    bool ZOOM_NEAR_TARGET = false;
+// just global
+const irr::s32 OUTLINE_WIDTH = 8;
+const irr::s32 OUTLINE_HEIGHT = 7;
+bool ZOOM_NEAR_TARGET = false;
 
-    // sara simulation overrides
-    bool USE_SARA_SHADING = true;
+// sara simulation overrides
+bool USE_SARA_SHADING = true;
 
-    // static variables
-    irr::s32 UAVCamera::ref_count = 0;
-    GUIImage * UAVCamera::cam_box = 0;
-    GUIImage * UAVCamera::cam_static1 = 0;
-    GUIImage * UAVCamera::cam_static2 = 0;
-    GUIImage * UAVCamera::cam_static3 = 0;
-    GUIImage * UAVCamera::cam_static4 = 0;
-    GUIImage * UAVCamera::cam_static5 = 0;
-    GUIImage * UAVCamera::outline = 0;
-    GUIImage * UAVCamera::outline_br = 0;
-    GUIImage * UAVCamera::button_check = 0;
-    GUIImage * UAVCamera::button_check_down = 0;
-    GUIImage * UAVCamera::button_x = 0;
-    GUIImage * UAVCamera::button_x_down = 0;
-    GUIImage * UAVCamera::button_unsure = 0;
-    GUIImage * UAVCamera::button_unsure_down = 0;
-    GUIImage * UAVCamera::button_light = 0;
-    GUIImage * UAVCamera::button_light_off = 0;
-    GUIImage * UAVCamera::button_target = 0;
-    GUIImage * UAVCamera::button_target_down = 0;
+// static variables
+irr::s32 UAVCamera::ref_count = 0;
+GUIImage * UAVCamera::cam_box = 0;
+GUIImage * UAVCamera::cam_static1 = 0;
+GUIImage * UAVCamera::cam_static2 = 0;
+GUIImage * UAVCamera::cam_static3 = 0;
+GUIImage * UAVCamera::cam_static4 = 0;
+GUIImage * UAVCamera::cam_static5 = 0;
+GUIImage * UAVCamera::outline = 0;
+GUIImage * UAVCamera::outline_br = 0;
+GUIImage * UAVCamera::button_check = 0;
+GUIImage * UAVCamera::button_check_down = 0;
+GUIImage * UAVCamera::button_x = 0;
+GUIImage * UAVCamera::button_x_down = 0;
+GUIImage * UAVCamera::button_unsure = 0;
+GUIImage * UAVCamera::button_unsure_down = 0;
+GUIImage * UAVCamera::button_light = 0;
+GUIImage * UAVCamera::button_light_off = 0;
+GUIImage * UAVCamera::button_target = 0;
+GUIImage * UAVCamera::button_target_down = 0;
 
 UAVCamera::UAVCamera(position2di pos_, CamWindow * win_)
     : pos(pos_), win(win_), uav(0), need_update(true), zooming_out(false),

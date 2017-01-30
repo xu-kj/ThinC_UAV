@@ -5,19 +5,9 @@ Currently the two version of the project are very similar to each other, almost 
 to make the UAV project be consistent over time, and easier to be updated or modified in the future.
 Here are the unique features of each version:
 
-------------------------------------------
-
-1. revert to older version of the replanning screen
-2. regular lighting for the cameras screen
-3. find where response time is recorded
-4. find method to change flight path
-5. change the number of UAVs
-6. change scenario files, add alarms
-
 -----------------------------------------------------
 
 1. make scenario
-2. check response upon reaching target
 3. modify events
 4. trigger events at certain time/by trigger
    highlight button/ make sound

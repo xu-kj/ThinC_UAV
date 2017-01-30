@@ -95,38 +95,38 @@ UAVController::UAVController()
     Output::Instance().StartLog();
 
     // intialize the hardware and simulation model
-    std::vector<std::string> ports;
-    for(int i = 0; i < 3; i++) {
-        int value;
-        if(i == 0) value = TACTOR_COM_PORT_1;
-        if(i == 1) value = TACTOR_COM_PORT_2;
-        if(i == 2) value = TACTOR_COM_PORT_3;
+    // std::vector<std::string> ports;
+    // for(int i = 0; i < 3; i++) {
+    //     int value;
+    //     if(i == 0) value = TACTOR_COM_PORT_1;
+    //     if(i == 1) value = TACTOR_COM_PORT_2;
+    //     if(i == 2) value = TACTOR_COM_PORT_3;
 
-        stringstream ss;
-        ss << "COM" << value;
-        ports.push_back("");
-        ports[i] = ss.str();
-    }
+    //     stringstream ss;
+    //     ss << "COM" << value;
+    //     ports.push_back("");
+    //     ports[i] = ss.str();
+    // }
 
-    tactors = new Sim::Tactors3x3(
-        ports[0], ports[1], ports[2],
-        !USE_TACTOR_CUES);
+    // tactors = new Sim::Tactors3x3(
+    //     ports[0], ports[1], ports[2],
+    //     !USE_TACTOR_CUES);
 
-    try {
-        tactors->connect();
+    // try {
+    //     tactors->connect();
 
-        tactors->setFreqs(
-            TACTOR_FREQUENCY,
-            TACTOR_FREQUENCY);
+    //     tactors->setFreqs(
+    //         TACTOR_FREQUENCY,
+    //         TACTOR_FREQUENCY);
 
-        if(RUN_TACTOR_TEST)
-            tactors->test();
-    } catch(std::exception e) {
-        MessageBox(0, L"Warning: tactile cues are enabled, but the tactor\nhardware could not be initialized.", L"Tactor Error :'(", 0);
-    }
+    //     if(RUN_TACTOR_TEST)
+    //         tactors->test();
+    // } catch(std::exception e) {
+    //     MessageBox(0, L"Warning: tactile cues are enabled, but the tactor\nhardware could not be initialized.", L"Tactor Error :'(", 0);
+    // }
 
-    Network::subscribeToNetworkUpdates(fastdelegate::MakeDelegate(this, &UAVController::network_update));
-    start_network();
+    // Network::subscribeToNetworkUpdates(fastdelegate::MakeDelegate(this, &UAVController::network_update));
+    // start_network();
     // wait for connection
 
     set_world_params();
@@ -957,10 +957,11 @@ void UAVController::load_world() {
     else
         generate_random();
 
-    if(uavs.size() < 9) {
-        MessageBox(0, L"This scenario contains less than 9 UAVs. This simulation requires 9 UAVs.\nIt will now exit.", L">:|", 0);
-        exit(0);
-    }
+    // if(uavs.size() < 9) {
+    //     MessageBox(0, L"This scenario contains less than 9 UAVs. This simulation requires 9 UAVs.\nIt will now exit.", L">:|", 0);
+    //     exit(0);
+    // }
+    // "Simulation starts with N uavs."
 }
 
 // =========================================================================

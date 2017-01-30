@@ -53,12 +53,11 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                      std::list<UAVObject *> * uavs_,
                      WindowResolution_e resolution,
                      irr::core::dimension2di position,
-                     E_DRIVER_TYPE driver, 
-                     int numCams)
+                     E_DRIVER_TYPE driver)
                      : UAVWindow("UAV Flight Sim - Camera Window", false, false, driver, resolution, position),
                      wps(wps_), bases(bases_), uavs(uavs_), render(0), need_render(true), city(0), started(false)
 {
-    if (!load(numCams))
+    if (!load())
         // load numCams * numCams UAV cameras (numCams ** 2)
         throw Error("Cam window failed to initialize correctly.");
 }
@@ -68,18 +67,20 @@ CamWindow::~CamWindow() {
         delete x;
 }
 
-bool CamWindow::load(int numCams) {
+bool CamWindow::load() {
     if (!UAVWindow::load())
         return false;
 
-    CAM_SIZE_X = windowWidth() / numCams;
-    CAM_SIZE_Y = windowHeight() / numCams;
-    cams.resize(numCams * numCams);
-
-    for (int i = 0; i < numCams; ++i)
-        for (int j = 0; j < numCams; ++j) {
-            cams[i * numCams + j] = 
-                new UAVCamera(position2di(CAM_SIZE_X * j, CAM_SIZE_Y * i), this);
+    // build up a 2 * 3 grid window
+    CAM_SIZE_X = windowWidth() / 3;
+    CAM_SIZE_Y = windowHeight() / 2;
+    cams.resize(6);
+    for (int i = 0; i < 2; ++i)
+        for (int j = 0; j < 3; ++j) {
+            cams[i * 3 + j] = 
+                new UAVCamera(position2di(CAM_SIZE_X * j, 
+                                          CAM_SIZE_Y * i + (i > 0) * 10), 
+                              this);
         }
 
     need_render = true;
