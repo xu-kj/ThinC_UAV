@@ -68,8 +68,10 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                      wps(wps_), bases(bases_), uavs(uavs_), 
                      render(0), need_render(true), city(0), started(false)
 {
-    CAM_SIZE_X = cam_width;
-    CAM_SIZE_Y = cam_height;
+    // CAM_SIZE_X = cam_width;
+    // CAM_SIZE_Y = cam_height;
+    CAM_SIZE_X = 341;
+    CAM_SIZE_Y = 256;
     CAM_INTERVAL = cam_interval;
 
     if (!load())
