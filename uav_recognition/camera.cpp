@@ -61,12 +61,15 @@ GUIImage * UAVCamera::button_light_off = 0;
 GUIImage * UAVCamera::button_target = 0;
 GUIImage * UAVCamera::button_target_down = 0;
 
-UAVCamera::UAVCamera(position2di pos_, CamWindow * win_)
+UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow * win_)
     : pos(pos_), win(win_), uav(0), need_update(true), zooming_out(false),
     zooming_in(false), zooming(false), button_clicked(false),
     auto_light(false), buttons_on(false), staticOn(true),
     unmarked_in_range(false)
 {
+    cam_size_x = cam_size.first;
+    cam_size_y = cam_size.second;
+
     if (USE_LIGHT_CUES)
         light_level = LOW;
     else
@@ -80,11 +83,11 @@ UAVCamera::~UAVCamera()
     ref_count--;
     if(ref_count <= 0) {
         // delete buttons
-        if(indicator)       delete indicator;
-        if(checkTarget)     delete checkTarget;
-        if(btnPositive)     delete btnPositive;
-        if(btnNegative)     delete btnNegative;
-        // if(light)           delete light;
+        if(indicator)           delete indicator;
+        if(checkTarget)         delete checkTarget;
+        if(btnPositive)         delete btnPositive;
+        if(btnNegative)         delete btnNegative;
+        // if(light)               delete light;
 
         // delete images
         if(cam_box)             delete cam_box;
@@ -244,9 +247,9 @@ void UAVCamera::load_buttons()
 {
     indicator = new UAVButton(
         rect2di(
-            (pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X),
+            (pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X),
             pos.Y + OUTLINE_HEIGHT + 3,
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+            pos.X + cam_size_x - OUTLINE_WIDTH,
             (pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y) + 3),
         button_light,
         button_light,
@@ -254,19 +257,19 @@ void UAVCamera::load_buttons()
 
     checkTarget = new UAVButton(
         rect2di(
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
-            (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
+            pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
+            pos.Y + cam_size_y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
+            pos.X + cam_size_x - OUTLINE_WIDTH,
+            (pos.Y + cam_size_y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
         button_target,
         button_target,
         button_target_down);
 
     btnPositive = new UAVButton(
         rect2di(
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
+            pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y + 2,
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+            pos.X + cam_size_x - OUTLINE_WIDTH,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 2),
         button_target,
         button_target,
@@ -274,9 +277,9 @@ void UAVCamera::load_buttons()
 
     btnNegative = new UAVButton(
         rect2di(
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
+            pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 1,
-            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+            pos.X + cam_size_x - OUTLINE_WIDTH,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 3 + 1),
         button_x,
         button_x,

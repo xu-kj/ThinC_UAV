@@ -13,7 +13,7 @@ class CamWindow;
 
 class UAVCamera {
 public:
-    UAVCamera(irr::core::position2di pos_, CamWindow * win_);
+    UAVCamera(irr::core::position2di pos_, std::pair<int, int> cam_size, CamWindow * win_);
     ~UAVCamera();
 
     // load_images(...) must be called before draw()
@@ -63,6 +63,8 @@ private:
     /* 2D Interface */
     // upper right corner of this "box"
     irr::core::position2di pos;
+    int cam_size_x;
+    int cam_size_y;
 
     // interface images
     static GUIImage * cam_box;

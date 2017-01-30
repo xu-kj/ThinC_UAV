@@ -71,8 +71,8 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
     CAM_SIZE_X = cam_width;
     CAM_SIZE_Y = cam_height;
     CAM_INTERVAL = cam_interval;
+
     if (!load())
-        // load numCams * numCams UAV cameras (numCams ** 2)
         throw Error("Cam window failed to initialize correctly.");
 }
 
@@ -85,17 +85,16 @@ bool CamWindow::load() {
     if (!UAVWindow::load())
         return false;
 
-    // build up a 2 * 3 grid window
-    // CAM_SIZE_X = windowWidth() / 3;
-    // CAM_SIZE_Y = windowHeight() / 2;
     cams.resize(6);
-    for (int i = 0; i < 2; ++i)
+    for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 3; ++j) {
             cams[i * 3 + j] = 
                 new UAVCamera(position2di((CAM_SIZE_X + CAM_INTERVAL) * j, 
                                           (CAM_SIZE_Y + CAM_INTERVAL) * i), 
+                              std::make_pair(CAM_SIZE_X, CAM_SIZE_Y),
                               this);
         }
+    }
 
     need_render = true;
     load_images();
@@ -153,8 +152,6 @@ void CamWindow::draw() {
 
         for (UAVCamera *x : cams) {
             bool s = false;
-            if (USE_SARA_SHADING)
-                s = x->draw_sara_shade(device());
             if (!s && USE_FULL_CAM_SHADING)
                 x->draw_shade(device());
         }
