@@ -138,6 +138,9 @@ UAVController::UAVController()
     set_world_params();
     load_world();
 
+	// only having 6 uavs at the time
+	uavs.resize(6);
+
     try {
         // create the windows
         win1 = new NavWindow(&wps, &bases, &uavs, &ufos, &events,
