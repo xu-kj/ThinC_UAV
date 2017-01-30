@@ -8,17 +8,13 @@
 #include <irrlicht.h>
 #include <utility>
 
-enum WindowResolution_e {R1024X768 = 1, R1152X864, R2560X1600};
-irr::s32 getResolutionWidth(WindowResolution_e resolution);
-irr::s32 getResolutionHeight(WindowResolution_e resolution);
-
 /* Simple window class to support an Irrlicht device window. Allows the user to
    switch the window to fullscreen. */
 class UAVWindow {
 private:
     void toggle_fullscreen();
 
-    irr::IrrlichtDevice * m_device;
+    irr::IrrlichtDevice *m_device;
     irr::core::stringw title;
     irr::core::dimension2di startPosition;
     bool fullScreen;
@@ -27,9 +23,9 @@ private:
     bool closed;
 
 protected:
-    EventReceiver * event_recv;
-    GUIImage * start_overlay;
-    GUIImage * end_overlay;
+    EventReceiver *event_recv;
+    GUIImage *start_overlay;
+    GUIImage *end_overlay;
 
     bool toggleFullScreen;
 
@@ -67,17 +63,31 @@ public:
     virtual void updateFPS(const irr::core::stringw &title);
 
     /* Setters */
-    void setDevice(irr::IrrlichtDevice * device)    {m_device = device;}
+    void setDevice(irr::IrrlichtDevice * device) {
+        m_device = device;
+    }
 
     /* Getters */
-    irr::IrrlichtDevice * device() const { return m_device; }
-    irr::video::IVideoDriver * driver() const { return m_device->getVideoDriver(); }
-    irr::scene::ISceneManager * smgr() const { return m_device->getSceneManager(); }
-    irr::gui::IGUIEnvironment * guienv() const { return m_device->getGUIEnvironment(); }
-    EventReceiver * receiver() const { return event_recv; }
+    irr::IrrlichtDevice * device() const { 
+        return m_device; 
+    }
+    irr::video::IVideoDriver * driver() const { 
+        return m_device->getVideoDriver(); 
+    }
+    irr::scene::ISceneManager * smgr() const { 
+        return m_device->getSceneManager(); 
+    }
+    irr::gui::IGUIEnvironment * guienv() const { 
+        return m_device->getGUIEnvironment(); 
+    }
+    EventReceiver * receiver() const { 
+        return event_recv; 
+    }
     
     /* Window state getters */
-    bool windowClosed() const { return closed; }
+    bool windowClosed() const { 
+        return closed; 
+    }
     irr::s32 windowHeight() const { 
         return (irr::s32) resolution.second; 
     }
@@ -95,8 +105,12 @@ public:
     virtual void event_key_down(wchar_t key);
 
     /* End of scenario */
-    void set_ended() {start_end = true;}
-    bool get_ended() const {return ended;}
+    void set_ended() {
+        start_end = true;
+    }
+    bool get_ended() const {
+        return ended;
+    }
 };
 
 #endif /* WINDOW_H */

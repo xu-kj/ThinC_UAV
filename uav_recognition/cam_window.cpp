@@ -33,6 +33,7 @@ irr::f32 WORLD_END_LAT   = 10;
 
 irr::s32 CAM_SIZE_X = 341;
 irr::s32 CAM_SIZE_Y = 256;
+irr::s32 CAM_INTERVAL = 10;
 
 bool USE_RTT = true;
 
@@ -67,6 +68,9 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                      wps(wps_), bases(bases_), uavs(uavs_), 
                      render(0), need_render(true), city(0), started(false)
 {
+    CAM_SIZE_X = cam_width;
+    CAM_SIZE_Y = cam_height;
+    CAM_INTERVAL = cam_interval;
     if (!load())
         // load numCams * numCams UAV cameras (numCams ** 2)
         throw Error("Cam window failed to initialize correctly.");
@@ -82,14 +86,14 @@ bool CamWindow::load() {
         return false;
 
     // build up a 2 * 3 grid window
-    CAM_SIZE_X = windowWidth() / 3;
-    CAM_SIZE_Y = windowHeight() / 2;
+    // CAM_SIZE_X = windowWidth() / 3;
+    // CAM_SIZE_Y = windowHeight() / 2;
     cams.resize(6);
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 3; ++j) {
             cams[i * 3 + j] = 
-                new UAVCamera(position2di(CAM_SIZE_X * j, 
-                                          CAM_SIZE_Y * i + (i > 0) * 10), 
+                new UAVCamera(position2di((CAM_SIZE_X + CAM_INTERVAL) * j, 
+                                          (CAM_SIZE_Y + CAM_INTERVAL) * i), 
                               this);
         }
 
