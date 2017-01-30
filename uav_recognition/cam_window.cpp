@@ -62,8 +62,10 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  false, 
                                  false, 
                                  driver, 
-                                 std::make_pair(cam_width * 3 + cam_interval * 2, 
-                                    cam_height * 2 + cam_interval * 1), 
+                                 // std::make_pair(cam_width * 3 + cam_interval * 2, 
+                                 //    cam_height * 2 + cam_interval * 1), 
+                                 std::make_pair(341 * 3 + cam_interval * 2,
+                                    256 * 2 + cam_interval)
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
                      render(0), need_render(true), city(0), started(false)
