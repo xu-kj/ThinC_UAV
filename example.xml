@@ -1,0 +1,72 @@
+<!-- UAV Scenario created with the UAV Simulation Editor -->
+<!-- THInC Lab, University of Michigan -->
+<!-- example format for the version used on 1/30/2017 -->
+<?xml version="1.0"?>
+
+<!-- UAV format -->
+<uav>
+    <!-- add UAV in this format -->
+    <!-- generate start positions using the UAV editor -->
+    <string name="Name" value="Mav-1" />
+    <float name="PosX" value="8955.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="24885.000000" />
+    <!-- fuel is not needed in this stage -->
+    <float name="Fuel" value="0.900000" />
+    <!-- generate color using the editor -->
+    <int name="Color" value="1" />
+
+    <!-- base node is one special waypoint that ends the tour of one uav -->
+    <!-- as a general rule, use the editor to get the correct coordinates -->
+    <base>
+        <string name="Name" value="Base-1" />
+        <float name="PosX" value="26415.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="1485.000000" />
+    </base>
+
+    <!-- attributes for a waypoint object: -->
+    <!-- string: Name -->
+    <!-- float: PosX, PosY, PosZ (start position) -->
+    <!-- bool: Feature (is target or not) -->
+    <!-- bool: Indicated (if the indicator will be activated) -->
+    <!-- both are set to be true by default -->
+    <!-- and Indicated has no influence in the delivery project -->
+    <waypoint>
+        <string name="Name" value="EO-1" />
+        <float name="PosX" value="4815.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="26685.000000" />
+        <bool name="Feature" value="True" />
+        <bool name="Indicated" value="True" />
+    </waypoint>
+</uav>
+
+<!-- format for an event object, in current phase, event = alert -->
+<!-- attributes for an event:-->
+<!-- string:Type, supported values: VIDEO_ALERT, AUDIO_ALERT -->
+<!-- int:StartMin, StartSec, indicates start time -->
+<!-- int:Id, the uav the event acts on -->
+
+<!-- ChangeTo and ChangeTime is not seen in the project and therefore should have -->
+<!-- no influence on the simulator's behavior -->
+<event>
+  <string name="Type" value="TICK" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="0" />
+  <int name="Id" value="1" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<!-- global start point has no effect on the actual start position of each uav -->
+<!-- if such a point is defined, there will be a line on the navigator connecting -->
+<!-- the uav and the "global" starting point. however, since nav window is deprecated -->
+<!-- in the project, this should not matter -->
+
+<!-- Defines a global start point for all the UAVs. -->
+<map>
+    <float name="StartPosX" value="13995.000000" />
+    <float name="StartPosY" value="65.000000" />
+    <float name="StartPosZ" value="21465.000000" />
+</map>
