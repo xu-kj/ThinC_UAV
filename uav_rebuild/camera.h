@@ -13,7 +13,7 @@ class CamWindow;
 
 class UAVCamera {
 public:
-    UAVCamera(irr::core::position2di pos_, std::pair<int, int> cam_size, CamWindow * win_);
+    UAVCamera(irr::core::position2di pos_, CamWindow * win_);
     ~UAVCamera();
 
     // load_images(...) must be called before draw()
@@ -42,7 +42,8 @@ public:
     bool draw_sara_shade(irr::IrrlichtDevice * device) const; // returns if we shouldn't draw the baseline shading
 
     void cam_message(int message);
-    //void update_signals(float time);
+    void sara_cam_message(int type, SimSaraCamPacket * p);
+    void update_signals(float time);
 
     void set_static(bool value) {staticOn = value;}
     
@@ -62,8 +63,6 @@ private:
     /* 2D Interface */
     // upper right corner of this "box"
     irr::core::position2di pos;
-    int cam_size_x;
-    int cam_size_y;
 
     // interface images
     static GUIImage * cam_box;

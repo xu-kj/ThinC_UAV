@@ -432,11 +432,6 @@ void UAVController::network_update(Packet * pkt)
         SimCamButtonPacket * p = (SimCamButtonPacket *)pkt->data;
         static_cast<CamWindow *>(win2)->send_cam_message(p->objectID, p->type);
     }
-    else if(pkt->data[0] == SIM_SARA_CAM)
-    {
-        SimSaraCamPacket * p = (SimSaraCamPacket *)pkt->data;
-        static_cast<CamWindow *>(win2)->send_sara_cam_message(p->objectID, p);
-    }
 }
 
 // =========================================================================
@@ -1892,7 +1887,7 @@ void UAVController::load_config() {
             // GARBAGE
             // =========================================================================
             if (!rv) { 
-                cout << "  garbage: " << var << endl; 
+                cout << "\tgarbage: " << var << endl; 
             }
         }
         if(error)

@@ -24,54 +24,49 @@ extern Sim::Tactors3x3 * tactors; // new version of tactors, is better
 extern bool USE_TACTOR_CUES;
 extern bool USE_LIGHT_CUES;
 
-irr::f32 DOWN_ANGLE = 45.f;
-irr::f32 CAM_FAIL_ANGLE = 90.f;
-bool USE_CAMERA_FAIL = true;
-bool CAM_FAIL_AS_ANGLE = false;
-bool USE_FULL_CAM_SHADING = false;
-bool USE_VIEW_CAM_SHADING = false;
-bool SHOW_PROGRESS_BAR = false;
+    irr::f32 DOWN_ANGLE = 45.f;
+    irr::f32 CAM_FAIL_ANGLE = 90.f;
+    bool USE_CAMERA_FAIL = true;
+    bool CAM_FAIL_AS_ANGLE = false;
+    bool USE_FULL_CAM_SHADING = false;
+    bool USE_VIEW_CAM_SHADING = false;
+    bool SHOW_PROGRESS_BAR = false;
 
-// just global
-const irr::s32 OUTLINE_WIDTH = 8;
-const irr::s32 OUTLINE_HEIGHT = 7;
-bool ZOOM_NEAR_TARGET = false;
+    // just global
+    const irr::s32 OUTLINE_WIDTH = 8;
+    const irr::s32 OUTLINE_HEIGHT = 7;
+    bool ZOOM_NEAR_TARGET = false;
 
-// sara simulation overrides
-bool USE_SARA_SHADING = true;
+    // sara simulation overrides
+    bool USE_SARA_SHADING = true;
 
-// static variables
-irr::s32 UAVCamera::ref_count = 0;
-GUIImage * UAVCamera::cam_box = 0;
-GUIImage * UAVCamera::cam_static1 = 0;
-GUIImage * UAVCamera::cam_static2 = 0;
-GUIImage * UAVCamera::cam_static3 = 0;
-GUIImage * UAVCamera::cam_static4 = 0;
-GUIImage * UAVCamera::cam_static5 = 0;
-GUIImage * UAVCamera::outline = 0;
-GUIImage * UAVCamera::outline_br = 0;
-GUIImage * UAVCamera::button_check = 0;
-GUIImage * UAVCamera::button_check_down = 0;
-GUIImage * UAVCamera::button_x = 0;
-GUIImage * UAVCamera::button_x_down = 0;
-GUIImage * UAVCamera::button_unsure = 0;
-GUIImage * UAVCamera::button_unsure_down = 0;
-GUIImage * UAVCamera::button_light = 0;
-GUIImage * UAVCamera::button_light_off = 0;
-GUIImage * UAVCamera::button_target = 0;
-GUIImage * UAVCamera::button_target_down = 0;
+    // static variables
+    irr::s32 UAVCamera::ref_count = 0;
+    GUIImage * UAVCamera::cam_box = 0;
+    GUIImage * UAVCamera::cam_static1 = 0;
+    GUIImage * UAVCamera::cam_static2 = 0;
+    GUIImage * UAVCamera::cam_static3 = 0;
+    GUIImage * UAVCamera::cam_static4 = 0;
+    GUIImage * UAVCamera::cam_static5 = 0;
+    GUIImage * UAVCamera::outline = 0;
+    GUIImage * UAVCamera::outline_br = 0;
+    GUIImage * UAVCamera::button_check = 0;
+    GUIImage * UAVCamera::button_check_down = 0;
+    GUIImage * UAVCamera::button_x = 0;
+    GUIImage * UAVCamera::button_x_down = 0;
+    GUIImage * UAVCamera::button_unsure = 0;
+    GUIImage * UAVCamera::button_unsure_down = 0;
+    GUIImage * UAVCamera::button_light = 0;
+    GUIImage * UAVCamera::button_light_off = 0;
+    GUIImage * UAVCamera::button_target = 0;
+    GUIImage * UAVCamera::button_target_down = 0;
 
-UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow * win_)
+UAVCamera::UAVCamera(position2di pos_, CamWindow * win_)
     : pos(pos_), win(win_), uav(0), need_update(true), zooming_out(false),
     zooming_in(false), zooming(false), button_clicked(false),
     auto_light(false), buttons_on(false), staticOn(true),
     unmarked_in_range(false)
 {
-    this->cam_size_x = cam_size.first;
-    this->cam_size_y = cam_size.second;
-
-	cout << "size_x: " << this->cam_size_x << ", size_y: " << this->cam_size_y << endl;
-
     if (USE_LIGHT_CUES)
         light_level = LOW;
     else
@@ -85,11 +80,11 @@ UAVCamera::~UAVCamera()
     ref_count--;
     if(ref_count <= 0) {
         // delete buttons
-        if(indicator)           delete indicator;
-        if(checkTarget)         delete checkTarget;
-        if(btnPositive)         delete btnPositive;
-        if(btnNegative)         delete btnNegative;
-        // if(light)               delete light;
+        if(indicator)       delete indicator;
+        if(checkTarget)     delete checkTarget;
+        if(btnPositive)     delete btnPositive;
+        if(btnNegative)     delete btnNegative;
+        // if(light)           delete light;
 
         // delete images
         if(cam_box)             delete cam_box;
@@ -105,7 +100,7 @@ UAVCamera::~UAVCamera()
         if(button_target_down)  delete button_target_down;
 
         // delete font
-        if(large_text)			delete large_text;
+        if(large_text)      delete large_text;
     }
 }
 
@@ -249,9 +244,9 @@ void UAVCamera::load_buttons()
 {
     indicator = new UAVButton(
         rect2di(
-            (pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X),
+            (pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X),
             pos.Y + OUTLINE_HEIGHT + 3,
-            pos.X + cam_size_x - OUTLINE_WIDTH,
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y) + 3),
         button_light,
         button_light,
@@ -259,19 +254,19 @@ void UAVCamera::load_buttons()
 
     checkTarget = new UAVButton(
         rect2di(
-            pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + cam_size_y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
-            pos.X + cam_size_x - OUTLINE_WIDTH,
-            (pos.Y + cam_size_y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
+            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+            (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
         button_target,
         button_target,
         button_target_down);
 
     btnPositive = new UAVButton(
         rect2di(
-            pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y + 2,
-            pos.X + cam_size_x - OUTLINE_WIDTH,
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 2),
         button_target,
         button_target,
@@ -279,9 +274,9 @@ void UAVCamera::load_buttons()
 
     btnNegative = new UAVButton(
         rect2di(
-            pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 1,
-            pos.X + cam_size_x - OUTLINE_WIDTH,
+            pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 3 + 1),
         button_x,
         button_x,
@@ -520,66 +515,68 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 void UAVCamera::draw_background(IrrlichtDevice * device)
 {
     // draw background
+    //cam_box->setPosition(pos);
+    //cam_box->draw();
     SColor color(255,65,65,65);
     if(uav)
         color = uav->getColor();
 
     rect<s32> dest(
-        pos.X + OUTLINE_WIDTH / 2,
-        pos.Y + OUTLINE_WIDTH / 2,
-        pos.X + win->get_cam_width() - OUTLINE_WIDTH / 2,
-        pos.Y + win->get_cam_height() - OUTLINE_WIDTH / 2);
+        pos.X + 3,
+        pos.Y + 3,
+        pos.X + win->windowWidth() / 3 - 3,
+        pos.Y + win->windowHeight() / 3 - 3);
     GUIImage::draw2DRectangle(device->getVideoDriver(), dest, color);
 
-    // progress bar on uav cam
-    //if(SHOW_PROGRESS_BAR && uav)
-    //{
-    //    // progress bar
-    //    rect<s32> bpos(
-    //        viewport.UpperLeftCorner.X,
-    //        viewport.LowerRightCorner.Y - 2,
-    //        viewport.LowerRightCorner.X,
-    //        viewport.LowerRightCorner.Y + 5);
-    //    GUIImage::draw2DRectangle(device->getVideoDriver(), bpos, COLOR_BLACK);
+    // progress bar
+    if(SHOW_PROGRESS_BAR && uav)
+    {
+        // progress bar
+        rect<s32> bpos(
+            viewport.UpperLeftCorner.X,
+            viewport.LowerRightCorner.Y - 2,
+            viewport.LowerRightCorner.X,
+            viewport.LowerRightCorner.Y + 5);
+        GUIImage::draw2DRectangle(device->getVideoDriver(), bpos, COLOR_BLACK);
 
-    //    // only update the marks' positions if the UAV is not en route to its base
-    //    // and an update is required
-    //    if(need_update)
-    //    {
-    //        // keep track of the progress bar reference point
-    //        start_pos = uav->getPosition();
-    //        need_update = false;
-    //    }
+        // only update the marks' positions if the UAV is not en route to its base
+        // and an update is required
+        if(need_update)
+        {
+            // keep track of the progress bar reference point
+            start_pos = uav->getPosition();
+            need_update = false;
+        }
 
-    //    if(!(uav->goingToBase() || uav->atBase()))
-    //    {
-    //        f32 dist = f32((uav->getTarget() - start_pos).getLength());
-    //        f32 first_mark = dist - s32(MEDIUM_LIGHT_DIST);
-    //        f32 second_mark = dist - s32(HIGH_LIGHT_DIST);
+        if(!(uav->goingToBase() || uav->atBase()))
+        {
+            f32 dist = f32((uav->getTarget() - start_pos).getLength());
+            f32 first_mark = dist - s32(MEDIUM_LIGHT_DIST);
+            f32 second_mark = dist - s32(HIGH_LIGHT_DIST);
 
-    //        // mark distances
-    //        f32 draw_dist = f32(bpos.LowerRightCorner.X - bpos.UpperLeftCorner.X);
-    //        s32 fm_dist = s32(draw_dist * (first_mark / dist));
-    //        s32 sm_dist = s32(draw_dist * (second_mark / dist));
+            // mark distances
+            f32 draw_dist = f32(bpos.LowerRightCorner.X - bpos.UpperLeftCorner.X);
+            s32 fm_dist = s32(draw_dist * (first_mark / dist));
+            s32 sm_dist = s32(draw_dist * (second_mark / dist));
 
-    //        // first mark
-    //        rect<s32> mark(
-    //            viewport.UpperLeftCorner.X + fm_dist - 5,
-    //            bpos.UpperLeftCorner.Y,
-    //            viewport.UpperLeftCorner.X + fm_dist,
-    //            bpos.LowerRightCorner.Y);
-    //        // draw the first mark
-    //        if(dist > MEDIUM_LIGHT_DIST)
-    //            GUIImage::draw2DRectangle(device->getVideoDriver(), mark, COLOR_WHITE);
+            // first mark
+            rect<s32> mark(
+                viewport.UpperLeftCorner.X + fm_dist - 5,
+                bpos.UpperLeftCorner.Y,
+                viewport.UpperLeftCorner.X + fm_dist,
+                bpos.LowerRightCorner.Y);
+            // draw the first mark
+            if(dist > MEDIUM_LIGHT_DIST)
+                GUIImage::draw2DRectangle(device->getVideoDriver(), mark, COLOR_WHITE);
 
-    //        // second mark
-    //        mark.UpperLeftCorner.X = viewport.UpperLeftCorner.X + sm_dist - 5;
-    //        mark.LowerRightCorner.X = viewport.UpperLeftCorner.X + sm_dist;
-    //        // draw the second mark
-    //        if(dist > HIGH_LIGHT_DIST)
-    //            GUIImage::draw2DRectangle(device->getVideoDriver(), mark, COLOR_WHITE);
-    //    }
-    //}
+            // second mark
+            mark.UpperLeftCorner.X = viewport.UpperLeftCorner.X + sm_dist - 5;
+            mark.LowerRightCorner.X = viewport.UpperLeftCorner.X + sm_dist;
+            // draw the second mark
+            if(dist > HIGH_LIGHT_DIST)
+                GUIImage::draw2DRectangle(device->getVideoDriver(), mark, COLOR_WHITE);
+        }
+    }
 }
 
 bool UAVCamera::button_click(position2di cursor)
@@ -736,6 +733,7 @@ bool UAVCamera::need_render()
 {
     // check to make sure none of the buttons have been clicked and now
     // have reached the "clicked down" time limit
+    // TODO: do something with checkBottom
     bool redraw =
         indicator->is_in_click(win->device()) ||
         checkTarget->is_in_click(win->device()) ||
@@ -772,6 +770,22 @@ void UAVCamera::draw_shade(IrrlichtDevice * device) const
 
     GUIImage::draw2DRectangle(device->getVideoDriver(), rec,
         SColor(getLight(),0,0,0));
+}
+
+bool UAVCamera::draw_sara_shade(IrrlichtDevice * device) const
+{
+    bool retValue = false;
+
+    //uav->renderSaraSignals(device->getVideoDriver(), pos.X, pos.Y, CAM_SIZE_X, CAM_SIZE_Y);
+    std::list<SaraMatching::SaraSignal *>::const_iterator it;
+    for(it = signals.begin(); it != signals.end(); it++)
+    {
+        // careful with order of operations on this line: if retValue || render(...), it won't render when retValue is true
+        (*it)->render(device->getVideoDriver(), get_id(), pos.X, pos.Y, CAM_SIZE_X, CAM_SIZE_Y);
+        retValue = retValue || (*it)->getKillShading();
+    }
+
+    return retValue;
 }
 
 void UAVCamera::cam_message(int message) {
@@ -844,6 +858,98 @@ void UAVCamera::cam_message(int message) {
     }
 
 	force_render();
+}
+
+void UAVCamera::sara_cam_message(int type, SimSaraCamPacket * p)
+{
+    SaraMatching::SaraSignal * signal = 0;
+
+    if(type == 0)
+        signal = new SaraMatching::SaraSignalFlickerVisual(p->value1, p->value2, p->value3, p->value4, p->value5);
+    else if(type == 1)
+        signal = new SaraMatching::SaraSignalMudsplashVisual(p->value1, p->value2, p->value3, p->value4, p->value5);
+    else if(type == 2)
+        signal = new SaraMatching::SaraSignalFlickerTactor(p->value1, p->value2, p->value3, p->value4, p->value5);
+    else if(type == 3)
+        signal = new SaraMatching::SaraSignalMudsplashTactor(p->value1, p->value2, p->value3, p->value4, p->value5);
+    else if(type == 4)
+        signal = new SaraMatching::SaraSignalTactorCue(p->value1, p->value2, p->value3, p->value4, p->value5, p->value6);
+    else if(type == 5)
+        signal = new SaraMatching::SaraSignalVisualCue(p->value1, p->value2, p->value3, p->value4, p->value5);
+    else if(type == 6)
+        signal = new SaraMatching::SaraSignalVisualGradualCue(p->value1, p->value2, p->value3, p->value4, p->value5);
+    else if(type == 7)
+        signal = new SaraMatching::SaraSignalTactorGradualCue(p->value1, p->value2, p->value3, p->value4, p->value5, p->value6);
+    else if(type == 8)
+        signal = new SaraMatching::SaraSignalVisualCueV1(p->correctResponse, p->value1, p->value2, p->value3, p->value4, p->value5, p->value6, p->value7);
+    else if(type == 9)
+        signal = new SaraMatching::SaraSignalVisualCueV2(p->correctResponse, p->value1, p->value2, p->value3, p->value4, p->value5, p->value6);
+    else if(type == 10)
+        signal = new SaraMatching::SaraSignalTactorCueV1(p->correctResponse, p->value1, p->value2, p->value3, p->value4, p->value5, p->value6, p->value7, p->value8);
+    else if(type == 11)
+        signal = new SaraMatching::SaraSignalTactorCueV2(p->correctResponse, p->value1, p->value2, p->value3, p->value4, p->value5, p->value6, p->value7, p->value8);
+    else if(type == 12)
+        signal = new SaraMatching::SaraSignalTactorCueV3(p->correctResponse, p->value1, p->value2, p->value3, p->value4, p->value5, p->value6, p->value7, p->value8, p->value9);
+
+    if(signal)
+    {
+        int id = get_id();
+
+        signal->setSector(get_id());
+        signal->update(0);
+        signals.push_back(signal);
+
+        std::cout << "added signal to sector" << get_id() << std::endl;
+    }
+    else
+    {
+        std::cout << "unknown signal" << std::endl;
+    }
+}
+
+void UAVCamera::update_signals(float time)
+{
+    std::list<std::list<SaraMatching::SaraSignal *>::iterator> toDelete;
+
+    std::list<SaraMatching::SaraSignal *>::iterator it;
+    for(it = signals.begin(); it != signals.end(); it++)
+    {
+        (*it)->update(time);
+        if((*it)->getDone())
+            toDelete.push_back(it);
+    }
+
+    std::list<std::list<SaraMatching::SaraSignal *>::iterator>::iterator del;
+    for(del = toDelete.begin(); del != toDelete.end(); del++)
+    {
+        // if this is a cue, tell the network that and turn off the buttons
+        if((**del)->getIsCue())
+        {
+            if(USE_NETWORK)
+                Network::sendMessageCamButton(12, id); // cue completed
+            //buttons_on = false;
+        }
+        signals.erase(*del);
+    }
+
+    // make the static look nice by picking a random static image that doesn't
+    // match the last static image used
+    // (this will be updated all the time, but mostly won't be rendered)
+    timeSinceLastStatic += time;
+    if(timeSinceLastStatic > 0.1)
+    {
+        int lastImage = curStaticImage;
+        int num1 = 3;
+        int num2 = 5; // we have a total of 5 static images
+
+        //while(curStaticImage == lastImage)
+        //  curStaticImage = rand() % (num2 - num1 + 1) + num1;
+        curStaticImage++;
+        if(curStaticImage > 5)
+            curStaticImage = 1;
+    
+        timeSinceLastStatic = 0;
+    }
 }
 
 bool UAVCamera::set_indicator_status(bool status) 

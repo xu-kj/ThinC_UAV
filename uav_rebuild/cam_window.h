@@ -17,25 +17,22 @@ class NavWindow;
 
 class CamWindow : public UAVWindow {
 private:
-    std::vector<UAVCamera *> cams;
-	int cam_width;
-	int cam_height;
-	int cam_interval;
+    std::vector<UAVCamera*> cams;
 
     // rendered background texture
-    GUIImage *render_image;
-    GUIImage *render_image_overlay;
-    irr::video::ITexture *render;
-    irr::video::ITexture *render_overlay;
+    GUIImage * render_image;
+    GUIImage * render_image_overlay;
+    irr::video::ITexture * render;
+    irr::video::ITexture * render_overlay;
     bool need_render;
     bool started; // show "PRESS ENTER TO START" if false
 
     // data
-    std::list<WaypointObject *> *wps;
+    std::list<WaypointObject *> * wps;
     std::list<WaypointObject *>::iterator wp_it;
-    std::list<SimObject *> *bases;
+    std::list<SimObject *> * bases;
     std::list<SimObject *>::iterator base_it;
-    std::list<UAVObject *> *uavs;
+    std::list<UAVObject *> * uavs;
     std::list<UAVObject *>::iterator uav_it;
 
     // the city information
@@ -45,14 +42,13 @@ public:
     CamWindow(std::list<WaypointObject *> * wps_,
         std::list<SimObject *> * bases_,
         std::list<UAVObject *> * uavs_,
-        int _cam_width,
-        int _cam_height,
-        int _cam_interval,
+        WindowResolution_e resolution = R1024X768,
         irr::core::dimension2di position = irr::core::dimension2di(0,0),
-        irr::video::E_DRIVER_TYPE driver = irr::video::EDT_DIRECT3D9);
+        irr::video::E_DRIVER_TYPE driver = irr::video::EDT_DIRECT3D9,
+        int numCams = 3);
     ~CamWindow();
 
-    virtual bool load();
+    virtual bool load(int numCams);
     virtual void draw();
     virtual void load_images();
     void render_to_texture();
@@ -64,27 +60,13 @@ public:
 
     CityScene * get_city() {return city;}
 
-	int get_cam_width() const {
-		return cam_width;
-	}
-	int get_cam_height() const {
-		return cam_height;
-	}
-	int get_cam_interval() const {
-		return cam_interval;
-	}
+    bool get_started() const { return started; }
+    void set_started(bool _started) { started = _started; }
 
-    bool get_started() const { 
-		return started; 
-	}
-    void set_started(bool _started) { 
-		started = _started; 
-	}
+    void send_cam_message(int id, int message) {cams[id]->cam_message(message);}
+    void send_sara_cam_message(int id, SimSaraCamPacket * p);
 
-    void send_cam_message(int id, int message) {
-		if (id < cams.size() && cams[id] != nullptr) 
-			cams[id]->cam_message(message);
-	}
+    void update_cams(float time);
 };
 
 #endif /* CAM_WINDOW_H */
