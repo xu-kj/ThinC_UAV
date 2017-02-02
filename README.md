@@ -61,5 +61,7 @@ General Tasks
 * [ ] change the number of UAVs
 * [x] fix button_click behavior for the local version
 * [ ] change output folder naming format
+* [ ] get Irrlicht model list
 
-[ ] get Irrlicht model list
+--------------------
+extra help: Markdown cheatsheet (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
