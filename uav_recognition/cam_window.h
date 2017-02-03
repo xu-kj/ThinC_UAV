@@ -82,7 +82,7 @@ public:
 	}
 
     void send_cam_message(int id, int message) {
-		if (id < cams.size() && cams[id] != nullptr) 
+		if (id < (int) cams.size() && cams[id] != nullptr) 
 			cams[id]->cam_message(message);
 	}
 };

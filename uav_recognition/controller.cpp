@@ -813,7 +813,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
                         has_feature = true;
                     else if(stringc("False") == value) 
                         has_feature = false;
-                };
+                }
                 else if (stringw(L"Indicated") == name) {
                     if (stringc("True") == value)
                         indicated = true;
