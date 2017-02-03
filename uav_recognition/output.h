@@ -28,10 +28,36 @@ enum E_OUTPUT { OUTPUT_LOG = 0,
                 OUTPUT_UAV_TABLE,
                 OUTPUT_EVENTS,
                 OUTPUT_CHAT,
+                OUTPUT_COMBINED,
                 OUTPUT_COUNT // DO NOT USE
             };
 // add the following constant to the UAV id to write to its table file
 const int OUTPUT_TABLE_FILE = 9;
+
+enum class UAV_EVENT {
+    WAYPOINT_TARGET_SIGHTED, 
+    WAYPOINT_TARGET_ARRIVED,
+    WAYPOINT_TARGET_PASSED,
+    WAYPOINT_NONTARGET_SIGHTED,
+    WAYPOINT_NONTARGET_ARRIVED,
+    WAYPOINT_NONTARGET_PASSED,
+    INDICATOR_ON,
+    INDICATOR_OFF,
+    USER_YES,
+    USER_NO,
+    USER_UNSURE,
+    USER_MISSED,
+    USER_TARGET,
+    USER_ALARM_VISUAL_REACTED,
+    USER_ALARM_VISUAL_MISSED,
+    USER_ALARM_AUDIO_REACTED,
+    USER_ALARM_AUDIO_MISSED,
+    ALARM_VISUAL_ON,
+    ALARM_VISUAL_OFF,
+    ALARM_AUDIO_ON,
+    ALARM_AUDIO_OFF,
+    EVENT_COUNT
+};
 
 class Output {
 public:
@@ -52,6 +78,8 @@ public:
     void WriteTime(E_OUTPUT file = OUTPUT_LOG);
     void WriteDateTime(E_OUTPUT file = OUTPUT_LOG);
     void WriteTick(E_OUTPUT file = OUTPUT_LOG);
+
+    void RecordEvent(E_OUTPUT file = OUTPUT_COMBINED);
 
 private:
     Output() {}
