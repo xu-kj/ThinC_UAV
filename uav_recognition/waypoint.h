@@ -20,16 +20,44 @@ class WaypointObject: public SimObject
 public:
     WaypointObject(const strw &name, const vec3d &position, const Color &color, bool asDegrees = true);
 
-    void setAssigned(irr::video::SColor color_){state = ASSIGNED; color = color_;}
-    void setReAssigned(irr::video::SColor color_){state = REASSIGNED; color = color_;}
-    void setUnAssigned()    {state = UNASSIGNED; color = COLOR_GRAY;}
-    void setConfirmed()     {state = CONFIRMED; color = WAYPOINT_CONFIRMED;}
-    void setCleared()       {state = DENIED; color = WAYPOINT_CLEAR;}
-    void setUnsure()        {state = UNSURE; color = WAYPOINT_UNSURE;}
+    void setAssigned(irr::video::SColor color_) { 
+        state = ASSIGNED; 
+        color = color_;
+    }
+    void setReAssigned(irr::video::SColor color_) {
+        state = REASSIGNED; 
+        color = color_;
+    }
+    void setUnAssigned() {
+        state = UNASSIGNED; 
+        color = COLOR_GRAY;
+    }
+    void setConfirmed() {
+        state = CONFIRMED; 
+        color = WAYPOINT_CONFIRMED;
+    }
+    void setCleared() {
+        state = DENIED; 
+        color = WAYPOINT_CLEAR;
+    }
+    void setUnsure() {
+        state = UNSURE; 
+        color = WAYPOINT_UNSURE;
+    }
 
     // for data collection
-    void setFeature(bool exists) {has_feature = exists;}
-    bool getFeature() const {return has_feature;}
+    void setFeature(bool exists) {
+        has_feature = exists;
+    }
+    bool getFeature() const {
+        return has_feature;
+    }
+    void set_indicated(bool _indicated) {
+        indicated = _indicated;
+    }
+    bool get_indicated() const {
+        return indicated;
+    }
 
     void setActive(UAVObject * uav);
     void setLightingCue1(UAVObject * uav);
@@ -57,6 +85,7 @@ private:
     // stats stuff
     // UAVObject * sighted_by;
     bool has_feature;
+    bool indicated;
     bool reached;
     bool sighted;
     bool active;

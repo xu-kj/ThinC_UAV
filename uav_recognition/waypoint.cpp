@@ -11,6 +11,7 @@ WaypointObject::WaypointObject(const strw &name, const vec3d &position, const Co
     : SimObject(name, position, color, asDegrees)
     , state(UNASSIGNED)
     , has_feature(true)
+    , indicated(true)
     , reached(false)
     , sighted(false)
     , clicked_before_sight(false)

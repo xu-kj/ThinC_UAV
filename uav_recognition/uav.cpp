@@ -80,8 +80,6 @@ void UAVObject::network_set_target(vec3d position_, vec3d target_) {
     this->setObjectPosition(position_);
     position = position_;
 
-    //std::cout << "position (" << this->getName().c_str() << "): " << position.X << ", " << position.Z << std::endl;
-
     facing = (target_ - position_).normalize();
     facing.Y = 0; // get rid of floating-point errors
     facing.normalize();
@@ -156,7 +154,8 @@ void UAVObject::update(irr::f32 time) {
             target_visible = true;
             wps.front()->setSighted(this);
 
-            send_cam_message(0);
+            if (wps.front()->get_indicated())
+                send_cam_message(0);
 
             Output::Instance().WriteTick();
             Output::Instance().Write(getName());
@@ -176,8 +175,6 @@ void UAVObject::update(irr::f32 time) {
         }
         if (target_passed && position.getDistanceFrom(getTarget()) >= FEATURE_MISSED_DIST) {
             setUnsure(true);
-
-            send_cam_message(1);
         }
 
         break;
@@ -235,9 +232,12 @@ void UAVObject::update(irr::f32 time) {
 void UAVObject::setConfirmed() {
     irr::core::stringw str;
     if (state == WP) {
+
         WaypointObject * removed_wp = 0;
         removed_wp = wps.front();
         removed_wp->setConfirmed();
+        if (removed_wp->get_indicated())
+            send_cam_message(1);
         wps.pop_front();
         done_wps.push_back(removed_wp);
 
@@ -262,6 +262,8 @@ void UAVObject::setNotThere() {
         WaypointObject * removed_wp = 0;
         removed_wp = wps.front();
         removed_wp->setCleared();
+        if (removed_wp->get_indicated())
+            send_cam_message(1);
         wps.pop_front();
         done_wps.push_back(removed_wp);
 
@@ -286,6 +288,8 @@ void UAVObject::setUnsure(bool missed) {
         WaypointObject * removed_wp = 0;
         removed_wp = wps.front();
         removed_wp->setUnsure();
+        if (removed_wp->get_indicated())
+            send_cam_message(1);
         wps.pop_front();
         done_wps.push_back(removed_wp);
 

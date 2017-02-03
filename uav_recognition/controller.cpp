@@ -778,6 +778,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
     float pos_y;
     float pos_z;
     bool has_feature = true;
+    bool indicated = true;
 
     bool end = false;
     while(!end && reader->read()) {
@@ -788,27 +789,37 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
             break;
 
         case EXN_ELEMENT:
-            if(stringw(L"string") == nodeName) {
+            if (stringw(L"string") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 stringc value = reader->getAttributeValue(stringw(L"value").c_str());
-                if(stringw(L"Name") == name) node_name = value;
+                if (stringw(L"Name") == name) 
+                    node_name = value;
             }
-            else if(stringw(L"float") == nodeName) {
+            else if (stringw(L"float") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 float value = reader->getAttributeValueAsFloat(stringw(L"value").c_str());
-                if(stringw(L"PosX") == name)        pos_x = value;
-                else if(stringw(L"PosY") == name)   pos_y = value;
-                else if(stringw(L"PosZ") == name)   pos_z = value;
+                if (stringw(L"PosX") == name) 
+                    pos_x = value;
+                else if (stringw(L"PosY") == name) 
+                    pos_y = value;
+                else if (stringw(L"PosZ") == name) 
+                    pos_z = value;
             }
-            else if(stringw(L"bool") == nodeName) {
+            else if (stringw(L"bool") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 stringc value = reader->getAttributeValue(stringw(L"value").c_str());
-                if(stringw(L"Feature") == name) {
-                    if     (stringc("True") == value) has_feature = true;
-                    else if(stringc("true") == value) has_feature = true;
-                    else if(stringc("False") == value) has_feature = false;
-                    else if(stringc("false") == value) has_feature = false;
+                if (stringw(L"Feature") == name) {
+                    if (stringc("True") == value) 
+                        has_feature = true;
+                    else if(stringc("False") == value) 
+                        has_feature = false;
                 };
+                else if (stringw(L"Indicated") == name) {
+                    if (stringc("True") == value)
+                        indicated = true;
+                    else if (stringc("False") == value)
+                        indicated = false;
+                }
             }
             break;
         }
@@ -821,6 +832,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
         vec3d position(pos_x, pos_y, pos_z);
         wp = new WaypointObject(node_name, position, COLOR_GRAY, false);
         wp->setFeature(has_feature);
+        wp->set_indicated(indicated);
         wps.push_back(wp);
     }
 

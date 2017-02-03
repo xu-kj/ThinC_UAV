@@ -834,7 +834,7 @@ void UAVCamera::cam_message(int message) {
             break;
     }
 
-    if(set_light_level > 0) {
+    if(USE_LIGHT_CUES && set_light_level > 0) {
         if(set_light_level == 1) 
             light_level = LOW;
         else if(set_light_level == 2) 
