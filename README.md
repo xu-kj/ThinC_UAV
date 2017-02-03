@@ -28,10 +28,8 @@ Target Recognition
 [x] add indicator that will light up when uav flies near assigned target locations
 [x] add two helper buttons (yes/no) that become clickable w/ the indicator
 [x] add a button that is clickable at any time, and record when it’s clicked
-[ ] increase interval between cam_windows
 [ ] change textures
-[ ] add property for waypoint (record time, doesn’t trigger indicator)
-[ ] fix distance detection
+[ ] add property for waypoint (bool Target, bool Indicated)
 [ ] record all buttons’ reactions in one file, time indicator triggered and button clicked
 [ ] figure out the “Failed to open scenario file” error
 [ ] change to 6 cams and add intervals between cams
