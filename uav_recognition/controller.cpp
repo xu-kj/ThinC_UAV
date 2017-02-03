@@ -258,7 +258,7 @@ void UAVController::run() {
                             done++;
                         (*uav_it)->update(time);
                     }
-                    if (done == 9) running = false;
+                    if (done == 6) running = false;
 
                     for (ufo_it = ufos.begin(); ufo_it != ufos.end(); ufo_it++)
                         (*ufo_it)->update(time);
