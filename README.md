@@ -28,16 +28,13 @@ Target Recognition
 * [x] add indicator that will light up when uav flies near assigned target locations
 * [x] add two helper buttons (yes/no) that become clickable w/ the indicator
 * [x] add a button that is clickable at any time, and record when it’s clicked
-* [ ] change textures
-* [ ] add property for waypoint (bool Target, bool Indicated)
+* [x] add property for waypoint (bool Target, bool Indicated)
 * [ ] record all buttons’ reactions in one file, time indicator triggered and button clicked
-* [ ] figure out the “Failed to open scenario file” error
-* [ ] change to 6 cams and add intervals between cams
+* [x] change to 6 cams and add intervals between cams
 
 Package Delivery
 * [x] cam_window light level auto changes up arriving target location
 * [x] 3 buttons: yes, no, unsure
-* [ ] record hit rate (accuracy) and response time
 * [x] add event type that is associated with UAV and record response by typing on keyboard
 * [ ] add event type that comes with an audio alarm
 * [ ] add a button for UAV cam that records user’s response to the audio alarm
@@ -52,14 +49,15 @@ Package Delivery
 * [ ] visual alarm and audio alarm on a time scale
 
 General Tasks
+* [ ] update UAV editor and fix "Failed to open scenario file" error
 * [ ] update texture and UI
 * [x] revert to older version, don’t use network
-* [ ] fix lighting functionality (for attention management)
-* [ ] fix editor to edit flight path and scenario
-* [ ] change the number of UAVs
+* [x] fix lighting functionality (for attention management)
 * [x] fix button_click behavior for the local version
 * [ ] change output folder naming format
 * [ ] get Irrlicht model list
+* [ ] rebuild project still with Irrlicht engine
+* [ ] update rendering engine
 
 --------------------
 extra help: Markdown cheatsheet (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
