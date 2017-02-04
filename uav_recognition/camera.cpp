@@ -64,8 +64,7 @@ GUIImage * UAVCamera::button_target_down = 0;
 UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow * win_)
     : pos(pos_), win(win_), uav(0), need_update(true), zooming_out(false),
     zooming_in(false), zooming(false), button_clicked(false),
-    auto_light(false), buttons_on(false), staticOn(true),
-    unmarked_in_range(false)
+    auto_light(false), buttons_on(false), staticOn(true)
 {
     this->cam_size_x = cam_size.first;
     this->cam_size_y = cam_size.second;
@@ -663,11 +662,11 @@ bool UAVCamera::button_click(position2di cursor)
 
             buttonClicked = 11;
             checkTarget->click(win->device());
-            if (unmarked_in_range && !unmarked_reacted)
-                uav->setConfirmed();
-            else if (!unmarked_in_range) {
-                // punishment
-            }
+            //uav->setConfirmed();
+
+			Output::Instance().RecordEvent(id, UAV_EVENT::USER_TARGET, 
+				(double) uav->getPosition().X, (double) uav->getPosition().Y, (double) uav->getPosition().Z);
+
             force_render();
         }
 
@@ -792,15 +791,6 @@ void UAVCamera::cam_message(int message) {
             set_indicator_status(false);
 			// indicator->set_highlighted(false);
             set_light_level = 1;
-            break;
-        case 2:
-            // indicate an unmarked target
-            unmarked_in_range = true;
-            unmarked_reacted = false;
-            break;
-        case 3:
-            // indicate getting away from an unmarked target
-            unmarked_in_range = false;
             break;
         case 7:
             if(USE_LIGHT_CUES) {

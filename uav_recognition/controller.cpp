@@ -157,7 +157,6 @@ UAVController::UAVController()
 
         if(!win1 || !win2)
             throw Error("Failed to create windows");
-
     } catch(Error e) {
         // failed to create a window
         if(win1)    delete win1;
@@ -182,6 +181,8 @@ UAVController::UAVController()
 // =========================================================================
 
 void UAVController::run() {
+	int run_timer = 0;
+
     try {
         bool running = true;
         bool started = false;
@@ -215,6 +216,9 @@ void UAVController::run() {
         if(USE_NETWORK && !OTHER_SIM_ENDED)
             Network::sendMessageStart();
 
+		Output::Instance().WriteColumnName();
+		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_STARTED, -1, -1, -1);
+
         // log the scenario beginning
         Output::Instance().WriteTick();
         Output::Instance().Write("Simulation started: ");
@@ -243,6 +247,15 @@ void UAVController::run() {
                 MILLISECONDS = MILLISECONDS % 1000;
                 MINUTES += SECONDS / 60;
                 SECONDS = SECONDS % 60;
+
+				// pause the simulation every 6 seconds to let the tester
+				// fill out a questionaire
+				run_timer += (now - then);
+				if (run_timer >= 6 * 1000) {
+					Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
+					simulation_paused = true;
+					run_timer = 0;
+				}
 
                 f32 time = (f32)(now - then) * .001f;
                 then = now;
@@ -293,6 +306,8 @@ void UAVController::run() {
                     win1->force_render();
             }
         }
+
+		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_ENDED, -1, -1, -1);
 
         // log the scenario ending
         Output::Instance().WriteTick();

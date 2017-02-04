@@ -154,8 +154,12 @@ void UAVObject::update(irr::f32 time) {
             target_visible = true;
             wps.front()->setSighted(this);
 
-            if (wps.front()->get_indicated())
+            if (wps.front()->get_indicated()) {
+				Output::Instance().RecordEvent(cam_id + 1, 
+					UAV_EVENT::INDICATOR_ON, 
+					(double) position.X, (double) position.Y, (double) position.Z);
                 send_cam_message(0);
+			}
 
             Output::Instance().RecordEvent(cam_id + 1, 
                 wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_SIGHTED : UAV_EVENT::WAYPOINT_NONTARGET_SIGHTED, 
@@ -176,8 +180,18 @@ void UAVObject::update(irr::f32 time) {
         if (!target_passed && position.getDistanceFrom(getTarget()) < 10.0) {
             target_passed = true;
             wps.front()->setReached(this);
+
+			/*
+			Output::Instance().RecordEvent(cam_id + 1, 
+                wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_ARRIVED : UAV_EVENT::WAYPOINT_NONTARGET_ARRIVED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
+			*/
         }
         if (target_passed && position.getDistanceFrom(getTarget()) >= FEATURE_MISSED_DIST) {
+			Output::Instance().RecordEvent(cam_id + 1, 
+                wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_PASSED : UAV_EVENT::WAYPOINT_NONTARGET_PASSED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
+
             setUnsure(true);
         }
 
@@ -185,6 +199,9 @@ void UAVObject::update(irr::f32 time) {
 
     case BASE:
         if (position.getDistanceFrom(getTarget()) < 10.0) {
+			Output::Instance().RecordEvent(cam_id + 1, 
+               UAV_EVENT::WAYPOINT_BASE_ARRIVED ,
+				(double) position.X, (double) position.Y, (double) position.Z);
             state = DONE;
         }
         if (USE_LIGHT_CUES) {
@@ -237,12 +254,21 @@ void UAVObject::setConfirmed() {
     irr::core::stringw str;
     if (state == WP) {
 
+		Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::USER_TARGET, 
+			(double) position.X, (double) position.Y, (double) position.Z);
+
         WaypointObject * removed_wp = 0;
         removed_wp = wps.front();
         removed_wp->setConfirmed();
-        if (removed_wp->get_indicated())
+
+        if (removed_wp->get_indicated()) {
             send_cam_message(1);
-        wps.pop_front();
+			Output::Instance().RecordEvent(cam_id + 1, 
+				UAV_EVENT::INDICATOR_OFF, 
+				(double) position.X, (double) position.Y, (double) position.Z);
+		}
+        
+		wps.pop_front();
         done_wps.push_back(removed_wp);
 
         bool correct = (removed_wp->getFeature() == true);
@@ -266,8 +292,17 @@ void UAVObject::setNotThere() {
         WaypointObject * removed_wp = 0;
         removed_wp = wps.front();
         removed_wp->setCleared();
-        if (removed_wp->get_indicated())
+
+		Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::USER_NONTARGET, 
+			(double) position.X, (double) position.Y, (double) position.Z);
+        
+		if (removed_wp->get_indicated()) {
             send_cam_message(1);
+			Output::Instance().RecordEvent(cam_id + 1, 
+				UAV_EVENT::INDICATOR_OFF, 
+				(double) position.X, (double) position.Y, (double) position.Z);
+		}
+
         wps.pop_front();
         done_wps.push_back(removed_wp);
 
@@ -292,15 +327,27 @@ void UAVObject::setUnsure(bool missed) {
         WaypointObject * removed_wp = 0;
         removed_wp = wps.front();
         removed_wp->setUnsure();
-        if (removed_wp->get_indicated())
+        
+		if (removed_wp->get_indicated()) {
             send_cam_message(1);
+			Output::Instance().RecordEvent(cam_id + 1, 
+				UAV_EVENT::INDICATOR_OFF, 
+				(double) position.X, (double) position.Y, (double) position.Z);
+		}
+
         wps.pop_front();
         done_wps.push_back(removed_wp);
 
-        if (missed) 
+        if (missed) {
+			Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::USER_MISSED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
             removed_wp->setDone(this, WAYPOINT_MISSED);
-        else 
+		}
+        else {
+			Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::USER_UNSURE, 
+				(double) position.X, (double) position.Y, (double) position.Z);
             removed_wp->setDone(this, WAYPOINT_IS_UNSURE);
+		}
 
         if (wps.empty())
             state = BASE;

@@ -6,50 +6,53 @@
 
 /* The Output class uses E_OUTPUT to specify which file to write to (default OUTPUT_LOG). */
 
-enum E_OUTPUT { OUTPUT_LOG = 0,
-                OUTPUT_UAV1,
-                OUTPUT_UAV2,
-                OUTPUT_UAV3,
-                OUTPUT_UAV4,
-                OUTPUT_UAV5,
-                OUTPUT_UAV6,
-                OUTPUT_UAV7,
-                OUTPUT_UAV8,
-                OUTPUT_UAV9,
-                OUTPUT_UAV1_TABLE,
-                OUTPUT_UAV2_TABLE,
-                OUTPUT_UAV3_TABLE,
-                OUTPUT_UAV4_TABLE,
-                OUTPUT_UAV5_TABLE,
-                OUTPUT_UAV6_TABLE,
-                OUTPUT_UAV7_TABLE,
-                OUTPUT_UAV8_TABLE,
-                OUTPUT_UAV9_TABLE,
-                OUTPUT_UAV_TABLE,
-                OUTPUT_EVENTS,
-                OUTPUT_CHAT,
-                OUTPUT_COMBINED,
-                OUTPUT_COUNT // DO NOT USE
-            };
+enum E_OUTPUT { 
+	OUTPUT_LOG = 0,            
+	OUTPUT_UAV1,            
+	OUTPUT_UAV2,
+	OUTPUT_UAV3,
+	OUTPUT_UAV4,
+	OUTPUT_UAV5,
+	OUTPUT_UAV6,
+	OUTPUT_UAV7,
+	OUTPUT_UAV8,
+	OUTPUT_UAV9,
+	OUTPUT_UAV1_TABLE,
+	OUTPUT_UAV2_TABLE,
+	OUTPUT_UAV3_TABLE,
+	OUTPUT_UAV4_TABLE,
+	OUTPUT_UAV5_TABLE,
+	OUTPUT_UAV6_TABLE,
+	OUTPUT_UAV7_TABLE,
+	OUTPUT_UAV8_TABLE,
+	OUTPUT_UAV9_TABLE,
+	OUTPUT_UAV_TABLE,
+	OUTPUT_EVENTS,
+	OUTPUT_CHAT,
+	OUTPUT_COMBINED,
+	OUTPUT_COUNT // DO NOT USE
+};
 // add the following constant to the UAV id to write to its table file
 const int OUTPUT_TABLE_FILE = 9;
 
 enum UAV_EVENT {
 	SIMULATION_STARTED,
 	SIMULATION_ENDED,
+	SIMULATION_PAUSED,
+	SIMULATION_CONTINUED,
     WAYPOINT_TARGET_SIGHTED, 
     WAYPOINT_TARGET_ARRIVED,
     WAYPOINT_TARGET_PASSED,
     WAYPOINT_NONTARGET_SIGHTED,
     WAYPOINT_NONTARGET_ARRIVED,
     WAYPOINT_NONTARGET_PASSED,
+	WAYPOINT_BASE_ARRIVED,
     INDICATOR_ON,
     INDICATOR_OFF,
-    USER_YES,
-    USER_NO,
+    USER_TARGET,
+    USER_NONTARGET,
     USER_UNSURE,
     USER_MISSED,
-    USER_TARGET,
     USER_ALARM_VISUAL_REACTED,
     USER_ALARM_VISUAL_MISSED,
     USER_ALARM_AUDIO_REACTED,
@@ -81,6 +84,7 @@ public:
     void WriteDateTime(E_OUTPUT file = OUTPUT_LOG);
     void WriteTick(E_OUTPUT file = OUTPUT_LOG);
 
+	void WriteColumnName();
     void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
 
 private:

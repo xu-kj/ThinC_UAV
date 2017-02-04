@@ -49,6 +49,7 @@ Package Delivery
 * [ ] visual alarm and audio alarm on a time scale
 
 General Tasks
+* [ ] increase precision to millisecond
 * [ ] update UAV editor and fix "Failed to open scenario file" error
 * [ ] update texture and UI
 * [x] revert to older version, don’t use network
