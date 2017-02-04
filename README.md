@@ -29,7 +29,7 @@ Target Recognition
 * [x] add two helper buttons (yes/no) that become clickable w/ the indicator
 * [x] add a button that is clickable at any time, and record when it’s clicked
 * [x] add property for waypoint (bool Target, bool Indicated)
-* [ ] record all buttons’ reactions in one file, time indicator triggered and button clicked
+* [x] record all buttons’ reactions in one file, time indicator triggered and button clicked
 * [x] change to 6 cams and add intervals between cams
 
 Package Delivery
@@ -49,7 +49,7 @@ Package Delivery
 * [ ] visual alarm and audio alarm on a time scale
 
 General Tasks
-* [ ] increase precision to millisecond
+* [x] increase precision to millisecond
 * [ ] update UAV editor and fix "Failed to open scenario file" error
 * [ ] update texture and UI
 * [x] revert to older version, don’t use network
@@ -58,7 +58,10 @@ General Tasks
 * [ ] change output folder naming format
 * [ ] get Irrlicht model list
 * [ ] rebuild project still with Irrlicht engine
-* [ ] update rendering engine
+* [ ] update rendering engine, rebuild with C# and unity
 
 --------------------
+More about the project: ... (to be determined)
+game-like?
+
 extra help: Markdown cheatsheet (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
