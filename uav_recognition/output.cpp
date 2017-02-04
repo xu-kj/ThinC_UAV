@@ -10,8 +10,20 @@ using namespace std;
 using namespace irr;
 using namespace core;
 
+static const char *UAV_EVENT_TEXT[UAV_EVENT::EVENT_COUNT] = {
+	"WAYPOINT_TARGET_SIGHTED", "WAYPOINT_TARGET_ARRIVED", "WAYPOINT_TARGET_PASSED",
+	"WAYPOINT_NONTARGET_SIGHTED", "WAYPOINT_NONTARGET_ARRIVED", "WAYPOINT_NONTARGET_PASSED",
+	"INDICATOR_ON", "INDICATOR_OFF",
+	"USER_RESPONSE_YES", "USER_RESPONSE_NO", "USER_RESPONSE_UNSURE", 
+	"USER_MISSED", "USER_INDICATES_TARGET",
+	"USER_ALARM_VISUAL_REACTED", "USER_ALARM_VISUAL_MISSED",
+	"USER_ALARM_AUDIO_REACTED", "USER_ALARM_AUDIO_MISSED",
+	"ALARM_VISUAL_ON", "ALARM_VISUAL_OFF"
+	"ALARM_AUDIO_ON", "ALARM_AUDIO_OFF"
+};
+
 const wchar_t * const LOG_FOLDER = L"..\\results\\";
-fstream Output::files[22];
+fstream Output::files[OUTPUT_COUNT];
 stringc Output::filenames[] = {
     "log",
     "uav1",
@@ -245,70 +257,6 @@ void Output::RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, do
     WriteTime(OUTPUT_COMBINED);
     fstream &fs = files[OUTPUT_COMBINED];
     fs << ',' << target << ',';
-    switch(e) {
-        case UAV_EVENT::WAYPOINT_TARGET_SIGHTED:
-            fs << "WAYPOINT_TARGET_SIGHTED";
-            break;
-        case UAV_EVENT::WAYPOINT_TARGET_ARRIVED:
-            fs << "WAYPOINT_TARGET_ARRIVED";
-            break;
-        case UAV_EVENT::WAYPOINT_TARGET_PASSED:
-            fs << "WAYPOINT_TARGET_PASSED";
-            break;
-        case UAV_EVENT::WAYPOINT_NONTARGET_SIGHTED:
-            fs << "WAYPOINT_NONTARGET_SIGHTED";
-            break;
-        case UAV_EVENT::WAYPOINT_NONTARGET_ARRIVED:
-            fs << "WAYPOINT_NONTARGET_ARRIVED";
-            break;
-        case UAV_EVENT::WAYPOINT_NONTARGET_PASSED:
-            fs << "WAYPOINT_NONTARGET_PASSED";
-            break;
-        case UAV_EVENT::INDICATOR_ON:
-            fs << "INDICATOR_ON";
-            break;
-        case UAV_EVENT::INDICATOR_OFF:
-            fs << "INDICATOR_OFF";
-            break;
-        case UAV_EVENT::USER_YES:
-            fs << "USER_RESPONSE_YES";
-            break;
-        case UAV_EVENT::USER_NO:
-            fs << "USER_RESPONSE_NO";
-            break;
-        case UAV_EVENT::USER_UNSURE:
-            fs << "USER_RESPONSE_UNSURE";
-            break;
-        case UAV_EVENT::USER_MISSED:
-            fs << "USER_MISSED";
-            break;
-        case UAV_EVENT::USER_TARGET:
-            fs << "USER_INDICATES_TARGET";
-            break;
-        case UAV_EVENT::USER_ALARM_VISUAL_REACTED:
-            fs << "USER_ALARM_VISUAL_REACTED";
-            break;
-        case UAV_EVENT::USER_ALARM_VISUAL_MISSED:
-            fs << "USER_ALARM_VISUAL_MISSED";
-            break;
-        case UAV_EVENT::USER_ALARM_AUDIO_REACTED:
-            fs << "USER_ALARM_AUDIO_REACTED";
-            break;
-        case UAV_EVENT::USER_ALARM_AUDIO_MISSED:
-            fs << "USER_ALARM_AUDIO_MISSED";
-            break;
-        case UAV_EVENT::ALARM_VISUAL_ON:
-            fs << "ALARM_VISUAL_ON";
-            break;
-        case UAV_EVENT::ALARM_VISUAL_OFF:
-            fs << "ALARM_VISUAL_OFF";
-            break;
-        case UAV_EVENT::ALARM_AUDIO_ON:
-            fs << "ALARM_AUDIO_ON";
-            break;
-        case UAV_EVENT::ALARM_AUDIO_OFF:
-            fs << "ALARM_AUDIO_OFF";
-            break;
-    }
+	fs << UAV_EVENT_TEXT[e - UAV_EVENT::SIMULATION_STARTED];
     fs << ',' << pos_x << ',' << pos_y << ',' << pos_z << endl;
 }

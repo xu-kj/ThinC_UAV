@@ -34,7 +34,9 @@ enum E_OUTPUT { OUTPUT_LOG = 0,
 // add the following constant to the UAV id to write to its table file
 const int OUTPUT_TABLE_FILE = 9;
 
-enum class UAV_EVENT {
+enum UAV_EVENT {
+	SIMULATION_STARTED,
+	SIMULATION_ENDED,
     WAYPOINT_TARGET_SIGHTED, 
     WAYPOINT_TARGET_ARRIVED,
     WAYPOINT_TARGET_PASSED,
@@ -79,7 +81,7 @@ public:
     void WriteDateTime(E_OUTPUT file = OUTPUT_LOG);
     void WriteTick(E_OUTPUT file = OUTPUT_LOG);
 
-    void RecordEvent(E_OUTPUT file = OUTPUT_COMBINED);
+    void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
 
 private:
     Output() {}
@@ -90,7 +92,7 @@ private:
     void WriteHeader(E_OUTPUT file, const irr::core::stringw &file_path);
     bool CreateOutputDirectory(const irr::core::stringw &dir);
 
-    static std::fstream files[22];
+    static std::fstream files[OUTPUT_COUNT];
     static irr::core::stringc filenames[];
 };
 

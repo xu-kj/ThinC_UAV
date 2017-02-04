@@ -157,9 +157,9 @@ void UAVObject::update(irr::f32 time) {
             if (wps.front()->get_indicated())
                 send_cam_message(0);
 
-            Output::Instance().RecordEvent(cam_id, 
-                wps.front()->get_feature() ? UAV_EVENT::WAYPOINT_TARGET_SIGHTED : UAV_EVENT::WAYPOINT_NONTARGET_SIGHTED, 
-                (double) position.x, (double) position.y, (double) position.z);
+            Output::Instance().RecordEvent(cam_id + 1, 
+                wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_SIGHTED : UAV_EVENT::WAYPOINT_NONTARGET_SIGHTED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
 
             Output::Instance().WriteTick();
             Output::Instance().Write(getName());
