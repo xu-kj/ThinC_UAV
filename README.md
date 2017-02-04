@@ -49,8 +49,10 @@ Package Delivery
 * [ ] visual alarm and audio alarm on a time scale
 
 General Tasks
+* [ ] change UAV fly path so that it always follow the scheduled path
 * [x] increase precision to millisecond
-* [ ] update UAV editor and fix "Failed to open scenario file" error
+* [ ] update UAV editor and change openfile directory to absolute path
+* [ ] update UAV navigation window
 * [ ] update texture and UI
 * [x] revert to older version, don’t use network
 * [x] fix lighting functionality (for attention management)
