@@ -4,7 +4,11 @@
 #include "globals.h"
 #include <irrlicht.h>
 
-enum UAV_EVENT_E { CAMERA_FAIL, GPS_FAIL, CHAT_REQUEST };
+enum UAV_EVENT_E { 
+	CHECK_POINT,
+	CAMERA_FAIL, GPS_FAIL, CHAT_REQUEST,
+	VIDEO_ALERT, AUDIO_ALERT
+};
 
 class Event {
 public:
@@ -12,14 +16,18 @@ public:
         irr::u32 start, irr::s32 id_)
         : text(text_), start_time(start), id(id_), activated(false)
     {
-        if(type == "CAMERA_FAIL")
-            this->type = CAMERA_FAIL;
-        else if(type == "GPS_FAIL")
-            this->type = GPS_FAIL;
-        else if(type == "CHAT_REQUEST")
-            this->type = CHAT_REQUEST;
+        if (type == "CAMERA_FAIL")
+            this->type = UAV_EVENT_E::CAMERA_FAIL;
+        else if (type == "GPS_FAIL")
+            this->type = UAV_EVENT_E::GPS_FAIL;
+        else if (type == "CHAT_REQUEST")
+            this->type = UAV_EVENT_E::CHAT_REQUEST;
+		else if (type == "VIDEO_ALERT")
+			this->type = UAV_EVENT_E::VIDEO_ALERT;
+		else if (type == "AUDIO ALERT")
+			this->type = UAV_EVENT_E::AUDIO_ALERT;
         else
-            this->type = CAMERA_FAIL;
+            this->type = UAV_EVENT_E::CHECK_POINT;
     }
 
     bool activate() {

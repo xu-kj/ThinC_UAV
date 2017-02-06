@@ -10,6 +10,21 @@ using namespace std;
 using namespace irr;
 using namespace core;
 
+static const char *UAV_EVENT_TEXT[UAV_EVENT::EVENT_COUNT] = {
+	"SIMULATION_STARTED", "SIMULATION_ENDED",
+	"SIMULATION_PAUSED", "SIMULATION_CONTINUED",
+	"WAYPOINT_TARGET_SIGHTED", "WAYPOINT_TARGET_ARRIVED", "WAYPOINT_TARGET_PASSED",
+	"WAYPOINT_NONTARGET_SIGHTED", "WAYPOINT_NONTARGET_ARRIVED", "WAYPOINT_NONTARGET_PASSED",
+	"WAYPOINT_BASE_ARRIVED",
+	"INDICATOR_ON", "INDICATOR_OFF",
+	"USER_INDICATES_TARGET", "USER_INDICATES_NONTARGET", 
+	"USER_RESPONSE_UNSURE", "USER_MISSED",
+	"USER_ALARM_VISUAL_REACTED", "USER_ALARM_VISUAL_MISSED",
+	"USER_ALARM_AUDIO_REACTED", "USER_ALARM_AUDIO_MISSED",
+	"ALARM_VISUAL_ON", "ALARM_VISUAL_OFF"
+	"ALARM_AUDIO_ON", "ALARM_AUDIO_OFF"
+};
+
 const wchar_t * const LOG_FOLDER = L"..\\results\\";
 fstream Output::files[22];
 stringc Output::filenames[] = {
@@ -237,4 +252,33 @@ void Output::WriteHeader(E_OUTPUT file, const irr::core::stringw &file_path)
         //UAV_NAME | WP_NAME | TIME_ACTIVE | TIME_LIGHT_CUE1 | TIME_LIGHT_CUE2 | TIME_TACTOR_CUE1 | TIME_TACTOR_CUE2 | TIME_SIGHTED | TIME_REACHED | TIME_DONE | USER_RESPONSE | CORRECTNESS | FEATURE_OR_NOT | BUTTON_CLICKED
         WriteLine("UAV       WAYPOINT      ACTIVE    LIGHT1    LIGHT2   TACTOR1   TACTOR2   SIGHTED   REACHED  RESPONSE  CORRECT?    HAS FEATURE?    BUTTON", file);
     }
+}
+
+void Output::WriteColumnName()
+{
+	fstream &fs = files[OUTPUT_COMBINED];
+	fs << "TIMESTAMP" << ","
+		<< "TARGET" << ","
+		<< "EVENT" << ","
+		<< "POS_X" << "," << "POS_Y" << "," << "POS_Z"
+		<< endl;
+}
+
+void Output::RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z)
+{
+    fstream &fs = files[OUTPUT_COMBINED];
+    if(MINUTES < 10) 
+		fs << "0";
+    fs << MINUTES << ":";
+    if(SECONDS < 10) 
+		fs << "0";
+    fs << SECONDS << ".";
+    if(MILLISECONDS < 100) 
+		fs << "0";
+    if(MILLISECONDS < 10)  
+		fs << "0";
+    fs << MILLISECONDS << ",";
+    fs << target << ',';
+	fs << UAV_EVENT_TEXT[e - UAV_EVENT::SIMULATION_STARTED];
+    fs << ',' << pos_x << ',' << pos_y << ',' << pos_z << endl;
 }

@@ -27,7 +27,7 @@ public:
         TITLEBAR_OFFSET_Y = _y;
     };
 
-	void UAVButton::set_highlighted(bool highlighted_);
+	void set_highlighted(bool highlighted_);
 
 private:
     rect2di area;

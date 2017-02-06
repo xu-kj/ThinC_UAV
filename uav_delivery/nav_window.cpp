@@ -41,10 +41,11 @@ NavWindow::NavWindow(std::list<WaypointObject *> * wps_,
     std::list<UAVObject *> * uavs_,
     std::list<UFOObject *> * ufos_,
     std::list<Event *> * events_,
-    WindowResolution_e resolution,
+    int nav_width,
+    int nav_height,
     dimension2di position,
     E_DRIVER_TYPE driver)
-    : UAVWindow("UAV Flight Sim - Navigation Window", false, false, driver, resolution, position),
+    : UAVWindow("UAV Flight Sim - Navigation Window", false, false, driver, std::make_pair(1024, 768), position),
     wps(wps_), bases(bases_), uavs(uavs_), ufos(ufos_), events(events_),
     moving_map(false), started(false)
 {
@@ -173,7 +174,9 @@ void NavWindow::triggerEvent(Event * e)
         // really ugly way to change id into iterator (cons_it)
         // this depends on consoles being ordered in their list
         int id = -1;
-        if(e->get_type() == CAMERA_FAIL || e->get_type() == GPS_FAIL)
+        if(e->get_type() == CAMERA_FAIL || e->get_type() == GPS_FAIL || 
+			e->get_type() == UAV_EVENT_E::AUDIO_ALERT || 
+			e->get_type() == UAV_EVENT_E::VIDEO_ALERT)
         {
             id = e->get_id();
             
@@ -196,28 +199,35 @@ void NavWindow::triggerEvent(Event * e)
         u32 time = MILLISECONDS + (1000 * SECONDS) + (60 * 1000 * MINUTES);
         output += "event triggered: ";
 
+		uav_it = uavs->begin();
+		for (int i = 0; i < e->get_id() - 1; ++i)
+			uav_it++;
+
         // handle events
         switch(e->get_type()) {
-        case CAMERA_FAIL:
-            output += "camera failure";
-            (*cons_it)->set_cam_fail(true);
-            break;
+			case CAMERA_FAIL:
+				output += "camera failure";
+				(*cons_it)->set_cam_fail(true);
+				break;
+			case GPS_FAIL:
+				output += "GPS failure";
+				(*cons_it)->set_gps_fail(true);
+				break;
+			case CHAT_REQUEST:
+				output += "chat request - \"";
+				output += e->get_text();
+				output += "\"";
+				chat.add_text(e->get_text(), CHAT_EVENT_COLOR);
+				break;
+			case AUDIO_ALERT:
+				(*uav_it)->activate_audio_alert();
+				break;
+			case VIDEO_ALERT:
+				(*uav_it)->activate_video_alert();
+				break;
 
-        case GPS_FAIL:
-            output += "GPS failure";
-            (*cons_it)->set_gps_fail(true);
-            break;
-
-        case CHAT_REQUEST:
-            output += "chat request - \"";
-            output += e->get_text();
-            output += "\"";
-            
-            chat.add_text(e->get_text(), CHAT_EVENT_COLOR);
-            break;
-
-        default:
-            break;
+			default:
+				break;
         }
 
         // spit to file

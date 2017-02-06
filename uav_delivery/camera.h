@@ -13,7 +13,10 @@ class CamWindow;
 
 class UAVCamera {
 public:
-    UAVCamera(irr::core::position2di pos_, CamWindow * win_);
+    UAVCamera(
+		irr::core::position2di pos_, 
+		std::pair<int, int> cam_size, 
+		CamWindow * win_);
     ~UAVCamera();
 
     // load_images(...) must be called before draw()
@@ -42,8 +45,6 @@ public:
     bool draw_sara_shade(irr::IrrlichtDevice * device) const; // returns if we shouldn't draw the baseline shading
 
     void cam_message(int message);
-    void sara_cam_message(int type, SimSaraCamPacket * p);
-    void update_signals(float time);
 
     void set_static(bool value) {staticOn = value;}
     
@@ -63,6 +64,8 @@ private:
     /* 2D Interface */
     // upper right corner of this "box"
     irr::core::position2di pos;
+	int cam_size_x;
+    int cam_size_y;
 
     // interface images
     static GUIImage * cam_box;
@@ -88,12 +91,13 @@ private:
     bool button_clicked;
 
     // buttons
-    UAVButton * indicator;
-    UAVButton * checkTarget;
-
-    UAVButton * btnPositive;
+	UAVButton * indicator;
+    UAVButton * v_indicator;
+	UAVButton * a_indicator;
+	
+	UAVButton * btnPositive;
     UAVButton * btnNegative;
-    // UAVButton * light;
+	UAVButton * btnUnsure;
 
     // fonts (show number of UAV in corner)
     irr::gui::IGUIStaticText * large_text;
@@ -120,8 +124,6 @@ private:
     bool buttons_on;
     // return true if there's an indicator
     bool set_indicator_status(bool status);
-    bool unmarked_in_range;
-    bool unmarked_reacted;
 
     bool staticOn;
     float timeSinceLastStatic;

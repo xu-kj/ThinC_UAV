@@ -78,6 +78,9 @@ public:
     void writeSummary();
     bool getStatsDone() const {return stats_done;}
 
+	void activate_audio_alert();
+	void activate_video_alert();
+
 private:
     int cam_id;
     UAVCamera * cam_ptr;

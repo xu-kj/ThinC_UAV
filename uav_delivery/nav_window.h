@@ -24,7 +24,8 @@ public:
         std::list<UAVObject *> * uavs_,
         std::list<UFOObject *> * ufos_,
         std::list<Event *> * events_,
-        WindowResolution_e resolution = R1024X768,
+        int nav_width,
+        int nav_height,
         irr::core::dimension2di position = irr::core::dimension2di(0,0),
         irr::video::E_DRIVER_TYPE driver = irr::video::EDT_OPENGL);
 

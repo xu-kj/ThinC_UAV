@@ -32,6 +32,7 @@ irr::f32 WORLD_END_LAT   = 10;
 
 irr::s32 CAM_SIZE_X = 341;
 irr::s32 CAM_SIZE_Y = 256;
+irr::s32 CAM_INTERVAL = 10;
 
 bool USE_RTT = true;
 
@@ -51,15 +52,27 @@ int nextPwr2(int num) {
 CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                      std::list<SimObject *> * bases_,
                      std::list<UAVObject *> * uavs_,
-                     WindowResolution_e resolution,
+                     int _cam_width,
+                     int _cam_height,
+                     int _cam_interval,
                      irr::core::dimension2di position,
-                     E_DRIVER_TYPE driver, 
-                     int numCams)
-                     : UAVWindow("UAV Flight Sim - Camera Window", false, false, driver, resolution, position),
-                     wps(wps_), bases(bases_), uavs(uavs_), render(0), need_render(true), city(0), started(false)
+                     E_DRIVER_TYPE driver)
+                     : UAVWindow("UAV Flight Sim - Camera Window", 
+                                 false, 
+                                 false, 
+                                 driver, 
+                                 std::make_pair(_cam_width * 3 + _cam_interval * 2, 
+												_cam_height * 2 + _cam_interval * 1), 
+                                 position),
+                     wps(wps_), bases(bases_), uavs(uavs_), 
+					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
+                     render(0), need_render(true), city(0), started(false)
 {
-    if (!load(numCams))
-        // load numCams * numCams UAV cameras (numCams ** 2)
+    CAM_SIZE_X = cam_width;
+    CAM_SIZE_Y = cam_height;
+    CAM_INTERVAL = cam_interval;
+
+    if (!load())
         throw Error("Cam window failed to initialize correctly.");
 }
 
@@ -68,18 +81,17 @@ CamWindow::~CamWindow() {
         delete x;
 }
 
-bool CamWindow::load(int numCams) {
+bool CamWindow::load() {
     if (!UAVWindow::load())
         return false;
 
-    CAM_SIZE_X = windowWidth() / numCams;
-    CAM_SIZE_Y = windowHeight() / numCams;
-    cams.resize(numCams * numCams);
-
-    for (int i = 0; i < numCams; ++i)
-        for (int j = 0; j < numCams; ++j) {
-            cams[i * numCams + j] = 
-                new UAVCamera(position2di(CAM_SIZE_X * j, CAM_SIZE_Y * i), this);
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j) {
+            cams[i * 3 + j] = 
+                new UAVCamera(position2di((CAM_SIZE_X + CAM_INTERVAL) * j, 
+                                          (CAM_SIZE_Y + CAM_INTERVAL) * i), 
+                              std::make_pair(CAM_SIZE_X, CAM_SIZE_Y),
+                              this);
         }
 
     need_render = true;
@@ -138,8 +150,6 @@ void CamWindow::draw() {
 
         for (UAVCamera *x : cams) {
             bool s = false;
-            if (USE_SARA_SHADING)
-                s = x->draw_sara_shade(device());
             if (!s && USE_FULL_CAM_SHADING)
                 x->draw_shade(device());
         }
@@ -254,87 +264,33 @@ void CamWindow::event_key_down(wchar_t key) {
             // toggleFullScreen = true;
     }
 
-	if (started && (event_recv->IsKeyDown(irr::KEY_KEY_1) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_2) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_3) || 
-		event_recv->IsKeyDown(irr::KEY_KEY_4) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_5) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_6) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_7) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_8) ||
-		event_recv->IsKeyDown(irr::KEY_KEY_9))) {
-			if (event_recv->IsKeyDown(irr::KEY_KEY_1)) {
+	if (started) {
+			if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
 				cams[0]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_2)) {
+			else if (cams[1] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
 				cams[1]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_3)) {
+			else if (cams[2] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
 				cams[2]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_4)) {
+			else if (cams[3] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
 				cams[3]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_5)) {
+			else if (cams[4] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
 				cams[4]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_6)) {
+			else if (cams[5] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
 				cams[5]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_7)) {
+			else if (cams[6] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
 				cams[6]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_8)) {
+			else if (cams[7] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
 				cams[7]->cam_message(11);
 			}
-			else if (event_recv->IsKeyDown(irr::KEY_KEY_9)) {
+			else if (cams[8] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
 				cams[8]->cam_message(11);
 			}
 	}
-}
-
-void CamWindow::send_sara_cam_message(int id, SimSaraCamPacket * p) {
-    //std::string str;
-    std::list<int> s;
-    for (unsigned i = 0; i < cams.size(); i++)
-        if (p->sectors[i] > '0' && p->sectors[i] <= '9')
-            s.push_back(p->sectors[i] - 49);
-    //  str += p->sectors[i];
-    //std::cout << "CAM MESSAGE: " << str << std::endl;
-
-    if (!s.empty()) {
-        // if this signal has a list of sectors associated with it, use them instead
-        // of the defaults
-
-        std::list<int>::iterator it;
-        for (it = s.begin(); it != s.end(); it++) {
-            std::cout << "adding " << *it << std::endl;
-            cams[*it]->sara_cam_message(p->type, p);
-        }
-    }
-    else if (id < 0 || id > 8) {
-        // broadcast the message if the UAV id is not valid
-
-        for (unsigned i = 0; i < cams.size(); i++)
-            cams[i]->sara_cam_message(p->type, p);
-    }
-    else if (p->type == 1) {
-        // this is a visual mudsplash, so we need to pick some other screens to
-        // have it appear on apart from the sector it originates from
-
-        cams[id]->sara_cam_message(p->type, p);
-
-        std::vector<int> s = SaraMatching::SaraSignal::getMudsplashSectors(id);
-        for(std::vector<int>::iterator it = s.begin(); it != s.end(); it++)
-            cams[*it]->sara_cam_message(p->type, p);
-    }
-    else {
-        cams[id]->sara_cam_message(p->type, p);
-    }
-}
-
-void CamWindow::update_cams(float time) {
-    for (unsigned i = 0; i < cams.size(); i++) {
-        cams[i]->update_signals(time);
-    }
 }

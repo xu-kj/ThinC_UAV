@@ -37,14 +37,20 @@ using namespace gui;
 // GENERAL SETUP
 // =========================================================================
 
-const char * const CONFIG_FILE = "..\\config.ini";
+const char * const CONFIG_FILE = "..\\config.cfg";
 
-WindowResolution_e NAV_RESOLUTION = R1024X768;
-WindowResolution_e CAM_RESOLUTION = R1024X768;
+//WindowResolution_e NAV_RESOLUTION = R1024X768;
+//WindowResolution_e CAM_RESOLUTION = R1024X768;
 irr::video::E_DRIVER_TYPE NAV_DRIVER = EDT_OPENGL;
 irr::video::E_DRIVER_TYPE CAM_DRIVER = EDT_DIRECT3D9;
 irr::core::dimension2di NAV_POS(0,0);
 irr::core::dimension2di CAM_POS(0,0);
+
+static int CAM_WIDTH;
+static int CAM_HEIGHT;
+static int CAM_INTERVAL;
+static int NAV_WIDTH;
+static int NAV_HEIGHT;
 
 irr::core::stringc SCENARIO_FILE;
 irr::core::stringc OUTPUT_FILE;
@@ -94,38 +100,38 @@ UAVController::UAVController()
     Output::Instance().StartLog();
 
     // intialize the hardware and simulation model
-    std::vector<std::string> ports;
-    for(int i = 0; i < 3; i++) {
-        int value;
-        if(i == 0) value = TACTOR_COM_PORT_1;
-        if(i == 1) value = TACTOR_COM_PORT_2;
-        if(i == 2) value = TACTOR_COM_PORT_3;
+    //std::vector<std::string> ports;
+    //for(int i = 0; i < 3; i++) {
+    //    int value;
+    //    if(i == 0) value = TACTOR_COM_PORT_1;
+    //    if(i == 1) value = TACTOR_COM_PORT_2;
+    //    if(i == 2) value = TACTOR_COM_PORT_3;
 
-        stringstream ss;
-        ss << "COM" << value;
-        ports.push_back("");
-        ports[i] = ss.str();
-    }
+    //    stringstream ss;
+    //    ss << "COM" << value;
+    //    ports.push_back("");
+    //    ports[i] = ss.str();
+    //}
 
-    tactors = new Sim::Tactors3x3(
-        ports[0], ports[1], ports[2],
-        !USE_TACTOR_CUES);
+    //tactors = new Sim::Tactors3x3(
+    //    ports[0], ports[1], ports[2],
+    //    !USE_TACTOR_CUES);
 
-    try {
-        tactors->connect();
+    //try {
+    //    tactors->connect();
 
-        tactors->setFreqs(
-            TACTOR_FREQUENCY,
-            TACTOR_FREQUENCY);
+    //    tactors->setFreqs(
+    //        TACTOR_FREQUENCY,
+    //        TACTOR_FREQUENCY);
 
-        if(RUN_TACTOR_TEST)
-            tactors->test();
-    } catch(std::exception e) {
-        MessageBox(0, L"Warning: tactile cues are enabled, but the tactor\nhardware could not be initialized.", L"Tactor Error :'(", 0);
-    }
+    //    if(RUN_TACTOR_TEST)
+    //        tactors->test();
+    //} catch(std::exception e) {
+    //    MessageBox(0, L"Warning: tactile cues are enabled, but the tactor\nhardware could not be initialized.", L"Tactor Error :'(", 0);
+    //}
 
-    Network::subscribeToNetworkUpdates(fastdelegate::MakeDelegate(this, &UAVController::network_update));
-    start_network();
+    //Network::subscribeToNetworkUpdates(fastdelegate::MakeDelegate(this, &UAVController::network_update));
+    //start_network();
     // wait for connection
 
     set_world_params();
@@ -134,11 +140,14 @@ UAVController::UAVController()
     try {
         // create the windows
         win1 = new NavWindow(&wps, &bases, &uavs, &ufos, &events,
-            NAV_RESOLUTION,
+            NAV_WIDTH,
+            NAV_HEIGHT,
             NAV_POS,
             NAV_DRIVER);
         win2 = new CamWindow(&wps, &bases, &uavs,
-            CAM_RESOLUTION,
+            CAM_WIDTH, 
+            CAM_HEIGHT, 
+            CAM_INTERVAL,
             CAM_POS,
             CAM_DRIVER);
 
@@ -169,7 +178,7 @@ UAVController::UAVController()
 // =========================================================================
 
 void UAVController::run() {
-    cout << "[DEBUG] " << "Simulation now running" << endl;
+    int run_timer = 0;
 
     try {
         bool running = true;
@@ -204,6 +213,9 @@ void UAVController::run() {
         if(USE_NETWORK && !OTHER_SIM_ENDED)
             Network::sendMessageStart();
 
+		Output::Instance().WriteColumnName();
+		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_STARTED, -1, -1, -1);
+
         // log the scenario beginning
         Output::Instance().WriteTick();
         Output::Instance().Write("Simulation started: ");
@@ -232,6 +244,15 @@ void UAVController::run() {
                 MILLISECONDS = MILLISECONDS % 1000;
                 MINUTES += SECONDS / 60;
                 SECONDS = SECONDS % 60;
+
+				// pause the simulation every 6 seconds to let the tester
+				// fill out a questionaire
+				//run_timer += (now - then);
+				//if (run_timer >= 6 * 1000) {
+				//	Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
+				//	simulation_paused = true;
+				//	run_timer = 0;
+				//}
 
                 f32 time = (f32)(now - then) * .001f;
                 then = now;
@@ -282,6 +303,8 @@ void UAVController::run() {
                     win1->force_render();
             }
         }
+
+		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_ENDED, -1, -1, -1);
 
         // log the scenario ending
         Output::Instance().WriteTick();
@@ -420,11 +443,6 @@ void UAVController::network_update(Packet * pkt)
     {
         SimCamButtonPacket * p = (SimCamButtonPacket *)pkt->data;
         static_cast<CamWindow *>(win2)->send_cam_message(p->objectID, p->type);
-    }
-    else if(pkt->data[0] == SIM_SARA_CAM)
-    {
-        SimSaraCamPacket * p = (SimSaraCamPacket *)pkt->data;
-        static_cast<CamWindow *>(win2)->send_sara_cam_message(p->objectID, p);
     }
 }
 
@@ -772,6 +790,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
     float pos_y;
     float pos_z;
     bool has_feature = true;
+	bool indicated = true;
 
     bool end = false;
     while(!end && reader->read()) {
@@ -797,12 +816,18 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
             else if(stringw(L"bool") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 stringc value = reader->getAttributeValue(stringw(L"value").c_str());
-                if(stringw(L"Feature") == name) {
-                    if     (stringc("True") == value) has_feature = true;
-                    else if(stringc("true") == value) has_feature = true;
-                    else if(stringc("False") == value) has_feature = false;
-                    else if(stringc("false") == value) has_feature = false;
-                };
+                if (stringw(L"Feature") == name) {
+                    if (stringc("True") == value) 
+                        has_feature = true;
+                    else if(stringc("False") == value) 
+                        has_feature = false;
+                }
+                else if (stringw(L"Indicated") == name) {
+                    if (stringc("True") == value)
+                        indicated = true;
+                    else if (stringc("False") == value)
+                        indicated = false;
+                }
             }
             break;
         }
@@ -1055,6 +1080,22 @@ void UAVController::load_config() {
                 cout << "NAV_RESOLUTION: " << str_val << endl;
                 rv = true;
             }
+            else if (var == "NAV_WIDTH") {
+                if (!(in >> int_val)) {
+                    error = true; 
+                    break;
+                }
+                NAV_WIDTH = int_val;
+                cout << "NAV_WIDTH: " << NAV_WIDTH << "\n";
+            }
+            else if (var == "NAV_HEIGHT") {
+                if (!(in >> int_val)) {
+                    error = true; 
+                    break;
+                }
+                NAV_HEIGHT = int_val;
+                cout << "NAV_HEIGHT: " << NAV_HEIGHT << "\n";
+            }
             else if(var == "NAV_DRIVER") {
                 if(!(in >> str_val)) {error = true; break;}
                 if(str_val == "OPENGL")         NAV_DRIVER = EDT_OPENGL;
@@ -1076,14 +1117,38 @@ void UAVController::load_config() {
                 cout << "NAV_POS_Y: " << f_val << endl;
                 rv = true;
             } 
-            else if(var == "CAM_RESOLUTION") {
-                if(!(in >> str_val)) {error = true; break;}
-                if     (str_val == "1024x768")  CAM_RESOLUTION = R1024X768;
-                else if(str_val == "1152x864")  CAM_RESOLUTION = R1152X864;
-                else if(str_val == "2560x1600") CAM_RESOLUTION = R2560X1600;
-                cout << "CAM_RESOLUTION: " << str_val << endl;
-                rv = true;
-            } 
+            //else if(var == "CAM_RESOLUTION") {
+            //    if(!(in >> str_val)) {error = true; break;}
+            //    if     (str_val == "1024x768")  CAM_RESOLUTION = R1024X768;
+            //    else if(str_val == "1152x864")  CAM_RESOLUTION = R1152X864;
+            //    else if(str_val == "2560x1600") CAM_RESOLUTION = R2560X1600;
+            //    cout << "CAM_RESOLUTION: " << str_val << endl;
+            //    rv = true;
+            //} 
+            else if (var == "CAM_WIDTH") {
+                if (!(in >> int_val)) {
+                    error = true; 
+                    break;
+                }
+                CAM_WIDTH = int_val;
+                cout << "CAM_WIDTH: " << CAM_WIDTH << "\n";
+            }
+            else if (var == "CAM_HEIGHT") {
+                if (!(in >> int_val)) {
+                    error = true;
+                    break;
+                }
+                CAM_HEIGHT = int_val;
+                cout << "CAM_HEIGHT: " << CAM_HEIGHT << "\n";
+            }
+            else if (var == "CAM_INTERVAL") {
+                if (!(in >> int_val)) {
+                    error = true;
+                    break;
+                }
+                CAM_INTERVAL = int_val;
+                cout << "CAM_INTERVAL: " << CAM_INTERVAL << "\n";
+            }
             else if(var == "CAM_DRIVER") {
                 if(!(in >> str_val)) {error = true; break;}
                 if(str_val == "OPENGL")         CAM_DRIVER = EDT_OPENGL;

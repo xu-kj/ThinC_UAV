@@ -460,3 +460,13 @@ void UAVObject::writeSummary() {
 void UAVObject::send_cam_message(int i) { 
 	cam_ptr->cam_message(i); 
 }
+
+void UAVObject::activate_audio_alert()
+{
+	// audio
+}
+
+void UAVObject::activate_video_alert()
+{
+	// video
+}
