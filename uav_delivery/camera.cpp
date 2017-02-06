@@ -655,7 +655,8 @@ bool UAVCamera::button_click(position2di cursor)
             Output::Instance().WriteTick();
             Output::Instance().WriteLine(output);
             
-            buttons_on = false;
+            // buttons_on = false;
+            cam_message(1);
 
             buttonClicked = 2;
             btnPositive->click(win->device());
@@ -671,7 +672,8 @@ bool UAVCamera::button_click(position2di cursor)
             Output::Instance().WriteTick();
             Output::Instance().WriteLine(output);
             
-            buttons_on = false;
+            // buttons_on = false;
+            cam_message(1);
 
             buttonClicked = 3;
             btnNegative->click(win->device());
@@ -687,7 +689,8 @@ bool UAVCamera::button_click(position2di cursor)
             Output::Instance().WriteTick();
             Output::Instance().WriteLine(output);
             
-            buttons_on = false;
+            // buttons_on = false;
+            cam_message(1);
 
             buttonClicked = 2;
             btnUnsure->click(win->device());
