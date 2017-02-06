@@ -3,22 +3,6 @@ Updating the Irrlicht UAV project
 
 Currently the two version of the project are very similar to each other, almost identical. This is
 to make the UAV project be consistent over time, and easier to be updated or modified in the future.
-Here are the unique features of each version:
-
------------------------------------------------------
-
-1. make scenario
-3. modify events
-4. trigger events at certain time/by trigger
-   highlight button/ make sound
-5. check response upon events
-
--------------------------------------------
-
-1. light up 5 secs in advance
-2. stop at target, with timeout = 30s
-3. visual alarm lasts 3 secs, dims after click
-4. delete not sure button, set no_response action
 
 ---------------------------------------------
 
