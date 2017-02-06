@@ -43,7 +43,7 @@ Package Delivery
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
 * [ ] cross model matching (fixed light level, change volumne)
-* [ ] (light 5 secs in advance)
+* [ ] ~~light 5 secs in advance~~, deprecated
 * [ ] stop at target, wait for response, timeout = 30s
 * [ ] visual alarm lasts 3 sec, dims after click
 * [ ] visual alarm and audio alarm on a time scale

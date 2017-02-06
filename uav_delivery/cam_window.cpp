@@ -62,7 +62,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  false, 
                                  driver, 
                                  std::make_pair(_cam_width * 3 + _cam_interval * 2, 
-												_cam_height * 2 + _cam_interval * 1), 
+												_cam_height * 3 + _cam_interval * 2), 
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
@@ -85,8 +85,10 @@ bool CamWindow::load() {
     if (!UAVWindow::load())
         return false;
 
+	cams.resize(9);
     for (int i = 0; i < 3; ++i)
         for (int j = 0; j < 3; ++j) {
+			// std::cout << i << " " << j << "\n";
             cams[i * 3 + j] = 
                 new UAVCamera(position2di((CAM_SIZE_X + CAM_INTERVAL) * j, 
                                           (CAM_SIZE_Y + CAM_INTERVAL) * i), 

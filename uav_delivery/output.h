@@ -96,7 +96,7 @@ private:
     void WriteHeader(E_OUTPUT file, const irr::core::stringw &file_path);
     bool CreateOutputDirectory(const irr::core::stringw &dir);
 
-    static std::fstream files[22];
+    static std::fstream files[OUTPUT_COUNT];
     static irr::core::stringc filenames[];
 };
 

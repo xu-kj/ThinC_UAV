@@ -279,9 +279,9 @@ void UAVCamera::load_buttons()
             pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 2 - 3,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
-        button_target,
-        button_target,
-        button_target_down);
+        button_light,
+        button_light,
+        button_light_off);
 
 	a_indicator = new UAVButton(
         rect2di(
@@ -289,9 +289,9 @@ void UAVCamera::load_buttons()
             pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
-        button_target,
-        button_target,
-        button_target_down);
+        button_light,
+        button_light,
+        button_light_off);
 }
 
 void UAVCamera::set_uav(UAVObject * uav_, IrrlichtDevice * device)

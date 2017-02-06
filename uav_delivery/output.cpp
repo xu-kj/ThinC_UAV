@@ -26,7 +26,7 @@ static const char *UAV_EVENT_TEXT[UAV_EVENT::EVENT_COUNT] = {
 };
 
 const wchar_t * const LOG_FOLDER = L"..\\results\\";
-fstream Output::files[22];
+fstream Output::files[OUTPUT_COUNT];
 stringc Output::filenames[] = {
     "log",
     "uav1",
@@ -49,7 +49,8 @@ stringc Output::filenames[] = {
     "uav9_table",
     "uav_table",
     "events",
-    "chat"
+    "chat",
+	"combined_log"
 };
 
 void Output::StartLog()

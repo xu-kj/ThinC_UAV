@@ -139,6 +139,8 @@ UAVController::UAVController()
 
     try {
         // create the windows
+		// cout << "uavs: " << uavs.size() << "\n";
+
         win1 = new NavWindow(&wps, &bases, &uavs, &ufos, &events,
             NAV_WIDTH,
             NAV_HEIGHT,
