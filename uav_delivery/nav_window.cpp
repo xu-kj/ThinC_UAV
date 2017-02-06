@@ -220,10 +220,10 @@ void NavWindow::triggerEvent(Event * e)
 				chat.add_text(e->get_text(), CHAT_EVENT_COLOR);
 				break;
 			case AUDIO_ALERT:
-				(*uav_it)->activate_audio_alert();
+				(*uav_it)->send_cam_message(4);
 				break;
 			case VIDEO_ALERT:
-				(*uav_it)->activate_video_alert();
+				(*uav_it)->send_cam_message(2);
 				break;
 
 			default:

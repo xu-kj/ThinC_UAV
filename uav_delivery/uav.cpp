@@ -63,6 +63,8 @@ UAVObject::UAVObject(const strw &name,
         light = HIGH;
     }
 
+    speed = SPEED_FACTOR;
+
     start_position = position;
     facing = irr::core::vector3df(1,0,1);
     light_override = false;
@@ -163,6 +165,8 @@ void UAVObject::update(irr::f32 time) {
             wps.front()->setSighted(this);
 
             send_cam_message(0);
+
+            speed = 0;
 
             Output::Instance().WriteTick();
             Output::Instance().Write(getName());
@@ -459,14 +463,4 @@ void UAVObject::writeSummary() {
 
 void UAVObject::send_cam_message(int i) { 
 	cam_ptr->cam_message(i); 
-}
-
-void UAVObject::activate_audio_alert()
-{
-	// audio
-}
-
-void UAVObject::activate_video_alert()
-{
-	// video
 }
