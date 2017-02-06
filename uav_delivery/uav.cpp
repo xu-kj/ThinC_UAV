@@ -158,7 +158,7 @@ void UAVObject::update(irr::f32 time) {
 		//}
 
         // decide whether the target has been reached
-        if (!target_visible && position.getDistanceFrom(cur_target) < FEATURE_VISIBLE_DIST) {
+        if (!target_visible && position.getDistanceFrom(getTarget()) < FEATURE_VISIBLE_DIST) {
             target_visible = true;
             wps.front()->setSighted(this);
 

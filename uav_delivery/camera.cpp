@@ -690,8 +690,8 @@ bool UAVCamera::button_click(position2di cursor)
             buttons_on = false;
 
             buttonClicked = 2;
-            btnPositive->click(win->device());
-            uav->setUnsure();
+            btnUnsure->click(win->device());
+            uav->setUnsure(false);
             force_render();
         }
 
