@@ -96,7 +96,7 @@ void UAVObject::update(irr::f32 time) {
 
     // move the UAV
     if (state == WP || state == BASE) {
-        position += facing * (time * SPEED_FACTOR);
+        position += facing * (time * speed);
     }
 
     // decide which target to move toward
@@ -166,8 +166,6 @@ void UAVObject::update(irr::f32 time) {
 
             send_cam_message(0);
 
-            speed = 0;
-
             Output::Instance().WriteTick();
             Output::Instance().Write(getName());
             Output::Instance().Write(" - ");
@@ -181,6 +179,8 @@ void UAVObject::update(irr::f32 time) {
             Output::Instance().WriteLine(" - waypoint visible", (E_OUTPUT)cam->get_id());
         }
         if (!target_passed && position.getDistanceFrom(getTarget()) < 10.0) {
+            speed = 0;
+
             target_passed = true;
             wps.front()->setReached(this);
         }
