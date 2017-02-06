@@ -21,16 +21,16 @@ Package Delivery
 * [x] 3 buttons: yes, no, unsure
 * [x] add event type that is associated with UAV and record response by typing on keyboard
 * [ ] add event type that comes with an audio alarm
-* [ ] add a button for UAV cam that records user’s response to the audio alarm
-* [ ] add event type that comes with a visual alarm
-* [ ] add a button for UAV cam that records user’s response to the visual alarm, dims out after click
+* [x] add a button for UAV cam that records user’s response to the audio alarm
+* [x] add event type that comes with a visual alarm
+* [x] add a button for UAV cam that records user’s response to the visual alarm, dims out after click
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
 * [ ] cross model matching (fixed light level, change volumne)
 * [ ] ~~light 5 secs in advance~~, deprecated
-* [ ] stop at target, wait for response, timeout = 30s
-* [ ] visual alarm lasts 3 sec, dims after click
-* [ ] visual alarm and audio alarm on a time scale
+* [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
+* [ ] visual alarm ~~lasts 3 sec~~, dims after click
+* [x] visual alarm and audio alarm on a time scale
 
 General Tasks
 * [ ] change UAV fly path so that it always follow the scheduled path
