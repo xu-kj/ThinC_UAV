@@ -682,7 +682,8 @@ bool UAVCamera::button_click(position2di cursor)
             if(USE_NETWORK)
                 Network::sendMessageCamButton(2, id);
             
-            buttons_on = false;
+            // buttons_on = false;
+            cam_message(1);
 
             buttonClicked = 2;
             btnPositive->click(win->device());
@@ -702,7 +703,8 @@ bool UAVCamera::button_click(position2di cursor)
             if(USE_NETWORK)
                 Network::sendMessageCamButton(3, id);
             
-            buttons_on = false;
+            // buttons_on = false;
+            cam_message(1);
 
             buttonClicked = 3;
             btnNegative->click(win->device());
