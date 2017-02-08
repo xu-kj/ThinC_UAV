@@ -53,7 +53,7 @@ UAVObject::UAVObject(const strw &name,
     const vec3d &velocity)
     : SimObject(name, position, color, asDegrees),
     fuel(1.0f), base(0), state(DONE), stats_done(false),
-    network_target(0)
+    network_target(0), stopped(false)
 {
     gps_fail = cam_fail = false;
     if(USE_LIGHT_CUES) {
@@ -95,7 +95,7 @@ void UAVObject::update(irr::f32 time) {
     // 2) cur_target  : the waypoint or base the UAV is actually MOVING toward
 
     // move the UAV
-    if (state == WP || state == BASE) {
+    if (!stopped && (state == WP || state == BASE)) {
         position += facing * (time * speed);
     }
 
@@ -179,7 +179,7 @@ void UAVObject::update(irr::f32 time) {
             Output::Instance().WriteLine(" - waypoint visible", (E_OUTPUT)cam->get_id());
         }
         if (!target_passed && position.getDistanceFrom(getTarget()) < 10.0) {
-            speed = 0;
+            stopped = true;
 
             target_passed = true;
             wps.front()->setReached(this);
@@ -250,6 +250,7 @@ void UAVObject::setConfirmed() {
         removed_wp->setConfirmed();
         wps.pop_front();
         done_wps.push_back(removed_wp);
+        stopped = false;
 
         bool correct = (removed_wp->getFeature() == true);
         if (correct) 
@@ -275,6 +276,8 @@ void UAVObject::setNotThere() {
         wps.pop_front();
         done_wps.push_back(removed_wp);
 
+        stopped = false;
+
         bool correct = (removed_wp->getFeature() == false);
         if (correct) 
             removed_wp->setDone(this, WAYPOINT_CORRECT);
@@ -298,6 +301,8 @@ void UAVObject::setUnsure(bool missed) {
         removed_wp->setUnsure();
         wps.pop_front();
         done_wps.push_back(removed_wp);
+
+        stopped = false;
 
         if (missed) 
             removed_wp->setDone(this, WAYPOINT_MISSED);

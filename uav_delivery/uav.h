@@ -82,6 +82,7 @@ private:
     int cam_id;
     UAVCamera * cam_ptr;
     double speed;
+    bool stopped;
 
     WaypointObject * getCurWP() const;
     WaypointObject * getNextWP() const;

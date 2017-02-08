@@ -509,6 +509,7 @@ void UAVController::readEventNode(IXMLReader * reader) {
     int id;
     int start_min;
     int start_sec;
+    int start_ms;
 
     bool end = false;
     while(!end && reader->read()) {
@@ -531,9 +532,11 @@ void UAVController::readEventNode(IXMLReader * reader) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 int value = reader->getAttributeValueAsInt(stringw(L"value").c_str());
 
-                if     (stringw(L"StartMin") == name) start_min = value;
-                else if(stringw(L"StartSec") == name) start_sec = value;
-                else if(stringw(L"Id")       == name) id = value;
+                if (stringw(L"StartMin") == name) start_min = value;
+                else if (stringw(L"StartSec") == name) start_sec = value;
+                else if (stringw(L"StartMs") == name)
+                    start_ms = value;
+                else if (stringw(L"Id")       == name) id = value;
             }
             break;
         }
@@ -543,6 +546,7 @@ void UAVController::readEventNode(IXMLReader * reader) {
     if(node_name != "") {
         u32 start_time = u32(start_min) * 1000 * 60;
         start_time += u32(start_sec) * 1000;
+        start_time += u32(start_ms);
 
         Event *e = new Event(node_name, text, start_time, id);
         events.push_back(e);

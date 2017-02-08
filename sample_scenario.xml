@@ -65,6 +65,7 @@
   <string name="Type" value="TICK" />
   <int name="StartMin" value="0" />
   <int name="StartSec" value="0" />
+  <int name="StartMs" value="0" />
   <int name="Id" value="1" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
