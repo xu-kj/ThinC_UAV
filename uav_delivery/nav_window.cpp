@@ -219,12 +219,19 @@ void NavWindow::triggerEvent(Event * e)
 				output += "\"";
 				chat.add_text(e->get_text(), CHAT_EVENT_COLOR);
 				break;
+
 			case AUDIO_ALERT:
 				(*uav_it)->send_cam_message(4);
 				break;
+            case AUDIO_ALERT_OFF:
+                (*uav_it)->send_cam_message(5);
+                break;
 			case VIDEO_ALERT:
 				(*uav_it)->send_cam_message(2);
 				break;
+            case VIDEO_ALERT_OFF:
+                (*uav_it)->send_cam_message(3);
+                break;
 
 			default:
 				break;

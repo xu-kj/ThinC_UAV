@@ -66,6 +66,8 @@ UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow *
     zooming_in(false), zooming(false), button_clicked(false),
     auto_light(false), buttons_on(false), staticOn(true)
 {
+    v_alert_on = false;
+    a_alert_on = false;
     this->cam_size_x = cam_size.first;
     this->cam_size_y = cam_size.second;
 
@@ -698,12 +700,16 @@ bool UAVCamera::button_click(position2di cursor)
             force_render();
         }
 
-		if (v_indicator->is_mouse_over(cursor) && buttons_on) {
-
+		if (v_indicator->is_mouse_over(cursor) && v_alert_on) {
+            cam_message(3);
+            // v_indicator->click(win->device());
+            force_render();
 		}
 
-		if (a_indicator->is_mouse_over(cursor) && buttons_on) {
-			
+		if (a_indicator->is_mouse_over(cursor) && a_alert_on) {
+			cam_message(5);
+            // a_indicator->click(win->device());
+            force_render();
 		}
     }
     else {
@@ -787,32 +793,34 @@ void UAVCamera::cam_message(int message) {
         case 0:
             // turn on buttons when close to target
             buttons_on = true;
-            set_indicator_status(true);
+            set_indicator(true);
 			// indicator->set_highlighted(true);
             set_light_level = 3;
             break;
         case 1:
             // turn off buttons after getting away
             buttons_on = false;
-            set_indicator_status(false);
+            set_indicator(false);
 			// indicator->set_highlighted(false);
             set_light_level = 1;
             break;
         case 2:
             // turn on visual alarm
-
+            v_alert_on = true;
+            set_video_alert(true);
             break;
         case 3:
             // turn off visual alarm
-            
+            v_alert_on = false;
+            set_video_alert(false);
             break;
 		case 4:
 			// turn on audio alarm
-
+            set_audio_alert(true);
 			break;
 		case 5:
 			// turn off audio alarm
-
+            set_audio_alert(false);
 			break;
         case 7:
             if(USE_LIGHT_CUES) {
@@ -858,7 +866,7 @@ void UAVCamera::cam_message(int message) {
 	force_render();
 }
 
-bool UAVCamera::set_indicator_status(bool status) 
+bool UAVCamera::set_indicator(bool status) 
 {
 	if (indicator != nullptr) {
 		indicator->set_highlighted(status);
@@ -867,4 +875,39 @@ bool UAVCamera::set_indicator_status(bool status)
 	else {
 		return false;
 	}
+}
+
+bool UAVCamera::set_video_alert(bool status) 
+{
+    if (v_indicator != nullptr) {
+        if (!v_alert_on && status == true) {
+            v_alert_on = true;
+            v_indicator->set_highlighted(status);
+        }
+        else if (v_alert_on && status == false) {
+            v_alert_on = false;
+            v_indicator->set_highlighted(status);   
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool UAVCamera::set_audio_alert(bool status) 
+{
+    if (a_indicator != nullptr) {
+        if (!a_alert_on && status == true) {
+            a_alert_on = true;
+            a_indicator->set_highlighted(status);
+        }
+        else if (a_alert_on && status == false) {
+            a_alert_on = false;
+            a_indicator->set_highlighted(status);   
+        }
+    }
+    else {
+        return false;
+    }
 }

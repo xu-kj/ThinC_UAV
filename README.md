@@ -31,7 +31,7 @@ Package Delivery
 * [ ] cross model matching (fixed light level, change volumne)
 * [ ] ~~light 5 secs in advance~~, deprecated
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
-* [ ] visual alarm ~~lasts 3 sec~~, dims after click
+* [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
 
 General Tasks

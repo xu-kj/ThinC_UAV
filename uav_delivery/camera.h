@@ -117,13 +117,19 @@ private:
     bool zooming_in;
     bool zooming;
 
+    bool v_alert_on;
+    bool a_alert_on;
+
     CamWindow * win;
 
     // added with version 3
     E_LIGHT_LEVEL light_level;
     bool buttons_on;
     // return true if there's an indicator
-    bool set_indicator_status(bool status);
+    bool set_indicator(bool status);
+    // return true if there's the corresponding alarm button
+    bool set_video_alert(bool status);
+    bool set_audio_alert(bool status);
 
     bool staticOn;
     float timeSinceLastStatic;

@@ -514,9 +514,9 @@ void UAVController::readEventNode(IXMLReader * reader) {
     bool end = false;
     while(!end && reader->read()) {
         stringw nodeName = reader->getNodeName();
-        switch(reader->getNodeType()) {
+        switch (reader->getNodeType()) {
         case EXN_ELEMENT_END:
-            if(stringw(L"event") == nodeName)
+            if (stringw(L"event") == nodeName)
                 end = true;
             break;
 
@@ -524,8 +524,10 @@ void UAVController::readEventNode(IXMLReader * reader) {
             if(stringw(L"string") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 stringc value = reader->getAttributeValue(stringw(L"value").c_str());
-                if     (stringw(L"Type") == name) node_name = value;
-                else if(stringw(L"Text") == name) text = value;
+                if (stringw(L"Type") == name) 
+                    node_name = value;
+                else if (stringw(L"Text") == name) 
+                    text = value;
             }
 
             else if(stringw(L"int") == nodeName) {
@@ -551,6 +553,17 @@ void UAVController::readEventNode(IXMLReader * reader) {
         Event *e = new Event(node_name, text, start_time, id);
         events.push_back(e);
         cout << "Loaded Event \"" << node_name.c_str() << "\" [" << start_time << "]" << endl;
+
+        if (node_name == "VIDEO_ALERT" ) {
+            start_time += u32(3) * 1000;
+            Event *e = new Event("VIDEO_ALERT_OFF", text, start_time, id);
+            events.push_back(e);
+        }
+        else if (node_name == "AUDIO_ALERT") {
+            start_time += u32(3) * 1000;
+            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time, id);
+            events.push_back(e);
+        }
     }
 }
 
