@@ -23,6 +23,7 @@ bool USE_GPS_FAIL = true;
 
 irr::video::SColor getColorFromId(irr::s32 id)
 {
+	/*
     switch(id)
     {
     case 1: return COLOR1;
@@ -35,6 +36,8 @@ irr::video::SColor getColorFromId(irr::s32 id)
     case 8: return COLOR8;
     default: return COLOR9;
     }
+	*/
+	return COLOR1;
 }
 
 NavWindow::NavWindow(std::list<WaypointObject *> * wps_,

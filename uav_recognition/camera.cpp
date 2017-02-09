@@ -155,8 +155,10 @@ void UAVCamera::load_images(IrrlichtDevice * device)
         //outline->setTexture(driver->getTexture("cam_outline_2560_small.png"));
     }
     else {
-        outline = new GUIImage(rect<s32>(0,0,512,256), device, guiElmRoot);
-        outline->setTexture(driver->getTexture("cam_outline.png"));
+        /*outline = new GUIImage(rect<s32>(0,0,780,475), device, guiElmRoot);*/
+        //outline->setTexture(driver->getTexture("cam_outline.png"));
+		outline = new GUIImage(rect<s32>(0,0,692,990), device, guiElmRoot);
+		outline->setTexture(driver->getTexture("cam_outline_2560.png"));
 
         rect<s32> r(
             0,
@@ -682,8 +684,7 @@ bool UAVCamera::button_click(position2di cursor)
             if(USE_NETWORK)
                 Network::sendMessageCamButton(2, id);
             
-            // buttons_on = false;
-            cam_message(1);
+            buttons_on = false;
 
             buttonClicked = 2;
             btnPositive->click(win->device());
@@ -703,8 +704,7 @@ bool UAVCamera::button_click(position2di cursor)
             if(USE_NETWORK)
                 Network::sendMessageCamButton(3, id);
             
-            // buttons_on = false;
-            cam_message(1);
+            buttons_on = false;
 
             buttonClicked = 3;
             btnNegative->click(win->device());

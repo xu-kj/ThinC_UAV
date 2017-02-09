@@ -15,8 +15,8 @@ Target Recognition
 * [x] add property for waypoint (bool Target, bool Indicated)
 * [x] record all buttons’ reactions in one file, time indicator triggered and button clicked
 * [x] change to 6 cams and add intervals between cams
-* [ ] camera screen lights up with the indicator
-* [ ] change camera screen frame to the same color
+* [x] camera screen lights up with the indicator
+* [x] change camera screen frame to the same color
 
 Package Delivery
 * [x] cam_window light level auto changes up arriving target location
@@ -33,7 +33,9 @@ Package Delivery
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
-* [ ] lower altitude after clicking yes
+* [x] lower altitude after clicking yes
+* [ ] record alarm miss
+* [ ] record user waypoint reactions' correctness
 
 General Tasks
 * [ ] change UAV fly path so that it always follow the scheduled path

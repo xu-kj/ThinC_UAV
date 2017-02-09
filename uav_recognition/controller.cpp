@@ -251,7 +251,7 @@ void UAVController::run() {
 				// pause the simulation every 6 seconds to let the tester
 				// fill out a questionaire
 				run_timer += (now - then);
-				if (run_timer >= 6 * 1000) {
+				if (run_timer >= 6 * 60 * 1000) {
 					Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
 					simulation_paused = true;
 					run_timer = 0;
