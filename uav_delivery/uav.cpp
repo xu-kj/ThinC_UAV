@@ -53,7 +53,7 @@ UAVObject::UAVObject(const strw &name,
     const vec3d &velocity)
     : SimObject(name, position, color, asDegrees),
     fuel(1.0f), base(0), state(DONE), stats_done(false),
-    network_target(0), stopped(false)
+    network_target(0), stopped(false), deliver(false)
 {
     gps_fail = cam_fail = false;
     if(USE_LIGHT_CUES) {
@@ -98,6 +98,24 @@ void UAVObject::update(irr::f32 time) {
     if (!stopped && (state == WP || state == BASE)) {
         position += facing * (time * speed);
     }
+
+	if (stopped) {
+		cout << "alt: " << alt << ", pos.y: " << position.Y << ", f_alt: " << f_alt << endl;
+		if (deliver && position.Y > alt) {
+			position.Y -= 0.5;
+			if (position.Y <= alt)
+				deliver = false;
+		}
+		else if (!deliver && position.Y < f_alt) {
+			position.Y += 0.5;
+			if (position.Y >= f_alt) {
+				position.Y = f_alt;
+				stopped = false;
+				Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::UAV_MOVING,
+					(double) position.X, (double) position.Y, (double) position.Z);
+			}
+		}
+	}
 
     // decide which target to move toward
     vec3d cur_target;
@@ -164,7 +182,14 @@ void UAVObject::update(irr::f32 time) {
             target_visible = true;
             wps.front()->setSighted(this);
 
+			Output::Instance().RecordEvent(cam_id + 1, 
+				UAV_EVENT::INDICATOR_ON, 
+				(double) position.X, (double) position.Y, (double) position.Z);
             send_cam_message(0);
+
+			Output::Instance().RecordEvent(cam_id + 1, 
+                wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_SIGHTED : UAV_EVENT::WAYPOINT_NONTARGET_SIGHTED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
 
             Output::Instance().WriteTick();
             Output::Instance().Write(getName());
@@ -180,6 +205,14 @@ void UAVObject::update(irr::f32 time) {
         }
         if (!target_passed && position.getDistanceFrom(getTarget()) < 10.0) {
             stopped = true;
+
+			Output::Instance().RecordEvent(cam_id + 1, 
+                wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_ARRIVED : UAV_EVENT::WAYPOINT_NONTARGET_ARRIVED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
+
+			Output::Instance().RecordEvent(cam_id + 1, 
+				UAV_EVENT::UAV_STOPPED, 
+				(double) position.X, (double) position.Y, (double) position.Z);
 
             target_passed = true;
             wps.front()->setReached(this);
@@ -250,7 +283,15 @@ void UAVObject::setConfirmed() {
         removed_wp->setConfirmed();
         wps.pop_front();
         done_wps.push_back(removed_wp);
-        stopped = false;
+
+		//stopped = false;
+        deliver = true;
+		f_alt = position.Y;
+		alt = 30.0;
+
+		Output::Instance().RecordEvent(cam_id + 1, 
+			UAV_EVENT::USER_TARGET, 
+			(double) position.X, (double) position.Y, (double) position.Z);
 
         bool correct = (removed_wp->getFeature() == true);
         if (correct) 
@@ -278,6 +319,14 @@ void UAVObject::setNotThere() {
 
         stopped = false;
 
+		Output::Instance().RecordEvent(cam_id + 1, 
+			UAV_EVENT::USER_NONTARGET, 
+			(double) position.X, (double) position.Y, (double) position.Z);
+
+		Output::Instance().RecordEvent(cam_id + 1, 
+			UAV_EVENT::UAV_MOVING, 
+			(double) position.X, (double) position.Y, (double) position.Z);
+
         bool correct = (removed_wp->getFeature() == false);
         if (correct) 
             removed_wp->setDone(this, WAYPOINT_CORRECT);
@@ -303,6 +352,10 @@ void UAVObject::setUnsure(bool missed) {
         done_wps.push_back(removed_wp);
 
         stopped = false;
+
+		Output::Instance().RecordEvent(cam_id + 1, 
+			UAV_EVENT::USER_UNSURE, 
+			(double) position.X, (double) position.Y, (double) position.Z);
 
         if (missed) 
             removed_wp->setDone(this, WAYPOINT_MISSED);

@@ -22,7 +22,7 @@ Package Delivery
 * [x] cam_window light level auto changes up arriving target location
 * [x] 3 buttons: yes, no, unsure
 * [x] add event type that is associated with UAV and record response by typing on keyboard
-* [ ] add event type that comes with an audio alarm
+* [x] add event type that comes with an audio alarm
 * [x] add a button for UAV cam that records user’s response to the audio alarm
 * [x] add event type that comes with a visual alarm
 * [x] add a button for UAV cam that records user’s response to the visual alarm, dims out after click
@@ -36,6 +36,7 @@ Package Delivery
 * [x] lower altitude after clicking yes
 * [ ] record alarm miss
 * [ ] record user waypoint reactions' correctness
+* [ ] polish up audio
 
 General Tasks
 * [ ] change UAV fly path so that it always follow the scheduled path
@@ -54,5 +55,8 @@ General Tasks
 --------------------
 More about the project: ... (to be determined)
 game-like?
+
+libraries being used in the project:
+Irrlicht, irrKlang
 
 extra help: Markdown cheatsheet (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)

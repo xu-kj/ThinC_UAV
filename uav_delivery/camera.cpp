@@ -1,4 +1,5 @@
 #include "area.h"
+#include "audio.h"
 #include "camera.h"
 #include "cam_window.h"
 #include "exceptions.h"
@@ -705,14 +706,26 @@ bool UAVCamera::button_click(position2di cursor)
 		*/
 
 		if (v_indicator->is_mouse_over(cursor) && v_alert_on) {
-            cam_message(3);
+            
             // v_indicator->click(win->device());
+			Output::Instance().RecordEvent(id, UAV_EVENT::USER_ALARM_VISUAL_REACTED, 
+				(double) uav->getPosition().X, 
+				(double) uav->getPosition().Y, 
+				(double) uav->getPosition().Z);
+
+			cam_message(3);
             force_render();
 		}
 
 		if (a_indicator->is_mouse_over(cursor) && a_alert_on) {
-			cam_message(5);
+			
             a_indicator->click(win->device());
+			Output::Instance().RecordEvent(id, UAV_EVENT::USER_ALARM_AUDIO_REACTED, 
+				(double) uav->getPosition().X, 
+				(double) uav->getPosition().Y, 
+				(double) uav->getPosition().Z);
+
+			cam_message(5);
             force_render();
 		}
     }
@@ -818,6 +831,7 @@ void UAVCamera::cam_message(int message) {
             break;
 		case 4:
 			// turn on audio alarm
+			audio::ring_bell();
             set_audio_alert(true);
 			break;
 		case 5:
@@ -885,8 +899,17 @@ bool UAVCamera::set_video_alert(bool status)
         if (!v_alert_on && status == true) {
             v_alert_on = true;
             v_indicator->set_highlighted(status);
+
+			Output::Instance().RecordEvent(id, UAV_EVENT::ALARM_VISUAL_ON, 
+				(double) uav->getPosition().X, 
+				(double) uav->getPosition().Y, 
+				(double) uav->getPosition().Z);
         }
         else if (v_alert_on && status == false) {
+			Output::Instance().RecordEvent(id, UAV_EVENT::ALARM_VISUAL_OFF, 
+				(double) uav->getPosition().X, 
+				(double) uav->getPosition().Y, 
+				(double) uav->getPosition().Z);
             v_alert_on = false;
             v_indicator->set_highlighted(status);   
         }
@@ -901,10 +924,18 @@ bool UAVCamera::set_audio_alert(bool status)
 {
     if (a_indicator != nullptr) {
         if (!a_alert_on && status == true) {
+			Output::Instance().RecordEvent(id, UAV_EVENT::ALARM_AUDIO_ON, 
+				(double) uav->getPosition().X, 
+				(double) uav->getPosition().Y, 
+				(double) uav->getPosition().Z);
             a_alert_on = true;
             a_indicator->set_highlighted(status);
         }
         else if (a_alert_on && status == false) {
+			Output::Instance().RecordEvent(id, UAV_EVENT::ALARM_AUDIO_OFF, 
+				(double) uav->getPosition().X, 
+				(double) uav->getPosition().Y, 
+				(double) uav->getPosition().Z);
             a_alert_on = false;
             a_indicator->set_highlighted(status);   
         }
