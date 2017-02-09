@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="area.cpp" />
+    <ClCompile Include="button.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="cam_window.cpp" />
+    <ClCompile Include="chatbox.cpp" />
+    <ClCompile Include="cityscene_node.cpp" />
+    <ClCompile Include="config.cpp" />
+    <ClCompile Include="controller.cpp" />
+    <ClCompile Include="cue.cpp" />
+    <ClCompile Include="cue_factory.cpp" />
+    <ClCompile Include="event_receiver.cpp" />
+    <ClCompile Include="image.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="nav_console.cpp" />
+    <ClCompile Include="nav_window.cpp" />
+    <ClCompile Include="network.cpp" />
+    <ClCompile Include="output.cpp" />
+    <ClCompile Include="sara_signals.cpp" />
+    <ClCompile Include="sim_object.cpp" />
+    <ClCompile Include="tactor.cpp" />
+    <ClCompile Include="tactors_3x3.cpp" />
+    <ClCompile Include="uav.cpp" />
+    <ClCompile Include="uav_tactors.cpp" />
+    <ClCompile Include="waypoint.cpp" />
+    <ClCompile Include="window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="area.h" />
+    <ClInclude Include="array2d.h" />
+    <ClInclude Include="button.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="cam_window.h" />
+    <ClInclude Include="chatbox.h" />
+    <ClInclude Include="cityscene_node.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="controller.h" />
+    <ClInclude Include="cue.h" />
+    <ClInclude Include="cue_factory.h" />
+    <ClInclude Include="event.h" />
+    <ClInclude Include="event_receiver.h" />
+    <ClInclude Include="exceptions.h" />
+    <ClInclude Include="FastDelegate.h" />
+    <ClInclude Include="FastDelegateBind.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="image.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="nav_console.h" />
+    <ClInclude Include="nav_window.h" />
+    <ClInclude Include="network.h" />
+    <ClInclude Include="output.h" />
+    <ClInclude Include="random.h" />
+    <ClInclude Include="sara_signals.h" />
+    <ClInclude Include="sim_object.h" />
+    <ClInclude Include="tactor.h" />
+    <ClInclude Include="tactors_3x3.h" />
+    <ClInclude Include="target_struct.h" />
+    <ClInclude Include="uav.h" />
+    <ClInclude Include="uav_tactors.h" />
+    <ClInclude Include="ufo.h" />
+    <ClInclude Include="waypoint.h" />
+    <ClInclude Include="window.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{03E7F60E-A44A-43C0-8693-2AFED89190C5}</ProjectGuid>
+    <RootNamespace>UAVSimRemake</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>UAV Sim Remake</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>C:\Simulation Dependencies\IrrlichtSource1.5Mod\include;C:\Simulation Dependencies\RakNet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Irrlicht.lib;RakNetLibStatic.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Simulation Dependencies\IrrlichtSource1.5Mod\lib\Win32-visualstudio;C:\Simulation Dependencies\RakNet\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
