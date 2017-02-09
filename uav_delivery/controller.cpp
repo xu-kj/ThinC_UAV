@@ -275,6 +275,9 @@ void UAVController::run() {
                     for (ufo_it = ufos.begin(); ufo_it != ufos.end(); ufo_it++)
                         (*ufo_it)->update(time);
                     for (e_it = events.begin(); e_it != events.end(); e_it++) {
+						//cout << "time: " << MINUTES * 1000 * 60 + SECONDS * 1000 + MILLISECONDS << endl;
+						//cout << "event start time: " << (*e_it)->get_start_time() << endl;
+						//cout << "event: " << (*e_it)->activate() << endl;
                         if((*e_it)->activate()) {
                             broadcastEvent(*e_it);
                             ((NavWindow *)win1)->triggerEvent(*e_it);
@@ -507,9 +510,9 @@ void UAVController::readEventNode(IXMLReader * reader) {
     stringc text;
 
     int id;
-    int start_min;
-    int start_sec;
-    int start_ms;
+    int start_min = 0;
+    int start_sec = 0;
+    int start_ms = 0;
 
     bool end = false;
     while(!end && reader->read()) {

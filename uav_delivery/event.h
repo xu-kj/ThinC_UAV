@@ -27,7 +27,7 @@ public:
 			this->type = UAV_EVENT_E::VIDEO_ALERT;
         else if (type == "VIDEO_ALERT_OFF")
             this->type = UAV_EVENT_E::VIDEO_ALERT_OFF;
-		else if (type == "AUDIO ALERT")
+		else if (type == "AUDIO_ALERT")
 			this->type = UAV_EVENT_E::AUDIO_ALERT;
         else if (type == "AUDIO_ALERT_OFF")
             this->type = UAV_EVENT_E::AUDIO_ALERT_OFF;
@@ -37,7 +37,7 @@ public:
 
     bool activate() {
         //if(!activated && start_time < TICKS)
-        irr::u32 time = MINUTES * 1000 * 60 + SECONDS * 1000;
+        irr::u32 time = MINUTES * 1000 * 60 + SECONDS * 1000 + MILLISECONDS;
         if(!activated && start_time < time) {
             activated = true;
             return true;

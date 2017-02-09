@@ -265,6 +265,7 @@ void UAVCamera::load_buttons()
         button_x,
         button_x_down);
 
+	/*
 	btnUnsure = new UAVButton(
         rect2di(
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
@@ -274,6 +275,7 @@ void UAVCamera::load_buttons()
         button_unsure,
         button_unsure,
         button_unsure_down);
+	*/
 
     v_indicator = new UAVButton(
         rect2di(
@@ -350,7 +352,7 @@ void UAVCamera::draw_overlay(IrrlichtDevice * device) {
 
     btnPositive->draw();
     btnNegative->draw();
-    btnUnsure->draw();
+    //btnUnsure->draw();
 	v_indicator->draw();
 	a_indicator->draw();
 }
@@ -683,8 +685,9 @@ bool UAVCamera::button_click(position2di cursor)
             force_render();
         }
 
+		/*
 		// confirm button
-        if(btnUnsure->is_mouse_over(cursor) && buttons_on/* && uav->activeButtons()*/)
+        if(btnUnsure->is_mouse_over(cursor) && buttons_on)
         {
             stringw output = uav->getName();
             output += " - unsure button clicked";
@@ -699,6 +702,7 @@ bool UAVCamera::button_click(position2di cursor)
             uav->setUnsure(false);
             force_render();
         }
+		*/
 
 		if (v_indicator->is_mouse_over(cursor) && v_alert_on) {
             cam_message(3);
@@ -708,7 +712,7 @@ bool UAVCamera::button_click(position2di cursor)
 
 		if (a_indicator->is_mouse_over(cursor) && a_alert_on) {
 			cam_message(5);
-            // a_indicator->click(win->device());
+            a_indicator->click(win->device());
             force_render();
 		}
     }
@@ -733,7 +737,7 @@ bool UAVCamera::need_render()
     bool redraw =
         btnPositive->is_in_click(win->device()) ||
         btnNegative->is_in_click(win->device()) ||
-        btnUnsure->is_in_click(win->device())   ||
+        //btnUnsure->is_in_click(win->device())   ||
 		v_indicator->is_in_click(win->device()) ||
 		a_indicator->is_in_click(win->device());
     return redraw && need_update;
@@ -806,12 +810,10 @@ void UAVCamera::cam_message(int message) {
             break;
         case 2:
             // turn on visual alarm
-            v_alert_on = true;
             set_video_alert(true);
             break;
         case 3:
             // turn off visual alarm
-            v_alert_on = false;
             set_video_alert(false);
             break;
 		case 4:

@@ -33,6 +33,7 @@ Package Delivery
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
+* [ ] lower altitude after clicking yes
 
 General Tasks
 * [ ] change UAV fly path so that it always follow the scheduled path
