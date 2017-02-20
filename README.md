@@ -17,6 +17,8 @@ Target Recognition
 * [x] change to 6 cams and add intervals between cams
 * [x] camera screen lights up with the indicator
 * [x] change camera screen frame to the same color
+* [ ] change the indicator button to be a trigger that lights up the screen
+* [ ] show question and buttons for answers at pause
 
 Package Delivery
 * [x] cam_window light level auto changes up arriving target location
@@ -28,7 +30,7 @@ Package Delivery
 * [x] add a button for UAV cam that records user’s response to the visual alarm, dims out after click
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
-* [ ] cross model matching (fixed light level, change volumne)
+* [ ] cross model matching (fixed light level, change volumne), repeat until enter is hit
 * [ ] ~~light 5 secs in advance~~, deprecated
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click

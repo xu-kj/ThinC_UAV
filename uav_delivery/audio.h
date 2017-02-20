@@ -4,9 +4,9 @@
 #include "include/irrKlang.h"
 
 namespace audio {
-	extern irrklang::ISoundEngine* audio;
+	//extern irrklang::ISoundEngine* audio;
 	void initialize_audio();
-	void ring_bell();
+	void play_drone_alarm(int i);
 	void drop_engine();
 }
 

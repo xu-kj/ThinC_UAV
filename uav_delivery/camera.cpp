@@ -68,7 +68,7 @@ UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow *
     auto_light(false), buttons_on(false), staticOn(true)
 {
     v_alert_on = false;
-    a_alert_on = false;
+    a_alert_on = true;
     this->cam_size_x = cam_size.first;
     this->cam_size_y = cam_size.second;
 
@@ -831,7 +831,7 @@ void UAVCamera::cam_message(int message) {
             break;
 		case 4:
 			// turn on audio alarm
-			audio::ring_bell();
+			audio::play_drone_alarm((int) this->id);
             set_audio_alert(true);
 			break;
 		case 5:
@@ -928,16 +928,16 @@ bool UAVCamera::set_audio_alert(bool status)
 				(double) uav->getPosition().X, 
 				(double) uav->getPosition().Y, 
 				(double) uav->getPosition().Z);
-            a_alert_on = true;
-            a_indicator->set_highlighted(status);
+            //a_alert_on = true;
+            //a_indicator->set_highlighted(status);
         }
         else if (a_alert_on && status == false) {
 			Output::Instance().RecordEvent(id, UAV_EVENT::ALARM_AUDIO_OFF, 
 				(double) uav->getPosition().X, 
 				(double) uav->getPosition().Y, 
 				(double) uav->getPosition().Z);
-            a_alert_on = false;
-            a_indicator->set_highlighted(status);   
+            //a_alert_on = false;
+            //a_indicator->set_highlighted(status);   
         }
     }
     else {
