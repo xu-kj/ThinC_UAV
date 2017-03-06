@@ -39,6 +39,13 @@ Package Delivery
 * [ ] record alarm miss
 * [ ] record user waypoint reactions' correctness
 * [ ] polish up audio
+* [ ] change all camera windows' borders to the same blue color
+* [ ] (TBD) change video/audio response buttons into one single reaction button
+* [ ] (VA_1) add a border with numbers as video alarm, display numbers
+* [ ] (VA_2) change video alarm button to show number in all 9 camera boxes, use keyboard as input
+* [ ] show uav number/index in each one's camera boxes
+* [ ] (texture) change target model into delivery pad
+* [ ] (texture) update map, to make map look more like urban streets
 
 General Tasks
 * [ ] change UAV fly path so that it always follow the scheduled path
