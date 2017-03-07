@@ -18,6 +18,7 @@
     <ClCompile Include="cam_window.cpp" />
     <ClCompile Include="chatbox.cpp" />
     <ClCompile Include="cityscene_node.cpp" />
+    <ClCompile Include="color.cpp" />
     <ClCompile Include="config.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="cue.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="cam_window.h" />
     <ClInclude Include="chatbox.h" />
     <ClInclude Include="cityscene_node.h" />
+    <ClInclude Include="color.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="cue.h" />
