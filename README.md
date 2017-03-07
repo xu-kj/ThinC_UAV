@@ -27,7 +27,7 @@ Package Delivery
 * [x] add a button for UAV cam that records user’s response to the visual alarm, dims out after click
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
-* [ ] cross model matching (fixed light level, change volumne), repeat until enter is hit
+* [x] cross model matching (fixed light level, change volumne), repeat until enter is hit
 * [ ] light up and enable buttons only when the UAV stops
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
