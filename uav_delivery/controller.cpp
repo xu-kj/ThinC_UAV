@@ -1,9 +1,10 @@
+#include "controller.h"
+#include "audio.h"
 #include "color.h"
 #include "cam_window.h"
 #include "nav_window.h"
 #include "cityscene_node.h"
 #include "config.h"
-#include "controller.h"
 #include "network.h"
 #include "output.h"
 #include "random.h"
@@ -173,6 +174,8 @@ void UAVController::run() {
     try {
         bool running = true;
         bool started = false;
+
+		audio::play_test_sound();
 
         // keep the model paused until the user starts
         while(!started && running && !OTHER_SIM_ENDED) {

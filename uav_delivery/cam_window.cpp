@@ -1,4 +1,5 @@
 #include "cam_window.h"
+#include "audio.h"
 #include "nav_window.h"
 #include "globals.h"
 #include "sara_signals.h"
@@ -166,9 +167,10 @@ void CamWindow::draw() {
             x->draw_overlay(device());
     }
 
+	// update instructions for x-model fitting
     // draw the start instructions
-    if (!started)
-        start_overlay->draw();
+    //if (!started)
+    //    start_overlay->draw();
 
     driver()->endScene();
 }
@@ -266,33 +268,45 @@ void CamWindow::event_key_down(wchar_t key) {
             // toggleFullScreen = true;
     }
 
+	if (!started && event_recv->IsKeyDown(irr::KEY_UP)
+		&& !event_recv->IsKeyDown(irr::KEY_DOWN)) {
+		audio::increaseEngineVolume(0.10);
+		audio::play_test_sound();
+	}
+
+	if (!started && event_recv->IsKeyDown(irr::KEY_DOWN)
+		&& !event_recv->IsKeyDown(irr::KEY_UP)) {
+		audio::decreaseEngineVolume(0.05);
+		audio::play_test_sound();
+	}
+
 	if (started) {
-			if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
-				cams[0]->cam_message(11);
-			}
-			else if (cams[1] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
-				cams[1]->cam_message(11);
-			}
-			else if (cams[2] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
-				cams[2]->cam_message(11);
-			}
-			else if (cams[3] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
-				cams[3]->cam_message(11);
-			}
-			else if (cams[4] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
-				cams[4]->cam_message(11);
-			}
-			else if (cams[5] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
-				cams[5]->cam_message(11);
-			}
-			else if (cams[6] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
-				cams[6]->cam_message(11);
-			}
-			else if (cams[7] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
-				cams[7]->cam_message(11);
-			}
-			else if (cams[8] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
-				cams[8]->cam_message(11);
-			}
+		if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
+			cams[0]->cam_message(11);
+		}
+		else if (cams[1] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
+			cams[1]->cam_message(11);
+		}
+		else if (cams[2] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
+			cams[2]->cam_message(11);
+		}
+		else if (cams[3] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
+			cams[3]->cam_message(11);
+		}
+		else if (cams[4] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
+			cams[4]->cam_message(11);
+		}
+		else if (cams[5] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
+			cams[5]->cam_message(11);
+		}
+		else if (cams[6] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
+			cams[6]->cam_message(11);
+		}
+		else if (cams[7] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
+			cams[7]->cam_message(11);
+		}
+		else if (cams[8] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
+			cams[8]->cam_message(11);
+		}
 	}
 }
