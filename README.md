@@ -1,9 +1,6 @@
 # ThinC_UAV
 Updating the Irrlicht UAV project
 
-Currently the two version of the project are very similar to each other, almost identical. This is
-to make the UAV project be consistent over time, and easier to be updated or modified in the future.
-
 ---------------------------------------------
 
 ThinC Lab UAV Project TODO list:
