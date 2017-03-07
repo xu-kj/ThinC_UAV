@@ -1,0 +1,348 @@
+<!-- UAV Scenario created with the UAV Simulation Editor -->
+<!-- THInC Lab, University of Michigan -->
+<?xml version="1.0"?>
+
+<!-- UAV 1 -->
+<uav>
+    <string name="Name" value="Drone-1" />
+    <float name="PosX" value="11295.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="14985.000000" />
+    <int name="Color" value="1" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-1" />
+        <float name="PosX" value="11385.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14985.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-1" />
+        <float name="PosX" value="11115.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14895.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-2" />
+        <float name="PosX" value="10035.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="19575.000000" />
+        <bool name="Feature" value="False" />
+    </waypoint>
+</uav>
+
+<!-- UAV 2 -->
+<uav>
+    <string name="Name" value="Drone-2" />
+    <float name="PosX" value="11475.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="15075.000000" />
+    <int name="Color" value="2" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-1" />
+        <float name="PosX" value="11385.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14985.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-3" />
+        <float name="PosX" value="11475.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="15705.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 3 -->
+<uav>
+    <string name="Name" value="Drone-3" />
+    <float name="PosX" value="11475.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="14895.000000" />
+    <int name="Color" value="3" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-1" />
+        <float name="PosX" value="11385.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14985.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-4" />
+        <float name="PosX" value="14265.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="17865.000000" />
+        <bool name="Feature" value="False" />
+    </waypoint>
+</uav>
+
+<!-- UAV 4 -->
+<uav>
+    <string name="Name" value="Drone-4" />
+    <float name="PosX" value="11655.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="14355.000000" />
+    <int name="Color" value="4" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-1" />
+        <float name="PosX" value="11385.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14985.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-5" />
+        <float name="PosX" value="14895.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14085.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 5 -->
+<uav>
+    <string name="Name" value="Drone-5" />
+    <float name="PosX" value="9405.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="12465.000000" />
+    <int name="Color" value="5" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-2" />
+        <float name="PosX" value="9405.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12735.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-6" />
+        <float name="PosX" value="11025.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="11655.000000" />
+        <bool name="Feature" value="False" />
+    </waypoint>
+</uav>
+
+<!-- UAV 6 -->
+<uav>
+    <string name="Name" value="Drone-6" />
+    <float name="PosX" value="9405.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="12375.000000" />
+    <int name="Color" value="6" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-2" />
+        <float name="PosX" value="9405.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12645.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-7" />
+        <float name="PosX" value="11205.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="9405.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 7 -->
+<uav>
+    <string name="Name" value="Drone-7" />
+    <float name="PosX" value="9405.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="12195.000000" />
+    <int name="Color" value="7" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-2" />
+        <float name="PosX" value="9405.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12825.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-8" />
+        <float name="PosX" value="10215.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="8685.000000" />
+        <bool name="Feature" value="False" />
+    </waypoint>
+</uav>
+
+<!-- UAV 8 -->
+<uav>
+    <string name="Name" value="Drone-8" />
+    <float name="PosX" value="9315.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="12375.000000" />
+    <int name="Color" value="8" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-2" />
+        <float name="PosX" value="9405.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12825.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-9" />
+        <float name="PosX" value="8505.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12015.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 9 -->
+<uav>
+    <string name="Name" value="Drone-9" />
+    <float name="PosX" value="9405.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="12375.000000" />
+    <int name="Color" value="9" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-2" />
+        <float name="PosX" value="9405.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12915.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-10" />
+        <float name="PosX" value="8415.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="15705.000000" />
+        <bool name="Feature" value="False" />
+    </waypoint>
+</uav>
+
+<!-- SCENE 1 -->
+<scene>
+    <string name="Name" value="Scene 1" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="88" />
+    <int name="CityY" value="244" />
+</scene>
+
+<!-- SCENE 2 -->
+<scene>
+    <string name="Name" value="Scene 5" />
+    <string name="File" value="../media/scenes/__clean_car_people3.irr" />
+    <int name="CityX" value="111" />
+    <int name="CityY" value="217" />
+</scene>
+
+<!-- SCENE 3 -->
+<scene>
+    <string name="Name" value="Scene 6" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="136" />
+    <int name="CityY" value="227" />
+</scene>
+
+<!-- SCENE 4 -->
+<scene>
+    <string name="Name" value="Scene 7" />
+    <string name="File" value="../media/scenes/__clean_car_people_more2.irr" />
+    <int name="CityX" value="158" />
+    <int name="CityY" value="198" />
+</scene>
+
+<!-- SCENE 5 -->
+<scene>
+    <string name="Name" value="Scene 8" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="165" />
+    <int name="CityY" value="156" />
+</scene>
+
+<!-- SCENE 6 -->
+<scene>
+    <string name="Name" value="Scene 10" />
+    <string name="File" value="../media/scenes/people_and_bus.irr" />
+    <int name="CityX" value="161" />
+    <int name="CityY" value="118" />
+</scene>
+
+<!-- SCENE 7 -->
+<scene>
+    <string name="Name" value="Scene 11" />
+    <string name="File" value="../media/scenes/people_and_bus.irr" />
+    <int name="CityX" value="162" />
+    <int name="CityY" value="111" />
+</scene>
+
+<!-- SCENE 8 -->
+<scene>
+    <string name="Name" value="Scene 12" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="139" />
+    <int name="CityY" value="97" />
+</scene>
+
+<!-- SCENE 9 -->
+<scene>
+    <string name="Name" value="Scene 13" />
+    <string name="File" value="../media/scenes/__clean_car_people3.irr" />
+    <int name="CityX" value="113" />
+    <int name="CityY" value="96" />
+</scene>
+
+<!-- SCENE 10 -->
+<scene>
+    <string name="Name" value="Scene 14" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="92" />
+    <int name="CityY" value="120" />
+</scene>
+
+<!-- SCENE 11 -->
+<scene>
+    <string name="Name" value="Scene 15" />
+    <string name="File" value="../media/scenes/clean_crowd.irr" />
+    <int name="CityX" value="93" />
+    <int name="CityY" value="174" />
+</scene>
+
+<!-- SCENE 12 -->
+<scene>
+    <string name="Name" value="Scene 1" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="56" />
+    <int name="CityY" value="256" />
+</scene>
+
+<!-- SCENE 13 -->
+<scene>
+    <string name="Name" value="Scene 1" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="123" />
+    <int name="CityY" value="165" />
+</scene>
+
+<!-- SCENE 14 -->
+<scene>
+    <string name="Name" value="Scene 5" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="94" />
+    <int name="CityY" value="133" />
+</scene>
+
