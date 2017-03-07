@@ -38,7 +38,7 @@ Package Delivery
 * [x] lower altitude after clicking yes
 * [ ] record alarm miss
 * [ ] record user waypoint reactions' correctness
-* [ ] polish up audio
+* [x] create audio files for each uav alert
 * [ ] change all camera windows' borders to the same blue color
 * [ ] (TBD) change video/audio response buttons into one single reaction button
 * [ ] (VA_1) add a border with numbers as video alarm, display numbers
