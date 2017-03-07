@@ -19,4 +19,37 @@ namespace audio {
 	void drop_engine() {
 		audio->drop();
 	}
+
+	void play_test_sound() {
+		play_drone_alarm(1);
+	}
+
+	double getEngineVolume() {
+		if (audio)
+			return audio->getSoundVolume();
+		else 
+			return -1;
+	}
+
+	double increaseEngineVolume(double v) {
+		if (audio && v > 0) {
+			if (audio->getSoundVolume() + v <= 1.5) {
+				audio->setSoundVolume(audio->getSoundVolume() + v);
+			}
+			return audio->getSoundVolume();
+		}
+		else 
+			return -1;
+	}
+
+	double decreaseEngineVolume(double v) {
+		if (audio && v > 0) {
+			if (audio->getSoundVolume() - v <= 1.5) {
+				audio->setSoundVolume(audio->getSoundVolume() - v);
+			}
+			return audio->getSoundVolume();
+		}
+		else 
+			return -1;
+	}
 }

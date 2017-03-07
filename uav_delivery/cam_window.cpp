@@ -1,4 +1,5 @@
 #include "cam_window.h"
+#include "audio.h"
 #include "nav_window.h"
 #include "globals.h"
 #include "sara_signals.h"
@@ -166,10 +167,10 @@ void CamWindow::draw() {
             x->draw_overlay(device());
     }
 
-    // update the instructions for x-model fitting
+	// update instructions for x-model fitting
     // draw the start instructions
-    // if (!started)
-    //     start_overlay->draw();
+    //if (!started)
+    //    start_overlay->draw();
 
     driver()->endScene();
 }
@@ -268,13 +269,17 @@ void CamWindow::event_key_down(wchar_t key) {
             // toggleFullScreen = true;
     }
 
-    if (!started && event_recv->IsKeyDown(irr::KEY_UP)) {
-        // turn up volume
-    }
+	if (!started && event_recv->IsKeyDown(irr::KEY_UP)
+		&& !event_recv->IsKeyDown(irr::KEY_DOWN)) {
+		audio::increaseEngineVolume(0.10);
+		audio::play_test_sound();
+	}
 
-    if (!started && event_recv->IsKeyDown(irr::KEY_DOWN)) {
-        // turn down volume
-    }
+	if (!started && event_recv->IsKeyDown(irr::KEY_DOWN)
+		&& !event_recv->IsKeyDown(irr::KEY_UP)) {
+		audio::decreaseEngineVolume(0.05);
+		audio::play_test_sound();
+	}
 
 	if (started) {
 		if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
