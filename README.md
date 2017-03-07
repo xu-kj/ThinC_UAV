@@ -36,19 +36,17 @@ Package Delivery
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
 * [x] lower altitude after clicking yes
-* [ ] record events in time sequence
-* [ ] record user reactions' correctness
 * [x] create audio files for each uav alert
-* [ ] change all camera windows' borders to the same blue color
-* [ ] (TBD) change video/audio response buttons into one single reaction button
-* [ ] (VA_1) add a border with numbers as video alarm, display numbers
-* [ ] (VA_2) change video alarm button to show number in all 9 camera boxes, use keyboard as input
-* [ ] show uav number/index in each one's camera boxes
-* [ ] (texture) change target model into delivery pad
-* [ ] (texture) update map, to make map look more like urban streets
+* [x] change all camera windows' borders to the same blue color
+* [ ] TBD | change video/audio response buttons into one single reaction button
+* [ ] VA_1: add a border with numbers as video alarm, display numbers
+* [ ] TBD | VA_2: change video alarm button to show number in all 9 camera boxes, use keyboard as input
+* [x] show uav number/index in each camera box
+* [x] texture: change target model into delivery pad
+* [ ] texture: update map, to make map look more like urban streets
 
 General Tasks
-* [ ] store events in time sequence
+* [ ] record events in time sequence
 * [ ] calculate correctness and record response time
 * [ ] change UAV fly path so that it always follow the scheduled path
 * [x] increase precision to millisecond

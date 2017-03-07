@@ -15,8 +15,6 @@
 
 class CamWindow;
 
-irr::video::SColor getColorFromId(irr::s32 id);
-
 class NavWindow : public UAVWindow {
 public:
     NavWindow(std::list<WaypointObject *> * wps_,

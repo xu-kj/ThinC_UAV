@@ -1,4 +1,5 @@
 #include "nav_console.h"
+#include "color.h"
 #include "nav_window.h"
 #include "globals.h"
 #include "exceptions.h"
@@ -59,11 +60,11 @@ void UAVConsole::load_images(IrrlichtDevice * device)
 
     uav_fuel_back = new GUIImage(rect<s32>(0,0,256,128), device, guiElmRoot);
     uav_fuel_back->setTexture(driver->getTexture("uav_fuel_back.png"));
-    uav_fuel_back->setColor(COLOR_DARK_GRAY);
+    uav_fuel_back->setColor(color::COLOR_DARK_GRAY);
 
     uav_fuel_out = new GUIImage(rect<s32>(0,0,256,128), device, guiElmRoot);
     uav_fuel_out->setTexture(driver->getTexture("uav_fuel_out.png"));
-    uav_fuel_out->setColor(COLOR_DARK_GRAY);
+    uav_fuel_out->setColor(color::COLOR_DARK_GRAY);
 
     uav_gps = new GUIImage(rect<s32>(0,0,256,128), device, guiElmRoot);
     uav_gps->setTexture(driver->getTexture("uav_gps.png"));
@@ -84,13 +85,13 @@ void UAVConsole::load_images(IrrlichtDevice * device)
     // bigger text for the callsign
     TEXT = guienv->addStaticText(L"",rect<s32>(0,0,0,0),false, false);
     TEXT->setTextAlignment(EGUIA_CENTER, EGUIA_CENTER);
-    TEXT->setOverrideColor(COLOR_WHITE);
+    TEXT->setOverrideColor(color::COLOR_WHITE);
     TEXT->setOverrideFont(font_large);
 
     // smaller text
     text = guienv->addStaticText(L"",rect<s32>(0,0,0,0),false, false);
     text->setTextAlignment(EGUIA_CENTER, EGUIA_CENTER);
-    text->setOverrideColor(COLOR_WHITE);
+    text->setOverrideColor(color::COLOR_WHITE);
     text->setOverrideFont(font_small);
 }
 
@@ -194,15 +195,15 @@ void UAVConsole::draw_console(IVideoDriver * driver, bool to_texture)
     uav_fuel_back->draw();
 
     // gps indicator
-    SColor gps_color = COLOR_GREEN;
-    if(uav->hasGPSFail()) gps_color = COLOR_RED;
+    SColor gps_color = color::COLOR_GREEN;
+    if(uav->hasGPSFail()) gps_color = color::COLOR_RED;
     uav_gps->setPosition(cons_pos);
     uav_gps->setColor(gps_color);
     uav_gps->draw();
 
     // camera indicator
-    SColor cam_color = COLOR_GREEN;
-    if(uav->hasCamFail()) cam_color = COLOR_RED;
+    SColor cam_color = color::COLOR_GREEN;
+    if(uav->hasCamFail()) cam_color = color::COLOR_RED;
     uav_cam->setPosition(cons_pos);
     uav_cam->setColor(cam_color);
     uav_cam->draw();
@@ -276,9 +277,9 @@ void UAVConsole::draw(IrrlichtDevice * device)
         f32 cur_fuel = uav->getFuel();
         if(cur_fuel > 0.01)
         {
-            SColor fuel_color = COLOR_GREEN;
+            SColor fuel_color = color::COLOR_GREEN;
             if(cur_fuel < .45)
-                fuel_color = COLOR_RED;
+                fuel_color = color::COLOR_RED;
             // fuel level rectange
             rect<s32> fuel_rect(
                 FUEL_START_X,

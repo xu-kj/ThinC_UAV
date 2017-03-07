@@ -30,6 +30,7 @@ enum E_OUTPUT {
 	OUTPUT_EVENTS,
 	OUTPUT_CHAT,
 	OUTPUT_COMBINED,
+	OUTPUT_RESULT,
 	OUTPUT_COUNT // DO NOT USE
 };
 // add the following constant to the UAV id to write to its table file
@@ -68,8 +69,7 @@ enum UAV_EVENT {
 
 class Output {
 public:
-    static Output& Instance()
-    {
+    static Output& Instance() {
         static Output theOutput;
         return theOutput;
     }
@@ -88,6 +88,7 @@ public:
 
 	void WriteColumnName();
     void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
+	void GetResult();
 
 private:
     Output() {}

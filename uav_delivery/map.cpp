@@ -1,4 +1,5 @@
 #include "map.h"
+#include "color.h"
 #include "globals.h"
 
 #include <iostream>
@@ -207,11 +208,11 @@ void UAVMap::draw_interface(IVideoDriver * driver)
     // draw a black rectange on the bottom of the screen to prevent bleed from
     // the map objects (lines)
     rect<s32> pos1(0,RES_Y-3,RES_X,RES_Y);
-    GUIImage::draw2DRectangle(driver, pos1, COLOR_BLACK);
+    GUIImage::draw2DRectangle(driver, pos1, color::COLOR_BLACK);
 
     // draw a black rectange on the side to prevent bleed
     rect<s32> pos2(0,0,MAP_START_X,RES_Y);
-    GUIImage::draw2DRectangle(driver, pos2, COLOR_BLACK);
+    GUIImage::draw2DRectangle(driver, pos2, color::COLOR_BLACK);
 }
 
 void UAVMap::setWorldSize(dimension2di size)

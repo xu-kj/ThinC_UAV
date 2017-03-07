@@ -51,7 +51,8 @@ stringc Output::filenames[] = {
     "uav_table",
     "events",
     "chat",
-	"combined_log"
+	"combined_log",
+	"sim_result"
 };
 
 void Output::StartLog()

@@ -1,6 +1,7 @@
 #ifndef WAYPOINT_H
 #define WAYPOINT_H
 
+#include "color.h"
 #include "sim_object.h"
 #include "globals.h"
 
@@ -30,19 +31,19 @@ public:
     }
     void setUnAssigned() {
         state = UNASSIGNED; 
-        color = COLOR_GRAY;
+        color = color::COLOR_GRAY;
     }
     void setConfirmed() {
         state = CONFIRMED; 
-        color = WAYPOINT_CONFIRMED;
+        color = color::WAYPOINT_CONFIRMED;
     }
     void setCleared() {
         state = DENIED; 
-        color = WAYPOINT_CLEAR;
+        color = color::WAYPOINT_CLEAR;
     }
     void setUnsure() {
         state = UNSURE; 
-        color = WAYPOINT_UNSURE;
+        color = color::WAYPOINT_UNSURE;
     }
 
     // for data collection

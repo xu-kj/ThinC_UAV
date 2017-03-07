@@ -1,14 +1,15 @@
 #ifndef UFO_H
 #define UFO_H
 
+#include "color.h"
 #include "sim_object.h"
 #include "globals.h"
 #include "output.h"
 
 #include <irrlicht.h>
 
-const irr::video::SColor UFO_COLOR = COLOR_GRAY;
-const irr::video::SColor UFO_REPORTED_COLOR = COLOR_YELLOW;
+const irr::video::SColor UFO_COLOR = color::COLOR_GRAY;
+const irr::video::SColor UFO_REPORTED_COLOR = color::COLOR_YELLOW;
 
 class UFOObject: public SimObject
 {

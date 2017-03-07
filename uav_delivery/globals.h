@@ -108,30 +108,6 @@
     const irr::s32 BUTTON_SIZE_Y = 47;
 #endif
 
-// some colors
-extern irr::video::SColor COLOR1;
-extern irr::video::SColor COLOR2;
-extern irr::video::SColor COLOR3;
-extern irr::video::SColor COLOR4;
-extern irr::video::SColor COLOR5;
-extern irr::video::SColor COLOR6;
-extern irr::video::SColor COLOR7;
-extern irr::video::SColor COLOR8;
-extern irr::video::SColor COLOR9;
-// more colors
-const irr::video::SColor COLOR_GRAY(255, 200, 200, 200);    // gray
-const irr::video::SColor COLOR_DARK_GRAY(255,150,150,150);  // dark gray
-const irr::video::SColor COLOR_WHITE(255, 255, 255, 255);   // white
-const irr::video::SColor COLOR_GREEN(255, 32, 120, 72);     // green
-const irr::video::SColor COLOR_BLACK(255, 0, 0, 0);         // black8
-const irr::video::SColor COLOR_RED(255, 255, 0, 0);         // red red
-const irr::video::SColor COLOR_YELLOW(255, 255, 255, 0);    // yellow
-const irr::video::SColor COLOR_EVENT_BG(255,33,33,33);      // very dark gray
-// waypoint colors
-extern irr::video::SColor WAYPOINT_UNSURE;
-extern irr::video::SColor WAYPOINT_CLEAR;
-extern irr::video::SColor WAYPOINT_CONFIRMED;
-
 // general preferences
 extern bool SHOW_TIME;
 extern bool SHOW_VERSION;

@@ -1,4 +1,5 @@
 #include "nav_window.h"
+#include "color.h"
 #include "cam_window.h"
 #include "globals.h"
 #include "output.h"
@@ -19,22 +20,6 @@ SColor CHAT_EVENT_COLOR(255, 255, 0, 0);
 bool SHOW_TIME = false;
 bool SHOW_VERSION = false;
 bool USE_GPS_FAIL = true;
-
-irr::video::SColor getColorFromId(irr::s32 id)
-{
-    switch(id)
-    {
-    case 1: return COLOR1;
-    case 2: return COLOR2;
-    case 3: return COLOR3;
-    case 4: return COLOR4;
-    case 5: return COLOR5;
-    case 6: return COLOR6;
-    case 7: return COLOR7;
-    case 8: return COLOR8;
-    default: return COLOR9;
-    }
-}
 
 NavWindow::NavWindow(std::list<WaypointObject *> * wps_,
     std::list<SimObject *> * bases_,
@@ -155,13 +140,13 @@ void NavWindow::load_fonts()
     // bigger text for the callsign
     large_text = guienv()->addStaticText(L"",rect<s32>(0,0,0,0),false, false);
     large_text->setTextAlignment(EGUIA_CENTER, EGUIA_CENTER);
-    large_text->setOverrideColor(COLOR_WHITE);
+    large_text->setOverrideColor(color::COLOR_WHITE);
     large_text->setOverrideFont(font1);
 
     // small text for everything else
     small_text = guienv()->addStaticText(L"",rect<s32>(0,0,0,0),false, false);
     small_text->setTextAlignment(EGUIA_CENTER, EGUIA_CENTER);
-    small_text->setOverrideColor(COLOR_WHITE);
+    small_text->setOverrideColor(color::COLOR_WHITE);
     small_text->setOverrideFont(font2);
 }
 
@@ -420,19 +405,19 @@ void NavWindow::draw_map() {
     if(SHOW_BASE_TEXT)
     {
         for(base_it = bases->begin(); base_it != bases->end(); base_it++)
-            map.draw_text((*base_it)->getPosition2D(), COLOR_WHITE, (*base_it)->getName(), small_text->getOverrideFont());
+            map.draw_text((*base_it)->getPosition2D(), color::COLOR_WHITE, (*base_it)->getName(), small_text->getOverrideFont());
     }
     if(SHOW_WAYPOINT_TEXT)
     {
         for(wp_it = wps->begin(); wp_it != wps->end(); wp_it++)
-            map.draw_text((*wp_it)->getPosition2D(), COLOR_WHITE, (*wp_it)->getName(), small_text->getOverrideFont());
+            map.draw_text((*wp_it)->getPosition2D(), color::COLOR_WHITE, (*wp_it)->getName(), small_text->getOverrideFont());
     }
     if(SHOW_UAV_TEXT)
     {
         for(uav_it = uavs->begin(); uav_it != uavs->end(); uav_it++)
         {
             if(USE_GPS_FAIL && !(*uav_it)->hasGPSFail())
-                map.draw_text((*uav_it)->getPosition2D(), COLOR_WHITE, (*uav_it)->getName(), small_text->getOverrideFont());
+                map.draw_text((*uav_it)->getPosition2D(), color::COLOR_WHITE, (*uav_it)->getName(), small_text->getOverrideFont());
         }
     }
     if(SHOW_UFO_TEXT)
@@ -440,7 +425,7 @@ void NavWindow::draw_map() {
         for(ufo_it = ufos->begin(); ufo_it != ufos->end(); ufo_it++)
         {
             if((*ufo_it)->show())
-                map.draw_text((*ufo_it)->getPosition2D(), COLOR_WHITE, (*ufo_it)->getName(), small_text->getOverrideFont());
+                map.draw_text((*ufo_it)->getPosition2D(), color::COLOR_WHITE, (*ufo_it)->getName(), small_text->getOverrideFont());
         }
     }
 }
@@ -453,13 +438,13 @@ void NavWindow::draw_states()
         MAP_END_Y + MAP_BORDER_WIDTH,
         MAP_END_X + MAP_BORDER_WIDTH,
         windowHeight() - 3);
-    GUIImage::draw2DRectangle(driver(), box, COLOR_EVENT_BG);
+    GUIImage::draw2DRectangle(driver(), box, color::COLOR_EVENT_BG);
     box = rect<s32>(
         MAP_START_X - MAP_BORDER_WIDTH,
         MAP_END_Y + MAP_BORDER_WIDTH,
         MAP_END_X + MAP_BORDER_WIDTH,
         MAP_END_Y + MAP_BORDER_WIDTH + 2);
-    GUIImage::draw2DRectangle(driver(), box, COLOR_BLACK);
+    GUIImage::draw2DRectangle(driver(), box, color::COLOR_BLACK);
 
     uav_it = uavs->begin();
     for(s32 id = 0; id < 9; id++)
@@ -517,7 +502,7 @@ void NavWindow::draw_states()
                 text += "base";
         }
         small_text->setText(text.c_str());
-        small_text->setOverrideColor(COLOR_WHITE);
+        small_text->setOverrideColor(color::COLOR_WHITE);
         small_text->setRelativePosition(event_source);
         small_text->draw();
 
@@ -544,7 +529,7 @@ void NavWindow::draw_states()
         text += MILLISECONDS;
         text += "]";
         small_text->setText(text.c_str());
-        small_text->setOverrideColor(COLOR_DARK_GRAY);
+        small_text->setOverrideColor(color::COLOR_DARK_GRAY);
         small_text->setTextAlignment(EGUIA_LOWERRIGHT, EGUIA_CENTER);
         small_text->setRelativePosition(time);
         small_text->draw();
@@ -558,9 +543,9 @@ void NavWindow::draw_states()
             windowHeight()-30,
             windowWidth()-2,
             windowHeight()-15);
-        stringw text = "THInC Lab, 2009";
+        stringw text = "THInC Lab, 2017";
         small_text->setText(text.c_str());
-        small_text->setOverrideColor(COLOR_DARK_GRAY);
+        small_text->setOverrideColor(color::COLOR_DARK_GRAY);
         small_text->setRelativePosition(version);
         small_text->draw();
 
@@ -570,12 +555,12 @@ void NavWindow::draw_states()
             windowHeight()-20,
             windowWidth()-2,
             windowHeight());
-        text = "UAV Flight Sim (1.0)";
+        text = "UAV Flight Sim (1.1)";
         small_text->setText(text.c_str());
-        small_text->setOverrideColor(COLOR_DARK_GRAY);
+        small_text->setOverrideColor(color::COLOR_DARK_GRAY);
         small_text->setRelativePosition(lab);
         small_text->draw();
-        small_text->setOverrideColor(COLOR_WHITE);
+        small_text->setOverrideColor(color::COLOR_WHITE);
     }
 }
 

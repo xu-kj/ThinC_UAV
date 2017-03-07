@@ -1,4 +1,5 @@
 #include "area.h"
+#include "color.h"
 #include "audio.h"
 #include "camera.h"
 #include "cam_window.h"
@@ -239,7 +240,7 @@ void UAVCamera::set_id(IrrlichtDevice * device, s32 id_)
     // set the color if a UAV has been assigned
     //if(uav)
     //  large_text->setOverrideColor(uav->getColor());
-    large_text->setOverrideColor(COLOR_BLACK);
+    large_text->setOverrideColor(color::COLOR_BLACK);
 }
 
 void UAVCamera::load_buttons()
@@ -281,7 +282,7 @@ void UAVCamera::load_buttons()
     v_indicator = new UAVButton(
         rect2di(
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 2 - 3,
+            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 3 - 3,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
         button_light,
@@ -291,7 +292,7 @@ void UAVCamera::load_buttons()
 	a_indicator = new UAVButton(
         rect2di(
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
+            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 2 - 3,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
         button_light,
@@ -364,8 +365,8 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 
     // draw the number in the bottom-right corner
     // let's actually not draw that right now, since I added a button there instead
-    //if(uav)
-    //  large_text->draw();
+    if(uav)
+      large_text->draw();
 
     // progress bar option
     if(SHOW_PROGRESS_BAR && uav && camera)
@@ -477,7 +478,7 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
             viewport.UpperLeftCorner.Y + 30));
         stringw txt = "video failure";
         large_text->setText(txt.c_str());
-        large_text->setOverrideColor(COLOR_WHITE);
+        large_text->setOverrideColor(color::COLOR_WHITE);
         large_text->draw();
     }
 

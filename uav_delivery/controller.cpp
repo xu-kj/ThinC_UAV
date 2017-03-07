@@ -1,3 +1,4 @@
+#include "color.h"
 #include "cam_window.h"
 #include "nav_window.h"
 #include "cityscene_node.h"
@@ -63,19 +64,6 @@ irr::s32 BUTTON_MS       = 300;
 bool ALLOW_PAUSE         = true;
 bool simulation_paused   = false;
 bool was_paused          = false;
-
-irr::video::SColor COLOR1(255,  79, 129, 189);  // blue
-irr::video::SColor COLOR2(255, 209,  99,   9);  // orange
-irr::video::SColor COLOR3(255, 112, 139,  57);  // vomit
-irr::video::SColor COLOR4(255, 192,  80,  77);  // pink
-irr::video::SColor COLOR5(255, 128, 100, 162);  // purple
-irr::video::SColor COLOR6(255,  45, 119, 119);  // teal
-irr::video::SColor COLOR7(255, 207, 172,   0);  // yellow
-irr::video::SColor COLOR8(255, 152,  72,   7);  // brown
-irr::video::SColor COLOR9(255, 158,  10,  10);  // red
-irr::video::SColor WAYPOINT_UNSURE    = COLOR_GRAY;
-irr::video::SColor WAYPOINT_CLEAR     = COLOR_RED;
-irr::video::SColor WAYPOINT_CONFIRMED = COLOR_GREEN;
 
 void * TARGETS = 0; // pointer to array of scenes to load when the main driver starts
 irr::f32 UAV_HEIGHT = 60.f;
@@ -633,7 +621,7 @@ void UAVController::readUFONode(IXMLReader * reader) {
         end_time += u32(end_sec) * 1000;
 
         UFOObject * ufo = new UFOObject(node_name, position, forward, speed,
-            COLOR_GRAY, start_time, end_time);
+            color::COLOR_GRAY, start_time, end_time);
         ufos.push_back(ufo);
 
         cout << "Loaded UFO \"" << node_name.c_str() << "\"" << endl;
@@ -678,7 +666,7 @@ SimObject * UAVController::readBaseNode(IXMLReader * reader) {
     // create the object
     if(node_name != "") {
         vec3d position(pos_x, pos_y, pos_z);
-        base = new SimObject(node_name, position, COLOR_GRAY, false);
+        base = new SimObject(node_name, position, color::COLOR_GRAY, false);
         bases.push_back(base);
 
         cout << "Loaded base \"" << node_name.c_str() << "\"" << endl;
@@ -741,7 +729,7 @@ void UAVController::readUAVNode(IXMLReader * reader) {
         cout << "Loaded UAV \"" << node_name.c_str() << "\"" << endl;
 
         vec3d position(pos_x, pos_y, pos_z);
-        UAVObject * uav = new UAVObject(node_name, position, getColorFromId(color), false);
+        UAVObject * uav = new UAVObject(node_name, position, color::getColorFromId(color), false);
         uavs.push_back(uav);
         uav->setFuel(fuel);
         uav_ids.push_back(uav);
@@ -758,10 +746,10 @@ void UAVController::readUAVNode(IXMLReader * reader) {
             Network::sendMessageCreate(
                 1, uavId,
                 pos_x, pos_y, pos_z,
-                (float)getColorFromId(color).getRed() / 255.f,
-                (float)getColorFromId(color).getGreen() / 255.f,
-                (float)getColorFromId(color).getBlue() / 255.f,
-                (float)getColorFromId(color).getAlpha() / 255.f,
+                (float)color::getColorFromId(color).getRed() / 255.f,
+                (float)color::getColorFromId(color).getGreen() / 255.f,
+                (float)color::getColorFromId(color).getBlue() / 255.f,
+                (float)color::getColorFromId(color).getAlpha() / 255.f,
                 0);
         }
 
@@ -775,10 +763,10 @@ void UAVController::readUAVNode(IXMLReader * reader) {
                 Network::sendMessageCreate(
                     2, wpId,
                     (*it)->getPosition().X, (*it)->getPosition().Y, (*it)->getPosition().Z,
-                    (float)getColorFromId(color).getRed() / 255.f,
-                    (float)getColorFromId(color).getGreen() / 255.f,
-                    (float)getColorFromId(color).getBlue() / 255.f,
-                    (float)getColorFromId(color).getAlpha() / 255.f,
+                    (float)color::getColorFromId(color).getRed() / 255.f,
+                    (float)color::getColorFromId(color).getGreen() / 255.f,
+                    (float)color::getColorFromId(color).getBlue() / 255.f,
+                    (float)color::getColorFromId(color).getAlpha() / 255.f,
                     uavId);
             }
         }
@@ -791,10 +779,10 @@ void UAVController::readUAVNode(IXMLReader * reader) {
                 Network::sendMessageCreate(
                     3, baseId,
                     base->getPosition().X, base->getPosition().Y, base->getPosition().Z,
-                    (float)getColorFromId(color).getRed() / 255.f,
-                    (float)getColorFromId(color).getGreen() / 255.f,
-                    (float)getColorFromId(color).getBlue() / 255.f,
-                    (float)getColorFromId(color).getAlpha() / 255.f,
+                    (float)color::getColorFromId(color).getRed() / 255.f,
+                    (float)color::getColorFromId(color).getGreen() / 255.f,
+                    (float)color::getColorFromId(color).getBlue() / 255.f,
+                    (float)color::getColorFromId(color).getAlpha() / 255.f,
                     uavId);
                 baseId++;
             }
@@ -860,7 +848,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
         cout << "Loaded Waypoint \"" << node_name.c_str() << "\"" << endl;
 
         vec3d position(pos_x, pos_y, pos_z);
-        wp = new WaypointObject(node_name, position, COLOR_GRAY, false);
+        wp = new WaypointObject(node_name, position, color::COLOR_GRAY, false);
         wp->setFeature(has_feature);
         wps.push_back(wp);
     }
@@ -1025,7 +1013,7 @@ void UAVController::generate_random() {
         name += id + 1;
         f32 lat = f32(rnd(1, 100)) / 10.f;
         f32 lon = f32(rnd(1, 100)) / 10.f;
-        SColor color = getColorFromId(id);
+        SColor color = color::getColorFromId(id);
         uavs.push_back(new UAVObject(name, vec3d(lat,height,lon), color));
 
         // waypoints
@@ -1054,14 +1042,14 @@ void UAVController::generate_random() {
                 stringw name = "BASE-";
                 name += id + 1;
 
-                bases.push_back(new SimObject(name, vec3d(new_lat,height,new_lon), COLOR_GRAY));
+                bases.push_back(new SimObject(name, vec3d(new_lat,height,new_lon), color::COLOR_GRAY));
                 uavs.back()->assign_base(bases.back());
             }
             else {
                 stringw name = "EO-";
                 name += ++wp_id;
 
-                wps.push_back(new WaypointObject(name, vec3d(new_lat,height,new_lon), COLOR_GRAY));
+                wps.push_back(new WaypointObject(name, vec3d(new_lat,height,new_lon), color::COLOR_GRAY));
                 uavs.back()->assign_waypoint(wps.back());
             }
         }
@@ -1634,73 +1622,73 @@ void UAVController::load_config() {
             // =========================================================================
             if(var == "COLOR_FCA") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CONFIRMED.setAlpha(int_val);
+                color::WAYPOINT_CONFIRMED.setAlpha(int_val);
                 cout << "COLOR CONFIRMED ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FCR") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CONFIRMED.setRed(int_val);
+                color::WAYPOINT_CONFIRMED.setRed(int_val);
                 cout << "COLOR CONFIRMED RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FCG") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CONFIRMED.setGreen(int_val);
+                color::WAYPOINT_CONFIRMED.setGreen(int_val);
                 cout << "COLOR CONFIRMED GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FCB") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CONFIRMED.setBlue(int_val);
+                color::WAYPOINT_CONFIRMED.setBlue(int_val);
                 cout << "COLOR CONFIRMED BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FDA") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CLEAR.setAlpha(int_val);
+                color::WAYPOINT_CLEAR.setAlpha(int_val);
                 cout << "COLOR CLEAR ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FDR") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CLEAR.setRed(int_val);
+                color::WAYPOINT_CLEAR.setRed(int_val);
                 cout << "COLOR CLEAR RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FDG") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CLEAR.setGreen(int_val);
+                color::WAYPOINT_CLEAR.setGreen(int_val);
                 cout << "COLOR CLEAR GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FDB") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_CLEAR.setBlue(int_val);
+                color::WAYPOINT_CLEAR.setBlue(int_val);
                 cout << "COLOR CLEAR BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FUA") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_UNSURE.setAlpha(int_val);
+                color::WAYPOINT_UNSURE.setAlpha(int_val);
                 cout << "COLOR UNSURE ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FUR") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_UNSURE.setRed(int_val);
+                color::WAYPOINT_UNSURE.setRed(int_val);
                 cout << "COLOR UNSURE RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FUG") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_UNSURE.setGreen(int_val);
+                color::WAYPOINT_UNSURE.setGreen(int_val);
                 cout << "COLOR UNSURE GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_FUB") {
                 if(!(in >> int_val)) {error = true; break;}
-                WAYPOINT_UNSURE.setBlue(int_val);
+                color::WAYPOINT_UNSURE.setBlue(int_val);
                 cout << "COLOR UNSURE BLUE: " << int_val << endl;
                 rv = true;
             }
@@ -1709,217 +1697,217 @@ void UAVController::load_config() {
             // =========================================================================
             if(var == "COLOR_UAV1A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR1.setAlpha(int_val);
+                color::COLOR1.setAlpha(int_val);
                 cout << "COLOR1 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV1R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR1.setRed(int_val);
+                color::COLOR1.setRed(int_val);
                 cout << "COLOR1 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV1G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR1.setGreen(int_val);
+                color::COLOR1.setGreen(int_val);
                 cout << "COLOR1 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV1B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR1.setBlue(int_val);
+                color::COLOR1.setBlue(int_val);
                 cout << "COLOR1 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV2A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR2.setAlpha(int_val);
+                color::COLOR2.setAlpha(int_val);
                 cout << "COLOR2 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV2R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR2.setRed(int_val);
+                color::COLOR2.setRed(int_val);
                 cout << "COLOR2 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV2G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR2.setGreen(int_val);
+                color::COLOR2.setGreen(int_val);
                 cout << "COLOR2 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV2B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR2.setBlue(int_val);
+                color::COLOR2.setBlue(int_val);
                 cout << "COLOR2 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV3A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR3.setAlpha(int_val);
+                color::COLOR3.setAlpha(int_val);
                 cout << "COLOR3 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV3R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR3.setRed(int_val);
+                color::COLOR3.setRed(int_val);
                 cout << "COLOR3 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV3G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR3.setGreen(int_val);
+                color::COLOR3.setGreen(int_val);
                 cout << "COLOR3 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV3B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR3.setBlue(int_val);
+                color::COLOR3.setBlue(int_val);
                 cout << "COLOR3 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV4A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR4.setAlpha(int_val);
+                color::COLOR4.setAlpha(int_val);
                 cout << "COLOR4 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV4R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR4.setRed(int_val);
+                color::COLOR4.setRed(int_val);
                 cout << "COLOR4 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV4G") { 
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR4.setGreen(int_val);
+                color::COLOR4.setGreen(int_val);
                 cout << "COLOR4 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV4B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR4.setBlue(int_val);
+                color::COLOR4.setBlue(int_val);
                 cout << "COLOR4 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV5A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR5.setAlpha(int_val);
+                color::COLOR5.setAlpha(int_val);
                 cout << "COLOR5 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV5R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR5.setRed(int_val);
+                color::COLOR5.setRed(int_val);
                 cout << "COLOR5 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV5G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR5.setGreen(int_val);
+                color::COLOR5.setGreen(int_val);
                 cout << "COLOR5 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV5B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR5.setBlue(int_val);
+                color::COLOR5.setBlue(int_val);
                 cout << "COLOR5 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV6A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR6.setAlpha(int_val);
+                color::COLOR6.setAlpha(int_val);
                 cout << "COLOR6 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV6R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR6.setRed(int_val);
+                color::COLOR6.setRed(int_val);
                 cout << "COLOR6 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV6G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR6.setGreen(int_val);
+                color::COLOR6.setGreen(int_val);
                 cout << "COLOR6 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV6B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR6.setBlue(int_val);
+                color::COLOR6.setBlue(int_val);
                 cout << "COLOR6 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV7A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR7.setAlpha(int_val);
+                color::COLOR7.setAlpha(int_val);
                 cout << "COLOR7 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV7R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR7.setRed(int_val);
+                color::COLOR7.setRed(int_val);
                 cout << "COLOR7 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV7G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR7.setGreen(int_val);
+                color::COLOR7.setGreen(int_val);
                 cout << "COLOR7 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV7B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR7.setBlue(int_val);
+                color::COLOR7.setBlue(int_val);
                 cout << "COLOR7 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV8A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR8.setAlpha(int_val);
+                color::COLOR8.setAlpha(int_val);
                 cout << "COLOR8 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV8R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR8.setRed(int_val);
+                color::COLOR8.setRed(int_val);
                 cout << "COLOR8 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV8G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR8.setGreen(int_val);
+                color::COLOR8.setGreen(int_val);
                 cout << "COLOR8 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV8B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR8.setBlue(int_val);
+                color::COLOR8.setBlue(int_val);
                 cout << "COLOR8 BLUE: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV9A") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR9.setAlpha(int_val);
+                color::COLOR9.setAlpha(int_val);
                 cout << "COLOR9 ALPHA: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV9R") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR9.setRed(int_val);
+                color::COLOR9.setRed(int_val);
                 cout << "COLOR9 RED: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV9G") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR9.setGreen(int_val);
+                color::COLOR9.setGreen(int_val);
                 cout << "COLOR9 GREEN: " << int_val << endl;
                 rv = true;
             }
             else if(var == "COLOR_UAV9B") {
                 if(!(in >> int_val)) {error = true; break;}
-                COLOR9.setBlue(int_val);
+                color::COLOR9.setBlue(int_val);
                 cout << "COLOR9 BLUE: " << int_val << endl;
                 rv = true;
             }
