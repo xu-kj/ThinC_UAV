@@ -31,13 +31,13 @@ Package Delivery
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
 * [ ] cross model matching (fixed light level, change volumne), repeat until enter is hit
-* [ ] ~~light 5 secs in advance~~, deprecated
+* [ ] light up and enable buttons only when the UAV stops
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
 * [x] lower altitude after clicking yes
-* [ ] record alarm miss
-* [ ] record user waypoint reactions' correctness
+* [ ] record events in time sequence
+* [ ] record user reactions' correctness
 * [x] create audio files for each uav alert
 * [ ] change all camera windows' borders to the same blue color
 * [ ] (TBD) change video/audio response buttons into one single reaction button
@@ -48,6 +48,8 @@ Package Delivery
 * [ ] (texture) update map, to make map look more like urban streets
 
 General Tasks
+* [ ] store events in time sequence
+* [ ] calculate correctness and record response time
 * [ ] change UAV fly path so that it always follow the scheduled path
 * [x] increase precision to millisecond
 * [ ] update UAV editor and change openfile directory to absolute path
