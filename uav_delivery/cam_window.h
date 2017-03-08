@@ -12,6 +12,7 @@
 
 #include <list>
 #include <vector>
+#include <string>
 
 class NavWindow;
 
@@ -40,6 +41,10 @@ private:
 
     // the city information
     CityScene * city;
+
+	std::string text;
+	irr::gui::IGUIStaticText * alarm_text;
+	void draw_visual_alarm_text();
 
 public:
     CamWindow(std::list<WaypointObject *> * wps_,
@@ -88,6 +93,14 @@ public:
     void send_cam_message(int id, int message) {
 		if (id < (int) cams.size() && cams[id] != nullptr) 
 			cams[id]->cam_message(message);
+	}
+
+	std::string get_alarm_text() {
+		return this->text;
+	}
+
+	void set_alarm_text(std::string _s) {
+		this->text = _s;
 	}
 };
 

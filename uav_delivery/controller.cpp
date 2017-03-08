@@ -175,7 +175,10 @@ void UAVController::run() {
         bool running = true;
         bool started = false;
 
+		Output::Instance().WriteColumnName();
+
 		audio::play_test_sound();
+		((CamWindow *)win2)->set_alarm_text("1");
 
         // keep the model paused until the user starts
         while(!started && running && !OTHER_SIM_ENDED) {
@@ -202,11 +205,12 @@ void UAVController::run() {
                     win1->force_render();
             }
         }
+		((CamWindow *)win2)->set_alarm_text("");
+		Output::Instance().RecordEvent(-1, UAV_EVENT::SET_SOUND_VOLUME, audio::getEngineVolume(), -1, -1);
 
         if(USE_NETWORK && !OTHER_SIM_ENDED)
             Network::sendMessageStart();
 
-		Output::Instance().WriteColumnName();
 		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_STARTED, -1, -1, -1);
 
         // log the scenario beginning

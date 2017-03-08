@@ -16,7 +16,8 @@ public:
     UAVCamera(
 		irr::core::position2di pos_, 
 		std::pair<int, int> cam_size, 
-		CamWindow * win_);
+		CamWindow * win_,
+		int _id);
     ~UAVCamera();
 
     // load_images(...) must be called before draw()

@@ -36,16 +36,18 @@ Package Delivery
 * [x] create audio files for each uav alert
 * [x] change all camera windows' borders to the same blue color
 * [ ] TBD | change video/audio response buttons into one single reaction button
-* [ ] VA_1: add a border with numbers as video alarm, display numbers
+* [x] VA_1: add a border with numbers as video alarm, display numbers
 * [ ] TBD | VA_2: change video alarm button to show number in all 9 camera boxes, use keyboard as input
 * [x] show uav number/index in each camera box
 * [x] texture: change target model into delivery pad
 * [ ] texture: update map, to make map look more like urban streets
 
 General Tasks
+* [ ] support for global speed change
 * [ ] record events in time sequence
 * [ ] calculate correctness and record response time
 * [ ] change UAV fly path so that it always follow the scheduled path
+* [ ] fix camera box shape, 3,6,9's shape changes strangely
 * [x] increase precision to millisecond
 * [ ] update UAV editor and change openfile directory to absolute path
 * [ ] update UAV navigation window

@@ -102,12 +102,12 @@ void UAVObject::update(irr::f32 time) {
 	if (stopped) {
 		cout << "alt: " << alt << ", pos.y: " << position.Y << ", f_alt: " << f_alt << endl;
 		if (deliver && position.Y > alt) {
-			position.Y -= 0.5;
+			position.Y -= 0.25;
 			if (position.Y <= alt)
 				deliver = false;
 		}
 		else if (!deliver && position.Y < f_alt) {
-			position.Y += 0.5;
+			position.Y += 0.25;
 			if (position.Y >= f_alt) {
 				position.Y = f_alt;
 				stopped = false;

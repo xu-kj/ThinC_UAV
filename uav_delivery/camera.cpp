@@ -63,10 +63,10 @@ extern bool USE_LIGHT_CUES;
     GUIImage * UAVCamera::button_target = 0;
     GUIImage * UAVCamera::button_target_down = 0;
 
-UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow * win_)
+UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow * win_, int _id)
     : pos(pos_), win(win_), uav(0), need_update(true), zooming_out(false),
     zooming_in(false), zooming(false), button_clicked(false),
-    auto_light(false), buttons_on(false), staticOn(true)
+    auto_light(false), buttons_on(false), staticOn(true), id(_id)
 {
     v_alert_on = false;
     a_alert_on = true;
@@ -132,8 +132,8 @@ void UAVCamera::load_images(IrrlichtDevice * device)
         rect<s32> r(
             0,
             0,
-            (CAM_SIZE_X - s32((f32)OUTLINE_WIDTH * 1.3f) - BUTTON_SIZE_Y - 4),
-            CAM_SIZE_Y-OUTLINE_HEIGHT);
+            (cam_size_x - s32((f32) OUTLINE_WIDTH * 1.3f) - BUTTON_SIZE_Y - 4),
+            cam_size_y - OUTLINE_HEIGHT);
 
         cam_static1 = new GUIImage(r, device, guiElmRoot);
         cam_static1->setTexture(driver->getTexture("static1.png"));
@@ -157,14 +157,21 @@ void UAVCamera::load_images(IrrlichtDevice * device)
         //outline->setTexture(driver->getTexture("cam_outline_2560_small.png"));
     }
     else {
-        outline = new GUIImage(rect<s32>(0,0,512,256), device, guiElmRoot);
+		// if we label cameras in a one-based sequence, the border for cam 3, 6, 9 changes shape awkwardly
+		// not sure why... I'm still trying to understand it
+		// this is another reason I try to update it to a newer engine or I should probably
+		// read more document. I really need to try hard on this one...
+
+		outline = new GUIImage(rect<s32>(0, 0, cam_size_x * 1.31, cam_size_y), device, guiElmRoot);
+		//outline = new GUIImage(rect<s32>(0, 0, cam_size_x * 1.5, cam_size_y), device, guiElmRoot);
+        
         outline->setTexture(driver->getTexture("cam_outline.png"));
 
         rect<s32> r(
             0,
             0,
-            (CAM_SIZE_X - s32((f32)OUTLINE_WIDTH * 1.3f) - BUTTON_SIZE_Y - 4),
-            CAM_SIZE_Y-OUTLINE_HEIGHT);
+            (cam_size_x - s32((f32) OUTLINE_WIDTH * 1.3f) - BUTTON_SIZE_Y - 4),
+            cam_size_y - OUTLINE_HEIGHT);
 
         cam_static1 = new GUIImage(r, device, guiElmRoot);
         cam_static1->setTexture(driver->getTexture("static1.png"));
@@ -343,8 +350,7 @@ void UAVCamera::draw_overlay(IrrlichtDevice * device) {
             }
             // RESCHANGE
         }
-        else
-        {
+        else {
             // outline
             outline->setColor(uav->getColor());
             outline->setPosition(pos);
@@ -486,15 +492,6 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
         // maybe we don't want to shade this area (if there is a cue that overrides it)
         bool killShading = false;
         bool useStatic = false;
-        if(USE_SARA_SHADING)
-        {
-            std::list<SaraMatching::SaraSignal *>::const_iterator it;
-            for(it = signals.begin(); it != signals.end(); it++)
-            {
-                killShading = killShading || (*it)->getKillShading();
-                useStatic = useStatic || (*it)->getStatic();
-            }
-        }
 
         // light level
         if(USE_VIEW_CAM_SHADING && !killShading)
@@ -533,8 +530,8 @@ void UAVCamera::draw_background(IrrlichtDevice * device)
     rect<s32> dest(
         pos.X + 3,
         pos.Y + 3,
-        pos.X + win->windowWidth() / 3 - 3,
-        pos.Y + win->windowHeight() / 3 - 3);
+        pos.X + cam_size_x - 3,
+        pos.Y + cam_size_y - 3);
     GUIImage::draw2DRectangle(device->getVideoDriver(), dest, color);
 
     //// progress bar
@@ -825,10 +822,14 @@ void UAVCamera::cam_message(int message) {
         case 2:
             // turn on visual alarm
             set_video_alert(true);
+			win->set_alarm_text(std::to_string(id));
             break;
         case 3:
             // turn off visual alarm
             set_video_alert(false);
+			if (win->get_alarm_text() == std::to_string(id) ) {
+				win->set_alarm_text("");
+			}
             break;
 		case 4:
 			// turn on audio alarm

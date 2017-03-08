@@ -35,6 +35,8 @@ irr::s32 CAM_SIZE_X = 341;
 irr::s32 CAM_SIZE_Y = 256;
 irr::s32 CAM_INTERVAL = 10;
 
+static int alert_bar_width = 50;
+
 bool USE_RTT = true;
 
 int pow(int x, int y) {
@@ -62,8 +64,8 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  false, 
                                  false, 
                                  driver, 
-                                 std::make_pair(_cam_width * 3 + _cam_interval * 2, 
-												_cam_height * 3 + _cam_interval * 2), 
+                                 std::make_pair(_cam_width * 3 + _cam_interval * 2 + alert_bar_width * 2, 
+												_cam_height * 3 + _cam_interval * 2 + alert_bar_width * 2), 
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
@@ -72,6 +74,8 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
     CAM_SIZE_X = cam_width;
     CAM_SIZE_Y = cam_height;
     CAM_INTERVAL = cam_interval;
+
+	text = "";
 
     if (!load())
         throw Error("Cam window failed to initialize correctly.");
@@ -91,10 +95,10 @@ bool CamWindow::load() {
         for (int j = 0; j < 3; ++j) {
 			// std::cout << i << " " << j << "\n";
             cams[i * 3 + j] = 
-                new UAVCamera(position2di((CAM_SIZE_X + CAM_INTERVAL) * j, 
-                                          (CAM_SIZE_Y + CAM_INTERVAL) * i), 
+                new UAVCamera(position2di(alert_bar_width + (CAM_SIZE_X + CAM_INTERVAL) * j, 
+                                          alert_bar_width + (CAM_SIZE_Y + CAM_INTERVAL) * i), 
                               std::make_pair(CAM_SIZE_X, CAM_SIZE_Y),
-                              this);
+                              this, i * 3 + j);
         }
 
     need_render = true;
@@ -138,6 +142,13 @@ bool CamWindow::load() {
         vector3df(building_size, building_height, building_size));
     city->show_bounds(false, false, false);
 
+	// alarm text
+	IGUIFont * font1 = device()->getGUIEnvironment()->getFont(FONT_LARGE.c_str());
+	alarm_text = guienv()->addStaticText(L"",rect<s32>(0,0,0,0),false, false);
+    alarm_text->setTextAlignment(EGUIA_CENTER, EGUIA_CENTER);
+    alarm_text->setOverrideColor(color::COLOR_WHITE);
+    alarm_text->setOverrideFont(font1);
+
     return true;
 }
 
@@ -172,11 +183,51 @@ void CamWindow::draw() {
     //if (!started)
     //    start_overlay->draw();
 
+	draw_visual_alarm_text();
+
     driver()->endScene();
+}
+
+void CamWindow::draw_visual_alarm_text() {
+	stringw text(this->text.c_str());
+	rect<s32> pos_up(
+		2,
+		2,
+		windowWidth() - 2,
+		alert_bar_width - 2);
+	alarm_text->setText(text.c_str());
+	alarm_text->setOverrideColor(color::COLOR_WHITE);
+	alarm_text->setRelativePosition(pos_up);
+	alarm_text->draw();
+
+	rect<s32> pos_left(
+		2,
+		2,
+		alert_bar_width - 2,
+		windowHeight() - 2);
+	alarm_text->setRelativePosition(pos_left);
+	alarm_text->draw();
+
+	rect<s32> pos_right(
+		windowWidth() - alert_bar_width + 2,
+		2,
+		windowWidth() - 2,
+		windowHeight() - 2);
+	alarm_text->setRelativePosition(pos_right);
+	alarm_text->draw();
+
+	rect<s32> pos_down(
+		2,
+		windowHeight() - alert_bar_width + 2,
+		windowWidth() - 2,
+		windowHeight() - 2);
+	alarm_text->setRelativePosition(pos_down);
+	alarm_text->draw();
 }
 
 void CamWindow::load_images() {
     cams[0]->load_images(device());
+	//cams[2]->load_images(device());
 
     uav_it = uavs->begin();
     for (unsigned i = 0; i < cams.size(); ++i) {
@@ -277,7 +328,7 @@ void CamWindow::event_key_down(wchar_t key) {
 
 	if (!started && event_recv->IsKeyDown(irr::KEY_DOWN)
 		&& !event_recv->IsKeyDown(irr::KEY_UP)) {
-		audio::decreaseEngineVolume(0.05);
+		audio::decreaseEngineVolume(0.10);
 		audio::play_test_sound();
 	}
 
