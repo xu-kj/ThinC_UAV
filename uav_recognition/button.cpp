@@ -30,11 +30,11 @@ bool UAVButton::is_mouse_over(irr::core::position2di cursor) {
 
 void UAVButton::draw()
 {
-    if(down && clicked) {
-        down->setPosition(area.UpperLeftCorner);
-        down->draw();
-    }
-    else if (highlighted) {
+    //if(down && clicked) {
+    //    down->setPosition(area.UpperLeftCorner);
+    //    down->draw();
+    //}
+    if (highlighted) {
         down->setPosition(area.UpperLeftCorner);
         down->draw();
     }

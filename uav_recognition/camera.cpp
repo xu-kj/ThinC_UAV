@@ -648,6 +648,34 @@ bool UAVCamera::button_click(position2di cursor)
         //     force_render();
         // }
 
+        // indicator button
+        if(indicator && indicator->is_mouse_over(cursor)) {
+            
+            cout << "clicked on indicator" << endl;
+            
+            // buttons_on = false;
+
+            //buttonClicked = 11;
+            indicator->click(win->device());
+            //uav->setConfirmed();
+
+			if (indicator->get_highlighted()) {
+				indicator->set_highlighted(false);
+				if (!buttons_on) {
+					cam_message(7);
+				}
+			} 
+			else {
+				indicator->set_highlighted(true);
+				cam_message(9);
+			}
+
+			//Output::Instance().RecordEvent(id, UAV_EVENT::USER_TARGET, 
+			//	(double) uav->getPosition().X, (double) uav->getPosition().Y, (double) uav->getPosition().Z);
+
+            force_render();
+        }
+
         // bottom confirm button
         if(checkTarget->is_mouse_over(cursor))
         {
@@ -783,16 +811,18 @@ void UAVCamera::cam_message(int message) {
         case 0:
             // turn on buttons when close to target
             buttons_on = true;
-            set_indicator_status(true);
+            //set_indicator_status(true);
 			// indicator->set_highlighted(true);
             set_light_level = 3;
             break;
         case 1:
             // turn off buttons after getting away
             buttons_on = false;
-            set_indicator_status(false);
+            //set_indicator_status(false);
 			// indicator->set_highlighted(false);
-            set_light_level = 1;
+			if (!indicator || !indicator->get_highlighted()) {
+				set_light_level = 1;
+			}
             break;
         case 7:
             if(USE_LIGHT_CUES) {
@@ -843,6 +873,16 @@ bool UAVCamera::set_indicator_status(bool status)
 	if (indicator != nullptr) {
 		indicator->set_highlighted(status);
 		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool UAVCamera::get_indicator_status() 
+{
+	if (indicator != nullptr) {
+		return indicator->get_highlighted();
 	}
 	else {
 		return false;

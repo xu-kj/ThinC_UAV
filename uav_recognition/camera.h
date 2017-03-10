@@ -121,6 +121,7 @@ private:
     bool buttons_on;
     // return true if there's an indicator
     bool set_indicator_status(bool status);
+	bool get_indicator_status();
 
     bool staticOn;
     float timeSinceLastStatic;

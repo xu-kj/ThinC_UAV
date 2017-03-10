@@ -268,32 +268,32 @@ void CamWindow::event_key_down(wchar_t key) {
     }
 
 	if (started) {
-			if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
-				cams[0]->cam_message(11);
-			}
-			else if (cams[1] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
-				cams[1]->cam_message(11);
-			}
-			else if (cams[2] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
-				cams[2]->cam_message(11);
-			}
-			else if (cams[3] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
-				cams[3]->cam_message(11);
-			}
-			else if (cams[4] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
-				cams[4]->cam_message(11);
-			}
-			else if (cams[5] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
-				cams[5]->cam_message(11);
-			}
-			else if (cams[6] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
-				cams[6]->cam_message(11);
-			}
-			else if (cams[7] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
-				cams[7]->cam_message(11);
-			}
-			else if (cams[8] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
-				cams[8]->cam_message(11);
-			}
+		if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
+			cams[0]->cam_message(11);
+		}
+		else if (cams[1] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
+			cams[1]->cam_message(11);
+		}
+		else if (cams[2] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
+			cams[2]->cam_message(11);
+		}
+		else if (cams[3] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
+			cams[3]->cam_message(11);
+		}
+		else if (cams[4] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
+			cams[4]->cam_message(11);
+		}
+		else if (cams[5] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
+			cams[5]->cam_message(11);
+		}
+		else if (cams[6] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
+			cams[6]->cam_message(11);
+		}
+		else if (cams[7] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
+			cams[7]->cam_message(11);
+		}
+		else if (cams[8] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
+			cams[8]->cam_message(11);
+		}
 	}
 }
