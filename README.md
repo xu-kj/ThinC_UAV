@@ -14,7 +14,7 @@ Target Recognition
 * [x] change to 6 cams and add intervals between cams
 * [x] camera screen lights up with the indicator
 * [x] change camera screen frame to the same color
-* [ ] change the indicator button to be a trigger that lights up the screen
+* [x] change the indicator button to be a trigger that lights up the screen
 * [ ] show question and buttons for answers at pause
 
 Package Delivery
