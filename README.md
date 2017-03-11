@@ -28,7 +28,7 @@ Package Delivery
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
 * [x] cross model matching (fixed light level, change volumne), repeat until enter is hit
-* [ ] light up and enable buttons only when the UAV stops
+* [x] light up and enable buttons only when the UAV stops
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
