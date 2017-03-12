@@ -59,6 +59,7 @@ General Tasks
 * [ ] get Irrlicht model list
 * [ ] rebuild project still with Irrlicht engine
 * [ ] update rendering engine, rebuild with C# and unity
+* [ ] back up UAV project, with current and older versions
 
 --------------------
 More about the project: ... (to be determined)
