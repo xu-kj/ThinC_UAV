@@ -553,7 +553,8 @@ void UAVController::readEventNode(IXMLReader * reader) {
         cout << "Loaded Event \"" << node_name.c_str() << "\" [" << start_time << "]" << endl;
 
         if (node_name == "VIDEO_ALERT" ) {
-            start_time += u32(3) * 1000;
+            //start_time += u32(3) * 1000;
+			start_time += u32(1) * 200;
             Event *e = new Event("VIDEO_ALERT_OFF", text, start_time, id);
             events.push_back(e);
         }
