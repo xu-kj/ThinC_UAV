@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <irrlicht.h>
+#include <vector>
 
 /* The Output class uses E_OUTPUT to specify which file to write to (default OUTPUT_LOG). */
 
@@ -102,6 +103,13 @@ private:
 
     static std::fstream files[OUTPUT_COUNT];
     static irr::core::stringc filenames[];
+
+    vector<double> timestamp;
+    vector<int> uavTarget;
+    vector<UAV_EVENT> event;
+    vector<double> xPos;
+    vector<double> yPos;
+    vector<double> zPos;
 };
 
 #endif /* OUTPUT_H */

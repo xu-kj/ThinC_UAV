@@ -285,4 +285,13 @@ void Output::RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, do
     fs << target << ',';
 	fs << UAV_EVENT_TEXT[e - UAV_EVENT::SIMULATION_STARTED];
     fs << ',' << pos_x << ',' << pos_y << ',' << pos_z << endl;
+
+    timestamp.push_back(MINUTES + SECONDS / 60 + MILLISECONDS / 60000);
+    uavTarget.push_back(target);
+    event.push_back(e);
+    xPos.push_back(pos_x);
+    yPos.push_back(pos_y);
+    zPos.push_back(pos_z);
 }
+
+
