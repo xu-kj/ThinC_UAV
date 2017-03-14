@@ -40,10 +40,15 @@ Package Delivery
 * [ ] TBD | VA_2: change video alarm button to show number in all 9 camera boxes, use keyboard as input
 * [x] show uav number/index in each camera box
 * [x] texture: change target model into delivery pad
-* [ ] texture: update map, to make map look more like urban streets
+* [x] texture: update map, to make map look more like urban streets
+* [ ] change beginning prompt for x-model matching
+* [ ] remove window 5 and make it the video alert box
+* [ ] user could only react after the uav stops
+* [ ] run in fullscreen
+* [ ] fix data recording and calculation
 
 General Tasks
-* [ ] support for global speed change
+* [ ] support for global speed change, for testing
 * [ ] record events in time sequence
 * [ ] calculate correctness and record response time
 * [ ] change UAV fly path so that it always follow the scheduled path
