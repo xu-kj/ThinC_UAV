@@ -36,14 +36,14 @@ Package Delivery
 * [x] create audio files for each uav alert
 * [x] change all camera windows' borders to the same blue color
 * [ ] TBD | change video/audio response buttons into one single reaction button
-* [x] VA_1: add a border with numbers as video alarm, display numbers
+* [x] ~~VA_1: add a border with numbers as video alarm, display numbers~~
 * [ ] TBD | VA_2: change video alarm button to show number in all 9 camera boxes, use keyboard as input
 * [x] show uav number/index in each camera box
 * [x] texture: change target model into delivery pad
 * [x] texture: update map, to make map look more like urban streets
 * [ ] change beginning prompt for x-model matching
-* [ ] remove window 5 and make it the video alert box
-* [ ] user could only react after the uav stops
+* [ ] revert VA_1, remove window 5 and make it the video alert box
+* [x] user could only react after the uav stops
 * [ ] run in fullscreen
 * [ ] fix data recording and calculation
 
