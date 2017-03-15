@@ -73,6 +73,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
     CAM_SIZE_Y = cam_height;
     CAM_INTERVAL = cam_interval;
 
+
     if (!load())
         throw Error("Cam window failed to initialize correctly.");
 }
@@ -222,7 +223,8 @@ void CamWindow::load_images() {
 }
 
 void CamWindow::render_to_texture() {
-    for (UAVCamera *x : cams) 
+    for (UAVCamera *x : cams) {
+
         if (x->need_render()) {
             need_render = true;
             break;
@@ -246,6 +248,10 @@ void CamWindow::render_to_texture() {
                 driver()->setViewPort(viewport);
             }
         }
+		
+		// Check indicators of cameras
+		x->check_last_indicator_click();
+	}
 }
 
 void CamWindow::event_mouse_down() {

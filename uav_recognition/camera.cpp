@@ -35,6 +35,7 @@ bool SHOW_PROGRESS_BAR = false;
 // just global
 const irr::s32 OUTLINE_WIDTH = 8;
 const irr::s32 OUTLINE_HEIGHT = 7;
+const double TOGGLE_INDICATOR_DURATION = 4.0;
 bool ZOOM_NEAR_TARGET = false;
 
 // sara simulation overrides
@@ -653,11 +654,7 @@ bool UAVCamera::button_click(position2di cursor)
             
             cout << "clicked on indicator" << endl;
             
-            // buttons_on = false;
-
-            //buttonClicked = 11;
             indicator->click(win->device());
-            //uav->setConfirmed();
 
 			if (indicator->get_highlighted()) {
 				indicator->set_highlighted(false);
@@ -667,11 +664,9 @@ bool UAVCamera::button_click(position2di cursor)
 			} 
 			else {
 				indicator->set_highlighted(true);
+				time(&last_indicator_click);
 				cam_message(9);
 			}
-
-			//Output::Instance().RecordEvent(id, UAV_EVENT::USER_TARGET, 
-			//	(double) uav->getPosition().X, (double) uav->getPosition().Y, (double) uav->getPosition().Z);
 
             force_render();
         }
@@ -686,6 +681,7 @@ bool UAVCamera::button_click(position2di cursor)
             
             cout << "clicked on bottom confirm" << endl;
             if(USE_NETWORK)
+            
                 Network::sendMessageCamButton(11, id);
             
             // buttons_on = false;
@@ -811,14 +807,14 @@ void UAVCamera::cam_message(int message) {
         case 0:
             // turn on buttons when close to target
             buttons_on = true;
-            //set_indicator_status(true);
+            // set_indicator_status(true);
 			// indicator->set_highlighted(true);
             set_light_level = 3;
             break;
         case 1:
             // turn off buttons after getting away
             buttons_on = false;
-            //set_indicator_status(false);
+            // set_indicator_status(false);
 			// indicator->set_highlighted(false);
 			if (!indicator || !indicator->get_highlighted()) {
 				set_light_level = 1;
@@ -866,6 +862,21 @@ void UAVCamera::cam_message(int message) {
     }
 
 	force_render();
+}
+
+// Check if indicator has been pressed for over five seconds
+void UAVCamera::check_last_indicator_click() {
+
+	if (indicator->get_highlighted()) {
+		time_t now;
+		time(&now);
+		if (difftime(now, last_indicator_click) > TOGGLE_INDICATOR_DURATION) {
+			indicator->set_highlighted(false);				
+			if (!buttons_on) {
+				cam_message(7);
+			}
+		}
+	}
 }
 
 bool UAVCamera::set_indicator_status(bool status) 

@@ -8,6 +8,7 @@
 #include "uav.h"
 
 #include <irrlicht.h>
+#include <time.h>
 
 class CamWindow;
 
@@ -33,6 +34,8 @@ public:
 
     // return true if a render is required
     bool button_click(irr::core::position2di cursor);
+
+	void check_last_indicator_click();
 
     void force_render();
     bool need_render();
@@ -91,11 +94,15 @@ private:
     // buttons
     UAVButton * indicator;
     UAVButton * checkTarget;
+    irr::u32 indicator_last_click;
 
     UAVButton * btnPositive;
     UAVButton * btnNegative;
     // UAVButton * light;
 
+	// Timer for last indicator button press
+	time_t last_indicator_click;
+	
     // fonts (show number of UAV in corner)
     irr::gui::IGUIStaticText * large_text;
 
