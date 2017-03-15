@@ -15,7 +15,8 @@ Target Recognition
 * [x] camera screen lights up with the indicator
 * [x] change camera screen frame to the same color
 * [x] change the indicator button to be a trigger that lights up the screen
-* [ ] show question and buttons for answers at pause
+* [ ] the indicator button should only light up the screen for 4-5 seconds after button is pressed
+* [ ] pause simulation after one minute of time and request user feedback on "trustworthiness" of uav
 
 Package Delivery
 * [x] cam_window light level auto changes up arriving target location
