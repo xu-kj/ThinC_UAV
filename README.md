@@ -15,7 +15,8 @@ Target Recognition
 * [x] camera screen lights up with the indicator
 * [x] change camera screen frame to the same color
 * [x] change the indicator button to be a trigger that lights up the screen
-* [ ] show question and buttons for answers at pause
+* [ ] the indicator button should only light up the screen for 4-5 seconds after button is pressed
+* [ ] pause simulation after one minute of time and request user feedback on "trustworthiness" of uav
 
 Package Delivery
 * [x] cam_window light level auto changes up arriving target location
@@ -28,7 +29,7 @@ Package Delivery
 * [x] add configuration value that sets intensity for both types of alarms
 * [ ] if the configuration value is empty, guide the user to set the value in the program before sim, to let the intensity of both alarms match (given visual to set volume, and reverse)
 * [x] cross model matching (fixed light level, change volumne), repeat until enter is hit
-* [ ] light up and enable buttons only when the UAV stops
+* [x] light up and enable buttons only when the UAV stops
 * [x] stop at target, wait for response, no timeout, ~~timeout = 30s~~
 * [x] visual alarm ~~lasts 3 sec~~, dims after click
 * [x] visual alarm and audio alarm on a time scale
@@ -36,14 +37,19 @@ Package Delivery
 * [x] create audio files for each uav alert
 * [x] change all camera windows' borders to the same blue color
 * [ ] TBD | change video/audio response buttons into one single reaction button
-* [x] VA_1: add a border with numbers as video alarm, display numbers
+* [x] ~~VA_1: add a border with numbers as video alarm, display numbers~~
 * [ ] TBD | VA_2: change video alarm button to show number in all 9 camera boxes, use keyboard as input
 * [x] show uav number/index in each camera box
 * [x] texture: change target model into delivery pad
-* [ ] texture: update map, to make map look more like urban streets
+* [x] texture: update map, to make map look more like urban streets
+* [ ] change beginning prompt for x-model matching
+* [ ] revert VA_1, remove window 5 and make it the video alert box
+* [x] user could only react after the uav stops
+* [ ] run in fullscreen
+* [ ] fix data recording and calculation
 
 General Tasks
-* [ ] support for global speed change
+* [ ] support for global speed change, for testing
 * [ ] record events in time sequence
 * [ ] calculate correctness and record response time
 * [ ] change UAV fly path so that it always follow the scheduled path
@@ -59,6 +65,7 @@ General Tasks
 * [ ] get Irrlicht model list
 * [ ] rebuild project still with Irrlicht engine
 * [ ] update rendering engine, rebuild with C# and unity
+* [ ] back up UAV project, with current and older versions
 
 --------------------
 More about the project: ... (to be determined)
