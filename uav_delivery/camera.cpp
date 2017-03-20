@@ -331,6 +331,10 @@ void UAVCamera::set_uav(UAVObject * uav_, IrrlichtDevice * device)
 }
 
 void UAVCamera::draw_overlay(IrrlichtDevice * device) {
+    if (id == 4) {
+        return;
+    }
+
     if(uav) {
         if(win->windowWidth() == 2560) {
             // RESCHANGE
@@ -367,6 +371,10 @@ void UAVCamera::draw_overlay(IrrlichtDevice * device) {
 
 void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 {
+    if (id == 4) {
+        return;
+    }
+
     IVideoDriver * driver = device->getVideoDriver();
 
     // draw the number in the bottom-right corner
@@ -520,6 +528,10 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 }
 void UAVCamera::draw_background(IrrlichtDevice * device)
 {
+    if (id == 4) {
+        continue;
+    }
+
     // draw background
     //cam_box->setPosition(pos);
     //cam_box->draw();
