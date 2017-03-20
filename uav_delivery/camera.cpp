@@ -162,8 +162,8 @@ void UAVCamera::load_images(IrrlichtDevice * device)
 		// this is another reason I try to update it to a newer engine or I should probably
 		// read more document. I really need to try hard on this one...
 
-		outline = new GUIImage(rect<s32>(0, 0, cam_size_x * 1.31, cam_size_y), device, guiElmRoot);
-		//outline = new GUIImage(rect<s32>(0, 0, cam_size_x * 1.5, cam_size_y), device, guiElmRoot);
+		// outline = new GUIImage(rect<s32>(0, 0, cam_size_x * 1.31, cam_size_y), device, guiElmRoot);
+		outline = new GUIImage(rect<s32>(0, 0, cam_size_x * 1.5, cam_size_y), device, guiElmRoot);
         
         outline->setTexture(driver->getTexture("cam_outline.png"));
 

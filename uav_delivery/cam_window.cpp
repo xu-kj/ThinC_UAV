@@ -158,8 +158,14 @@ void CamWindow::draw() {
     render_to_texture();
     if(USE_RTT && driver()->queryFeature(EVDF_RENDER_TO_TARGET)) {
         render_image->draw();
-        for (UAVCamera *x : cams)
+        for (int i = 0; i < cams.size(); ++i) {
+            if (i == 4) {
+                continue;
+            }
             x->draw_view(device(), city);
+        }
+        // for (UAVCamera *x : cams)
+        //     x->draw_view(device(), city);
         render_image_overlay->draw();
 
         for (UAVCamera *x : cams) {
