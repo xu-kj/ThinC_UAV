@@ -529,7 +529,7 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 void UAVCamera::draw_background(IrrlichtDevice * device)
 {
     if (id == 4) {
-        continue;
+        return;
     }
 
     // draw background
