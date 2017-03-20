@@ -331,7 +331,7 @@ void UAVCamera::set_uav(UAVObject * uav_, IrrlichtDevice * device)
 }
 
 void UAVCamera::draw_overlay(IrrlichtDevice * device) {
-    if (id == 4) {
+    if (id == 5) {
         return;
     }
 
@@ -371,7 +371,7 @@ void UAVCamera::draw_overlay(IrrlichtDevice * device) {
 
 void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 {
-    if (id == 4) {
+    if (id == 5) {
         return;
     }
 
@@ -528,7 +528,7 @@ void UAVCamera::draw_view(IrrlichtDevice * device, CityScene * city)
 }
 void UAVCamera::draw_background(IrrlichtDevice * device)
 {
-    if (id == 4) {
+    if (id == 5) {
         return;
     }
 
