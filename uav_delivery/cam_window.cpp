@@ -162,7 +162,7 @@ void CamWindow::draw() {
             if (i == 4) {
                 continue;
             }
-            x->draw_view(device(), city);
+            cams[i]->draw_view(device(), city);
         }
         // for (UAVCamera *x : cams)
         //     x->draw_view(device(), city);
