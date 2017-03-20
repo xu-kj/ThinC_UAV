@@ -35,7 +35,7 @@ irr::s32 CAM_SIZE_X = 341;
 irr::s32 CAM_SIZE_Y = 256;
 irr::s32 CAM_INTERVAL = 10;
 
-static int alert_bar_width = 50;
+static int alert_bar_width = 0;
 
 bool USE_RTT = true;
 
@@ -190,39 +190,47 @@ void CamWindow::draw() {
 
 void CamWindow::draw_visual_alarm_text() {
 	stringw text(this->text.c_str());
-	rect<s32> pos_up(
-		2,
-		2,
-		windowWidth() - 2,
-		alert_bar_width - 2);
-	alarm_text->setText(text.c_str());
-	alarm_text->setOverrideColor(color::COLOR_WHITE);
-	alarm_text->setRelativePosition(pos_up);
-	alarm_text->draw();
+	// rect<s32> pos_up(
+	// 	2,
+	// 	2,
+	// 	windowWidth() - 2,
+	// 	alert_bar_width - 2);
+	// alarm_text->setText(text.c_str());
+	// alarm_text->setOverrideColor(color::COLOR_WHITE);
+	// alarm_text->setRelativePosition(pos_up);
+	// alarm_text->draw();
 
-	rect<s32> pos_left(
-		2,
-		2,
-		alert_bar_width - 2,
-		windowHeight() - 2);
-	alarm_text->setRelativePosition(pos_left);
-	alarm_text->draw();
+	// rect<s32> pos_left(
+	// 	2,
+	// 	2,
+	// 	alert_bar_width - 2,
+	// 	windowHeight() - 2);
+	// alarm_text->setRelativePosition(pos_left);
+	// alarm_text->draw();
 
-	rect<s32> pos_right(
-		windowWidth() - alert_bar_width + 2,
-		2,
-		windowWidth() - 2,
-		windowHeight() - 2);
-	alarm_text->setRelativePosition(pos_right);
-	alarm_text->draw();
+	// rect<s32> pos_right(
+	// 	windowWidth() - alert_bar_width + 2,
+	// 	2,
+	// 	windowWidth() - 2,
+	// 	windowHeight() - 2);
+	// alarm_text->setRelativePosition(pos_right);
+	// alarm_text->draw();
 
-	rect<s32> pos_down(
-		2,
-		windowHeight() - alert_bar_width + 2,
-		windowWidth() - 2,
-		windowHeight() - 2);
-	alarm_text->setRelativePosition(pos_down);
-	alarm_text->draw();
+	// rect<s32> pos_down(
+	// 	2,
+	// 	windowHeight() - alert_bar_width + 2,
+	// 	windowWidth() - 2,
+	// 	windowHeight() - 2);
+	// alarm_text->setRelativePosition(pos_down);
+	// alarm_text->draw();
+
+    rect<s32> pos_center(
+        cam_width + cam_interval,
+        cam_height + cam_interval,
+        windowWidth() - cam_width - cam_interval,
+        windowHeight() - cam_height - cam_interval);
+    alarm_text->setRelativePosition(pos_center);
+    alarm_text->draw();
 }
 
 void CamWindow::load_images() {
