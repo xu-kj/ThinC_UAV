@@ -75,7 +75,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
     CAM_SIZE_Y = cam_height;
     CAM_INTERVAL = cam_interval;
 
-	text = "";
+	text = "THInC";
 
     if (!load())
         throw Error("Cam window failed to initialize correctly.");
@@ -143,7 +143,7 @@ bool CamWindow::load() {
     city->show_bounds(false, false, false);
 
 	// alarm text
-	IGUIFont * font1 = device()->getGUIEnvironment()->getFont(FONT_LARGE.c_str());
+	IGUIFont * font1 = device()->getGUIEnvironment()->getFont(FONT_EXTRA_LARGE.c_str());
 	alarm_text = guienv()->addStaticText(L"",rect<s32>(0,0,0,0),false, false);
     alarm_text->setTextAlignment(EGUIA_CENTER, EGUIA_CENTER);
     alarm_text->setOverrideColor(color::COLOR_WHITE);
@@ -189,6 +189,11 @@ void CamWindow::draw() {
     //if (!started)
     //    start_overlay->draw();
 
+	if (!started && get_alarm_text() == "1" && 
+		device()->getTimer()->getTime() - xmodel_timer >= 200) {
+		// xmodel fitting, showing text for more than 200 ms
+		set_alarm_text("");
+	}
 	draw_visual_alarm_text();
 
     driver()->endScene();
@@ -230,12 +235,20 @@ void CamWindow::draw_visual_alarm_text() {
 	// alarm_text->setRelativePosition(pos_down);
 	// alarm_text->draw();
 
+	/*
     rect<s32> pos_center(
         cam_width + cam_interval + 2,
         cam_height + cam_interval + 2,
         windowWidth() - cam_width - cam_interval - 2,
         windowHeight() - cam_height - cam_interval - 2);
-    alarm_text->setRelativePosition(pos_center);
+	*/
+
+	// using exact numerial values
+	rect<s32> pos_center(341, 256, 682, 512);
+
+	alarm_text->setText(text.c_str());
+	alarm_text->setOverrideColor(color::COLOR_WHITE);
+	alarm_text->setRelativePosition(pos_center);
     alarm_text->draw();
 }
 
@@ -337,12 +350,18 @@ void CamWindow::event_key_down(wchar_t key) {
 	if (!started && event_recv->IsKeyDown(irr::KEY_UP)
 		&& !event_recv->IsKeyDown(irr::KEY_DOWN)) {
 		audio::increaseEngineVolume(0.10);
+		
+		set_alarm_text("1");
+		xmodel_timer = device()->getTimer()->getTime();
 		audio::play_test_sound();
 	}
 
 	if (!started && event_recv->IsKeyDown(irr::KEY_DOWN)
 		&& !event_recv->IsKeyDown(irr::KEY_UP)) {
 		audio::decreaseEngineVolume(0.10);
+
+		set_alarm_text("1");
+		xmodel_timer = device()->getTimer()->getTime();
 		audio::play_test_sound();
 	}
 

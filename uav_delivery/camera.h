@@ -89,6 +89,10 @@ private:
     static GUIImage * button_light_off;
     static GUIImage * button_target;
     static GUIImage * button_target_down;
+	static GUIImage * button_auditory;
+	static GUIImage * button_auditory_off;
+	static GUIImage * button_visual;
+	static GUIImage * button_visual_off;
     bool button_clicked;
 
     // buttons

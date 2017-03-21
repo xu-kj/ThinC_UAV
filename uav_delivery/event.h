@@ -7,7 +7,7 @@
 enum UAV_EVENT_E { 
 	CHECK_POINT,
 	CAMERA_FAIL, GPS_FAIL, CHAT_REQUEST,
-	VIDEO_ALERT, VIDEO_ALERT_OFF,
+	VIDEO_ALERT, VIDEO_ALERT_OFF, VIDEO_TEXT_CLEAR,
     AUDIO_ALERT, AUDIO_ALERT_OFF
 };
 
@@ -27,6 +27,8 @@ public:
 			this->type = UAV_EVENT_E::VIDEO_ALERT;
         else if (type == "VIDEO_ALERT_OFF")
             this->type = UAV_EVENT_E::VIDEO_ALERT_OFF;
+		else if (type == "VIDEO_TEXT_CLEAR")
+			this->type = UAV_EVENT_E::VIDEO_TEXT_CLEAR;
 		else if (type == "AUDIO_ALERT")
 			this->type = UAV_EVENT_E::AUDIO_ALERT;
         else if (type == "AUDIO_ALERT_OFF")

@@ -217,6 +217,9 @@ void NavWindow::triggerEvent(Event * e)
             case VIDEO_ALERT_OFF:
                 (*uav_it)->send_cam_message(3);
                 break;
+			case VIDEO_TEXT_CLEAR:
+				(*uav_it)->send_cam_message(6);
+				break;
 
 			default:
 				break;

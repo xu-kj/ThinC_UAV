@@ -46,6 +46,8 @@ private:
 	irr::gui::IGUIStaticText * alarm_text;
 	void draw_visual_alarm_text();
 
+	irr::u32 xmodel_timer;
+
 public:
     CamWindow(std::list<WaypointObject *> * wps_,
         std::list<SimObject *> * bases_,
