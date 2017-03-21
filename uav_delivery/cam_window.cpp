@@ -231,10 +231,10 @@ void CamWindow::draw_visual_alarm_text() {
 	// alarm_text->draw();
 
     rect<s32> pos_center(
-        cam_width + cam_interval,
-        cam_height + cam_interval,
-        windowWidth() - cam_width - cam_interval,
-        windowHeight() - cam_height - cam_interval);
+        cam_width + cam_interval + 2,
+        cam_height + cam_interval + 2,
+        windowWidth() - cam_width - cam_interval - 2,
+        windowHeight() - cam_height - cam_interval - 2);
     alarm_text->setRelativePosition(pos_center);
     alarm_text->draw();
 }
