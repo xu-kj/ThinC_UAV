@@ -1,0 +1,391 @@
+<!-- UAV Scenario created with the UAV Simulation Editor -->
+<!-- THInC Lab, University of Michigan -->
+<?xml version="1.0"?>
+
+<!-- UAV 1 -->
+<uav>
+    <string name="Name" value="Mav-1" />
+    <float name="PosX" value="6075.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11655.000000" />
+    <int name="Color" value="1" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-1" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="17055.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-1" />
+        <float name="PosX" value="9135.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16785.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-11" />
+        <float name="PosX" value="12015.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="17775.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-13" />
+        <float name="PosX" value="13095.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="22545.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-29" />
+        <float name="PosX" value="585.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="675.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 2 -->
+<uav>
+    <string name="Name" value="Mav-2" />
+    <float name="PosX" value="6075.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11655.000000" />
+    <int name="Color" value="2" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-2" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="17055.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-2" />
+        <float name="PosX" value="12465.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="15435.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-16" />
+        <float name="PosX" value="14085.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="3555.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-24" />
+        <float name="PosX" value="10305.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="18225.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-28" />
+        <float name="PosX" value="9495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="12285.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 3 -->
+<uav>
+    <string name="Name" value="Mav-3" />
+    <float name="PosX" value="6075.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11385.000000" />
+    <int name="Color" value="3" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-3" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16965.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-3" />
+        <float name="PosX" value="6795.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14355.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-10" />
+        <float name="PosX" value="7605.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="15705.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-12" />
+        <float name="PosX" value="10665.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="22455.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-15" />
+        <float name="PosX" value="16515.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="23175.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 4 -->
+<uav>
+    <string name="Name" value="Mav-4" />
+    <float name="PosX" value="5985.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11115.000000" />
+    <int name="Color" value="4" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-4" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16965.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-4" />
+        <float name="PosX" value="23265.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="25425.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-21" />
+        <float name="PosX" value="16875.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="21285.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-22" />
+        <float name="PosX" value="18045.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="20385.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 5 -->
+<uav>
+    <string name="Name" value="Mav-5" />
+    <float name="PosX" value="26235.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="4185.000000" />
+    <int name="Color" value="5" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-5" />
+        <float name="PosX" value="25335.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="2385.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-5" />
+        <float name="PosX" value="26145.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="3105.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 6 -->
+<uav>
+    <string name="Name" value="Mav-6" />
+    <float name="PosX" value="5985.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11205.000000" />
+    <int name="Color" value="6" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-6" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16965.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-6" />
+        <float name="PosX" value="23175.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="23175.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-20" />
+        <float name="PosX" value="21195.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="15885.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-25" />
+        <float name="PosX" value="21105.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="8415.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-30" />
+        <float name="PosX" value="13725.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="7425.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 7 -->
+<uav>
+    <string name="Name" value="Mav-7" />
+    <float name="PosX" value="5985.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11205.000000" />
+    <int name="Color" value="7" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-7" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16965.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-7" />
+        <float name="PosX" value="22365.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="9945.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-17" />
+        <float name="PosX" value="15435.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="13005.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-19" />
+        <float name="PosX" value="17505.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="10845.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-29" />
+        <float name="PosX" value="4815.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="18855.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 8 -->
+<uav>
+    <string name="Name" value="Mav-8" />
+    <float name="PosX" value="6075.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11115.000000" />
+    <int name="Color" value="8" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-8" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16875.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-8" />
+        <float name="PosX" value="6345.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="9765.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-14" />
+        <float name="PosX" value="19665.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="6705.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-26" />
+        <float name="PosX" value="4455.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="23085.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- UAV 9 -->
+<uav>
+    <string name="Name" value="Mav-9" />
+    <float name="PosX" value="6075.000000" />
+    <float name="PosY" value="65.000000" />
+    <float name="PosZ" value="11295.000000" />
+    <int name="Color" value="9" />
+    <float name="Fuel" value="1.000000" />
+
+    <base>
+        <string name="Name" value="Base-9" />
+        <float name="PosX" value="18495.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="16875.000000" />
+    </base>
+
+    <waypoint>
+        <string name="Name" value="EO-9" />
+        <float name="PosX" value="11655.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="2475.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-18" />
+        <float name="PosX" value="13995.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="17235.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-23" />
+        <float name="PosX" value="15075.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="9585.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-31" />
+        <float name="PosX" value="4275.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="14355.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+</uav>
+
+<!-- SCENE 1 -->
+<scene>
+    <string name="Name" value="Scene 2" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="6" />
+    <int name="CityY" value="7" />
+</scene>
+
