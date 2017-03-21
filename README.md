@@ -43,7 +43,7 @@ Package Delivery
 * [x] texture: change target model into delivery pad
 * [x] texture: update map, to make map look more like urban streets
 * [ ] change beginning prompt for x-model matching
-* [ ] revert VA_1, remove window 5 and make it the video alert box
+* [x] revert VA_1, remove window 5 and make it the video alert box
 * [x] user could only react after the uav stops
 * [ ] run in fullscreen
 * [ ] fix data recording and calculation

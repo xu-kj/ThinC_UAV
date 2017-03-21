@@ -177,8 +177,8 @@ void UAVController::run() {
 
 		Output::Instance().WriteColumnName();
 
-		audio::play_test_sound();
-		((CamWindow *)win2)->set_alarm_text("1");
+		//audio::play_test_sound();
+		//((CamWindow *)win2)->set_alarm_text("");
 
         // keep the model paused until the user starts
         while(!started && running && !OTHER_SIM_ENDED) {
@@ -554,13 +554,16 @@ void UAVController::readEventNode(IXMLReader * reader) {
 
         if (node_name == "VIDEO_ALERT" ) {
             //start_time += u32(3) * 1000;
-			start_time += u32(1) * 200;
-            Event *e = new Event("VIDEO_ALERT_OFF", text, start_time, id);
+			//start_time += u32(1) * 200;
+            Event *e = new Event("VIDEO_TEXT_CLEAR", text, start_time + u32(1) * 200, id);
+            events.push_back(e);
+
+			e = new Event("VIDEO_ALERT_OFF", text, start_time + u32(3) * 1000, id);
             events.push_back(e);
         }
         else if (node_name == "AUDIO_ALERT") {
-            start_time += u32(3) * 1000;
-            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time, id);
+            //start_time += u32(3) * 1000;
+            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time + u32(3) * 1000, id);
             events.push_back(e);
         }
     }

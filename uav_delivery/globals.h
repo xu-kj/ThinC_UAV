@@ -13,6 +13,7 @@
     // fonts
     const irr::core::stringc FONT_LARGE = "font_large.xml";
     const irr::core::stringc FONT_SMALL = "font_small.xml";
+	const irr::core::stringc FONT_EXTRA_LARGE = "extra_large_font.xml";
 
     // UAV information console
     const irr::core::stringc UAV_CONS_ZIP = "../media/uav_cons_1024.pk3";

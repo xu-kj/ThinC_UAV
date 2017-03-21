@@ -62,6 +62,10 @@ extern bool USE_LIGHT_CUES;
     GUIImage * UAVCamera::button_light_off = 0;
     GUIImage * UAVCamera::button_target = 0;
     GUIImage * UAVCamera::button_target_down = 0;
+	GUIImage * UAVCamera::button_auditory = 0;
+	GUIImage * UAVCamera::button_auditory_off = 0;
+	GUIImage * UAVCamera::button_visual = 0;
+	GUIImage * UAVCamera::button_visual_off = 0;
 
 UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow * win_, int _id)
     : pos(pos_), win(win_), uav(0), need_update(true), zooming_out(false),
@@ -69,7 +73,7 @@ UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow *
     auto_light(false), buttons_on(false), staticOn(true), id(_id)
 {
     v_alert_on = false;
-    a_alert_on = true;
+    a_alert_on = false;
     this->cam_size_x = cam_size.first;
     this->cam_size_y = cam_size.second;
 
@@ -104,6 +108,10 @@ UAVCamera::~UAVCamera()
         if(button_unsure_down)  delete button_unsure_down;
         if(button_target)       delete button_target;
         if(button_target_down)  delete button_target_down;
+		if(button_auditory)     delete button_auditory;
+		if(button_auditory_off) delete button_auditory_off;
+		if(button_visual)       delete button_visual;
+		if(button_visual_off)   delete button_visual_off;
 
         // delete font
         if(large_text)      delete large_text;
@@ -213,6 +221,16 @@ void UAVCamera::load_images(IrrlichtDevice * device)
     button_target->setTexture(driver->getTexture("button_target.png"));
     button_target_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
     button_target_down->setTexture(driver->getTexture("button_target_down.png"));
+
+	button_auditory = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_auditory->setTexture(driver->getTexture("button_auditory.png"));
+    button_auditory_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_auditory_off->setTexture(driver->getTexture("button_auditory_off.png"));
+
+	button_visual = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_visual->setTexture(driver->getTexture("button_visual.png"));
+    button_visual_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_visual_off->setTexture(driver->getTexture("button_visual_off.png"));
 }
 
 void UAVCamera::set_id(IrrlichtDevice * device, s32 id_)
@@ -292,9 +310,9 @@ void UAVCamera::load_buttons()
             pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 3 - 3,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
-        button_light,
-        button_light,
-        button_light_off);
+        button_visual,
+        button_visual,
+        button_visual_off);
 
 	a_indicator = new UAVButton(
         rect2di(
@@ -302,9 +320,9 @@ void UAVCamera::load_buttons()
             pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 2 - 3,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
             (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
-        button_light,
-        button_light,
-        button_light_off);
+        button_auditory,
+        button_auditory,
+        button_auditory_off);
 }
 
 void UAVCamera::set_uav(UAVObject * uav_, IrrlichtDevice * device)
@@ -717,7 +735,7 @@ bool UAVCamera::button_click(position2di cursor)
 
 		if (v_indicator->is_mouse_over(cursor) && v_alert_on) {
             
-            // v_indicator->click(win->device());
+            v_indicator->click(win->device());
 			Output::Instance().RecordEvent(id, UAV_EVENT::USER_ALARM_VISUAL_REACTED, 
 				(double) uav->getPosition().X, 
 				(double) uav->getPosition().Y, 
@@ -839,9 +857,9 @@ void UAVCamera::cam_message(int message) {
         case 3:
             // turn off visual alarm
             set_video_alert(false);
-			if (win->get_alarm_text() == std::to_string(id) ) {
-				win->set_alarm_text("");
-			}
+			//if (win->get_alarm_text() == std::to_string(id) ) {
+			//	win->set_alarm_text("");
+			//}
             break;
 		case 4:
 			// turn on audio alarm
@@ -851,6 +869,12 @@ void UAVCamera::cam_message(int message) {
 		case 5:
 			// turn off audio alarm
             set_audio_alert(false);
+			break;
+		case 6:
+			// set alarm text to ""
+			if (win->get_alarm_text() == std::to_string(id) ) {
+				win->set_alarm_text("");
+			}
 			break;
         case 7:
             if(USE_LIGHT_CUES) {
@@ -912,7 +936,7 @@ bool UAVCamera::set_video_alert(bool status)
     if (v_indicator != nullptr) {
         if (!v_alert_on && status == true) {
             v_alert_on = true;
-            v_indicator->set_highlighted(status);
+            //v_indicator->set_highlighted(status);
 
 			Output::Instance().RecordEvent(id, UAV_EVENT::ALARM_VISUAL_ON, 
 				(double) uav->getPosition().X, 
@@ -925,7 +949,7 @@ bool UAVCamera::set_video_alert(bool status)
 				(double) uav->getPosition().Y, 
 				(double) uav->getPosition().Z);
             v_alert_on = false;
-            v_indicator->set_highlighted(status);   
+            //v_indicator->set_highlighted(status);   
         }
         return true;
     }
@@ -942,7 +966,7 @@ bool UAVCamera::set_audio_alert(bool status)
 				(double) uav->getPosition().X, 
 				(double) uav->getPosition().Y, 
 				(double) uav->getPosition().Z);
-            //a_alert_on = true;
+            a_alert_on = true;
             //a_indicator->set_highlighted(status);
         }
         else if (a_alert_on && status == false) {
@@ -950,7 +974,7 @@ bool UAVCamera::set_audio_alert(bool status)
 				(double) uav->getPosition().X, 
 				(double) uav->getPosition().Y, 
 				(double) uav->getPosition().Z);
-            //a_alert_on = false;
+            a_alert_on = false;
             //a_indicator->set_highlighted(status);   
         }
     }
