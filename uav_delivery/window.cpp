@@ -46,7 +46,7 @@ UAVWindow::UAVWindow(
     event_recv(nullptr),
     title(title_),
     fullScreen(fullScreen_),
-    toggleFullScreen(false),
+    toggleFullScreen(true),
     closed(false),
     driver_type(driver_type_),
     resolution(resolution_),
