@@ -39,7 +39,7 @@ using namespace gui;
 // GENERAL SETUP
 // =========================================================================
 
-const char * const CONFIG_FILE = "..\\config.cfg";
+const char * const CONFIG_FILE = "..\\config.ini";
 
 //WindowResolution_e NAV_RESOLUTION = R1024X768;
 //WindowResolution_e CAM_RESOLUTION = R1024X768;
