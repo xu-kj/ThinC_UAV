@@ -104,12 +104,12 @@ private:
     static std::fstream files[OUTPUT_COUNT];
     static irr::core::stringc filenames[];
 
-    vector<double> timestamp;
-    vector<int> uavTarget;
-    vector<UAV_EVENT> event;
-    vector<double> xPos;
-    vector<double> yPos;
-    vector<double> zPos;
+    std::vector<double> timestamp;
+    std::vector<int> uavTarget;
+    std::vector<UAV_EVENT> event;
+    std::vector<double> xPos;
+    std::vector<double> yPos;
+    std::vector<double> zPos;
 };
 
 #endif /* OUTPUT_H */
