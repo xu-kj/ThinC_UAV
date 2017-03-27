@@ -508,6 +508,8 @@ void UAVController::readEventNode(IXMLReader * reader) {
     int start_min = 0;
     int start_sec = 0;
     int start_ms = 0;
+    int pseq = -1;
+    int fseq = -1;
 
     bool end = false;
     while(!end && reader->read()) {
@@ -534,9 +536,10 @@ void UAVController::readEventNode(IXMLReader * reader) {
 
                 if (stringw(L"StartMin") == name) start_min = value;
                 else if (stringw(L"StartSec") == name) start_sec = value;
-                else if (stringw(L"StartMs") == name)
-                    start_ms = value;
+                else if (stringw(L"StartMs")  == name) start_ms = value;
                 else if (stringw(L"Id")       == name) id = value;
+                else if (stringw(L"Pair")     == name) pseq = value;
+                else if (stringw(L"Flood")    == name) fseq = value;
             }
             break;
         }
@@ -548,22 +551,22 @@ void UAVController::readEventNode(IXMLReader * reader) {
         start_time += u32(start_sec) * 1000;
         start_time += u32(start_ms);
 
-        Event *e = new Event(node_name, text, start_time, id);
+        Event *e = new Event(node_name, text, start_time, id, pseq, fseq);
         events.push_back(e);
         cout << "Loaded Event \"" << node_name.c_str() << "\" [" << start_time << "]" << endl;
 
         if (node_name == "VIDEO_ALERT" ) {
             //start_time += u32(3) * 1000;
 			//start_time += u32(1) * 200;
-            Event *e = new Event("VIDEO_TEXT_CLEAR", text, start_time + u32(1) * 200, id);
+            Event *e = new Event("VIDEO_TEXT_CLEAR", text, start_time + u32(1) * 200, id, pseq, fseq);
             events.push_back(e);
 
-			e = new Event("VIDEO_ALERT_OFF", text, start_time + u32(3) * 1000, id);
+			e = new Event("VIDEO_ALERT_OFF", text, start_time + u32(3) * 1000, id, pseq, fseq);
             events.push_back(e);
         }
         else if (node_name == "AUDIO_ALERT") {
             //start_time += u32(3) * 1000;
-            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time + u32(3) * 1000, id);
+            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time + u32(3) * 1000, id, pseq, fseq);
             events.push_back(e);
         }
     }

@@ -14,8 +14,9 @@ enum UAV_EVENT_E {
 class Event {
 public:
     Event(const irr::core::stringc &type, const irr::core::stringw &text_,
-        irr::u32 start, irr::s32 id_)
-        : text(text_), start_time(start), id(id_), activated(false)
+        irr::u32 start, irr::s32 id_, int _ps, int _fs)
+        : text(text_), start_time(start), id(id_), activated(false), 
+        pair_seq(_ps), flood_seq(_fs)
     {
         if (type == "CAMERA_FAIL")
             this->type = UAV_EVENT_E::CAMERA_FAIL;
@@ -51,6 +52,8 @@ public:
     const irr::core::stringw & get_text() const { return text; }
     irr::u32 get_start_time() const { return start_time; }
     irr::s32 get_id() const { return id; }
+    int get_pair_seq() const { return pair_seq; }
+    int get_flood_seq() const { return flood_seq; }
     
 private:
     UAV_EVENT_E type;
@@ -59,6 +62,8 @@ private:
     irr::s32 id;
 
     bool activated;
+    int pair_seq;
+    int flood_seq;
 };
 
 #endif /* EVENT_H */

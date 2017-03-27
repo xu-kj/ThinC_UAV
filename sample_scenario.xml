@@ -58,6 +58,9 @@
 <!-- string:Type, supported values: VIDEO_ALERT, AUDIO_ALERT -->
 <!-- int:StartMin, StartSec, indicates start time -->
 <!-- int:Id, the uav the event acts on -->
+<!-- int:Pair, this event will show up with another one in pair, this is the sequence number of the pair -->
+<!-- int:Flood, this event will show up with many other ones, this is the sequence number of the flood -->
+<!-- leave Pair or Flood empty if they are not in any pair or flood -->
 
 <!-- ChangeTo and ChangeTime is not seen in the project and therefore should have -->
 <!-- no influence on the simulator's behavior -->
@@ -67,6 +70,8 @@
   <int name="StartSec" value="0" />
   <int name="StartMs" value="0" />
   <int name="Id" value="1" />
+  <int name="Pair" value="2" />
+  <int name="Flood" value="1" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
