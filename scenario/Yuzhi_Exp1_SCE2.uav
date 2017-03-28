@@ -5,45 +5,38 @@
 <!-- UAV 1 -->
 <uav>
     <string name="Name" value="Mav-1" />
-    <float name="PosX" value="6075.000000" />
+    <float name="PosX" value="4365.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11655.000000" />
+    <float name="PosZ" value="10485.000000" />
     <int name="Color" value="1" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-1" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23625.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="17055.000000" />
+        <float name="PosZ" value="22725.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-1" />
-        <float name="PosX" value="9135.000000" />
+        <float name="PosX" value="8235.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16785.000000" />
+        <float name="PosZ" value="4185.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-11" />
-        <float name="PosX" value="12015.000000" />
+        <string name="Name" value="EO-14" />
+        <float name="PosX" value="16695.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="17775.000000" />
+        <float name="PosZ" value="12915.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-13" />
-        <float name="PosX" value="13095.000000" />
+        <string name="Name" value="EO-26" />
+        <float name="PosX" value="3285.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="22545.000000" />
-        <bool name="Feature" value="True" />
-    </waypoint>
-    <waypoint>
-        <string name="Name" value="EO-29" />
-        <float name="PosX" value="585.000000" />
-        <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="675.000000" />
+        <float name="PosZ" value="24975.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -51,45 +44,45 @@
 <!-- UAV 2 -->
 <uav>
     <string name="Name" value="Mav-2" />
-    <float name="PosX" value="6075.000000" />
+    <float name="PosX" value="4275.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11655.000000" />
+    <float name="PosZ" value="10215.000000" />
     <int name="Color" value="2" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-2" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23625.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="17055.000000" />
+        <float name="PosZ" value="22635.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-2" />
-        <float name="PosX" value="12465.000000" />
+        <float name="PosX" value="4545.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="15435.000000" />
+        <float name="PosZ" value="13275.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-10" />
+        <float name="PosX" value="6795.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="15075.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
         <string name="Name" value="EO-16" />
-        <float name="PosX" value="14085.000000" />
+        <float name="PosX" value="17775.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="3555.000000" />
+        <float name="PosZ" value="2745.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-24" />
-        <float name="PosX" value="10305.000000" />
+        <string name="Name" value="EO-27" />
+        <float name="PosX" value="8055.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="18225.000000" />
-        <bool name="Feature" value="True" />
-    </waypoint>
-    <waypoint>
-        <string name="Name" value="EO-28" />
-        <float name="PosX" value="9495.000000" />
-        <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="12285.000000" />
+        <float name="PosZ" value="15975.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -97,45 +90,45 @@
 <!-- UAV 3 -->
 <uav>
     <string name="Name" value="Mav-3" />
-    <float name="PosX" value="6075.000000" />
+    <float name="PosX" value="4275.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11385.000000" />
+    <float name="PosZ" value="10125.000000" />
     <int name="Color" value="3" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-3" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23625.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16965.000000" />
+        <float name="PosZ" value="22455.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-3" />
-        <float name="PosX" value="6795.000000" />
+        <float name="PosX" value="8595.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="14355.000000" />
+        <float name="PosZ" value="9225.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-10" />
-        <float name="PosX" value="7605.000000" />
+        <string name="Name" value="EO-11" />
+        <float name="PosX" value="8955.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="15705.000000" />
+        <float name="PosZ" value="19755.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-12" />
-        <float name="PosX" value="10665.000000" />
+        <string name="Name" value="EO-20" />
+        <float name="PosX" value="19125.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="22455.000000" />
+        <float name="PosZ" value="10845.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-15" />
-        <float name="PosX" value="16515.000000" />
+        <string name="Name" value="EO-30" />
+        <float name="PosX" value="9315.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="23175.000000" />
+        <float name="PosZ" value="22275.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -143,38 +136,45 @@
 <!-- UAV 4 -->
 <uav>
     <string name="Name" value="Mav-4" />
-    <float name="PosX" value="5985.000000" />
+    <float name="PosX" value="4185.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11115.000000" />
+    <float name="PosZ" value="10215.000000" />
     <int name="Color" value="4" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-4" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23625.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16965.000000" />
+        <float name="PosZ" value="22365.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-4" />
-        <float name="PosX" value="23265.000000" />
+        <float name="PosX" value="17595.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="25425.000000" />
+        <float name="PosZ" value="9405.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
         <string name="Name" value="EO-21" />
-        <float name="PosX" value="16875.000000" />
+        <float name="PosX" value="4185.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="21285.000000" />
+        <float name="PosZ" value="19125.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-22" />
-        <float name="PosX" value="18045.000000" />
+        <string name="Name" value="EO-24" />
+        <float name="PosX" value="7065.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="20385.000000" />
+        <float name="PosZ" value="22725.000000" />
+        <bool name="Feature" value="True" />
+    </waypoint>
+    <waypoint>
+        <string name="Name" value="EO-28" />
+        <float name="PosX" value="12555.000000" />
+        <float name="PosY" value="65.000000" />
+        <float name="PosZ" value="24795.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -182,24 +182,24 @@
 <!-- UAV 5 -->
 <uav>
     <string name="Name" value="Mav-5" />
-    <float name="PosX" value="26235.000000" />
+    <float name="PosX" value="25245.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="4185.000000" />
+    <float name="PosZ" value="1395.000000" />
     <int name="Color" value="5" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-5" />
-        <float name="PosX" value="25335.000000" />
+        <float name="PosX" value="26325.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="2385.000000" />
+        <float name="PosZ" value="1845.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-5" />
-        <float name="PosX" value="26145.000000" />
+        <float name="PosX" value="25785.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="3105.000000" />
+        <float name="PosZ" value="2115.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -207,45 +207,45 @@
 <!-- UAV 6 -->
 <uav>
     <string name="Name" value="Mav-6" />
-    <float name="PosX" value="5985.000000" />
+    <float name="PosX" value="4275.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11205.000000" />
+    <float name="PosZ" value="9855.000000" />
     <int name="Color" value="6" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-6" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23625.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16965.000000" />
+        <float name="PosZ" value="22455.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-6" />
-        <float name="PosX" value="23175.000000" />
+        <float name="PosX" value="11565.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="23175.000000" />
+        <float name="PosZ" value="4635.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-20" />
-        <float name="PosX" value="21195.000000" />
+        <string name="Name" value="EO-13" />
+        <float name="PosX" value="11925.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="15885.000000" />
+        <float name="PosZ" value="13635.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-25" />
-        <float name="PosX" value="21105.000000" />
+        <string name="Name" value="EO-22" />
+        <float name="PosX" value="3465.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="8415.000000" />
+        <float name="PosZ" value="2925.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-30" />
-        <float name="PosX" value="13725.000000" />
+        <string name="Name" value="EO-31" />
+        <float name="PosX" value="9855.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="7425.000000" />
+        <float name="PosZ" value="14625.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -253,45 +253,45 @@
 <!-- UAV 7 -->
 <uav>
     <string name="Name" value="Mav-7" />
-    <float name="PosX" value="5985.000000" />
+    <float name="PosX" value="4185.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11205.000000" />
+    <float name="PosZ" value="10125.000000" />
     <int name="Color" value="7" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-7" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23535.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16965.000000" />
+        <float name="PosZ" value="22545.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-7" />
-        <float name="PosX" value="22365.000000" />
+        <float name="PosX" value="10755.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="9945.000000" />
+        <float name="PosZ" value="18405.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-17" />
-        <float name="PosX" value="15435.000000" />
+        <string name="Name" value="EO-15" />
+        <float name="PosX" value="14265.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="13005.000000" />
+        <float name="PosZ" value="8505.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-19" />
+        <string name="Name" value="EO-18" />
         <float name="PosX" value="17505.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="10845.000000" />
+        <float name="PosZ" value="5625.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-29" />
-        <float name="PosX" value="4815.000000" />
+        <string name="Name" value="EO-25" />
+        <float name="PosX" value="16335.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="18855.000000" />
+        <float name="PosZ" value="16245.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -299,38 +299,38 @@
 <!-- UAV 8 -->
 <uav>
     <string name="Name" value="Mav-8" />
-    <float name="PosX" value="6075.000000" />
+    <float name="PosX" value="4185.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11115.000000" />
+    <float name="PosZ" value="9765.000000" />
     <int name="Color" value="8" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-8" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23535.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16875.000000" />
+        <float name="PosZ" value="22455.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-8" />
-        <float name="PosX" value="6345.000000" />
+        <float name="PosX" value="13635.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="9765.000000" />
+        <float name="PosZ" value="17415.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-14" />
-        <float name="PosX" value="19665.000000" />
+        <string name="Name" value="EO-19" />
+        <float name="PosX" value="13815.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="6705.000000" />
+        <float name="PosZ" value="2475.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-26" />
-        <float name="PosX" value="4455.000000" />
+        <string name="Name" value="EO-23" />
+        <float name="PosX" value="16065.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="23085.000000" />
+        <float name="PosZ" value="8055.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
@@ -338,255 +338,255 @@
 <!-- UAV 9 -->
 <uav>
     <string name="Name" value="Mav-9" />
-    <float name="PosX" value="6075.000000" />
+    <float name="PosX" value="4095.000000" />
     <float name="PosY" value="65.000000" />
-    <float name="PosZ" value="11295.000000" />
+    <float name="PosZ" value="9765.000000" />
     <int name="Color" value="9" />
     <float name="Fuel" value="1.000000" />
 
     <base>
         <string name="Name" value="Base-9" />
-        <float name="PosX" value="18495.000000" />
+        <float name="PosX" value="23625.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="16875.000000" />
+        <float name="PosZ" value="22275.000000" />
     </base>
 
     <waypoint>
         <string name="Name" value="EO-9" />
-        <float name="PosX" value="11655.000000" />
+        <float name="PosX" value="4185.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="2475.000000" />
+        <float name="PosZ" value="8325.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-18" />
-        <float name="PosX" value="13995.000000" />
+        <string name="Name" value="EO-12" />
+        <float name="PosX" value="19215.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="17235.000000" />
+        <float name="PosZ" value="6705.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-23" />
-        <float name="PosX" value="15075.000000" />
+        <string name="Name" value="EO-17" />
+        <float name="PosX" value="13725.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="9585.000000" />
+        <float name="PosZ" value="11655.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
     <waypoint>
-        <string name="Name" value="EO-31" />
-        <float name="PosX" value="4275.000000" />
+        <string name="Name" value="EO-29" />
+        <float name="PosX" value="1575.000000" />
         <float name="PosY" value="65.000000" />
-        <float name="PosZ" value="14355.000000" />
+        <float name="PosZ" value="25155.000000" />
         <bool name="Feature" value="True" />
     </waypoint>
 </uav>
 
 <!-- SCENE 1 -->
 <scene>
-    <string name="Name" value="Scene 2" />
-    <string name="File" value="../media/scenes/helipad_2.irr" />
-    <int name="CityX" value="6" />
-    <int name="CityY" value="7" />
+    <string name="Name" value="Scene 1" />
+    <string name="File" value="../media/scenes/helipad_5.irr" />
+    <int name="CityX" value="46" />
+    <int name="CityY" value="92" />
 </scene>
 
 <!-- SCENE 2 -->
 <scene>
-    <string name="Name" value="Scene 3" />
+    <string name="Name" value="Scene 2" />
     <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="70" />
-    <int name="CityY" value="108" />
+    <int name="CityX" value="50" />
+    <int name="CityY" value="147" />
 </scene>
 
 <!-- SCENE 3 -->
 <scene>
-    <string name="Name" value="Scene 9" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="75" />
-    <int name="CityY" value="159" />
+    <string name="Name" value="Scene 3" />
+    <string name="File" value="../media/scenes/helipad_4.irr" />
+    <int name="CityX" value="95" />
+    <int name="CityY" value="102" />
 </scene>
 
 <!-- SCENE 4 -->
 <scene>
-    <string name="Name" value="Scene 10" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="84" />
-    <int name="CityY" value="174" />
+    <string name="Name" value="Scene 4" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="75" />
+    <int name="CityY" value="167" />
 </scene>
 
 <!-- SCENE 5 -->
 <scene>
-    <string name="Name" value="Scene 13" />
-    <string name="File" value="../media/scenes/helipad_4.irr" />
-    <int name="CityX" value="101" />
-    <int name="CityY" value="186" />
+    <string name="Name" value="Scene 6" />
+    <string name="File" value="../media/scenes/helipad_5.irr" />
+    <int name="CityX" value="91" />
+    <int name="CityY" value="46" />
 </scene>
 
 <!-- SCENE 6 -->
 <scene>
-    <string name="Name" value="Scene 15" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="138" />
-    <int name="CityY" value="171" />
+    <string name="Name" value="Scene 9" />
+    <string name="File" value="../media/scenes/helipad_4.irr" />
+    <int name="CityX" value="128" />
+    <int name="CityY" value="51" />
 </scene>
 
 <!-- SCENE 7 -->
 <scene>
-    <string name="Name" value="Scene 16" />
-    <string name="File" value="../media/scenes/helipad_5.irr" />
-    <int name="CityX" value="133" />
-    <int name="CityY" value="197" />
+    <string name="Name" value="Scene 12" />
+    <string name="File" value="../media/scenes/helipad_3.irr" />
+    <int name="CityX" value="119" />
+    <int name="CityY" value="204" />
 </scene>
 
 <!-- SCENE 8 -->
 <scene>
-    <string name="Name" value="Scene 17" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="129" />
-    <int name="CityY" value="27" />
+    <string name="Name" value="Scene 13" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="151" />
+    <int name="CityY" value="193" />
 </scene>
 
 <!-- SCENE 9 -->
 <scene>
-    <string name="Name" value="Scene 18" />
-    <string name="File" value="../media/scenes/helipad_4.irr" />
-    <int name="CityX" value="118" />
-    <int name="CityY" value="249" />
+    <string name="Name" value="Scene 17" />
+    <string name="File" value="../media/scenes/helipad_3.irr" />
+    <int name="CityX" value="99" />
+    <int name="CityY" value="219" />
 </scene>
 
 <!-- SCENE 10 -->
 <scene>
-    <string name="Name" value="Scene 19" />
-    <string name="File" value="../media/scenes/helipad.irr" />
-    <int name="CityX" value="218" />
+    <string name="Name" value="Scene 18" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="213" />
     <int name="CityY" value="74" />
 </scene>
 
 <!-- SCENE 11 -->
 <scene>
-    <string name="Name" value="Scene 20" />
-    <string name="File" value="../media/scenes/helipad.irr" />
-    <int name="CityX" value="248" />
-    <int name="CityY" value="110" />
+    <string name="Name" value="Scene 19" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="132" />
+    <int name="CityY" value="151" />
 </scene>
 
 <!-- SCENE 12 -->
 <scene>
-    <string name="Name" value="Scene 22" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="183" />
-    <int name="CityY" value="257" />
+    <string name="Name" value="Scene 20" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="185" />
+    <int name="CityY" value="143" />
 </scene>
 
 <!-- SCENE 13 -->
 <scene>
-    <string name="Name" value="Scene 26" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="156" />
-    <int name="CityY" value="39" />
+    <string name="Name" value="Scene 23" />
+    <string name="File" value="../media/scenes/helipad_4.irr" />
+    <int name="CityX" value="197" />
+    <int name="CityY" value="30" />
 </scene>
 
 <!-- SCENE 14 -->
 <scene>
-    <string name="Name" value="Scene 27" />
-    <string name="File" value="../media/scenes/helipad_5.irr" />
-    <int name="CityX" value="257" />
-    <int name="CityY" value="257" />
+    <string name="Name" value="Scene 24" />
+    <string name="File" value="../media/scenes/helipad_3.irr" />
+    <int name="CityX" value="152" />
+    <int name="CityY" value="129" />
 </scene>
 
 <!-- SCENE 15 -->
 <scene>
-    <string name="Name" value="Scene 31" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="171" />
-    <int name="CityY" value="144" />
+    <string name="Name" value="Scene 25" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="194" />
+    <int name="CityY" value="62" />
 </scene>
 
 <!-- SCENE 16 -->
 <scene>
-    <string name="Name" value="Scene 32" />
-    <string name="File" value="../media/scenes/helipad_4.irr" />
-    <int name="CityX" value="155" />
-    <int name="CityY" value="191" />
+    <string name="Name" value="Scene 27" />
+    <string name="File" value="../media/scenes/helipad_3.irr" />
+    <int name="CityX" value="153" />
+    <int name="CityY" value="27" />
 </scene>
 
 <!-- SCENE 17 -->
 <scene>
-    <string name="Name" value="Scene 33" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="194" />
-    <int name="CityY" value="120" />
+    <string name="Name" value="Scene 28" />
+    <string name="File" value="../media/scenes/helipad_5.irr" />
+    <int name="CityX" value="46" />
+    <int name="CityY" value="212" />
 </scene>
 
 <!-- SCENE 18 -->
 <scene>
-    <string name="Name" value="Scene 34" />
-    <string name="File" value="../media/scenes/helipad.irr" />
-    <int name="CityX" value="187" />
-    <int name="CityY" value="236" />
+    <string name="Name" value="Scene 29" />
+    <string name="File" value="../media/scenes/helipad_2.irr" />
+    <int name="CityX" value="38" />
+    <int name="CityY" value="32" />
 </scene>
 
 <!-- SCENE 19 -->
 <scene>
-    <string name="Name" value="Scene 35" />
+    <string name="Name" value="Scene 31" />
     <string name="File" value="../media/scenes/helipad_5.irr" />
-    <int name="CityX" value="200" />
-    <int name="CityY" value="226" />
+    <int name="CityX" value="178" />
+    <int name="CityY" value="89" />
 </scene>
 
 <!-- SCENE 20 -->
 <scene>
-    <string name="Name" value="Scene 36" />
-    <string name="File" value="../media/scenes/helipad_2.irr" />
-    <int name="CityX" value="167" />
-    <int name="CityY" value="106" />
+    <string name="Name" value="Scene 32" />
+    <string name="File" value="../media/scenes/helipad_3.irr" />
+    <int name="CityX" value="78" />
+    <int name="CityY" value="252" />
 </scene>
 
 <!-- SCENE 21 -->
 <scene>
-    <string name="Name" value="Scene 37" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="114" />
-    <int name="CityY" value="202" />
+    <string name="Name" value="Scene 33" />
+    <string name="File" value="../media/scenes/helipad_4.irr" />
+    <int name="CityX" value="181" />
+    <int name="CityY" value="180" />
 </scene>
 
 <!-- SCENE 22 -->
 <scene>
-    <string name="Name" value="Scene 38" />
+    <string name="Name" value="Scene 34" />
     <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="234" />
-    <int name="CityY" value="93" />
+    <int name="CityX" value="89" />
+    <int name="CityY" value="177" />
 </scene>
 
 <!-- SCENE 23 -->
 <scene>
-    <string name="Name" value="Scene 39" />
-    <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="105" />
-    <int name="CityY" value="136" />
+    <string name="Name" value="Scene 35" />
+    <string name="File" value="../media/scenes/helipad.irr" />
+    <int name="CityX" value="139" />
+    <int name="CityY" value="275" />
 </scene>
 
 <!-- SCENE 24 -->
 <scene>
-    <string name="Name" value="Scene 40" />
-    <string name="File" value="../media/scenes/helipad_5.irr" />
-    <int name="CityX" value="53" />
-    <int name="CityY" value="209" />
+    <string name="Name" value="Scene 36" />
+    <string name="File" value="../media/scenes/helipad_3.irr" />
+    <int name="CityX" value="17" />
+    <int name="CityY" value="279" />
 </scene>
 
 <!-- SCENE 25 -->
 <scene>
-    <string name="Name" value="Scene 41" />
+    <string name="Name" value="Scene 39" />
     <string name="File" value="../media/scenes/helipad_3.irr" />
-    <int name="CityX" value="47" />
-    <int name="CityY" value="159" />
+    <int name="CityX" value="109" />
+    <int name="CityY" value="162" />
 </scene>
 
 <event>
-  <string name="Type" value="AUDIO_ALERT" />
+  <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="74" />
-  <int name="StartMs" value="518" />
-  <int name="Id" value="9" />
+  <int name="StartSec" value="96" />
+  <int name="StartMs" value="315" />
+  <int name="Id" value="3" />
   <int name="Pair" value="1" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -595,9 +595,9 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="74" />
-  <int name="StartMs" value="1118" />
-  <int name="Id" value="8" />
+  <int name="StartSec" value="96" />
+  <int name="StartMs" value="1515" />
+  <int name="Id" value="6" />
   <int name="Pair" value="1" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -606,9 +606,31 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="129" />
-  <int name="StartMs" value="814" />
-  <int name="Id" value="3" />
+  <int name="StartSec" value="120" />
+  <int name="StartMs" value="153" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="2" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="120" />
+  <int name="StartMs" value="1153" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="2" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="263" />
+  <int name="StartMs" value="967" />
+  <int name="Id" value="2" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -617,21 +639,21 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="148" />
+  <int name="StartSec" value="319" />
   <int name="StartMs" value="470" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="2" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="3" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
 
 <event>
-  <string name="Type" value="VIDEO_ALERT" />
+  <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="148" />
-  <int name="StartMs" value="1470" />
+  <int name="StartSec" value="319" />
+  <int name="StartMs" value="1270" />
   <int name="Id" value="8" />
-  <int name="Pair" value="2" />
+  <int name="Pair" value="3" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -639,20 +661,9 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="204" />
-  <int name="StartMs" value="268" />
+  <int name="StartSec" value="474" />
+  <int name="StartMs" value="764" />
   <int name="Id" value="1" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="219" />
-  <int name="StartMs" value="326" />
-  <int name="Id" value="4" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -661,174 +672,196 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="300" />
+  <int name="StartSec" value="517" />
+  <int name="StartMs" value="377" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="544" />
+  <int name="StartMs" value="272" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="4" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="544" />
+  <int name="StartMs" value="472" />
+  <int name="Id" value="2" />
+  <int name="Pair" value="4" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="838" />
+  <int name="StartMs" value="189" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="5" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="838" />
+  <int name="StartMs" value="1189" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="5" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="853" />
+  <int name="StartMs" value="631" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="970" />
+  <int name="StartMs" value="436" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="974" />
+  <int name="StartMs" value="251" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1192" />
+  <int name="StartMs" value="668" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1350" />
+  <int name="StartMs" value="812" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1423" />
+  <int name="StartMs" value="284" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="6" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1423" />
+  <int name="StartMs" value="1084" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="6" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1485" />
+  <int name="StartMs" value="841" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1500" />
   <int name="StartMs" value="0" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="303" />
-  <int name="StartMs" value="351" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="305" />
-  <int name="StartMs" value="901" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="307" />
-  <int name="StartMs" value="68" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="3" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="307" />
-  <int name="StartMs" value="268" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="3" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="311" />
-  <int name="StartMs" value="855" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="4" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="311" />
-  <int name="StartMs" value="1055" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="4" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="313" />
-  <int name="StartMs" value="606" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="318" />
-  <int name="StartMs" value="488" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="320" />
-  <int name="StartMs" value="117" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="322" />
-  <int name="StartMs" value="130" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="5" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="322" />
-  <int name="StartMs" value="730" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="5" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="326" />
-  <int name="StartMs" value="591" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="6" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="326" />
-  <int name="StartMs" value="1191" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="6" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="332" />
-  <int name="StartMs" value="47" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="7" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="332" />
-  <int name="StartMs" value="1047" />
   <int name="Id" value="1" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1501" />
+  <int name="StartMs" value="361" />
+  <int name="Id" value="1" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1505" />
+  <int name="StartMs" value="391" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1507" />
+  <int name="StartMs" value="417" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1513" />
+  <int name="StartMs" value="766" />
+  <int name="Id" value="7" />
   <int name="Pair" value="7" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -837,32 +870,10 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="334" />
-  <int name="StartMs" value="787" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="337" />
-  <int name="StartMs" value="660" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="8" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="337" />
-  <int name="StartMs" value="1460" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="8" />
+  <int name="StartSec" value="1513" />
+  <int name="StartMs" value="1966" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="7" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -870,30 +881,8 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="340" />
-  <int name="StartMs" value="19" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="9" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="340" />
-  <int name="StartMs" value="1219" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="9" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="342" />
-  <int name="StartMs" value="530" />
+  <int name="StartSec" value="1516" />
+  <int name="StartMs" value="232" />
   <int name="Id" value="4" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
@@ -903,65 +892,10 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="343" />
-  <int name="StartMs" value="952" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="10" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="343" />
-  <int name="StartMs" value="1552" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="10" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="346" />
-  <int name="StartMs" value="233" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="349" />
-  <int name="StartMs" value="912" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="11" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="349" />
-  <int name="StartMs" value="1912" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="11" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="355" />
-  <int name="StartMs" value="813" />
+  <int name="StartSec" value="1518" />
+  <int name="StartMs" value="125" />
   <int name="Id" value="7" />
-  <int name="Pair" value="12" />
+  <int name="Pair" value="8" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -969,10 +903,32 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="355" />
-  <int name="StartMs" value="1013" />
+  <int name="StartSec" value="1518" />
+  <int name="StartMs" value="1125" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="8" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1521" />
+  <int name="StartMs" value="413" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1525" />
+  <int name="StartMs" value="424" />
   <int name="Id" value="4" />
-  <int name="Pair" value="12" />
+  <int name="Pair" value="9" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -980,8 +936,41 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="357" />
-  <int name="StartMs" value="585" />
+  <int name="StartSec" value="1525" />
+  <int name="StartMs" value="1624" />
+  <int name="Id" value="1" />
+  <int name="Pair" value="9" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1528" />
+  <int name="StartMs" value="120" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="10" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1528" />
+  <int name="StartMs" value="320" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="10" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1531" />
+  <int name="StartMs" value="618" />
   <int name="Id" value="8" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
@@ -989,67 +978,23 @@
 </event>
 
 <event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="358" />
-  <int name="StartMs" value="723" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="13" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="358" />
-  <int name="StartMs" value="1523" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="13" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="362" />
-  <int name="StartMs" value="505" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="14" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="362" />
-  <int name="StartMs" value="1305" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="14" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="368" />
-  <int name="StartMs" value="360" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="369" />
-  <int name="StartMs" value="987" />
+  <int name="StartSec" value="1532" />
+  <int name="StartMs" value="966" />
   <int name="Id" value="6" />
-  <int name="Pair" value="15" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1535" />
+  <int name="StartMs" value="700" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="11" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1057,9 +1002,97 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="369" />
-  <int name="StartMs" value="1187" />
+  <int name="StartSec" value="1535" />
+  <int name="StartMs" value="1300" />
   <int name="Id" value="3" />
+  <int name="Pair" value="11" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1538" />
+  <int name="StartMs" value="337" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="12" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1538" />
+  <int name="StartMs" value="1337" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="12" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1541" />
+  <int name="StartMs" value="728" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="13" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1541" />
+  <int name="StartMs" value="1328" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="13" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1543" />
+  <int name="StartMs" value="468" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="14" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1543" />
+  <int name="StartMs" value="1468" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="14" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1546" />
+  <int name="StartMs" value="332" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="15" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1546" />
+  <int name="StartMs" value="1132" />
+  <int name="Id" value="7" />
   <int name="Pair" value="15" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -1068,9 +1101,20 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="371" />
-  <int name="StartMs" value="773" />
+  <int name="StartSec" value="1551" />
+  <int name="StartMs" value="195" />
   <int name="Id" value="1" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1553" />
+  <int name="StartMs" value="999" />
+  <int name="Id" value="6" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -1079,8 +1123,162 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="374" />
-  <int name="StartMs" value="103" />
+  <int name="StartSec" value="1556" />
+  <int name="StartMs" value="893" />
+  <int name="Id" value="2" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1560" />
+  <int name="StartMs" value="407" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="16" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1560" />
+  <int name="StartMs" value="607" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="16" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1564" />
+  <int name="StartMs" value="144" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="17" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1564" />
+  <int name="StartMs" value="944" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="17" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1565" />
+  <int name="StartMs" value="958" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="18" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1565" />
+  <int name="StartMs" value="1758" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="18" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1570" />
+  <int name="StartMs" value="757" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="19" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1570" />
+  <int name="StartMs" value="1957" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="19" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1572" />
+  <int name="StartMs" value="985" />
+  <int name="Id" value="1" />
+  <int name="Pair" value="20" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1572" />
+  <int name="StartMs" value="2185" />
+  <int name="Id" value="2" />
+  <int name="Pair" value="20" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1575" />
+  <int name="StartMs" value="241" />
+  <int name="Id" value="2" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1576" />
+  <int name="StartMs" value="714" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1582" />
+  <int name="StartMs" value="962" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1584" />
+  <int name="StartMs" value="435" />
   <int name="Id" value="8" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
@@ -1090,131 +1288,43 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="377" />
+  <int name="StartSec" value="1586" />
+  <int name="StartMs" value="697" />
+  <int name="Id" value="1" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1588" />
+  <int name="StartMs" value="296" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="21" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1588" />
+  <int name="StartMs" value="496" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="21" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1593" />
   <int name="StartMs" value="760" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="380" />
-  <int name="StartMs" value="365" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="382" />
-  <int name="StartMs" value="362" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="16" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="382" />
-  <int name="StartMs" value="1362" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="16" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="386" />
-  <int name="StartMs" value="993" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="388" />
-  <int name="StartMs" value="13" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="394" />
-  <int name="StartMs" value="326" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="397" />
-  <int name="StartMs" value="314" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="17" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="397" />
-  <int name="StartMs" value="514" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="17" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="399" />
-  <int name="StartMs" value="291" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="401" />
-  <int name="StartMs" value="935" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="18" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="401" />
-  <int name="StartMs" value="2135" />
   <int name="Id" value="3" />
-  <int name="Pair" value="18" />
+  <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1222,53 +1332,9 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="404" />
-  <int name="StartMs" value="755" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="19" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="404" />
-  <int name="StartMs" value="1355" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="19" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="406" />
-  <int name="StartMs" value="981" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="20" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="406" />
-  <int name="StartMs" value="1981" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="20" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="409" />
-  <int name="StartMs" value="3" />
-  <int name="Id" value="1" />
+  <int name="StartSec" value="1595" />
+  <int name="StartMs" value="94" />
+  <int name="Id" value="9" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -1277,41 +1343,8 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="412" />
-  <int name="StartMs" value="247" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="21" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="412" />
-  <int name="StartMs" value="1447" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="21" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="415" />
-  <int name="StartMs" value="14" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="22" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="415" />
-  <int name="StartMs" value="814" />
+  <int name="StartSec" value="1598" />
+  <int name="StartMs" value="922" />
   <int name="Id" value="9" />
   <int name="Pair" value="22" />
   <float name="ChangeTo" value=".3" />
@@ -1321,10 +1354,10 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="419" />
-  <int name="StartMs" value="178" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
+  <int name="StartSec" value="1598" />
+  <int name="StartMs" value="1922" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="22" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1332,30 +1365,8 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="422" />
-  <int name="StartMs" value="155" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="427" />
-  <int name="StartMs" value="145" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="23" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="427" />
-  <int name="StartMs" value="1345" />
+  <int name="StartSec" value="1601" />
+  <int name="StartMs" value="158" />
   <int name="Id" value="6" />
   <int name="Pair" value="23" />
   <float name="ChangeTo" value=".3" />
@@ -1365,10 +1376,21 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="430" />
-  <int name="StartMs" value="670" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="24" />
+  <int name="StartSec" value="1601" />
+  <int name="StartMs" value="758" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="23" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1603" />
+  <int name="StartMs" value="708" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1376,9 +1398,9 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="430" />
-  <int name="StartMs" value="1670" />
-  <int name="Id" value="8" />
+  <int name="StartSec" value="1607" />
+  <int name="StartMs" value="616" />
+  <int name="Id" value="4" />
   <int name="Pair" value="24" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -1387,8 +1409,41 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="432" />
-  <int name="StartMs" value="989" />
+  <int name="StartSec" value="1607" />
+  <int name="StartMs" value="1216" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="24" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1610" />
+  <int name="StartMs" value="78" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1613" />
+  <int name="StartMs" value="370" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="25" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1613" />
+  <int name="StartMs" value="570" />
   <int name="Id" value="4" />
   <int name="Pair" value="25" />
   <float name="ChangeTo" value=".3" />
@@ -1398,64 +1453,9 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="432" />
-  <int name="StartMs" value="1789" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="25" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="435" />
-  <int name="StartMs" value="237" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="437" />
-  <int name="StartMs" value="913" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="26" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="437" />
-  <int name="StartMs" value="1913" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="26" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="440" />
-  <int name="StartMs" value="65" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="444" />
-  <int name="StartMs" value="832" />
-  <int name="Id" value="2" />
+  <int name="StartSec" value="1616" />
+  <int name="StartMs" value="422" />
+  <int name="Id" value="9" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
@@ -1464,10 +1464,21 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="448" />
-  <int name="StartMs" value="744" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="0" />
+  <int name="StartSec" value="1619" />
+  <int name="StartMs" value="186" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="26" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1619" />
+  <int name="StartMs" value="1386" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="26" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1475,8 +1486,19 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="450" />
-  <int name="StartMs" value="746" />
+  <int name="StartSec" value="1621" />
+  <int name="StartMs" value="922" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="27" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1621" />
+  <int name="StartMs" value="1922" />
   <int name="Id" value="7" />
   <int name="Pair" value="27" />
   <float name="ChangeTo" value=".3" />
@@ -1486,63 +1508,8 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="450" />
-  <int name="StartMs" value="1346" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="27" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="452" />
-  <int name="StartMs" value="454" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="28" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="452" />
-  <int name="StartMs" value="1254" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="28" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="454" />
-  <int name="StartMs" value="265" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="29" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="454" />
-  <int name="StartMs" value="465" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="29" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="458" />
-  <int name="StartMs" value="316" />
+  <int name="StartSec" value="1625" />
+  <int name="StartMs" value="61" />
   <int name="Id" value="9" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
@@ -1552,107 +1519,8 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="463" />
-  <int name="StartMs" value="395" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="30" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="463" />
-  <int name="StartMs" value="995" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="30" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="465" />
-  <int name="StartMs" value="832" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="466" />
-  <int name="StartMs" value="982" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="31" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="466" />
-  <int name="StartMs" value="2182" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="31" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="472" />
-  <int name="StartMs" value="156" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="475" />
-  <int name="StartMs" value="587" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="478" />
-  <int name="StartMs" value="0" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="32" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="478" />
-  <int name="StartMs" value="1200" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="32" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="530" />
-  <int name="StartMs" value="949" />
+  <int name="StartSec" value="1627" />
+  <int name="StartMs" value="495" />
   <int name="Id" value="3" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
@@ -1662,186 +1530,10 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="540" />
-  <int name="StartMs" value="717" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="33" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="540" />
-  <int name="StartMs" value="1717" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="33" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="775" />
-  <int name="StartMs" value="91" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="842" />
-  <int name="StartMs" value="794" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="34" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="842" />
-  <int name="StartMs" value="1994" />
-  <int name="Id" value="2" />
-  <int name="Pair" value="34" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1067" />
-  <int name="StartMs" value="95" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1214" />
-  <int name="StartMs" value="819" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="35" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1214" />
-  <int name="StartMs" value="1619" />
-  <int name="Id" value="6" />
-  <int name="Pair" value="35" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1306" />
-  <int name="StartMs" value="749" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="36" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1306" />
-  <int name="StartMs" value="1349" />
-  <int name="Id" value="1" />
-  <int name="Pair" value="36" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1315" />
-  <int name="StartMs" value="293" />
-  <int name="Id" value="4" />
-  <int name="Pair" value="37" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1315" />
-  <int name="StartMs" value="1093" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="37" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1386" />
-  <int name="StartMs" value="530" />
-  <int name="Id" value="7" />
-  <int name="Pair" value="38" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1386" />
-  <int name="StartMs" value="730" />
-  <int name="Id" value="8" />
-  <int name="Pair" value="38" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="VIDEO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1395" />
+  <int name="StartSec" value="1632" />
   <int name="StartMs" value="376" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1461" />
-  <int name="StartMs" value="875" />
-  <int name="Id" value="3" />
-  <int name="Pair" value="39" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1461" />
-  <int name="StartMs" value="2075" />
   <int name="Id" value="2" />
-  <int name="Pair" value="39" />
+  <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1849,8 +1541,30 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="1510" />
-  <int name="StartMs" value="174" />
+  <int name="StartSec" value="1634" />
+  <int name="StartMs" value="145" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="28" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1634" />
+  <int name="StartMs" value="745" />
+  <int name="Id" value="2" />
+  <int name="Pair" value="28" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1640" />
+  <int name="StartMs" value="58" />
   <int name="Id" value="9" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
@@ -1860,21 +1574,10 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="1540" />
-  <int name="StartMs" value="21" />
-  <int name="Id" value="9" />
-  <int name="Pair" value="0" />
-  <float name="ChangeTo" value=".3" />
-  <float name="ChangeTime" value="0" />
-</event>
-
-<event>
-  <string name="Type" value="AUDIO_ALERT" />
-  <int name="StartMin" value="0" />
-  <int name="StartSec" value="1674" />
-  <int name="StartMs" value="670" />
+  <int name="StartSec" value="1641" />
+  <int name="StartMs" value="252" />
   <int name="Id" value="1" />
-  <int name="Pair" value="40" />
+  <int name="Pair" value="29" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1882,10 +1585,10 @@
 <event>
   <string name="Type" value="AUDIO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="1674" />
-  <int name="StartMs" value="870" />
+  <int name="StartSec" value="1641" />
+  <int name="StartMs" value="852" />
   <int name="Id" value="4" />
-  <int name="Pair" value="40" />
+  <int name="Pair" value="29" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
@@ -1893,11 +1596,307 @@
 <event>
   <string name="Type" value="VIDEO_ALERT" />
   <int name="StartMin" value="0" />
-  <int name="StartSec" value="1694" />
-  <int name="StartMs" value="484" />
+  <int name="StartSec" value="1643" />
+  <int name="StartMs" value="408" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="30" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1643" />
+  <int name="StartMs" value="1608" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="30" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1647" />
+  <int name="StartMs" value="324" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="31" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1647" />
+  <int name="StartMs" value="1124" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="31" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1651" />
+  <int name="StartMs" value="713" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1652" />
+  <int name="StartMs" value="740" />
+  <int name="Id" value="7" />
+  <int name="Pair" value="32" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1652" />
+  <int name="StartMs" value="1540" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="32" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1656" />
+  <int name="StartMs" value="800" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="33" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1656" />
+  <int name="StartMs" value="1600" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="33" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1661" />
+  <int name="StartMs" value="545" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1664" />
+  <int name="StartMs" value="892" />
+  <int name="Id" value="1" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1666" />
+  <int name="StartMs" value="446" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="34" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1666" />
+  <int name="StartMs" value="646" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="34" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1668" />
+  <int name="StartMs" value="259" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="35" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1668" />
+  <int name="StartMs" value="459" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="35" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1669" />
+  <int name="StartMs" value="833" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1675" />
+  <int name="StartMs" value="677" />
   <int name="Id" value="8" />
   <int name="Pair" value="0" />
   <float name="ChangeTo" value=".3" />
   <float name="ChangeTime" value="0" />
 </event>
 
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1680" />
+  <int name="StartMs" value="0" />
+  <int name="Id" value="3" />
+  <int name="Pair" value="36" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1680" />
+  <int name="StartMs" value="1000" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="36" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1702" />
+  <int name="StartMs" value="993" />
+  <int name="Id" value="2" />
+  <int name="Pair" value="37" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1702" />
+  <int name="StartMs" value="1193" />
+  <int name="Id" value="1" />
+  <int name="Pair" value="37" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1713" />
+  <int name="StartMs" value="90" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="38" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1713" />
+  <int name="StartMs" value="1290" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="38" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1721" />
+  <int name="StartMs" value="930" />
+  <int name="Id" value="8" />
+  <int name="Pair" value="39" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="VIDEO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1721" />
+  <int name="StartMs" value="1530" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="39" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1737" />
+  <int name="StartMs" value="360" />
+  <int name="Id" value="9" />
+  <int name="Pair" value="40" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1737" />
+  <int name="StartMs" value="960" />
+  <int name="Id" value="6" />
+  <int name="Pair" value="40" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>
+
+<event>
+  <string name="Type" value="AUDIO_ALERT" />
+  <int name="StartMin" value="0" />
+  <int name="StartSec" value="1792" />
+  <int name="StartMs" value="154" />
+  <int name="Id" value="4" />
+  <int name="Pair" value="0" />
+  <float name="ChangeTo" value=".3" />
+  <float name="ChangeTime" value="0" />
+</event>

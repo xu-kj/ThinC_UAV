@@ -235,16 +235,14 @@ void CamWindow::draw_visual_alarm_text() {
 	// alarm_text->setRelativePosition(pos_down);
 	// alarm_text->draw();
 
-	/*
     rect<s32> pos_center(
         cam_width + cam_interval + 2,
         cam_height + cam_interval + 2,
         windowWidth() - cam_width - cam_interval - 2,
         windowHeight() - cam_height - cam_interval - 2);
-	*/
 
 	// using exact numerial values
-	rect<s32> pos_center(341, 256, 682, 512);
+	/*rect<s32> pos_center(341, 256, 682, 512);*/
 
 	alarm_text->setText(text.c_str());
 	alarm_text->setOverrideColor(color::COLOR_WHITE);

@@ -105,8 +105,10 @@
     //const irr::core::stringc CAM_ZIP = "../media/cam_1024.pk3";
     extern irr::s32 CAM_SIZE_X;// = 341;
     extern irr::s32 CAM_SIZE_Y;// = 256;
-    const irr::s32 BUTTON_SIZE_X = 47;
-    const irr::s32 BUTTON_SIZE_Y = 47;
+    //const irr::s32 BUTTON_SIZE_X = 47;
+    //const irr::s32 BUTTON_SIZE_Y = 47;
+    const irr::s32 BUTTON_SIZE_X = 65;
+    const irr::s32 BUTTON_SIZE_Y = 65;
 #endif
 
 // general preferences

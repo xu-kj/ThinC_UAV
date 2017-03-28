@@ -197,39 +197,76 @@ void UAVCamera::load_images(IrrlichtDevice * device)
         cam_static5->setTexture(driver->getTexture("static5.png"));
     }
 
-    button_check = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+	int icon_size = 89;
+
+ //   button_check = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_check->setTexture(driver->getTexture("button_check.png"));
+ //   button_check_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_check_down->setTexture(driver->getTexture("button_check_down.png"));
+ //   
+ //   button_x = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_x->setTexture(driver->getTexture("button_x.png"));
+ //   button_x_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_x_down->setTexture(driver->getTexture("button_x_down.png"));
+
+ //   button_unsure = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_unsure->setTexture(driver->getTexture("button_unsure.png"));
+ //   button_unsure_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_unsure_down->setTexture(driver->getTexture("button_unsure_down.png"));
+
+ //   button_light = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_light->setTexture(driver->getTexture("button_light.png"));
+ //   button_light_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_light_off->setTexture(driver->getTexture("button_light_off.png"));
+
+ //   button_target = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_target->setTexture(driver->getTexture("button_target.png"));
+ //   button_target_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_target_down->setTexture(driver->getTexture("button_target_down.png"));
+
+	//button_auditory = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_auditory->setTexture(driver->getTexture("button_auditory.png"));
+ //   button_auditory_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_auditory_off->setTexture(driver->getTexture("button_auditory_off.png"));
+
+	//button_visual = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_visual->setTexture(driver->getTexture("button_visual.png"));
+ //   button_visual_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+ //   button_visual_off->setTexture(driver->getTexture("button_visual_off.png"));
+
+    button_check = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_check->setTexture(driver->getTexture("button_check.png"));
-    button_check_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_check_down = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_check_down->setTexture(driver->getTexture("button_check_down.png"));
     
-    button_x = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_x = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_x->setTexture(driver->getTexture("button_x.png"));
-    button_x_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_x_down = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_x_down->setTexture(driver->getTexture("button_x_down.png"));
 
-    button_unsure = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_unsure = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_unsure->setTexture(driver->getTexture("button_unsure.png"));
-    button_unsure_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_unsure_down = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_unsure_down->setTexture(driver->getTexture("button_unsure_down.png"));
 
-    button_light = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_light = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_light->setTexture(driver->getTexture("button_light.png"));
-    button_light_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_light_off = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_light_off->setTexture(driver->getTexture("button_light_off.png"));
 
-    button_target = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_target = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_target->setTexture(driver->getTexture("button_target.png"));
-    button_target_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_target_down = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_target_down->setTexture(driver->getTexture("button_target_down.png"));
 
-	button_auditory = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+	button_auditory = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_auditory->setTexture(driver->getTexture("button_auditory.png"));
-    button_auditory_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_auditory_off = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_auditory_off->setTexture(driver->getTexture("button_auditory_off.png"));
 
-	button_visual = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+	button_visual = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_visual->setTexture(driver->getTexture("button_visual.png"));
-    button_visual_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
+    button_visual_off = new GUIImage(rect<s32>(0,0,icon_size,icon_size), device, guiElmRoot);
     button_visual_off->setTexture(driver->getTexture("button_visual_off.png"));
 }
 
@@ -255,12 +292,18 @@ void UAVCamera::set_id(IrrlichtDevice * device, s32 id_)
     large_text->setOverrideFont(font1);
 
     // set the position of the text
-    large_text->setRelativePosition(
-        rect2di(
+    //large_text->setRelativePosition(
+    //    rect2di(
+    //        pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
+    //        pos.Y + CAM_SIZE_Y - OUTLINE_WIDTH - BUTTON_SIZE_Y,
+    //        pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+    //        pos.Y + CAM_SIZE_Y - OUTLINE_WIDTH));
+	large_text->setRelativePosition(
+		rect2di(
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + CAM_SIZE_Y - OUTLINE_WIDTH - BUTTON_SIZE_Y,
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 4 + 2,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
-            pos.Y + CAM_SIZE_Y - OUTLINE_WIDTH));
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 5 + 2));
 
     // set the color if a UAV has been assigned
     //if(uav)
@@ -304,12 +347,32 @@ void UAVCamera::load_buttons()
         button_unsure_down);
 	*/
 
+ //   v_indicator = new UAVButton(
+ //       rect2di(
+ //           pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
+ //           pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 3 - 3,
+ //           pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+ //           (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
+ //       button_visual,
+ //       button_visual,
+ //       button_visual_off);
+
+	//a_indicator = new UAVButton(
+ //       rect2di(
+ //           pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
+ //           pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 2 - 3,
+ //           pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
+ //           (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
+ //       button_auditory,
+ //       button_auditory,
+ //       button_auditory_off);
+
     v_indicator = new UAVButton(
         rect2di(
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 3 - 3,
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 2,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
-            (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 3 + 2),
         button_visual,
         button_visual,
         button_visual_off);
@@ -317,9 +380,9 @@ void UAVCamera::load_buttons()
 	a_indicator = new UAVButton(
         rect2di(
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y * 2 - 3,
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 3 + 2,
             pos.X + CAM_SIZE_X - OUTLINE_WIDTH,
-            (pos.Y + CAM_SIZE_Y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 4 + 2),
         button_auditory,
         button_auditory,
         button_auditory_off);
@@ -733,7 +796,7 @@ bool UAVCamera::button_click(position2di cursor)
         }
 		*/
 
-		if (v_indicator->is_mouse_over(cursor) && v_alert_on) {
+		if (v_indicator->is_mouse_over(cursor) /*&& v_alert_on*/) {
             
             v_indicator->click(win->device());
 			Output::Instance().RecordEvent(id, UAV_EVENT::USER_ALARM_VISUAL_REACTED, 
@@ -745,7 +808,7 @@ bool UAVCamera::button_click(position2di cursor)
             force_render();
 		}
 
-		if (a_indicator->is_mouse_over(cursor) && a_alert_on) {
+		if (a_indicator->is_mouse_over(cursor) /*&& a_alert_on*/) {
 			
             a_indicator->click(win->device());
 			Output::Instance().RecordEvent(id, UAV_EVENT::USER_ALARM_AUDIO_REACTED, 
