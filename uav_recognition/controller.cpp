@@ -231,13 +231,32 @@ void UAVController::run() {
             if(simulation_paused) {
                 if(!was_paused)
                     was_paused = true;
-            }
+                const u32 now = win2->device()->getTimer()->getTime();
+			    TICKS += now - then;
+                MILLISECONDS += now - then;
+                SECONDS += MILLISECONDS / 1000;
+                MILLISECONDS = MILLISECONDS % 1000;
+                MINUTES += SECONDS / 60;
+                SECONDS = SECONDS % 60;
+
+				run_timer += (now - then);
+				if (run_timer >= 1 * 30 * 1000) {
+					cout << "Simulation now resuming" << endl;
+					simulation_paused = false;
+					run_timer = 0;
+					then = win2->device()->getTimer()->getTime();
+				} 
+
+                f32 time = (f32)(now - then) * .001f;
+                then = now;
+                if(time > 1.f)   time = 1.f;
+			}
             else {
                 // if we just came off a pause, reset the clock
-                if(was_paused) {
-                    was_paused = false;
-                    then = win2->device()->getTimer()->getTime();
-                }
+                // if(was_paused) {
+                // 	  was_paused = false;
+                //    then = win2->device()->getTimer()->getTime();
+                // }
 
                 // get change in time
                 const u32 now = win2->device()->getTimer()->getTime();
@@ -248,13 +267,15 @@ void UAVController::run() {
                 MINUTES += SECONDS / 60;
                 SECONDS = SECONDS % 60;
 
-				// pause the simulation every 6 seconds to let the tester
+				// pause the simulation every 1 minute to let the tester
 				// fill out a questionaire
 				run_timer += (now - then);
-				if (run_timer >= 6 * 60 * 1000) {
+				if (run_timer >= 1 * 60 * 1000) {
 					Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
 					simulation_paused = true;
+					cout << "Simulation paused at the one minute mark" << endl;
 					run_timer = 0;
+					then = win2->device()->getTimer()->getTime();
 				}
 
                 f32 time = (f32)(now - then) * .001f;
