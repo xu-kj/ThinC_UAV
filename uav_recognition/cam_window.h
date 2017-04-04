@@ -30,6 +30,9 @@ private:
     bool need_render;
     bool started; // show "PRESS ENTER TO START" if false
 
+	// Boolean for paused functionality
+	bool paused;
+
     // data
     std::list<WaypointObject *> *wps;
     std::list<WaypointObject *>::iterator wp_it;
@@ -79,6 +82,15 @@ public:
 	}
     void set_started(bool _started) { 
 		started = _started; 
+	}
+
+	// Getter and setter functions for paused
+	bool get_paused() const {
+		return paused;	
+	}
+
+	void set_paused(bool _paused) {
+		paused = _paused;
 	}
 
     void send_cam_message(int id, int message) {

@@ -27,6 +27,9 @@ protected:
     GUIImage *start_overlay;
     GUIImage *end_overlay;
 
+	// Overlay for paused screen
+	GUIImage *paused_overlay;
+
     bool toggleFullScreen;
 
     /* Start Parameters */

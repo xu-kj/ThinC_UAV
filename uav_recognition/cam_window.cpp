@@ -67,7 +67,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
-                     render(0), need_render(true), city(0), started(false)
+                     render(0), need_render(true), city(0), started(false), paused(false)
 {
     CAM_SIZE_X = cam_width;
     CAM_SIZE_Y = cam_height;
@@ -172,6 +172,10 @@ void CamWindow::draw() {
     if (!started)
         start_overlay->draw();
 
+	// if paused draw the paused screen
+	if (paused)
+		paused_overlay->draw();
+
     driver()->endScene();
 }
 
@@ -205,6 +209,11 @@ void CamWindow::load_images() {
     start_overlay = new GUIImage(rect<s32>(0,0,512,256), device(), guiElmRoot);
     start_overlay->setTexture(driver()->getTexture("start_overlay.png"));
     start_overlay->setPosition(position2d<s32>(325,150));
+
+	paused_overlay = new GUIImage(rect<s32>(0,0,512,256), device(), guiElmRoot);
+    paused_overlay->setTexture(driver()->getTexture("start_overlay.png"));
+    paused_overlay->setPosition(position2d<s32>(325,150));
+
 
     if (USE_RTT && driver()->queryFeature(EVDF_RENDER_TO_TARGET)) {
         stringc name = "RT1";

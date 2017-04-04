@@ -241,8 +241,9 @@ void UAVController::run() {
 
 				run_timer += (now - then);
 				if (run_timer >= 1 * 30 * 1000) {
-					cout << "Simulation now resuming" << endl;
 					simulation_paused = false;
+					((CamWindow *)win2)->set_paused(false);
+					cout << "Simulation now resuming" << endl;
 					run_timer = 0;
 					then = win2->device()->getTimer()->getTime();
 				} 
@@ -273,6 +274,7 @@ void UAVController::run() {
 				if (run_timer >= 1 * 60 * 1000) {
 					Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
 					simulation_paused = true;
+					((CamWindow *)win2)->set_paused(true);
 					cout << "Simulation paused at the one minute mark" << endl;
 					run_timer = 0;
 					then = win2->device()->getTimer()->getTime();
