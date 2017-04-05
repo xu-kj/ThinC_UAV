@@ -86,6 +86,7 @@ public:
 
 	void WriteColumnName();
     void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
+	void RecordTrustScore(int uav_number, int trust_score);
 
 private:
     Output() {}

@@ -231,26 +231,34 @@ void UAVController::run() {
             if(simulation_paused) {
                 if(!was_paused)
                     was_paused = true;
-                const u32 now = win2->device()->getTimer()->getTime();
-			    TICKS += now - then;
-                MILLISECONDS += now - then;
-                SECONDS += MILLISECONDS / 1000;
-                MILLISECONDS = MILLISECONDS % 1000;
-                MINUTES += SECONDS / 60;
-                SECONDS = SECONDS % 60;
+                // const u32 now = win2->device()->getTimer()->getTime();
+			    // TICKS += now - then;
+                // MILLISECONDS += now - then;
+                // SECONDS += MILLISECONDS / 1000;
+                // MILLISECONDS = MILLISECONDS % 1000;
+                // MINUTES += SECONDS / 60;
+                // SECONDS = SECONDS % 60;
 
-				run_timer += (now - then);
-				if (run_timer >= 1 * 30 * 1000) {
+				// run_timer += (now - then);
+				// if (run_timer >= 1 * 30 * 1000) {
+				//	simulation_paused = false;
+				// 	((CamWindow *)win2)->set_paused(false);
+				// 	cout << "Simulation now resuming" << endl;
+				// 	run_timer = 0;
+				// 	then = win2->device()->getTimer()->getTime();
+				// } 
+
+                // f32 time = (f32)(now - then) * .001f;
+                // then = now;
+                // if(time > 1.f)   time = 1.f;
+
+				if (((CamWindow *)win2)->get_paused() == false) {
 					simulation_paused = false;
-					((CamWindow *)win2)->set_paused(false);
 					cout << "Simulation now resuming" << endl;
 					run_timer = 0;
 					then = win2->device()->getTimer()->getTime();
-				} 
+				}
 
-                f32 time = (f32)(now - then) * .001f;
-                then = now;
-                if(time > 1.f)   time = 1.f;
 			}
             else {
                 // if we just came off a pause, reset the clock
@@ -274,7 +282,7 @@ void UAVController::run() {
 				if (run_timer >= 1 * 60 * 1000) {
 					Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
 					simulation_paused = true;
-					((CamWindow *)win2)->set_paused(true);
+					((CamWindow *)win2)->reset_paused();
 					cout << "Simulation paused at the one minute mark" << endl;
 					run_timer = 0;
 					then = win2->device()->getTimer()->getTime();

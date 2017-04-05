@@ -31,7 +31,7 @@ private:
     bool started; // show "PRESS ENTER TO START" if false
 
 	// Boolean for paused functionality
-	bool paused;
+	int paused;
 
     // data
     std::list<WaypointObject *> *wps;
@@ -63,6 +63,7 @@ public:
     virtual void event_mouse_down();
     virtual void event_key_down(wchar_t key);
 
+
     virtual void force_render() {need_render = true;}
 
     CityScene * get_city() {return city;}
@@ -86,11 +87,15 @@ public:
 
 	// Getter and setter functions for paused
 	bool get_paused() const {
-		return paused;	
+		return paused < 6;	
 	}
 
-	void set_paused(bool _paused) {
-		paused = _paused;
+	void inc_paused() {
+		++paused;
+	}
+
+	void reset_paused() {
+		paused = 0;
 	}
 
     void send_cam_message(int id, int message) {

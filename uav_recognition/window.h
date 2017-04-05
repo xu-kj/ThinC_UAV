@@ -28,7 +28,12 @@ protected:
     GUIImage *end_overlay;
 
 	// Overlay for paused screen
-	GUIImage *paused_overlay;
+	GUIImage *paused_overlay_cam1;
+	GUIImage *paused_overlay_cam2;
+	GUIImage *paused_overlay_cam3;
+	GUIImage *paused_overlay_cam4;
+	GUIImage *paused_overlay_cam5;
+	GUIImage *paused_overlay_cam6;
 
     bool toggleFullScreen;
 

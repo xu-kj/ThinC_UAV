@@ -283,3 +283,10 @@ void Output::RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, do
 	fs << UAV_EVENT_TEXT[e - UAV_EVENT::SIMULATION_STARTED];
     fs << ',' << pos_x << ',' << pos_y << ',' << pos_z << endl;
 }
+
+void Output::RecordTrustScore(int uav_number, int trust_score) {
+	fstream &fs = files[OUTPUT_COMBINED];
+	fs << "TRUST SCORE RECORDED: ";
+	fs << "UAV NUMBER: " << uav_number << ", ";
+	fs << "TRUST SCORE: " << trust_score << endl;
+}

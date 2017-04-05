@@ -59,7 +59,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                      irr::core::dimension2di position,
                      E_DRIVER_TYPE driver)
                      : UAVWindow("UAV Flight Sim - Camera Window", 
-                                 false, 
+                                 false,
                                  false, 
                                  driver, 
                                  std::make_pair(_cam_width * 3 + _cam_interval * 2, 
@@ -67,7 +67,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
-                     render(0), need_render(true), city(0), started(false), paused(false)
+                     render(0), need_render(true), city(0), started(false), paused(6)
 {
     CAM_SIZE_X = cam_width;
     CAM_SIZE_Y = cam_height;
@@ -173,8 +173,28 @@ void CamWindow::draw() {
         start_overlay->draw();
 
 	// if paused draw the paused screen
-	if (paused)
-		paused_overlay->draw();
+	if (get_paused()) {
+		switch (paused)	{
+			case 0:
+				paused_overlay_cam1->draw();
+				break;
+			case 1:
+				paused_overlay_cam2->draw();
+				break;
+			case 2:
+				paused_overlay_cam3->draw();
+				break;
+			case 3:
+				paused_overlay_cam4->draw();
+				break;
+			case 4:
+				paused_overlay_cam5->draw();
+				break;
+			case 5:
+				paused_overlay_cam6->draw();
+				break;
+		}
+	}
 
     driver()->endScene();
 }
@@ -206,14 +226,33 @@ void CamWindow::load_images() {
         guienv()->getRootGUIElement());
 
     IGUIElement * guiElmRoot = guienv()->getRootGUIElement();
-    start_overlay = new GUIImage(rect<s32>(0,0,512,256), device(), guiElmRoot);
-    start_overlay->setTexture(driver()->getTexture("start_overlay.png"));
-    start_overlay->setPosition(position2d<s32>(325,150));
+    start_overlay = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    start_overlay->setTexture(driver()->getTexture("../media/icons_temp/start_screen.png"));
+    start_overlay->setPosition(position2d<s32>(450,175));
 
-	paused_overlay = new GUIImage(rect<s32>(0,0,512,256), device(), guiElmRoot);
-    paused_overlay->setTexture(driver()->getTexture("start_overlay.png"));
-    paused_overlay->setPosition(position2d<s32>(325,150));
+	paused_overlay_cam1 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay_cam1->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam1.png"));
+    paused_overlay_cam1->setPosition(position2d<s32>(450, 175));
 
+	paused_overlay_cam2 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay_cam2->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam2.png"));
+    paused_overlay_cam2->setPosition(position2d<s32>(450, 175));
+
+	paused_overlay_cam3 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay_cam3->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam3.png"));
+    paused_overlay_cam3->setPosition(position2d<s32>(450, 175));
+
+	paused_overlay_cam4 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay_cam4->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam4.png"));
+    paused_overlay_cam4->setPosition(position2d<s32>(450, 175));
+	
+	paused_overlay_cam5 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay_cam5->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam5.png"));
+    paused_overlay_cam5->setPosition(position2d<s32>(450, 175));
+
+	paused_overlay_cam6 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay_cam6->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam6.png"));
+    paused_overlay_cam6->setPosition(position2d<s32>(450, 175));
 
     if (USE_RTT && driver()->queryFeature(EVDF_RENDER_TO_TARGET)) {
         stringc name = "RT1";
@@ -228,7 +267,7 @@ void CamWindow::load_images() {
     }
     else {
         cout << "RTT not supported" << endl;
-    }
+	}
 }
 
 void CamWindow::render_to_texture() {
@@ -282,6 +321,32 @@ void CamWindow::event_key_down(wchar_t key) {
             // toggleFullScreen = true;
     }
 
+	if (get_paused() && event_recv->IsKeyDown(irr::KEY_RETURN))
+		inc_paused();
+
+	if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
+		Output::Instance().RecordTrustScore(paused + 1, 1);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
+		Output::Instance().RecordTrustScore(paused + 1, 2);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
+		Output::Instance().RecordTrustScore(paused + 1, 3);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
+		Output::Instance().RecordTrustScore(paused + 1, 4);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
+		Output::Instance().RecordTrustScore(paused + 1, 5);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
+		Output::Instance().RecordTrustScore(paused + 1, 6);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
+		Output::Instance().RecordTrustScore(paused + 1, 7);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
+		Output::Instance().RecordTrustScore(paused + 1, 8);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
+		Output::Instance().RecordTrustScore(paused + 1, 9);
+	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_0)) {
+		Output::Instance().RecordTrustScore(paused + 1, 0);
+	}
+
+	/*
 	if (started) {
 		if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
 			cams[0]->cam_message(11);
@@ -311,4 +376,5 @@ void CamWindow::event_key_down(wchar_t key) {
 			cams[8]->cam_message(11);
 		}
 	}
+	*/
 }
