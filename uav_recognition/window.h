@@ -6,6 +6,8 @@
 #include "image.h"
 
 #include <irrlicht.h>
+#include <string>
+#include <vector>
 #include <utility>
 
 /* Simple window class to support an Irrlicht device window. Allows the user to
@@ -28,12 +30,20 @@ protected:
     GUIImage *end_overlay;
 
 	// Overlay for paused screen
-	GUIImage *paused_overlay_cam1;
-	GUIImage *paused_overlay_cam2;
-	GUIImage *paused_overlay_cam3;
-	GUIImage *paused_overlay_cam4;
-	GUIImage *paused_overlay_cam5;
-	GUIImage *paused_overlay_cam6;
+	GUIImage *paused_overlay;
+	std::vector<GUIImage*> uav_one_scores;
+	std::vector<GUIImage*> uav_two_scores;
+	std::vector<GUIImage*> uav_three_scores;
+	std::vector<GUIImage*> uav_four_scores;
+	std::vector<GUIImage*> uav_five_scores;
+	std::vector<GUIImage*> uav_six_scores;
+	
+	int uav_one_score;
+	int uav_two_score;
+	int uav_three_score;
+	int uav_four_score;
+	int uav_five_score;
+	int uav_six_score;
 
     bool toggleFullScreen;
 

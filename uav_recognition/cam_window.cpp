@@ -67,7 +67,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
-                     render(0), need_render(true), city(0), started(false), paused(6)
+                     render(0), need_render(true), city(0), started(false), paused(7)
 {
     CAM_SIZE_X = cam_width;
     CAM_SIZE_Y = cam_height;
@@ -170,28 +170,44 @@ void CamWindow::draw() {
 
     // draw the start instructions
     if (!started)
-        start_overlay->draw();
+	    start_overlay->draw();
 
 	// if paused draw the paused screen
 	if (get_paused()) {
-		switch (paused)	{
-			case 0:
-				paused_overlay_cam1->draw();
-				break;
+		paused_overlay->draw();
+		switch(paused) {
 			case 1:
-				paused_overlay_cam2->draw();
+				uav_one_scores[uav_one_score]->draw();
 				break;
 			case 2:
-				paused_overlay_cam3->draw();
+				uav_one_scores[uav_one_score]->draw();
+				uav_two_scores[uav_two_score]->draw();
 				break;
 			case 3:
-				paused_overlay_cam4->draw();
+				uav_one_scores[uav_one_score]->draw();
+				uav_two_scores[uav_two_score]->draw();
+				uav_three_scores[uav_three_score]->draw();
 				break;
 			case 4:
-				paused_overlay_cam5->draw();
+				uav_one_scores[uav_one_score]->draw();
+				uav_two_scores[uav_two_score]->draw();
+				uav_three_scores[uav_three_score]->draw();
+				uav_four_scores[uav_four_score]->draw();
 				break;
 			case 5:
-				paused_overlay_cam6->draw();
+				uav_one_scores[uav_one_score]->draw();
+				uav_two_scores[uav_two_score]->draw();
+				uav_three_scores[uav_three_score]->draw();
+				uav_four_scores[uav_four_score]->draw();
+				uav_five_scores[uav_five_score]->draw();
+				break;
+			case 6:
+				uav_one_scores[uav_one_score]->draw();
+				uav_two_scores[uav_two_score]->draw();
+				uav_three_scores[uav_three_score]->draw();
+				uav_four_scores[uav_four_score]->draw();
+				uav_five_scores[uav_five_score]->draw();	
+				uav_six_scores[uav_six_score]->draw();
 				break;
 		}
 	}
@@ -211,7 +227,7 @@ void CamWindow::load_images() {
             uav_it++;
         }
 
-        // load images and set id
+        // load images and set i/d
         cams[i]->load_buttons();
         cams[i]->set_id(device(), i + 1);
     }
@@ -230,29 +246,55 @@ void CamWindow::load_images() {
     start_overlay->setTexture(driver()->getTexture("../media/icons_temp/start_screen.png"));
     start_overlay->setPosition(position2d<s32>(450,175));
 
-	paused_overlay_cam1 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay_cam1->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam1.png"));
-    paused_overlay_cam1->setPosition(position2d<s32>(450, 175));
+	paused_overlay = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
+    paused_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/paused_screen_empty.png"));
+    paused_overlay->setPosition(position2d<s32>(450, 175));
 
-	paused_overlay_cam2 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay_cam2->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam2.png"));
-    paused_overlay_cam2->setPosition(position2d<s32>(450, 175));
+	// Load images for scores
+	std::vector<std::string> score_files;
+	score_files.push_back("../media/icons_temp/paused_screen/zero.png");
+	score_files.push_back("../media/icons_temp/paused_screen/one.png");
+	score_files.push_back("../media/icons_temp/paused_screen/two.png");
+	score_files.push_back("../media/icons_temp/paused_screen/three.png");
+	score_files.push_back("../media/icons_temp/paused_screen/four.png");
+	score_files.push_back("../media/icons_temp/paused_screen/five.png");
+	score_files.push_back("../media/icons_temp/paused_screen/six.png");
+	score_files.push_back("../media/icons_temp/paused_screen/seven.png");
+	score_files.push_back("../media/icons_temp/paused_screen/eight.png");
+	score_files.push_back("../media/icons_temp/paused_screen/nine.png");
 
-	paused_overlay_cam3 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay_cam3->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam3.png"));
-    paused_overlay_cam3->setPosition(position2d<s32>(450, 175));
+	for (int i = 0; i < score_files.size(); ++i) {
+		GUIImage *temp;
+		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
+		temp->setPosition(position2d<s32>(575, 435));
+		uav_one_scores.push_back(temp);
 
-	paused_overlay_cam4 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay_cam4->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam4.png"));
-    paused_overlay_cam4->setPosition(position2d<s32>(450, 175));
-	
-	paused_overlay_cam5 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay_cam5->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam5.png"));
-    paused_overlay_cam5->setPosition(position2d<s32>(450, 175));
+		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
+		temp->setPosition(position2d<s32>(850, 435));
+		uav_two_scores.push_back(temp);
 
-	paused_overlay_cam6 = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay_cam6->setTexture(driver()->getTexture("../media/icons_temp/paused_overlay_cam6.png"));
-    paused_overlay_cam6->setPosition(position2d<s32>(450, 175));
+		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
+		temp->setPosition(position2d<s32>(1125, 435));
+		uav_three_scores.push_back(temp);
+
+		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
+		temp->setPosition(position2d<s32>(575, 655));
+		uav_four_scores.push_back(temp);
+			
+		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
+		temp->setPosition(position2d<s32>(850, 655));
+		uav_five_scores.push_back(temp);
+
+		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
+		temp->setPosition(position2d<s32>(1125, 655));
+		uav_six_scores.push_back(temp);
+	}
 
     if (USE_RTT && driver()->queryFeature(EVDF_RENDER_TO_TARGET)) {
         stringc name = "RT1";
@@ -321,29 +363,47 @@ void CamWindow::event_key_down(wchar_t key) {
             // toggleFullScreen = true;
     }
 
-	if (get_paused() && event_recv->IsKeyDown(irr::KEY_RETURN))
-		inc_paused();
-
 	if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
-		Output::Instance().RecordTrustScore(paused + 1, 1);
+		inc_paused();
+		set_score(paused, 1);
+		Output::Instance().RecordTrustScore(paused, 1);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
-		Output::Instance().RecordTrustScore(paused + 1, 2);
+		inc_paused();
+		set_score(paused, 2);
+		Output::Instance().RecordTrustScore(paused, 2);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
-		Output::Instance().RecordTrustScore(paused + 1, 3);
+		inc_paused();
+		set_score(paused, 3);
+		Output::Instance().RecordTrustScore(paused, 3);
+		uav_one_scores[0]->draw();
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
-		Output::Instance().RecordTrustScore(paused + 1, 4);
+		inc_paused();
+		set_score(paused, 4);
+		Output::Instance().RecordTrustScore(paused, 4);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
-		Output::Instance().RecordTrustScore(paused + 1, 5);
+		inc_paused();
+		set_score(paused, 5);
+		Output::Instance().RecordTrustScore(paused, 5);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
-		Output::Instance().RecordTrustScore(paused + 1, 6);
+		inc_paused();
+		set_score(paused, 6);
+		Output::Instance().RecordTrustScore(paused, 6);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
-		Output::Instance().RecordTrustScore(paused + 1, 7);
+		inc_paused();
+		set_score(paused, 7);
+		Output::Instance().RecordTrustScore(paused, 7);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
-		Output::Instance().RecordTrustScore(paused + 1, 8);
+		inc_paused();
+		set_score(paused, 8);
+		Output::Instance().RecordTrustScore(paused, 8);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
-		Output::Instance().RecordTrustScore(paused + 1, 9);
+		inc_paused();
+		set_score(paused, 9);
+		Output::Instance().RecordTrustScore(paused, 9);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_0)) {
-		Output::Instance().RecordTrustScore(paused + 1, 0);
+		inc_paused();
+		set_score(paused, 0);
+		Output::Instance().RecordTrustScore(paused, 0);
 	}
 
 	/*
@@ -351,6 +411,7 @@ void CamWindow::event_key_down(wchar_t key) {
 		if (cams[0] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
 			cams[0]->cam_message(11);
 		}
+		draw_score()
 		else if (cams[1] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
 			cams[1]->cam_message(11);
 		}
@@ -370,7 +431,9 @@ void CamWindow::event_key_down(wchar_t key) {
 			cams[6]->cam_message(11);
 		}
 		else if (cams[7] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
+
 			cams[7]->cam_message(11);
+		draw_score()
 		}
 		else if (cams[8] != nullptr && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
 			cams[8]->cam_message(11);

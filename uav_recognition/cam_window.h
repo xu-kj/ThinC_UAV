@@ -12,6 +12,7 @@
 
 #include <list>
 #include <vector>
+#include <iostream>
 
 class NavWindow;
 
@@ -87,7 +88,7 @@ public:
 
 	// Getter and setter functions for paused
 	bool get_paused() const {
-		return paused < 6;	
+		return paused < 7;	
 	}
 
 	void inc_paused() {
@@ -96,6 +97,29 @@ public:
 
 	void reset_paused() {
 		paused = 0;
+	}
+
+	void set_score(int uav_number, int score) {
+		switch(uav_number) {
+			case 1:
+				uav_one_score = score;
+				break;	
+			case 2:
+				uav_two_score = score;
+				break;
+			case 3:
+				uav_three_score = score;
+				break;
+			case 4:
+				uav_four_score = score;
+				break;
+			case 5:
+				uav_five_score = score;
+				break;
+			case 6:
+				uav_six_score = score;
+				break;
+		}
 	}
 
     void send_cam_message(int id, int message) {
