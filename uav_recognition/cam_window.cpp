@@ -67,7 +67,7 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
                                  position),
                      wps(wps_), bases(bases_), uavs(uavs_), 
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
-                     render(0), need_render(true), city(0), started(false), paused(7)
+                     render(0), need_render(true), city(0), started(false), paused(false), current_uav(0)
 {
     CAM_SIZE_X = cam_width;
     CAM_SIZE_Y = cam_height;
@@ -173,9 +173,9 @@ void CamWindow::draw() {
 	    start_overlay->draw();
 
 	// if paused draw the paused screen
-	if (get_paused()) {
+	if (started && get_paused()) {
 		paused_overlay->draw();
-		switch(paused) {
+		switch(current_uav) {
 			case 1:
 				uav_one_scores[uav_one_score]->draw();
 				break;
@@ -208,6 +208,9 @@ void CamWindow::draw() {
 				uav_four_scores[uav_four_score]->draw();
 				uav_five_scores[uav_five_score]->draw();	
 				uav_six_scores[uav_six_score]->draw();
+				continue_overlay->draw();
+				break;
+			default:
 				break;
 		}
 	}
@@ -249,6 +252,10 @@ void CamWindow::load_images() {
 	paused_overlay = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
     paused_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/paused_screen_empty.png"));
     paused_overlay->setPosition(position2d<s32>(450, 175));
+
+	continue_overlay = new GUIImage(rect<s32>(0,0,363,39), device(), guiElmRoot);
+    continue_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/continue.png"));
+    continue_overlay->setPosition(position2d<s32>(750, 825));
 
 	// Load images for scores
 	std::vector<std::string> score_files;
@@ -352,6 +359,8 @@ void CamWindow::event_mouse_down() {
         }
 }
 
+#include <iostream>
+
 void CamWindow::event_key_down(wchar_t key) {
     UAVWindow::event_key_down(key);
     if (!started && event_recv->IsKeyDown(irr::KEY_RETURN)
@@ -363,48 +372,45 @@ void CamWindow::event_key_down(wchar_t key) {
             // toggleFullScreen = true;
     }
 
-	if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
-		inc_paused();
-		set_score(paused, 1);
-		Output::Instance().RecordTrustScore(paused, 1);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
-		inc_paused();
-		set_score(paused, 2);
-		Output::Instance().RecordTrustScore(paused, 2);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
-		inc_paused();
-		set_score(paused, 3);
-		Output::Instance().RecordTrustScore(paused, 3);
+	if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
+		current_uav += 1;
+		set_score(current_uav, 1);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
+		current_uav += 1;
+		set_score(current_uav, 2);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
+		current_uav += 1;
+		set_score(current_uav, 3);
 		uav_one_scores[0]->draw();
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
-		inc_paused();
-		set_score(paused, 4);
-		Output::Instance().RecordTrustScore(paused, 4);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
-		inc_paused();
-		set_score(paused, 5);
-		Output::Instance().RecordTrustScore(paused, 5);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
-		inc_paused();
-		set_score(paused, 6);
-		Output::Instance().RecordTrustScore(paused, 6);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
-		inc_paused();
-		set_score(paused, 7);
-		Output::Instance().RecordTrustScore(paused, 7);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
-		inc_paused();
-		set_score(paused, 8);
-		Output::Instance().RecordTrustScore(paused, 8);
-	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
-		inc_paused();
-		set_score(paused, 9);
-		Output::Instance().RecordTrustScore(paused, 9);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
+		current_uav += 1;
+		set_score(current_uav, 4);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_5)) {
+		current_uav += 1;
+		set_score(current_uav, 5);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_6)) {
+		current_uav += 1;
+		set_score(current_uav, 6);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_7)) {
+		current_uav += 1;
+		set_score(current_uav, 7);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_8)) {
+		current_uav += 1;
+		set_score(current_uav, 8);
+	} else if (get_paused() && current_uav != 6 && event_recv->IsKeyDown(irr::KEY_KEY_9)) {
+		current_uav += 1;
+		set_score(current_uav, 9);
 	} else if (get_paused() && event_recv->IsKeyDown(irr::KEY_KEY_0)) {
-		inc_paused();
-		set_score(paused, 0);
-		Output::Instance().RecordTrustScore(paused, 0);
+		current_uav += 1;
+		set_score(current_uav, 0);
+	} else if (get_paused() && current_uav == 6 && event_recv->IsKeyDown(irr::KEY_RETURN)) {
+		current_uav = 0;	
+		record_scores();
+		reset_paused();
+	} else if (get_paused() && current_uav > 0 && event_recv->IsKeyDown(irr::KEY_BACK)) {
+		current_uav -= 1;
 	}
+
 
 	/*
 	if (started) {

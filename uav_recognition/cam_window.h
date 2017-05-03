@@ -32,7 +32,8 @@ private:
     bool started; // show "PRESS ENTER TO START" if false
 
 	// Boolean for paused functionality
-	int paused;
+	bool paused;
+	int current_uav;
 
     // data
     std::list<WaypointObject *> *wps;
@@ -82,21 +83,21 @@ public:
     bool get_started() const { 
 		return started; 
 	}
-    void set_started(bool _started) { 
+    void set_started(bool _started) {
 		started = _started; 
 	}
 
 	// Getter and setter functions for paused
 	bool get_paused() const {
-		return paused < 7;	
-	}
-
-	void inc_paused() {
-		++paused;
+		return paused;	
 	}
 
 	void reset_paused() {
-		paused = 0;
+		paused = false;
+	}
+
+	void set_paused() {
+		paused = true;
 	}
 
 	void set_score(int uav_number, int score) {
@@ -120,6 +121,15 @@ public:
 				uav_six_score = score;
 				break;
 		}
+	}
+
+	void record_scores() {
+		Output::Instance().RecordTrustScore(1, uav_one_score);
+		Output::Instance().RecordTrustScore(2, uav_two_score);
+		Output::Instance().RecordTrustScore(3, uav_three_score);
+		Output::Instance().RecordTrustScore(4, uav_four_score);
+		Output::Instance().RecordTrustScore(5, uav_five_score);
+		Output::Instance().RecordTrustScore(6, uav_six_score);
 	}
 
     void send_cam_message(int id, int message) {
