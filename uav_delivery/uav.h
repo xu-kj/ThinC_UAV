@@ -121,6 +121,8 @@ private:
     // override all this functionality and shit
     SimObject * network_target;
 
+    int curr_wp;
+
 public:
     int missed;
     int unsure;

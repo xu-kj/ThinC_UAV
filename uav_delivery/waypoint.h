@@ -79,6 +79,9 @@ public:
     bool getDoneNotInSight() const {return clicked_before_sight;}
     E_WAYPOINT_RESPONSE getResult() const {return result;}
 
+    int getId() { return id; }
+    void setId(int _id) { id = _id; }
+
 private:
     enum E_WAYPOINT_STATE {UNASSIGNED, ASSIGNED, REASSIGNED, CONFIRMED, DENIED, UNSURE};
     E_WAYPOINT_STATE state;
@@ -106,6 +109,8 @@ private:
     irr::u32 time_done;
     irr::u32 time_total;
     irr::u32 time_sighted_total;
+
+    int id;
 
     E_WAYPOINT_RESPONSE result;
 };

@@ -3,6 +3,9 @@
 
 #include "globals.h"
 #include <irrlicht.h>
+#include <map>
+
+extern std::map<int, int> wp_departure_time;
 
 enum UAV_EVENT_E { 
 	CHECK_POINT,
@@ -14,9 +17,9 @@ enum UAV_EVENT_E {
 class Event {
 public:
     Event(const irr::core::stringc &type, const irr::core::stringw &text_,
-        irr::u32 start, irr::s32 id_, int _ps, int _fs)
+        irr::u32 start, irr::s32 id_, int _ps, int _fs, int _ws)
         : text(text_), start_time(start), id(id_), activated(false), 
-        pair_seq(_ps), flood_seq(_fs)
+        pair_seq(_ps), flood_seq(_fs), waypoint_seq(_ws)
     {
         if (type == "CAMERA_FAIL")
             this->type = UAV_EVENT_E::CAMERA_FAIL;
@@ -41,11 +44,24 @@ public:
     bool activate() {
         //if(!activated && start_time < TICKS)
         irr::u32 time = MINUTES * 1000 * 60 + SECONDS * 1000 + MILLISECONDS;
-        if(!activated && start_time < time) {
-            activated = true;
-            return true;
-        }
+        if (!activated) {
+            if (waypoint_seq == -1 && start_time < time) {
+                activated = true;
+                return true;
+            }
+            else if (wp_departure_time.count(waypoint_seq) > 0 && 
+                (wp_departure_time[waypoint_seq] + start_time) < time) {
+                activated = true;
+                return true;
+            }
+        } 
         return false;
+
+        // if(!activated && start_time < time) {
+        //     activated = true;
+        //     return true;
+        // }
+        // return false;
     }
 
     UAV_EVENT_E get_type() const { return type; }
@@ -64,6 +80,7 @@ private:
     bool activated;
     int pair_seq;
     int flood_seq;
+    int waypoint_seq;
 };
 
 #endif /* EVENT_H */

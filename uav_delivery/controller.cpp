@@ -18,6 +18,7 @@
 #include <fstream>
 #include <string>
 #include <conio.h>
+#include <map>
 
 #pragma warning (disable:4996)
 
@@ -77,6 +78,8 @@ irr::u32 TICKS        = 0;
 bool OTHER_SIM_STARTED = false;
 bool OTHER_SIM_ENDED   = false;
 bool USE_NETWORK       = false;
+
+std::map<int, int> wp_departure_time;
 
 // =========================================================================
 // CONSTRUCTOR
@@ -510,6 +513,7 @@ void UAVController::readEventNode(IXMLReader * reader) {
     int start_ms = 0;
     int pseq = -1;
     int fseq = -1;
+    int wseq = -1;
 
     bool end = false;
     while(!end && reader->read()) {
@@ -540,6 +544,7 @@ void UAVController::readEventNode(IXMLReader * reader) {
                 else if (stringw(L"Id")       == name) id = value;
                 else if (stringw(L"Pair")     == name) pseq = value;
                 else if (stringw(L"Flood")    == name) fseq = value;
+                else if (stringw(L"Waypoint") == name) wseq = value;
             }
             break;
         }
@@ -551,22 +556,22 @@ void UAVController::readEventNode(IXMLReader * reader) {
         start_time += u32(start_sec) * 1000;
         start_time += u32(start_ms);
 
-        Event *e = new Event(node_name, text, start_time, id, pseq, fseq);
+        Event *e = new Event(node_name, text, start_time, id, pseq, fseq, wseq);
         events.push_back(e);
         cout << "Loaded Event \"" << node_name.c_str() << "\" [" << start_time << "]" << endl;
 
         if (node_name == "VIDEO_ALERT" ) {
             //start_time += u32(3) * 1000;
 			//start_time += u32(1) * 200;
-            Event *e = new Event("VIDEO_TEXT_CLEAR", text, start_time + u32(1) * 200, id, pseq, fseq);
+            Event *e = new Event("VIDEO_TEXT_CLEAR", text, start_time + u32(1) * 200, id, pseq, fseq, wseq);
             events.push_back(e);
 
-			e = new Event("VIDEO_ALERT_OFF", text, start_time + u32(3) * 1000, id, pseq, fseq);
+			e = new Event("VIDEO_ALERT_OFF", text, start_time + u32(3) * 1000, id, pseq, fseq, wseq);
             events.push_back(e);
         }
         else if (node_name == "AUDIO_ALERT") {
             //start_time += u32(3) * 1000;
-            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time + u32(3) * 1000, id, pseq, fseq);
+            Event *e = new Event("AUDIO_ALERT_OFF", text, start_time + u32(3) * 1000, id, pseq, fseq, wseq);
             events.push_back(e);
         }
     }
@@ -815,6 +820,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
     float pos_z;
     bool has_feature = true;
 	bool indicated = true;
+    int wp_id;
 
     bool end = false;
     while(!end && reader->read()) {
@@ -828,7 +834,13 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
             if(stringw(L"string") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
                 stringc value = reader->getAttributeValue(stringw(L"value").c_str());
-                if(stringw(L"Name") == name) node_name = value;
+                if(stringw(L"Name") == name) {
+                    node_name = value;
+
+                    // this part could be buggy, as I can't run it so I can't debug
+                    std::string idstr = value.substr(value.find("EO-") + 3);
+                    wp_id = atoi(idstr.c_str());
+                }
             }
             else if(stringw(L"float") == nodeName) {
                 stringc name = reader->getAttributeValue(stringw(L"name").c_str());
@@ -864,6 +876,7 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
         vec3d position(pos_x, pos_y, pos_z);
         wp = new WaypointObject(node_name, position, color::COLOR_GRAY, false);
         wp->setFeature(has_feature);
+        wp->setId(wp_id);
         wps.push_back(wp);
     }
 

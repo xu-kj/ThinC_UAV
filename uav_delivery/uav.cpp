@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <map>
 
 using namespace std;
 
@@ -31,6 +32,8 @@ irr::f32 LOW_TACTOR_DIST = 200.f;
 irr::f32 FEATURE_VISIBLE_DIST = 450.f;
 irr::f32 FEATURE_MISSED_DIST = 300.f;
 bool LIGHT_AFTER_PASS = true;
+
+extern std::map<int, int> wp_departure_time;
 
 irr::s32 getLightLevel(E_LIGHT_LEVEL level) {
     switch(level) {
@@ -73,6 +76,8 @@ UAVObject::UAVObject(const strw &name,
     target_passed = false;
 
     network_target = new SimObject("lafjksf", vec3d(0,0,0), Color(0,0,0,0));
+
+    curr_wp = -1;
 }
 
 void UAVObject::network_update(irr::f32 time) {}
@@ -113,6 +118,9 @@ void UAVObject::update(irr::f32 time) {
 				stopped = false;
 				Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::UAV_MOVING,
 					(double) position.X, (double) position.Y, (double) position.Z);
+
+                int t = MINUTES * 1000 * 60 + SECONDS * 1000 + MILLISECONDS;
+                wp_departure_time[curr_wp] = t;
 			}
 		}
 	}
@@ -181,6 +189,9 @@ void UAVObject::update(irr::f32 time) {
         if (!target_visible && position.getDistanceFrom(getTarget()) < FEATURE_VISIBLE_DIST) {
             target_visible = true;
             wps.front()->setSighted(this);
+
+            // registering the next waypoint as the current waypoint that we're dealing with
+            curr_wp = wps.front()->getId();
 
 			Output::Instance().RecordEvent(cam_id + 1, 
                 wps.front()->getFeature() ? UAV_EVENT::WAYPOINT_TARGET_SIGHTED : UAV_EVENT::WAYPOINT_NONTARGET_SIGHTED, 
