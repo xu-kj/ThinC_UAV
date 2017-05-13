@@ -838,7 +838,8 @@ WaypointObject * UAVController::readWaypointNode(IXMLReader * reader) {
                     node_name = value;
 
                     // this part could be buggy, as I can't run it so I can't debug
-                    std::string idstr = value.substr(value.find("EO-") + 3);
+					std::string value1(value.c_str());
+                    std::string idstr = value1.substr(value.find("EO-") + 3);
                     wp_id = atoi(idstr.c_str());
                 }
             }
