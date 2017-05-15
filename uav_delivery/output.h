@@ -4,6 +4,7 @@
 #include <fstream>
 #include <irrlicht.h>
 #include <vector>
+#include <utility>
 
 /* The Output class uses E_OUTPUT to specify which file to write to (default OUTPUT_LOG). */
 
@@ -69,6 +70,42 @@ enum UAV_EVENT {
     EVENT_COUNT
 };
 
+struct EventDatum {
+	int timeSinceStart;
+	int index;
+	int drone;
+	//'d' = delivery, 'a' = alarm
+	char type;
+};
+
+struct DeliveryEDatum : EventDatum{
+	bool dronePresent;
+};
+
+struct AlarmEDatum : EventDatum{
+	int pair;
+	int pos;
+	//'v' = visual, 'a' = auditory
+	char alarmType;
+	bool flood;
+};
+
+struct ResponseDatum {
+	int timeSinceEvent;
+	int drone;
+	bool accuracy;
+}
+
+struct DeliveryRDatum : ResponseDatum {
+	bool target;
+}
+
+struct AlarmRDatum : ResponseDatum {
+	char responseType;
+}
+
+
+
 class Output {
 public:
     static Output& Instance() {
@@ -91,6 +128,7 @@ public:
 	void WriteColumnName();
     void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
 	void GetResult();
+	std::vector<std::pair<EventDatum, ResponseDatum>> data;
 
 private:
     Output() {}
@@ -111,5 +149,7 @@ private:
     std::vector<double> yPos;
     std::vector<double> zPos;
 };
+
+
 
 #endif /* OUTPUT_H */
