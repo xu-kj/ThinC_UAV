@@ -217,7 +217,7 @@ void UAVController::run() {
             Network::sendMessageStart();
 
 		Output::Instance().WriteColumnName();
-		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_STARTED, -1, -1, -1);
+		Output::Instance().RecordEvent(0, UAV_EVENT::SIMULATION_STARTED, -1, -1, -1);
 
         // log the scenario beginning
         Output::Instance().WriteTick();
@@ -284,10 +284,10 @@ void UAVController::run() {
 				//}
 
 				if (run_timer >= 2 * 60 * 1000) {
-					Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
+					Output::Instance().RecordEvent(0, UAV_EVENT::SIMULATION_PAUSED, -1, -1, -1);
 					simulation_paused = true;
 					((CamWindow *)win2)->set_paused();
-					cout << "Simulation paused at the one minute mark" << endl;
+					cout << "Simulation paused" << endl;
 					run_timer = 0;
 					then = win2->device()->getTimer()->getTime();
 				}
@@ -342,7 +342,7 @@ void UAVController::run() {
             }
         }
 
-		Output::Instance().RecordEvent(-1, UAV_EVENT::SIMULATION_ENDED, -1, -1, -1);
+		Output::Instance().RecordEvent(0, UAV_EVENT::SIMULATION_ENDED, -1, -1, -1);
 
         // log the scenario ending
         Output::Instance().WriteTick();

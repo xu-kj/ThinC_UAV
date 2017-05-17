@@ -31,9 +31,9 @@ irr::f32 WORLD_START_LAT = 0;
 irr::f32 WORLD_END_LON   = 10;
 irr::f32 WORLD_END_LAT   = 10;
 
-irr::s32 CAM_SIZE_X = 341;
-irr::s32 CAM_SIZE_Y = 256;
-irr::s32 CAM_INTERVAL = 10;
+irr::s32 CAM_SIZE_X = 100; // Previously 341
+irr::s32 CAM_SIZE_Y = 50; // Previously 256
+irr::s32 CAM_INTERVAL = 0; // Previously 10
 
 bool USE_RTT = true;
 
@@ -69,9 +69,14 @@ CamWindow::CamWindow(std::list<WaypointObject *> * wps_,
 					 cam_width(_cam_width), cam_height(_cam_height), cam_interval(_cam_interval),
                      render(0), need_render(true), city(0), started(false), paused(false), current_uav(0)
 {
-    CAM_SIZE_X = cam_width;
-    CAM_SIZE_Y = cam_height;
-    CAM_INTERVAL = cam_interval;
+    // CAM_SIZE_X = cam_width;
+    // CAM_SIZE_Y = cam_height;
+    // CAM_INTERVAL = cam_interval;
+
+	// Hard coded to fit new monitor
+	CAM_SIZE_X = 380;
+	CAM_SIZE_Y = 330;
+	CAM_INTERVAL = 70;
 
 
     if (!load())
@@ -247,15 +252,15 @@ void CamWindow::load_images() {
     IGUIElement * guiElmRoot = guienv()->getRootGUIElement();
     start_overlay = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
     start_overlay->setTexture(driver()->getTexture("../media/icons_temp/start_screen.png"));
-    start_overlay->setPosition(position2d<s32>(450,175));
+    start_overlay->setPosition(position2d<s32>(140,20));
 
 	paused_overlay = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
     paused_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/paused_screen_empty.png"));
-    paused_overlay->setPosition(position2d<s32>(450, 175));
+    paused_overlay->setPosition(position2d<s32>(140,20));
 
 	continue_overlay = new GUIImage(rect<s32>(0,0,363,39), device(), guiElmRoot);
     continue_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/continue.png"));
-    continue_overlay->setPosition(position2d<s32>(750, 825));
+    continue_overlay->setPosition(position2d<s32>(440,670));
 
 	// Load images for scores
 	std::vector<std::string> score_files;
@@ -274,32 +279,32 @@ void CamWindow::load_images() {
 		GUIImage *temp;
 		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(575, 435));
+		temp->setPosition(position2d<s32>(265, 280));
 		uav_one_scores.push_back(temp);
 
 		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(850, 435));
+		temp->setPosition(position2d<s32>(540, 280));
 		uav_two_scores.push_back(temp);
 
 		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(1125, 435));
+		temp->setPosition(position2d<s32>(815, 280));
 		uav_three_scores.push_back(temp);
 
 		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(575, 655));
+		temp->setPosition(position2d<s32>(265, 500));
 		uav_four_scores.push_back(temp);
 			
 		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(850, 655));
+		temp->setPosition(position2d<s32>(540, 500));
 		uav_five_scores.push_back(temp);
 
 		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(1125, 655));
+		temp->setPosition(position2d<s32>(815, 500));
 		uav_six_scores.push_back(temp);
 	}
 

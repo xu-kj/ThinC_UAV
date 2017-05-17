@@ -67,8 +67,10 @@ UAVCamera::UAVCamera(position2di pos_, std::pair<int, int> cam_size, CamWindow *
     zooming_in(false), zooming(false), button_clicked(false),
     auto_light(false), buttons_on(false), staticOn(true)
 {
-    this->cam_size_x = cam_size.first;
-    this->cam_size_y = cam_size.second;
+    // this->cam_size_x = cam_size.first;
+    // this->cam_size_y = cam_size.second;
+	this->cam_size_x = 380; // Hard coded to fit new monitor
+	this->cam_size_y = 330; // Hard coded to fit new monitor
 
 	cout << "size_x: " << this->cam_size_x << ", size_y: " << this->cam_size_y << endl;
 
@@ -322,6 +324,7 @@ void UAVCamera::set_uav(UAVObject * uav_, IrrlichtDevice * device)
 }
 
 void UAVCamera::draw_overlay(IrrlichtDevice * device) {
+	/*
     if(uav) {
         if(win->windowWidth() == 2560) {
             // RESCHANGE
@@ -349,6 +352,7 @@ void UAVCamera::draw_overlay(IrrlichtDevice * device) {
             outline->draw();
         }
     }
+	*/
 
     indicator->draw();
     checkTarget->draw();
@@ -526,11 +530,19 @@ void UAVCamera::draw_background(IrrlichtDevice * device)
     if(uav)
         color = uav->getColor();
 
+	rect<s32> dest(
+		pos.X,
+		pos.Y,
+		pos.X + 380,
+		pos.Y + 330
+	);
+	/*
     rect<s32> dest(
         pos.X + OUTLINE_WIDTH / 2,
         pos.Y + OUTLINE_WIDTH / 2,
         pos.X + win->get_cam_width() - OUTLINE_WIDTH / 2,
-        pos.Y + win->get_cam_height() - OUTLINE_WIDTH / 2);
+		pos.Y + win->get_cam_height() - OUTLINE_WIDTH / 2
+	*/
     GUIImage::draw2DRectangle(device->getVideoDriver(), dest, color);
 
     // progress bar on uav cam

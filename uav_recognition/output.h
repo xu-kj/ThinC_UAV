@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <irrlicht.h>
+#include <vector>
 
 /* The Output class uses E_OUTPUT to specify which file to write to (default OUTPUT_LOG). */
 
@@ -30,10 +31,17 @@ enum E_OUTPUT {
 	OUTPUT_EVENTS,
 	OUTPUT_CHAT,
 	OUTPUT_COMBINED,
+	OUTPUT_RECOG_UAV1,
+	OUTPUT_RECOG_UAV2,
+	OUTPUT_RECOG_UAV3,
+	OUTPUT_RECOG_UAV4,
+	OUTPUT_RECOG_UAV5,
+	OUTPUT_RECOG_UAV6,
 	OUTPUT_COUNT // DO NOT USE
 };
 // add the following constant to the UAV id to write to its table file
 const int OUTPUT_TABLE_FILE = 9;
+const int NUM_UAVS = 6;
 
 enum UAV_EVENT {
 	SIMULATION_STARTED,
@@ -99,6 +107,8 @@ private:
 
     static std::fstream files[OUTPUT_COUNT];
     static irr::core::stringc filenames[];
+
+	std::vector<bool> previous_nontarget; 
 };
 
 #endif /* OUTPUT_H */

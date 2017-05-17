@@ -50,7 +50,13 @@ stringc Output::filenames[] = {
     "uav_table",
     "events",
     "chat",
-    "combined_log"
+    "combined_log",
+	"recog_uav1",
+	"recog_uav2",
+	"recog_uav3",
+	"recog_uav4",
+	"recog_uav5",
+	"recog_uav6",
 };
 
 void Output::StartLog()
@@ -116,6 +122,12 @@ void Output::StartLog()
     }
 
     cout << endl;
+
+	// Initialize the previous nontarget vector and targets vectors
+	for (int i = 0; i < NUM_UAVS; ++i) {
+		previous_nontarget.push_back(false);
+	}
+
 }
 
 void Output::EndLog()
@@ -267,24 +279,36 @@ void Output::WriteColumnName()
 
 void Output::RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z)
 {
-    fstream &fs = files[OUTPUT_COMBINED];
-    if(MINUTES < 10) 
-		fs << "0";
-    fs << MINUTES << ":";
-    if(SECONDS < 10) 
-		fs << "0";
-    fs << SECONDS << ".";
-    if(MILLISECONDS < 100) 
-		fs << "0";
-    if(MILLISECONDS < 10)  
-		fs << "0";
-    fs << MILLISECONDS << ",";
-    fs << target << ',';
-	fs << UAV_EVENT_TEXT[e - UAV_EVENT::SIMULATION_STARTED];
-    fs << ',' << pos_x << ',' << pos_y << ',' << pos_z << endl;
+	// Set previous_nontarget variables
+	if (e - UAV_EVENT::SIMULATION_STARTED == 7) {
+		previous_nontarget[target] = true;
+	}
+
+	// Skip missed message after non targets
+	if (e - UAV_EVENT::SIMULATION_STARTED == 16 && previous_nontarget[target]) {
+		previous_nontarget[target] = false;
+	}
+	else {
+		fstream &fs = files[OUTPUT_COMBINED + target];
+		if(MINUTES < 10) 
+			fs << "0";
+		fs << MINUTES << ":";
+		if(SECONDS < 10) 
+			fs << "0";
+		fs << SECONDS << ".";
+		if(MILLISECONDS < 100) 
+			fs << "0";
+		if(MILLISECONDS < 10)  
+			fs << "0";
+		fs << MILLISECONDS << ",";
+		fs << target << ',';
+		fs << UAV_EVENT_TEXT[e - UAV_EVENT::SIMULATION_STARTED];
+		fs << ',' << pos_x << ',' << pos_y << ',' << pos_z << endl;
+	}
 }
 
-void Output::RecordTrustScore(int uav_number, int trust_score) {
+void Output::RecordTrustScore(int uav_number, int trust_score) 
+{
 	fstream &fs = files[OUTPUT_COMBINED];
 	fs << "TRUST SCORE RECORDED: ";
 	fs << "UAV NUMBER: " << uav_number << ", ";
