@@ -30,8 +30,12 @@ protected:
     GUIImage *end_overlay;
 
 	// Overlay for paused screen
-	GUIImage *paused_overlay;
-	GUIImage *continue_overlay;
+	GUIImage *paused_overlay_uav1;
+	GUIImage *paused_overlay_uav2;
+	GUIImage *paused_overlay_uav3;
+	GUIImage *paused_overlay_uav4;
+	GUIImage *paused_overlay_uav5;
+	GUIImage *paused_overlay_uav6;
 	std::vector<GUIImage*> uav_one_scores;
 	std::vector<GUIImage*> uav_two_scores;
 	std::vector<GUIImage*> uav_three_scores;

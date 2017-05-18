@@ -179,7 +179,12 @@ void CamWindow::draw() {
 
 	// if paused draw the paused screen
 	if (started && get_paused()) {
-		paused_overlay->draw();
+		paused_overlay_uav1->draw();
+		paused_overlay_uav2->draw();
+		paused_overlay_uav3->draw();
+		paused_overlay_uav4->draw();
+		paused_overlay_uav5->draw();
+		paused_overlay_uav6->draw();
 		switch(current_uav) {
 			case 1:
 				uav_one_scores[uav_one_score]->draw();
@@ -213,7 +218,6 @@ void CamWindow::draw() {
 				uav_four_scores[uav_four_score]->draw();
 				uav_five_scores[uav_five_score]->draw();	
 				uav_six_scores[uav_six_score]->draw();
-				continue_overlay->draw();
 				break;
 			default:
 				break;
@@ -254,57 +258,73 @@ void CamWindow::load_images() {
     start_overlay->setTexture(driver()->getTexture("../media/icons_temp/start_screen.png"));
     start_overlay->setPosition(position2d<s32>(140,20));
 
-	paused_overlay = new GUIImage(rect<s32>(0,0,960,720), device(), guiElmRoot);
-    paused_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/paused_screen_empty.png"));
-    paused_overlay->setPosition(position2d<s32>(140,20));
+	paused_overlay_uav1 = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
+    paused_overlay_uav1->setTexture(driver()->getTexture("../media/paused_interface/enter_uav1.png"));
+    paused_overlay_uav1->setPosition(position2d<s32>(0,0));
 
-	continue_overlay = new GUIImage(rect<s32>(0,0,363,39), device(), guiElmRoot);
-    continue_overlay->setTexture(driver()->getTexture("../media/icons_temp/paused_screen/continue.png"));
-    continue_overlay->setPosition(position2d<s32>(440,670));
+	paused_overlay_uav2 = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
+    paused_overlay_uav2->setTexture(driver()->getTexture("../media/paused_interface/enter_uav2.png"));
+    paused_overlay_uav2->setPosition(position2d<s32>(450,0));
+	
+	paused_overlay_uav3 = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
+    paused_overlay_uav3->setTexture(driver()->getTexture("../media/paused_interface/enter_uav3.png"));
+    paused_overlay_uav3->setPosition(position2d<s32>(900,0));
+
+	paused_overlay_uav4 = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
+    paused_overlay_uav4->setTexture(driver()->getTexture("../media/paused_interface/enter_uav4.png"));
+    paused_overlay_uav4->setPosition(position2d<s32>(0,400));
+
+	paused_overlay_uav5 = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
+    paused_overlay_uav5->setTexture(driver()->getTexture("../media/paused_interface/enter_uav5.png"));
+    paused_overlay_uav5->setPosition(position2d<s32>(450,400));
+
+	paused_overlay_uav6 = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
+    paused_overlay_uav6->setTexture(driver()->getTexture("../media/paused_interface/enter_uav6.png"));
+    paused_overlay_uav6->setPosition(position2d<s32>(900,400));
 
 	// Load images for scores
 	std::vector<std::string> score_files;
-	score_files.push_back("../media/icons_temp/paused_screen/zero.png");
-	score_files.push_back("../media/icons_temp/paused_screen/one.png");
-	score_files.push_back("../media/icons_temp/paused_screen/two.png");
-	score_files.push_back("../media/icons_temp/paused_screen/three.png");
-	score_files.push_back("../media/icons_temp/paused_screen/four.png");
-	score_files.push_back("../media/icons_temp/paused_screen/five.png");
-	score_files.push_back("../media/icons_temp/paused_screen/six.png");
-	score_files.push_back("../media/icons_temp/paused_screen/seven.png");
-	score_files.push_back("../media/icons_temp/paused_screen/eight.png");
-	score_files.push_back("../media/icons_temp/paused_screen/nine.png");
+	score_files.push_back("../media/paused_interface/scores/zero.png");
+	score_files.push_back("../media/paused_interface/scores/one.png");
+	score_files.push_back("../media/paused_interface/scores/two.png");
+	score_files.push_back("../media/paused_interface/scores/three.png");
+	score_files.push_back("../media/paused_interface/scores/four.png");
+	score_files.push_back("../media/paused_interface/scores/five.png");
+	score_files.push_back("../media/paused_interface/scores/six.png");
+	score_files.push_back("../media/paused_interface/scores/seven.png");
+	score_files.push_back("../media/paused_interface/scores/eight.png");
+	score_files.push_back("../media/paused_interface/scores/nine.png");
 
-	for (int i = 0; i < score_files.size(); ++i) {
+	for (int i = 0; i < (int) score_files.size(); ++i) {
 		GUIImage *temp;
-		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(265, 280));
+		temp->setPosition(position2d<s32>(0, 0));
 		uav_one_scores.push_back(temp);
 
-		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(540, 280));
+		temp->setPosition(position2d<s32>(450, 0));
 		uav_two_scores.push_back(temp);
 
-		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(815, 280));
+		temp->setPosition(position2d<s32>(900, 0));
 		uav_three_scores.push_back(temp);
 
-		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(265, 500));
+		temp->setPosition(position2d<s32>(0, 400));
 		uav_four_scores.push_back(temp);
 			
-		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(540, 500));
+		temp->setPosition(position2d<s32>(450, 400));
 		uav_five_scores.push_back(temp);
 
-		temp = new GUIImage(rect<s32>(0,0,160,160), device(), guiElmRoot);
+		temp = new GUIImage(rect<s32>(0,0,385,330), device(), guiElmRoot);
 		temp->setTexture(driver()->getTexture(score_files[i].c_str()));
-		temp->setPosition(position2d<s32>(815, 500));
+		temp->setPosition(position2d<s32>(900, 400));
 		uav_six_scores.push_back(temp);
 	}
 
