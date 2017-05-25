@@ -319,6 +319,17 @@ void Output::RecordTrustScore(int uav_number, int trust_score)
 void Output::RecordIndicator(int cam_id)
 {
     fstream &fs = files[OUTPUT_INDICATOR];
+    if(MINUTES < 10)
+        fs << "0";
+    fs << MINUTES << ":";
+    if(SECONDS < 10)
+        fs << "0";
+    fs << SECONDS << ".";
+    if(MILLISECONDS < 100)
+        fs << "0";
+    if(MILLISECONDS < 10)
+        fs << "0";
+    fs << MILLISECONDS << ",";
     fs << "INDICATOR FOR CAMERA ";
     fs << cam_id << " ";
     fs << "HAS BEEN PRESSED" << endl;
