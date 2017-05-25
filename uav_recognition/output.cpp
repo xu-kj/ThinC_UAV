@@ -57,6 +57,7 @@ stringc Output::filenames[] = {
 	"recog_uav4",
 	"recog_uav5",
 	"recog_uav6",
+    "indicator"
 };
 
 void Output::StartLog()
@@ -313,4 +314,12 @@ void Output::RecordTrustScore(int uav_number, int trust_score)
 	fs << "TRUST SCORE RECORDED: ";
 	fs << "UAV NUMBER: " << uav_number << ", ";
 	fs << "TRUST SCORE: " << trust_score << endl;
+}
+
+void Output::RecordIndicator(int cam_id)
+{
+    fstream &fs = files[OUTPUT_INDICATOR];
+    fs << "INDICATOR FOR CAMERA ";
+    fs << cam_id << " ";
+    fs << "HAS BEEN PRESSED" << endl;
 }

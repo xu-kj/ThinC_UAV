@@ -37,6 +37,7 @@ enum E_OUTPUT {
 	OUTPUT_RECOG_UAV4,
 	OUTPUT_RECOG_UAV5,
 	OUTPUT_RECOG_UAV6,
+    OUTPUT_INDICATOR,
 	OUTPUT_COUNT // DO NOT USE
 };
 // add the following constant to the UAV id to write to its table file
@@ -95,6 +96,7 @@ public:
 	void WriteColumnName();
     void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
 	void RecordTrustScore(int uav_number, int trust_score);
+    void RecordIndicator(int cam_id);
 
 private:
     Output() {}

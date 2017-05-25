@@ -665,7 +665,8 @@ bool UAVCamera::button_click(position2di cursor)
         if(indicator && indicator->is_mouse_over(cursor)) {
             
             cout << "clicked on indicator" << endl;
-            
+            Output::Instance().RecordIndicator(this->get_id());
+
             indicator->click(win->device());
 
 			if (indicator->get_highlighted()) {
