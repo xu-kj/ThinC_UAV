@@ -53,7 +53,7 @@ UAVObject::UAVObject(const strw &name,
     const vec3d &velocity)
     : SimObject(name, position, color, asDegrees),
     fuel(1.0f), base(0), state(DONE), stats_done(false),
-    network_target(0)
+    network_target(0), bottom(false), botcor(0), botincor(0), correj(0)
 {
     gps_fail = cam_fail = false;
     if(USE_LIGHT_CUES) {
@@ -341,7 +341,10 @@ void UAVObject::setUnsure(bool missed) {
         if (missed) {
 			Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::USER_MISSED, 
 				(double) position.X, (double) position.Y, (double) position.Z);
-            removed_wp->setDone(this, WAYPOINT_MISSED);
+			if(removed_wp->getFeature() == false && removed_wp->get_indicated())
+				removed_wp->setDone(this, WAYPOINT_INCORRECT);
+			else 
+				removed_wp->setDone(this, WAYPOINT_MISSED);
 		}
         else {
 			Output::Instance().RecordEvent(cam_id + 1, UAV_EVENT::USER_UNSURE, 
@@ -432,6 +435,37 @@ bool UAVObject::activeButtons() const {
     return false;
 }
 
+bool UAVObject::getBottom() const{
+	return bottom;
+}
+
+void UAVObject::setBottom(bool b){
+	bottom = b;
+}
+
+int UAVObject::getBotcor(){
+	return botcor;
+}
+
+int UAVObject::getBotincor(){
+	return botincor;
+}
+
+int UAVObject::getCorrej(){
+	return correj;
+}
+
+void UAVObject::setBotcor(){
+	botcor++;
+}
+
+void UAVObject::setBotincor(){
+	botincor++;
+}
+
+void UAVObject::setCorrej(){
+	correj++;
+}
 const SimObject * UAVObject::getBase() const {
     return base;
 }
@@ -488,11 +522,17 @@ void UAVObject::writeSummary() {
         }
     }
     total = correct + incorrect + unsure + missed;
+	missed-=(getBotcor() + getBotincor() + getCorrej());
+	correct+=getBotcor();
+	incorrect+=getBotincor();
+	double crPercent = 0;
     if (total > 0) {
+
         correctPercent = (double(correct) / double(total)) * 100;
         incorrectPercent = (double(incorrect) / double(total)) * 100;
         unsurePercent = (double(unsure) / double(total)) * 100;
-        missedPercent = (double(missed) / double(total)) * 100;
+        missedPercent = ((double(missed)) / double(total)) * 100;
+		crPercent = double(getCorrej())/double(total) * 100;
     }
 
     strm << fixed << setprecision(2);
@@ -500,6 +540,7 @@ void UAVObject::writeSummary() {
     strm << "Incorrect:" << setw(5) << incorrect << "  " << setw(10) << right << incorrectPercent << "%" << endl;
     strm << "Unsure:   " << setw(5) << unsure << "  " << setw(10) << right << unsurePercent << "%" << endl;
     strm << "Missed:   " << setw(5) << missed << "  " << setw(10) << right << missedPercent << "%" << endl;
+	strm << "CR:       " << setw(5) << getCorrej() << "  " << setw(10) << right << crPercent << "%" << endl;
     strm << "Total:    " << setw(5) << total << endl;
 
     E_OUTPUT logTo = E_OUTPUT(getCamera()->get_id() + OUTPUT_TABLE_FILE);

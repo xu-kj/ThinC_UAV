@@ -6,6 +6,12 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <cmath>
+#include <string>
+
+int cr = 0;
+int botc = 0;
+int boti = 0;
 
 WaypointObject::WaypointObject(const strw &name, const vec3d &position, const Color &color, bool asDegrees)
     : SimObject(name, position, color, asDegrees)
@@ -223,19 +229,49 @@ void WaypointObject::setDone(UAVObject * uav, E_WAYPOINT_RESPONSE result) {
 
     if(reached)     strm << std::setw(col) << std::right << double(time_reached) / 1000;
     else            strm << std::right << std::setw(col) << "-";
-
-    strm << std::setw(col) << std::right << double(time_done) / 1000;
-    strm << std::setw(2) << " ";
-
-    if(result == WAYPOINT_MISSED)
+	
+	if(result == WAYPOINT_MISSED && !has_feature && !this->indicated && !uav->getBottom()){
+		strm << std::setw(col) << std::right << double(time_done) / 1000;
+		strm << std::setw(2) << " ";
+		strm << std::setw(col) << std::left << "CR";
+		cr++;
+		uav->setCorrej();
+	}
+	else if(result == WAYPOINT_MISSED && has_feature && uav->getBottom() && !this->indicated){
+		strm << std::setw(col) << std::right << double(bottime) / 1000;
+		strm << std::setw(2) << " ";
+		strm << std::setw(col) << std::left << "CORRECT";
+		botc++;
+		uav->setBotcor();
+	}
+	else if(result == WAYPOINT_MISSED && !has_feature && uav->getBottom() && reached && !this->indicated){
+		strm << std::setw(col) << std::right << double(bottime) / 1000;
+		strm << std::setw(2) << " ";
+		strm << std::setw(col) << std::left << "INCORRECT";
+		boti++;
+		uav->setBotincor();
+	}	
+	else if(result == WAYPOINT_MISSED){
+		strm << std::setw(col) << std::right << double(time_done) / 1000;
+		strm << std::setw(2) << " ";
         strm << std::setw(col) << std::left << "MISSED";
-    else if(result == WAYPOINT_CORRECT)
-        strm << std::setw(col) << std::left << "CORRECT";
-    else if(result == WAYPOINT_INCORRECT)
+	}
+	else if(result == WAYPOINT_CORRECT){
+        strm << std::setw(col) << std::right << double(time_done) / 1000;
+		strm << std::setw(2) << " ";
+		strm << std::setw(col) << std::left << "CORRECT";
+	}
+    else if(result == WAYPOINT_INCORRECT){
+		strm << std::setw(col) << std::right << double(time_done) / 1000;
+		strm << std::setw(2) << " ";
         strm << std::setw(col) << std::left << "INCORRECT";
-    else if(result == WAYPOINT_IS_UNSURE)
+	}
+    else if(result == WAYPOINT_IS_UNSURE){
+		strm << std::setw(col) << std::right << double(time_done) / 1000;
+		strm << std::setw(2) << " ";
         strm << std::setw(col) << std::left << "UNSURE";
-
+	}
+	
     strm << std::setw(2) << " ";
     if(has_feature)
         strm << std::setw(col) << std::left << "FEATURE";
@@ -244,18 +280,31 @@ void WaypointObject::setDone(UAVObject * uav, E_WAYPOINT_RESPONSE result) {
 
     strm << std::setw(6) << " ";
     strm << std::setw(col) << std::left;
-    if(result == WAYPOINT_CORRECT && has_feature)
-        strm << "CONFIRM";
+    
+	std::string pressed;
+	if(uav->getBottom()){
+		pressed = "BOTTOM";
+		uav->setBottom(false);
+	}
+	else if(result == WAYPOINT_CORRECT && has_feature){
+        pressed = "CONFIRM";
+		conf = false;
+	}
     else if(result == WAYPOINT_CORRECT && (!has_feature))
-        strm << "CLEAR";
-    else if(result == WAYPOINT_INCORRECT && (!has_feature))
-        strm << "CONFIRM";
+        pressed = "CLEAR";
+    else if(result == WAYPOINT_INCORRECT && (!has_feature) && conf){
+        pressed = "CONFIRM";
+		conf = false;
+	}
+	else if(result == WAYPOINT_INCORRECT && (!has_feature) && !conf)
+		pressed = "-";
     else if(result == WAYPOINT_INCORRECT && has_feature)
-        strm << "CLEAR";
+        pressed = "CLEAR";
     else if(result == WAYPOINT_MISSED)
-        strm << "-";
+        pressed = "-";
     else
-        strm << "?";
+        pressed = "?";
+	strm << pressed;
 
     // Write to the current UAV's log
     E_OUTPUT logTo = E_OUTPUT(uav->getCamera()->get_id() + OUTPUT_TABLE_FILE);

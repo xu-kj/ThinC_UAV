@@ -197,6 +197,9 @@ void UAVController::run() {
             if(win1) win1->update();
             if(win2) win2->update();
 
+			//if(win1) win1->device()->setResizeAble(true);
+			//if(win2) win2->device()->setResizeAble(true);
+
             if(USE_NETWORK) Network::update();
 
             // did the window close?
@@ -280,6 +283,7 @@ void UAVController::run() {
 				// fill out a questionaire
 				run_timer += (now - then);
 				//if (run_timer >= 10 * 1000) {
+
 				//	break;
 				//}
 
@@ -408,21 +412,23 @@ void UAVController::get_final_stats() {
         correct += (*uav_it)->correct;
         incorrect += (*uav_it)->incorrect;
     }
-    total = correct + incorrect + unsure + missed;
-    if(total > 0) {
+    total = correct + incorrect + unsure + missed + cr;
+	double crPercent = 0;
+    if (total > 0) {
         correctPercent = (double(correct) / double(total)) * 100;
         incorrectPercent = (double(incorrect) / double(total)) * 100;
         unsurePercent = (double(unsure) / double(total)) * 100;
-        missedPercent = (double(missed) / double(total)) * 100;
+        missedPercent = ((double(missed)) / double(total)) * 100;
+		crPercent = double(cr)/double(total) * 100;
     }
-
-    stringstream strm;
+	stringstream strm;
+	strm << endl;
     strm << fixed << setprecision(2);
-    strm << endl;
     strm << "Correct:  " << setw(5) << right << correct << "  " << setw(10) << right << correctPercent << "%" << endl;
     strm << "Incorrect:" << setw(5) << incorrect << "  " << setw(10) << right << incorrectPercent << "%" << endl;
     strm << "Unsure:   " << setw(5) << unsure << "  " << setw(10) << right << unsurePercent << "%" << endl;
     strm << "Missed:   " << setw(5) << missed << "  " << setw(10) << right << missedPercent << "%" << endl;
+	strm << "CR:       " << setw(5) << cr << "  " << setw(10) << right << crPercent << "%" << endl;
     strm << "Total:    " << setw(5) << total << endl;
 
     Output::Instance().WriteLine(strm.str().c_str(), OUTPUT_UAV_TABLE);

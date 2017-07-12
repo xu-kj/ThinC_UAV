@@ -23,6 +23,9 @@ using namespace gui;
 extern Sim::Tactors3x3 * tactors; // new version of tactors, is better
 extern bool USE_TACTOR_CUES;
 extern bool USE_LIGHT_CUES;
+bool bottom = false;
+bool conf = false;
+irr::u32 bottime = 0;
 
 irr::f32 DOWN_ANGLE = 45.f;
 irr::f32 CAM_FAIL_ANGLE = 90.f;
@@ -35,7 +38,7 @@ bool SHOW_PROGRESS_BAR = false;
 // just global
 const irr::s32 OUTLINE_WIDTH = 8;
 const irr::s32 OUTLINE_HEIGHT = 7;
-const double TOGGLE_INDICATOR_DURATION = 4.0;
+const double TOGGLE_INDICATOR_DURATION = 0.3;
 bool ZOOM_NEAR_TARGET = false;
 
 // sara simulation overrides
@@ -193,10 +196,11 @@ void UAVCamera::load_images(IrrlichtDevice * device)
     button_check_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
     button_check_down->setTexture(driver->getTexture("button_check_down.png"));
     
-    button_x = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
-    button_x->setTexture(driver->getTexture("button_x.png"));
-    button_x_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
-    button_x_down->setTexture(driver->getTexture("button_x_down.png"));
+    button_x = new GUIImage(rect<s32>(0,0,46,46), device, guiElmRoot);
+    button_x->setTexture(driver->getTexture("../media/icons_temp/incorrect.png"));
+    button_x_down = new GUIImage(rect<s32>(0,0,46,46), device, guiElmRoot);
+    button_x_down->setTexture(driver->getTexture("../media/icons_temp/incorrect_clicked.png"));
+
 
     button_unsure = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
     button_unsure->setTexture(driver->getTexture("button_unsure.png"));
@@ -208,10 +212,10 @@ void UAVCamera::load_images(IrrlichtDevice * device)
     button_light_off = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
     button_light_off->setTexture(driver->getTexture("button_light_off.png"));
 
-    button_target = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
-    button_target->setTexture(driver->getTexture("button_target.png"));
-    button_target_down = new GUIImage(rect<s32>(0,0,64,64), device, guiElmRoot);
-    button_target_down->setTexture(driver->getTexture("button_target_down.png"));
+    button_target = new GUIImage(rect<s32>(0,0,46,46), device, guiElmRoot);
+    button_target->setTexture(driver->getTexture("../media/icons_temp/correct.png"));
+    button_target_down = new GUIImage(rect<s32>(0,0,46,46), device, guiElmRoot);
+    button_target_down->setTexture(driver->getTexture("../media/icons_temp/correct_clicked.png"));
 }
 
 void UAVCamera::set_id(IrrlichtDevice * device, s32 id_)
@@ -254,12 +258,12 @@ void UAVCamera::load_buttons()
     indicator = new UAVButton(
         rect2di(
             (pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X),
-            pos.Y + OUTLINE_HEIGHT + 3,
+            pos.Y + OUTLINE_HEIGHT + 3*BUTTON_SIZE_Y + 2,
             pos.X + cam_size_x - OUTLINE_WIDTH,
-            (pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y) + 3),
-        button_light,
-        button_light,
-        button_light_off);
+            pos.Y + OUTLINE_HEIGHT + 4*BUTTON_SIZE_Y + 2),
+        button_unsure,
+        button_unsure,
+        button_unsure_down);
 
     checkTarget = new UAVButton(
         rect2di(
@@ -267,16 +271,16 @@ void UAVCamera::load_buttons()
             pos.Y + cam_size_y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3,
             pos.X + cam_size_x - OUTLINE_WIDTH,
             (pos.Y + cam_size_y - OUTLINE_HEIGHT - BUTTON_SIZE_Y - 3) + BUTTON_SIZE_Y),
-        button_target,
-        button_target,
-        button_target_down);
+        button_check,
+        button_check,
+        button_check_down);
 
     btnPositive = new UAVButton(
         rect2di(
             pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y + 2,
+            pos.Y + OUTLINE_HEIGHT + 3,
             pos.X + cam_size_x - OUTLINE_WIDTH,
-            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 2),
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y + 3),
         button_target,
         button_target,
         button_target_down);
@@ -284,9 +288,9 @@ void UAVCamera::load_buttons()
     btnNegative = new UAVButton(
         rect2di(
             pos.X + cam_size_x - OUTLINE_WIDTH - BUTTON_SIZE_X,
-            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 1,
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y + 2,
             pos.X + cam_size_x - OUTLINE_WIDTH,
-            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 3 + 1),
+            pos.Y + OUTLINE_HEIGHT + BUTTON_SIZE_Y * 2 + 2),
         button_x,
         button_x,
         button_x_down);
@@ -678,7 +682,7 @@ bool UAVCamera::button_click(position2di cursor)
 			else {
 				indicator->set_highlighted(true);
 				time(&last_indicator_click);
-				cam_message(9);
+				//cam_message(9);
 			}
 
             force_render();
@@ -707,6 +711,8 @@ bool UAVCamera::button_click(position2di cursor)
 				(double) uav->getPosition().X, (double) uav->getPosition().Y, (double) uav->getPosition().Z);
 
             force_render();
+			uav->setBottom(true);
+			bottime = TICKS;
         }
 
         // confirm button
@@ -727,6 +733,8 @@ bool UAVCamera::button_click(position2di cursor)
             btnPositive->click(win->device());
             uav->setConfirmed();
             force_render();
+			conf = true;
+			//bottom = false;
         }
 
         // deny button
@@ -747,6 +755,7 @@ bool UAVCamera::button_click(position2di cursor)
             btnNegative->click(win->device());
             uav->setNotThere();
             force_render();
+			//bottom = false;
         }
 
         // tell any signals about the response
@@ -760,7 +769,6 @@ bool UAVCamera::button_click(position2di cursor)
     else {
         cout << "ERROR: this UAV is not available" << endl;
     }
-
     return render_needed;
 }
 

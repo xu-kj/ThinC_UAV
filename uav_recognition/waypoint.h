@@ -13,6 +13,10 @@ enum E_WAYPOINT_RESPONSE {
     WAYPOINT_INCORRECT
 };
 
+extern int cr;
+extern int botc;
+extern int boti;
+
 class UAVObject;
 
 class WaypointObject: public SimObject

@@ -10,6 +10,9 @@
 #include <irrlicht.h>
 #include <time.h>
 
+extern bool bottom;
+extern bool conf;
+extern irr::u32 bottime;
 class CamWindow;
 
 class UAVCamera {

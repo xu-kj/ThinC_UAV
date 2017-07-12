@@ -60,6 +60,15 @@ public:
 
     // buttons
     bool activeButtons() const;
+	bool getBottom() const;
+	void setBottom(bool b);
+
+	int getBotcor();
+	int getBotincor();
+	int getCorrej();
+	void setBotcor();
+	void setBotincor();
+	void setCorrej();
 
     // camera/gps failure
     void setCamera(UAVCamera * cam_) {cam = cam_;}
@@ -90,6 +99,11 @@ private:
 
     bool target_visible;
     bool target_passed;
+	bool bottom;
+
+	int botcor;
+	int botincor;
+	int correj;
 
     irr::core::vector3df start_position;
     irr::core::vector3df facing;
