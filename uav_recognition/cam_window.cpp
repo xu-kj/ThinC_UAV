@@ -205,6 +205,7 @@ void CamWindow::draw() {
 	}
 
     driver()->endScene();
+    driver()->endScene();
 }
 
 void CamWindow::load_images() {
