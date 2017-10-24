@@ -3,9 +3,11 @@
 #include "uav_tactors.h"
 #include "output.h"
 
+#include <fstream>
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -154,11 +156,16 @@ void UAVObject::update(irr::f32 time) {
             target_visible = true;
             wps.front()->setSighted(this);
 
+			std::string confidence = get_next_confidence_level();
+			std::cout << "UAV " << cam_id << " has reached target." << std::endl;
+			std::cout << "Confidence Level: " << confidence << std::endl;
+			
             if (wps.front()->get_indicated()) {
 				Output::Instance().RecordEvent(cam_id + 1, 
 					UAV_EVENT::INDICATOR_ON, 
 					(double) position.X, (double) position.Y, (double) position.Z);
                 send_cam_message(0);
+				// TODO: Implement visual and audio confidence representations.
 			}
 
             Output::Instance().RecordEvent(cam_id + 1, 
@@ -517,6 +524,7 @@ void UAVObject::writeSummary() {
             case WAYPOINT_INCORRECT:
                 incorrect++;
                 break;
+
             default:
                 break;
         }

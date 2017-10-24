@@ -103,16 +103,16 @@ public:
 	void set_score(int uav_number, int score) {
 		switch(uav_number) {
 			case 1:
-			case 2:
-			case 3:
 				uav_one_score = score;	
+			case 2:
 				uav_two_score = score;
+			case 3:
 				uav_three_score = score;
 			case 4:
-			case 5:
-			case 6:
 				uav_four_score = score;
+			case 5:
 				uav_five_score = score;
+			case 6:
 				uav_six_score = score;
 		}
 	}

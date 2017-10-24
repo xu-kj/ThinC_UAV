@@ -1,6 +1,7 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
+#include <string>
 #include <fstream>
 #include <irrlicht.h>
 #include <vector>
@@ -96,6 +97,7 @@ public:
 	void WriteColumnName();
     void RecordEvent(int target, UAV_EVENT e, double pos_x, double pos_y, double pos_z);
 	void RecordTrustScore(int uav_number, int trust_score);
+	void RecordConfidenceFile(int cam_id, std::string confidence);
     void RecordIndicator(int cam_id);
 
 private:

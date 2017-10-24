@@ -1,6 +1,7 @@
 #include "output.h"
 #include "globals.h"
 
+#include <string>
 #include <iostream>
 #include <sstream>
 #include <list>
@@ -314,6 +315,12 @@ void Output::RecordTrustScore(int uav_number, int trust_score)
 	fs << "TRUST SCORE RECORDED: ";
 	fs << "UAV NUMBER: " << uav_number << ", ";
 	fs << "TRUST SCORE: " << trust_score << endl;
+}
+
+void Output::RecordConfidenceFile(int cam_id, std::string comment) {
+	fstream &fs = files[OUTPUT_COMBINED]; 
+	fs << "Confidence File Read For UAV " << cam_id;
+	fs << ": " << comment << endl; 
 }
 
 void Output::RecordIndicator(int cam_id)

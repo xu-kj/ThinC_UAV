@@ -5,6 +5,9 @@
 #include "waypoint.h"
 #include "sara_signals.h"
 
+#include <iostream>
+#include <fstream>
+
 enum E_UAV_STATE {WP, BASE, DONE};
 enum E_LIGHT_LEVEL {LOW, MEDIUM, HIGH};
 irr::s32 getLightLevel(E_LIGHT_LEVEL level);
@@ -24,7 +27,34 @@ public:
     void set_camera(int _cam_id, UAVCamera *_cam_ptr) { 
         cam_id = _cam_id; 
         cam_ptr = _cam_ptr;
-    }
+		
+		// Initialize confidence file.
+		std::string comment;
+		switch (cam_id) {
+			case 0:
+				confidence_fs.open("..\\confidence\\confidence1.txt", std::fstream::in);
+				break;
+			case 1:
+				confidence_fs.open("..\\confidence\\confidence2.txt", std::fstream::in);
+				break;
+			case 2:
+				confidence_fs.open("..\\confidence\\confidence3.txt", std::fstream::in);
+				break;
+			case 3:
+				confidence_fs.open("..\\confidence\\confidence4.txt", std::fstream::in);
+				break;
+			case 4:
+				confidence_fs.open("..\\confidence\\confidence5.txt", std::fstream::in);
+				break;
+			case 5:
+				confidence_fs.open("..\\confidence\\confidence6.txt", std::fstream::in);
+				break;
+			default:
+				break;
+		}
+		std::getline(confidence_fs, comment);
+		Output::Instance().RecordConfidenceFile(cam_id, comment);
+	}
 
     void send_cam_message(int i);
 
@@ -87,6 +117,14 @@ public:
     void writeSummary();
     bool getStatsDone() const {return stats_done;}
 
+	std::string get_next_confidence_level() {
+		std::string next_confidence_level;
+		std::cout << "Reading next confidence." << std::endl;
+		confidence_fs >> next_confidence_level;
+		std::cout << "Finished reading next confidence." << std::endl;
+		return next_confidence_level;
+	}
+
 private:
     int cam_id;
     UAVCamera * cam_ptr;
@@ -129,6 +167,8 @@ private:
 
     // override all this functionality and shit
     SimObject * network_target;
+
+	std::fstream confidence_fs;
 
 public:
     int missed;
