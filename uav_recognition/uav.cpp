@@ -1,5 +1,6 @@
 #include "uav.h"
 #include "cam_window.h"
+#include "window.h"
 #include "uav_tactors.h"
 #include "output.h"
 
@@ -93,6 +94,7 @@ void UAVObject::update(irr::f32 time) {
     // 2) cur_target  : the waypoint or base the UAV is actually MOVING toward
 
     // move the UAV
+	this->color = COLOR1;
     if (state == WP || state == BASE) {
         position += facing * (time * SPEED_FACTOR);
     }
@@ -166,6 +168,16 @@ void UAVObject::update(irr::f32 time) {
 					(double) position.X, (double) position.Y, (double) position.Z);
                 send_cam_message(0);
 				// TODO: Implement visual and audio confidence representations.
+				if(confidence == "H"){
+					irr::video::SColor highconf(255, 0, 0, 255);
+					this->color = highconf;
+					std::cout << "High confidence indicator" << endl;
+				}
+				if(confidence == "L"){
+					irr::video::SColor lowconf(255, 64, 64, 191);
+					this->color = lowconf;
+					std::cout << "Low confidence indicator" << endl;
+				}
 			}
 
             Output::Instance().RecordEvent(cam_id + 1, 
