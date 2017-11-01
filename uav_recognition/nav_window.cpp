@@ -53,6 +53,9 @@ NavWindow::NavWindow(std::list<WaypointObject *> * wps_,
     wps(wps_), bases(bases_), uavs(uavs_), ufos(ufos_), events(events_),
     moving_map(false), started(false)
 {
+	audio = false;
+	visual = false;
+
     if(!load())
         throw Error("Nav window failed to initialize correctly.");
 }
@@ -347,9 +350,23 @@ void NavWindow::event_mouse_wheel_up()
 
 void NavWindow::event_key_down(wchar_t key) {
     UAVWindow::event_key_down(key);
-    if (!started && event_recv->IsKeyDown(irr::KEY_RETURN)
-        && !event_recv->IsKeyDown(irr::KEY_SHIFT))
-        started = true;
+	if (!started && event_recv->IsKeyDown(irr::KEY_KEY_1)) {
+		started = true;
+		visual = false;
+		audio = false;
+	} else if (!started && event_recv->IsKeyDown(irr::KEY_KEY_2)) {
+		started = true;
+		visual = true;
+		audio = false;
+	} else if (!started && event_recv->IsKeyDown(irr::KEY_KEY_3)) {
+		started = true;
+		visual = false;
+		audio = true;
+	} else if (!started && event_recv->IsKeyDown(irr::KEY_KEY_4)) {
+		started = true;
+		visual = true;
+		audio = true;
+	}
     chat.keystroke(key);
 }
 

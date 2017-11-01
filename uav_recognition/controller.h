@@ -62,6 +62,9 @@ private:
 
     irr::core::vector3df uav_start_pos;
     bool uav_start_pos_found;
+
+	bool audio;
+	bool visual;
 };
 
 #endif /* CONTROLLER_H */

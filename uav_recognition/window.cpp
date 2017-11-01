@@ -176,12 +176,12 @@ void UAVWindow::event_key_down(wchar_t key) {
     if(ALLOW_SPEED_CHANGES) {
         if(key == 61) {
             // plus
-            SPEED_FACTOR += 45;
+            SPEED_FACTOR += 10;
             cout << "Speed: " << SPEED_FACTOR << endl;
         }
         if(key == 45 && SPEED_FACTOR >= 50) {
             // minus
-            SPEED_FACTOR -= 45;
+            SPEED_FACTOR -= 10;
             cout << "Speed: " << SPEED_FACTOR << endl;
         }
     }

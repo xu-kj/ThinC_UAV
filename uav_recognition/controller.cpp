@@ -65,7 +65,8 @@ bool ALLOW_PAUSE         = true;
 bool simulation_paused   = false;
 bool was_paused          = false;
 
-irr::video::SColor COLOR1(255,  79, 129, 189);  // blue
+irr::video::SColor COLOR1(255, 128, 128, 128);
+// irr::video::SColor COLOR1(255,  79, 129, 189);  // blue
 irr::video::SColor COLOR2(255, 209,  99,   9);  // orange
 irr::video::SColor COLOR3(255, 112, 139,  57);  // vomit
 irr::video::SColor COLOR4(255, 192,  80,  77);  // pink
@@ -190,8 +191,14 @@ void UAVController::run() {
         // keep the model paused until the user starts
         while(!started && running && !OTHER_SIM_ENDED) {
             started = ((NavWindow *)win1)->get_started() || ((CamWindow *)win2)->get_started();
+            audio = ((NavWindow *)win1)->get_audio() || ((CamWindow *)win2)->get_audio();
+            visual = ((NavWindow *)win1)->get_visual() || ((CamWindow *)win2)->get_visual();
             ((NavWindow *)win1)->set_started(started);
             ((CamWindow *)win2)->set_started(started);
+            ((NavWindow *)win1)->set_audio(audio);
+            ((CamWindow *)win2)->set_audio(audio);
+            ((NavWindow *)win1)->set_visual(visual);
+            ((CamWindow *)win2)->set_visual(visual);
 
             // draw the windows
             if(win1) win1->update();
@@ -215,6 +222,12 @@ void UAVController::run() {
                     win1->force_render();
             }
         }
+
+		for (uav_it = uavs.begin(); uav_it != uavs.end(); uav_it++) {
+			(*uav_it)->set_audio(audio);
+			(*uav_it)->set_visual(visual);
+		}
+                    
 
         if(USE_NETWORK && !OTHER_SIM_ENDED)
             Network::sendMessageStart();

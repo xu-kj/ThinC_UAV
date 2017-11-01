@@ -840,7 +840,9 @@ void UAVCamera::cam_message(int message) {
 			if (!indicator || !indicator->get_highlighted()) {
 				set_light_level = 1;
 			}
-            break;
+ 			// For audio confidence. Stop playing any async playing sounds.
+			PlaySound(NULL, NULL, NULL);           
+			break;
         case 7:
             if(USE_LIGHT_CUES) {
                 // set brightness to dim on camera

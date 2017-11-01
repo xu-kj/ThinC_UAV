@@ -4,6 +4,9 @@
 #include "uav_tactors.h"
 #include "output.h"
 
+#include <Windows.h>
+#include <mmsystem.h>
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -95,6 +98,7 @@ void UAVObject::update(irr::f32 time) {
 
     // move the UAV
 	this->color = COLOR1;
+
     if (state == WP || state == BASE) {
         position += facing * (time * SPEED_FACTOR);
     }
@@ -169,14 +173,24 @@ void UAVObject::update(irr::f32 time) {
                 send_cam_message(0);
 				// TODO: Implement visual and audio confidence representations.
 				if(confidence == "H"){
-					irr::video::SColor highconf(255, 0, 0, 255);
-					this->color = highconf;
 					std::cout << "High confidence indicator" << endl;
+					if (visual) {
+						irr::video::SColor highconf(255, 0, 255, 0);
+						this->color = highconf;
+					}
+					if (audio) {
+						PlaySound(TEXT("..\\confidence\\sound_clips\\high_confidence.wav"), NULL, SND_ASYNC);
+					}
 				}
 				if(confidence == "L"){
-					irr::video::SColor lowconf(255, 64, 64, 191);
-					this->color = lowconf;
 					std::cout << "Low confidence indicator" << endl;
+					if (visual) {
+						irr::video::SColor lowconf(255, 96, 159, 96);
+						this->color = lowconf;
+					}
+					if (audio) {
+						PlaySound(TEXT("..\\confidence\\sound_clips\\low_confidence.wav"), NULL, SND_ASYNC);
+					}
 				}
 			}
 
@@ -230,6 +244,7 @@ void UAVObject::update(irr::f32 time) {
 
     default:
         break;
+
     }
 
     // update facing
@@ -252,7 +267,7 @@ void UAVObject::update(irr::f32 time) {
         quat.fromAngleAxis(rot_angle, rot_axis);
         quat.getMatrix(rot_matrix);
 
-        // turn a little bit
+        // turn a little bit'
         rot_matrix.rotateVect(facing);
     }
     else {

@@ -51,6 +51,12 @@ public:
     bool get_started() const { return started; }
     void set_started(bool _started) { started = _started; }
 
+	bool get_audio() const { return audio; }
+	void set_audio(bool _audio) { audio = _audio; }
+
+	bool get_visual() const { return visual; }
+	void set_visual(bool _visual) { visual = _visual; }
+
 private:
     void draw_map();
     void draw_states();
@@ -89,6 +95,8 @@ private:
     // event locks
     bool moving_map;
     bool started;
+	bool audio;
+	bool visual;
 
     // other window
     CamWindow * cam_window;

@@ -30,6 +30,8 @@ private:
     irr::video::ITexture *render_overlay;
     bool need_render;
     bool started; // show "PRESS ENTER TO START" if false
+	bool audio;
+	bool visual;
 
 	// Boolean for paused functionality
 	bool paused;
@@ -80,12 +82,14 @@ public:
 		return cam_interval;
 	}
 
-    bool get_started() const { 
-		return started; 
-	}
-    void set_started(bool _started) {
-		started = _started; 
-	}
+    bool get_started() const { return started; }
+    void set_started(bool _started) { started = _started; }
+
+	bool get_audio() const { return audio; }
+	void set_audio(bool _audio) { audio = _audio; }
+
+	bool get_visual() const { return visual; }
+	void set_visual(bool _visual) { visual = _visual; }
 
 	// Getter and setter functions for paused
 	bool get_paused() const {

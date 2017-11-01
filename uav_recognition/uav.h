@@ -56,6 +56,9 @@ public:
 		Output::Instance().RecordConfidenceFile(cam_id, comment);
 	}
 
+	void set_audio(bool _audio) { audio = _audio; }
+	void set_visual(bool _visual) { visual = _visual; }
+
     void send_cam_message(int i);
 
     void network_update(irr::f32 time);
@@ -169,6 +172,9 @@ private:
     SimObject * network_target;
 
 	std::fstream confidence_fs;
+
+	bool audio;
+	bool visual;
 
 public:
     int missed;
